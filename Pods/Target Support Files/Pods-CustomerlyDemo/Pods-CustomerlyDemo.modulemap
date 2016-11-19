@@ -1,0 +1,6 @@
+framework module Pods_CustomerlyDemo {
+  umbrella header "Pods-CustomerlyDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
