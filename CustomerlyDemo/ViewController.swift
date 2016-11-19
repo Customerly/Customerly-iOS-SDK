@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func openChat(_ sender: Any) {
-        self.show(CustomerlyChatStartVC.instantiate(), sender: self)
+        Customerly.sharedInstance.openSupport(from: self)
     }
     
 }

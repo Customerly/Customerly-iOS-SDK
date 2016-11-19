@@ -8,23 +8,23 @@
 
 import UIKit
 
-open class CustomerlyChatStartVC: UIViewController {
+class CustomerlyChatStartVC: UIViewController {
 
    
     
     //MARK: - Initialiser
-    open static func instantiate() -> CustomerlyChatStartVC
+    static func instantiate() -> CustomerlyChatStartVC
     {
         return self.viewControllerFromStoryboard()
     }
     
-    override open func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override open func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

@@ -23,7 +23,7 @@ open class Customerly: NSObject {
     
     
     
-    //MARK:- Public API
+    //MARK: - Public API
     
     //MARK: Configuration
     open func configure(secretKey: String){
@@ -56,6 +56,15 @@ open class Customerly: NSObject {
         }) { (error) in
             cyPrint("Error Ping", error)
         }
+    }
+    
+    //MARK: Chat
+    /*
+     * Open the first view controller to the user, useful to chat with your Customer Support
+     *
+     */
+    open func openSupport(from viewController: UIViewController){
+        viewController.show(CustomerlyChatStartVC.instantiate(), sender: self)
     }
     
     //MARK: Utils
