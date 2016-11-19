@@ -40,6 +40,7 @@
 		455CE19A1DE0AB4500FF65DC /* CustomerlyChatStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */; };
 		455CE19B1DE0BA7D00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE19C1DE0BA7D00FF65DC /* CustomerlySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
 		8BB17DE1066C10F2234DB656 /* Pods_CustomerlyDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */; };
 		E1092CF8A4E504B466FFFE22 /* Pods_CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyWebsocketModel.swift; sourceTree = "<group>"; };
 		455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlyChat.storyboard; sourceTree = "<group>"; };
 		455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyChatStartVC.swift; sourceTree = "<group>"; };
+		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
 		8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D40DE420A7DBA14760B190 /* Pods-CustomerlyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlyDemo/Pods-CustomerlyDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		455CE1831DE0AB4500FF65DC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */,
 				455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */,
 			);
 			path = "View Controllers";
@@ -568,6 +571,7 @@
 				455CE18A1DE0AB4500FF65DC /* CyMapping.swift in Sources */,
 				455CE1961DE0AB4500FF65DC /* CyTrackingModel.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
+				455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */,
 				455CE1891DE0AB4500FF65DC /* CyLogging.swift in Sources */,
 				455CE1951DE0AB4500FF65DC /* CyStorageModel.swift in Sources */,
 				455CE1881DE0AB4500FF65DC /* CyHTTPValidation.swift in Sources */,

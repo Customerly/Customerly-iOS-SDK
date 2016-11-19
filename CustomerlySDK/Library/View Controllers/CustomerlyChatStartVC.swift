@@ -15,7 +15,7 @@ class CustomerlyChatStartVC: UIViewController {
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
     {
-        return self.viewControllerFromStoryboard()
+        return self.cyViewControllerFromStoryboard(storyboardName: "CustomerlyChat", vcIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
     }
     
     override func viewDidLoad() {
@@ -29,24 +29,6 @@ class CustomerlyChatStartVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - LoadVCFromStoryboard
-    static func viewControllerFromStoryboard() -> CustomerlyChatStartVC{
-        let podBundle = Bundle(for: self.classForCoder())
-        
-        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
-            
-            if let bundle = Bundle(url: bundleURL) {
-                return UIStoryboard(name: "CustomerlyChat", bundle: bundle).instantiateViewController(withIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
-            }
-            else {
-                assertionFailure("Could not load the bundle")
-            }
-            
-        }
-        
-        return UIStoryboard(name: "CustomerlyChat", bundle: podBundle).instantiateViewController(withIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
-    }
-    
     /*
     // MARK: - Navigation
 
@@ -57,4 +39,24 @@ class CustomerlyChatStartVC: UIViewController {
     }
     */
 
+}
+
+extension UIViewController{
+    // MARK: - LoadVCFromStoryboard
+    static func cyViewControllerFromStoryboard(storyboardName: String, vcIdentifier: String) -> UIViewController{
+        let podBundle = Bundle(for: self.classForCoder())
+        
+        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
+            
+            if let bundle = Bundle(url: bundleURL) {
+                return UIStoryboard(name: storyboardName, bundle: bundle).instantiateViewController(withIdentifier: vcIdentifier)
+            }
+            else {
+                assertionFailure("Could not load the bundle")
+            }
+            
+        }
+        
+        return UIStoryboard(name: "CustomerlyChat", bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
+    }
 }
