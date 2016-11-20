@@ -10,22 +10,47 @@ import ObjectMapper
 
 class CyStorage: NSObject {
 
-    func storeDataLocaly(user: CyStorageModel?){
-        if user != nil{
-            UserDefaults.standard.set(user!.toJSON(), forKey: "basicDataCustomerly")
+    
+    //MARK: CyDataModel Storage
+    static func storeCyDataModel(cyData : CyDataModel?){
+        if cyData != nil{
+            UserDefaults.standard.set(cyData!.toJSON(), forKey: "cyDataModel")
             UserDefaults.standard.synchronize()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CyStoredData"), object: nil)
         }
     }
     
-    func deleteLocalData(){
-        UserDefaults.standard.set(nil, forKey: "basicDataCustomerly")
+    static func deleteCyDataModel(){
+        UserDefaults.standard.set(nil, forKey: "cyDataModel")
         UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CyStoredData"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
     }
     
-    func getLocalData() -> CyStorageModel?{
-        if let userJSONModel = UserDefaults.standard.object(forKey: "basicDataCustomerly") as? [String: AnyObject]{
+    static func getCyDataModel() -> CyDataModel?{
+        if let userJSONModel = UserDefaults.standard.object(forKey: "cyDataModel") as? [String: AnyObject]{
+            let user = Mapper<CyDataModel>().map(JSON: userJSONModel)
+            return user
+        }
+        return nil
+    }
+    
+    //MARK: User Storage
+    func storeUserData(user: CyStorageModel?){
+        if user != nil{
+            UserDefaults.standard.set(user!.toJSON(), forKey: "userDataCustomerly")
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userDataCustomerly"), object: nil)
+        }
+    }
+    
+    func deleteUserData(){
+        UserDefaults.standard.set(nil, forKey: "userDataCustomerly")
+        UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userDataCustomerly"), object: nil)
+    }
+    
+    func getUserData() -> CyStorageModel?{
+        if let userJSONModel = UserDefaults.standard.object(forKey: "userDataCustomerly") as? [String: AnyObject]{
             let user = Mapper<CyStorageModel>().map(JSON: userJSONModel)
             return user
         }
