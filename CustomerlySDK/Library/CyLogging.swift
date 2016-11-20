@@ -13,8 +13,6 @@ class CyLogging: NSObject {
 
 func cyPrint(_ items: Any...){
     if Customerly.sharedInstance.verboseLogging == true{
-        if let stringToPrint = (items as? [String])?.joined(separator: " "){
-            print("CustomerlyLogging🤖:", stringToPrint)
-        }
+            print("CustomerlyLogging🤖:", items)
     }
 }
