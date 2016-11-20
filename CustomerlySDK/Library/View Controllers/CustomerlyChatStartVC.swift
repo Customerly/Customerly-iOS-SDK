@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomerlyChatStartVC: UIViewController {
+class CustomerlyChatStartVC: UIViewController{
 
    
     
@@ -20,7 +20,6 @@ class CustomerlyChatStartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -28,6 +27,13 @@ class CustomerlyChatStartVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: Actions
+    @IBAction func dismissVC(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+
     
     /*
     // MARK: - Navigation

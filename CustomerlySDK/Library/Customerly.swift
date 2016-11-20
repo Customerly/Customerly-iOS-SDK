@@ -23,11 +23,23 @@ open class Customerly: NSObject {
     
     
     
-    //MARK: - Public API
+    //MARK: - OPEN APIs
     
     //MARK: Configuration
     open func configure(secretKey: String){
         customerlySecretKey = secretKey
+        
+        //If user is not stored, ping ghost
+        if CyStorage.getCyDataModel()?.user == nil{
+            pingGhost()
+        }
+        else{
+            pingRegistered()
+        }
+    }
+    
+    open func setUser(){
+        
     }
     
     //MARK: Event
@@ -45,18 +57,6 @@ open class Customerly: NSObject {
         }
     }
     
-    //MARK: Ping
-    open func ping(){
-        let pingRequestModel = CyRequestPingModel(JSON: [:])
-        pingRequestModel?.params = [:]
-        
-        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            cyPrint("Success Ping")
-            cyPrint(responseData?.toJSONString() ?? "")
-        }) { (error) in
-            cyPrint("Error Ping", error)
-        }
-    }
     
     //MARK: Chat
     /*
@@ -64,13 +64,53 @@ open class Customerly: NSObject {
      *
      */
     open func openSupport(from viewController: UIViewController){
-        viewController.show(CustomerlyChatStartVC.instantiate(), sender: self)
+        
+        viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
     }
     
-    //MARK: Utils
-    func pingOK() -> Bool{
+    //MARK: - CLOSED APIs
+    //MARK: Ping
+    func pingGhost(){
+        let pingRequestModel = CyRequestPingModel(JSON: [:])
+        pingRequestModel?.params = [:]
         
-        return false
+        //if some cookies are stored, CyRequestPingModel containes these cookies
+        if let dataStored = CyStorage.getCyDataModel(){
+            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        
+        
+        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+            cyPrint("Success Ping Ghost")
+            CyStorage.storeCyDataModel(cyData: responseData)
+        }) { (error) in
+            cyPrint("Error Ping Ghost", error)
+        }
+    }
+    
+    func pingRegistered(){
+        let pingRequestModel = CyRequestPingModel(JSON: [:])
+        pingRequestModel?.params = [:]
+        
+        //if some cookies are stored, CyRequestPingModel containes these cookies and in this case the user information
+        if let dataStored = CyStorage.getCyDataModel(){
+            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
+            pingRequestModel?.settings?.email = dataStored.user?.email
+            pingRequestModel?.settings?.name = dataStored.user?.name
+            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        
+        
+        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+            cyPrint("Success Ping Registered")
+            CyStorage.storeCyDataModel(cyData: responseData)
+        }) { (error) in
+            cyPrint("Error Ping Registered", error)
+        }
     }
     
     

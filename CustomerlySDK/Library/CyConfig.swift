@@ -6,7 +6,7 @@
 //
 //
 
-let API_BASE_URL = "http://tracking.crmhero.io"
+let API_BASE_URL = "http://tracking.customerly.io"
 
 // The domain used for creating all Customerly errors.
 let cy_domain = "io.customerly.CustomerlySDK"

@@ -10,24 +10,24 @@ import ObjectMapper
 
 class CyCookiesResponseModel: Mappable {
 
-    var crmCy_user_token : String?
-    var crmCy_user_token_expire : Int?
-    var crmCy_lead_token : String?
-    var crmCy_lead_token_expire : Int?
-    var crmCy_temp_token : String?
-    var crmCy_temp_token_expire : Int?
+    var customerly_user_token : String?
+    var customerly_user_token_expire : Int?
+    var customerly_lead_token : String?
+    var customerly_lead_token_expire : Int?
+    var customerly_temp_token : String?
+    var customerly_temp_token_expire : Int?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        crmCy_user_token <- map["crmCy_user_token.value"]
-        crmCy_user_token_expire <- map["crmCy_user_token.expire"]
-        crmCy_lead_token <- map["crmCy_lead_token.value"]
-        crmCy_lead_token_expire <- map["crmCy_lead_token.expire"]
-        crmCy_temp_token <- map["crmCy_temp_token.value"]
-        crmCy_temp_token_expire <- map["crmCy_temp_token.expire"]
+        customerly_user_token <- map["customerly_user_token.value"]
+        customerly_user_token_expire <- map["customerly_user_token.expire"]
+        customerly_lead_token <- map["customerly_lead_token.value"]
+        customerly_lead_token_expire <- map["customerly_lead_token.expire"]
+        customerly_temp_token <- map["customerly_temp_token.value"]
+        customerly_temp_token_expire <- map["customerly_temp_token.expire"]
     }
     
 }

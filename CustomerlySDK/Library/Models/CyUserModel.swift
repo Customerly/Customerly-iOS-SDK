@@ -10,6 +10,7 @@ import ObjectMapper
 
 class CyUserModel: Mappable {
     
+    var crmhero_user_id : String?
     var app_id : String?
     var user_id : String?
     var email : String?
@@ -22,6 +23,7 @@ class CyUserModel: Mappable {
     
     func mapping(map: Map)
     {
+        crmhero_user_id <- map["crmhero_user_id"]
         app_id <- map["app_id"]
         user_id <- map["user_id"]
         email <- map["email"]

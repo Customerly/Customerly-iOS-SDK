@@ -10,18 +10,18 @@ import ObjectMapper
 
 class CyCookiesModel: Mappable {
 
-    var crmCy_user_token : String?
-    var crmCy_lead_token : String?
-    var crmCy_temp_token : String?
+    var customerly_user_token : String?
+    var customerly_lead_token : String?
+    var customerly_temp_token : String?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        crmCy_user_token <- map["crmCy_user_token"]
-        crmCy_lead_token <- map["crmCy_lead_token"]
-        crmCy_temp_token <- map["crmCy_temp_token"]
+        customerly_user_token <- map["customerly_user_token"]
+        customerly_lead_token <- map["customerly_lead_token"]
+        customerly_temp_token <- map["customerly_temp_token"]
     }
     
 }

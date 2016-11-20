@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Customerly.sharedInstance.ping()
         Customerly.sharedInstance.trackEvent(event: "an_event")
     }
     

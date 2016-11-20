@@ -42,7 +42,7 @@ open class CyDataFetcher: NSObject {
         trackingModel?.settings?.email = "firstEventFromSDK@gmail.com"
         trackingModel?.settings?.name = "Paolo Musolino"
         trackingModel?.settings?.user_id = "ABC123"
-        trackingModel?.cookies?.crmCy_user_token = "76601427f054d4822436ee69061e166eef7d5c5c4b6f9f50eda026a751667c74-214454"
+        trackingModel?.cookies?.customerly_user_token = "76601427f054d4822436ee69061e166eef7d5c5c4b6f9f50eda026a751667c74-214454"
         var urlRequest = CyRouting.Event(trackingModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
@@ -55,8 +55,6 @@ open class CyDataFetcher: NSObject {
                 return
             }
             
-            //let dataString = String(data: data!, encoding: String.Encoding.utf8)
-            //self.cyPrint(JSONParseDictionary(data: data!))
             completion()
             
         }
@@ -66,7 +64,6 @@ open class CyDataFetcher: NSObject {
     
     //MARK: API ping
     func pingAPIRequest(pingModel:CyRequestPingModel?, completion: @escaping (CyDataModel?) -> Void, failure:@escaping (Error) -> Void){
-        cyPrint(pingModel?.toJSONString() ?? "")
         var urlRequest = CyRouting.Ping(pingModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
@@ -79,7 +76,6 @@ open class CyDataFetcher: NSObject {
                 return
             }
             
-            //cyPrint(JSONParseDictionary(data: data!))
             let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
             completion(ping)
             
