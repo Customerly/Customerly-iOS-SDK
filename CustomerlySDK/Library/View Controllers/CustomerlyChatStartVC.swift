@@ -27,6 +27,8 @@ class CustomerlyChatStartVC: UIViewController{
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 70
         data = CyStorage.getCyDataModel()
+        
+        title = data?.app?.name
     }
 
     override func didReceiveMemoryWarning() {

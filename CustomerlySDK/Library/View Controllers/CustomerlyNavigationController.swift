@@ -29,11 +29,11 @@ class CustomerlyNavigationController: UINavigationController {
     //MARK: Customizations
     func applyCyNavBarCustomization(){
         
-        self.navigationBar.barTintColor = UIColor.white //background color navbar
-        self.navigationBar.tintColor = UIColor.black //tint color elements on navbar
+        self.navigationBar.barTintColor = base_color_template //background color navbar
+        self.navigationBar.tintColor = UIColor.white //tint color elements on navbar
         self.navigationBar.isTranslucent = false //navbar is not translucent
         
-        //self.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name: "Lato-Regular", size: 17)!, NSForegroundColorAttributeName: UIColor.blackColor()] //font title navbar
+        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white] //font title navbar
         
         //Delete 1px line under navigation bar
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)

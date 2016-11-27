@@ -25,7 +25,7 @@ let cy_api_version = "\(1)"
 let cy_socket_version = "\(1)"
 
 //Default parameters
-let base_color_template = UIColor(hexString: "638CA5") //Air Force Blue
+let base_color_template = UIColor(hexString: "4397e6") //Air Force Blue
 
 //Images
 func adminImageURL(id: Int, pxSize: Int) -> URL{
