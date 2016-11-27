@@ -20,7 +20,6 @@ class ActiveAdminsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         adminsTableView.dataSource = self
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -25,7 +25,7 @@ class CustomerlyChatStartVC: UIViewController{
         //TableView configuration
         chatTableView.dataSource = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
-        chatTableView.estimatedRowHeight = 70
+        chatTableView.estimatedRowHeight = 131
         data = CyStorage.getCyDataModel()
         
         title = data?.app?.name

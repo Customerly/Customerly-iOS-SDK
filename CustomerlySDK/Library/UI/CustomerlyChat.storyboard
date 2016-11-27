@@ -37,7 +37,7 @@
                                                     <rect key="frame" x="14" y="14" width="347" height="68"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="68" id="Dw2-7p-XiS"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="68" id="Dw2-7p-XiS"/>
                                                     </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="singleActiveAdminCell" id="Shn-4s-V6W" customClass="SingleActiveAdminTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
