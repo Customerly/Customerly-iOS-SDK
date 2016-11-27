@@ -57,27 +57,35 @@ class CustomerlyChatStartVC: UIViewController{
 extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //if no admins, the related admin cell is not showed
+        //if no admins, the related admin cell and info cell is not showed
         guard (data?.active_admins?.count) != nil else {
         return 0
         }
         
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
+            
+            cell.active_admins = data?.active_admins
+            
+            
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
+            
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCustomerlyCell", for: indexPath) as! CyInfoTableViewCell
+            
+            return cell
+        }
         
-        cell.active_admins = data?.active_admins
-        
-        
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
-        
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        
-        return cell
     }
 }
 
