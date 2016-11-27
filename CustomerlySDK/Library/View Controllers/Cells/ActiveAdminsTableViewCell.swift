@@ -11,6 +11,7 @@ import UIKit
 class ActiveAdminsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var adminsTableView: UITableView!
+    @IBOutlet weak var lastActivityLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

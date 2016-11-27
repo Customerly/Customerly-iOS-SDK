@@ -103,6 +103,7 @@
                                         <color key="backgroundColor" red="0.99215686270000003" green="0.86666666670000003" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="adminsTableView" destination="Btg-jf-xOU" id="Me4-N0-hMc"/>
+                                            <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
