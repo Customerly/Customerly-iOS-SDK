@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="124" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
                                 <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -145,7 +145,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF">
                                                             <rect key="frame" x="8" y="8" width="331" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -187,13 +187,68 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo">
+                                <rect key="frame" x="0.0" y="521" width="375" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-sf-Dsu" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="ZwH-Ac-OqW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Provided by Customerly"/>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask your question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-XW-OCi" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="266" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="01u-RY-g6M"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-W3-qOj" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GvM-8a-c3o"/>
+                                            <constraint firstAttribute="width" constant="30" id="xgp-aF-ktn"/>
+                                        </constraints>
+                                        <state key="normal" image="attachments_button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPU-2h-EKe" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="332" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="5oS-Nx-v4j"/>
+                                            <constraint firstAttribute="height" constant="30" id="mYW-ls-nBa"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="send_message_button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="tPU-2h-EKe" firstAttribute="leading" secondItem="0Q3-W3-qOj" secondAttribute="trailing" constant="20" id="3pM-21-EXt"/>
+                                    <constraint firstItem="U6Y-sf-Dsu" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" id="IBJ-oB-x26"/>
+                                    <constraint firstAttribute="trailing" secondItem="tPU-2h-EKe" secondAttribute="trailing" constant="13" id="ROQ-CC-rot"/>
+                                    <constraint firstAttribute="bottom" secondItem="U6Y-sf-Dsu" secondAttribute="bottom" id="bex-2w-gcQ"/>
+                                    <constraint firstItem="tPU-2h-EKe" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="10" id="dsE-UT-Rk0"/>
+                                    <constraint firstAttribute="trailing" secondItem="U6Y-sf-Dsu" secondAttribute="trailing" id="fJv-Nr-MiR"/>
+                                    <constraint firstItem="0Q3-W3-qOj" firstAttribute="leading" secondItem="HBx-XW-OCi" secondAttribute="trailing" constant="8" id="lCf-VX-YFi"/>
+                                    <constraint firstAttribute="height" constant="82" id="lse-8X-r0j"/>
+                                    <constraint firstItem="HBx-XW-OCi" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="8" id="rp5-tY-e34"/>
+                                    <constraint firstItem="HBx-XW-OCi" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" constant="8" id="s3E-tU-EVU"/>
+                                    <constraint firstItem="0Q3-W3-qOj" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="10" id="sGF-Dg-rAN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NhT-tc-8ei" secondAttribute="trailing" id="2se-p5-8bU"/>
-                            <constraint firstItem="NhT-tc-8ei" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="WFq-iH-Dos"/>
-                            <constraint firstItem="NhT-tc-8ei" firstAttribute="top" secondItem="62Q-Qo-qS2" secondAttribute="bottom" id="gDh-GI-oA0"/>
-                            <constraint firstItem="L7q-rn-PsB" firstAttribute="top" secondItem="NhT-tc-8ei" secondAttribute="bottom" id="hZd-d3-k08"/>
+                            <constraint firstItem="9FX-JC-JNo" firstAttribute="top" secondItem="NhT-tc-8ei" secondAttribute="bottom" id="B1a-SX-tcH"/>
+                            <constraint firstItem="9FX-JC-JNo" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="MY0-wz-wJp"/>
+                            <constraint firstItem="NhT-tc-8ei" firstAttribute="top" secondItem="62Q-Qo-qS2" secondAttribute="bottom" id="UK9-Sr-u1x"/>
+                            <constraint firstItem="NhT-tc-8ei" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="bY1-uW-ODM"/>
+                            <constraint firstAttribute="trailing" secondItem="9FX-JC-JNo" secondAttribute="trailing" id="hUj-QN-Ye3"/>
+                            <constraint firstAttribute="trailing" secondItem="NhT-tc-8ei" secondAttribute="trailing" id="lQk-x3-hG1"/>
+                            <constraint firstAttribute="bottom" secondItem="9FX-JC-JNo" secondAttribute="bottom" id="nEg-E8-rI7"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -237,4 +292,8 @@
             <point key="canvasLocation" x="-449" y="194"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="attachments_button" width="42" height="42"/>
+        <image name="send_message_button" width="42" height="42"/>
+    </resources>
 </document>

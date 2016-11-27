@@ -46,6 +46,9 @@
 		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
 		45FA19B91DEB423600D26059 /* CyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19B81DEB423600D26059 /* CyView.swift */; };
 		45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */; };
+		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
+		45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */; };
+		45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FA19C01DEB4E0200D26059 /* Assets.xcassets */; };
 		8BB17DE1066C10F2234DB656 /* Pods_CustomerlyDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */; };
 		E1092CF8A4E504B466FFFE22 /* Pods_CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */; };
 /* End PBXBuildFile section */
@@ -134,6 +137,9 @@
 		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
 		45FA19B81DEB423600D26059 /* CyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyView.swift; sourceTree = "<group>"; };
 		45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInfoTableViewCell.swift; sourceTree = "<group>"; };
+		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
+		45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextField.swift; sourceTree = "<group>"; };
+		45FA19C01DEB4E0200D26059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D40DE420A7DBA14760B190 /* Pods-CustomerlyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlyDemo/Pods-CustomerlyDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 				455CE1711DE0AB4500FF65DC /* CyMapping.swift */,
 				455CE1721DE0AB4500FF65DC /* CyRouting.swift */,
 				455CE1731DE0AB4500FF65DC /* CyStorage.swift */,
+				45FA19C01DEB4E0200D26059 /* Assets.xcassets */,
 				455CE1741DE0AB4500FF65DC /* Models */,
 				455CE1811DE0AB4500FF65DC /* UI */,
 				45FA19B71DEB422B00D26059 /* Subclasses */,
@@ -313,6 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				45FA19B81DEB423600D26059 /* CyView.swift */,
+				45FA19BC1DEB4C2000D26059 /* CyButton.swift */,
+				45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -484,6 +493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */,
 				455CE1991DE0AB4500FF65DC /* CustomerlyChat.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,12 +628,14 @@
 				455CE1861DE0AB4500FF65DC /* CyConfig.swift in Sources */,
 				455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */,
 				455CE1871DE0AB4500FF65DC /* CyDataFetcher.swift in Sources */,
+				45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */,
 				455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */,
 				455CE18F1DE0AB4500FF65DC /* CyCookiesModel.swift in Sources */,
 				455CE18B1DE0AB4500FF65DC /* CyRouting.swift in Sources */,
 				455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */,
 				455CE18C1DE0AB4500FF65DC /* CyStorage.swift in Sources */,
 				455CE19A1DE0AB4500FF65DC /* CustomerlyChatStartVC.swift in Sources */,
+				45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
