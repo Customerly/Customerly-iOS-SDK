@@ -65,9 +65,12 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! ActiveAdminsTableViewCell
-        cell.layoutIfNeeded()
+        
         cell.active_admins = data?.active_admins
         
+        cell.layoutIfNeeded()
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
         return cell
     }
 }
