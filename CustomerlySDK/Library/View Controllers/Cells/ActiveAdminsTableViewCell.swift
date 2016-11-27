@@ -13,6 +13,7 @@ class ActiveAdminsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var adminsTableView: UITableView!
     @IBOutlet weak var lastActivityLabel: UILabel!
+    @IBOutlet weak var heightTableViewConstraint: NSLayoutConstraint!
     var active_admins : [CyAdminModel]?
     
     override func awakeFromNib() {
@@ -39,6 +40,8 @@ extension ActiveAdminsTableViewCell: UITableViewDataSource{
     
         cell.adminAvatarImageView.kf.setImage(with: adminImageURL(id: active_admins![indexPath.row].account_id!, pxSize: 250), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         cell.adminNameLabel.text = active_admins?[indexPath.row].name
+        
+        heightTableViewConstraint.constant = adminsTableView.contentSize.height
         
         return cell
     }

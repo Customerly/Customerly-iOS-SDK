@@ -11,7 +11,7 @@ import UIKit
 class CustomerlyChatStartVC: UIViewController{
 
     @IBOutlet weak var chatTableView: UITableView!
-   
+    var data: CyDataModel?
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
@@ -22,11 +22,15 @@ class CustomerlyChatStartVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TableView configuration
+        chatTableView.dataSource = self
+        chatTableView.rowHeight = UITableViewAutomaticDimension
+        chatTableView.estimatedRowHeight = 100
+        data = CyStorage.getCyDataModel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: Actions
@@ -46,6 +50,26 @@ class CustomerlyChatStartVC: UIViewController{
     }
     */
 
+}
+
+extension CustomerlyChatStartVC: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //if no admins, the related admin cell is not showed
+        guard (data?.active_admins?.count) != nil else {
+        return 0
+        }
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! ActiveAdminsTableViewCell
+        cell.layoutIfNeeded()
+        cell.active_admins = data?.active_admins
+        
+        return cell
+    }
 }
 
 extension UIViewController{

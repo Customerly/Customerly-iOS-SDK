@@ -21,23 +21,23 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="158" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="131" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activeAdminsCell" rowHeight="158" id="P7h-7b-6Ic" customClass="ActiveAdminsTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="158"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activeAdminsCell" id="P7h-7b-6Ic" customClass="ActiveAdminsTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="131"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P7h-7b-6Ic" id="9Rc-4d-7bR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="20" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Btg-jf-xOU">
-                                                    <rect key="frame" x="14" y="14" width="347" height="95"/>
+                                                    <rect key="frame" x="14" y="14" width="347" height="68"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="95" id="Dw2-7p-XiS"/>
+                                                        <constraint firstAttribute="height" constant="68" id="Dw2-7p-XiS"/>
                                                     </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleActiveAdminCell" id="Shn-4s-V6W" customClass="SingleActiveAdminTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
@@ -81,7 +81,7 @@
                                                     </prototypes>
                                                 </tableView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSJ-sj-bQv">
-                                                    <rect key="frame" x="14" y="123" width="347" height="21"/>
+                                                    <rect key="frame" x="14" y="96" width="347" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ddF-7g-vvy"/>
                                                     </constraints>
@@ -103,6 +103,7 @@
                                         <color key="backgroundColor" red="0.99215686270000003" green="0.86666666670000003" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="adminsTableView" destination="Btg-jf-xOU" id="Me4-N0-hMc"/>
+                                            <outlet property="heightTableViewConstraint" destination="Dw2-7p-XiS" id="88R-Wn-TKl"/>
                                             <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
                                         </connections>
                                     </tableViewCell>
