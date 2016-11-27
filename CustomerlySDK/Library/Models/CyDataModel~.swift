@@ -13,7 +13,7 @@ class CyDataModel: Mappable {
     var websocket : CyWebsocketModel?
     var app : CyAppModel?
     var app_config : CyAppConfigModel?
-    var active_admins : []?
+    var active_admins
     var user : CyUserModel?
     //var last_messages : String? //TODO: structure
     //var last_surveys : String? //TODO: structure

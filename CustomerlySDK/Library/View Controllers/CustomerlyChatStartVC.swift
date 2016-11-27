@@ -10,6 +10,7 @@ import UIKit
 
 class CustomerlyChatStartVC: UIViewController{
 
+    @IBOutlet weak var chatTableView: UITableView!
    
     
     //MARK: - Initialiser
