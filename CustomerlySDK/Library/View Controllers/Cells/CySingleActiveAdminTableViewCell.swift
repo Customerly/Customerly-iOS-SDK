@@ -1,5 +1,5 @@
 //
-//  SingleActiveAdminTableViewCell.swift
+//  CySingleActiveAdminTableViewCell.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 26/11/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingleActiveAdminTableViewCell: UITableViewCell {
+class CySingleActiveAdminTableViewCell: UITableViewCell {
 
     @IBOutlet weak var adminAvatarImageView: UIImageView!
     @IBOutlet weak var adminNameLabel: UILabel!

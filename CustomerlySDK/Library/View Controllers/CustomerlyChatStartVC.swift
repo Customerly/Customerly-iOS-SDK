@@ -25,7 +25,7 @@ class CustomerlyChatStartVC: UIViewController{
         //TableView configuration
         chatTableView.dataSource = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
-        chatTableView.estimatedRowHeight = 131
+        chatTableView.estimatedRowHeight = 124
         data = CyStorage.getCyDataModel()
         
         title = data?.app?.name
@@ -66,7 +66,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! ActiveAdminsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
         
         cell.active_admins = data?.active_admins
         

@@ -1,5 +1,5 @@
 //
-//  ActiveAdminsTableViewCell.swift
+//  CyActiveAdminsTableViewCell.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 26/11/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ActiveAdminsTableViewCell: UITableViewCell {
+class CyActiveAdminsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var adminsTableView: UITableView!
     @IBOutlet weak var lastActivityLabel: UILabel!
@@ -29,13 +29,13 @@ class ActiveAdminsTableViewCell: UITableViewCell {
 
 }
 
-extension ActiveAdminsTableViewCell: UITableViewDataSource{
+extension CyActiveAdminsTableViewCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return active_admins?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "singleActiveAdminCell", for: indexPath)as! SingleActiveAdminTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "singleActiveAdminCell", for: indexPath)as! CySingleActiveAdminTableViewCell
     
         cell.adminAvatarImageView.kf.setImage(with: adminImageURL(id: active_admins![indexPath.row].account_id!, pxSize: 250), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         cell.adminNameLabel.text = active_admins?[indexPath.row].name
