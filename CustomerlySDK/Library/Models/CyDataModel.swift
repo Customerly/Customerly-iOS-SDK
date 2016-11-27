@@ -13,7 +13,7 @@ class CyDataModel: Mappable {
     var websocket : CyWebsocketModel?
     var app : CyAppModel?
     var app_config : CyAppConfigModel?
-    var active_admins : []?
+    var active_admins : [CyAdminModel]?
     var user : CyUserModel?
     //var last_messages : String? //TODO: structure
     //var last_surveys : String? //TODO: structure
@@ -28,6 +28,7 @@ class CyDataModel: Mappable {
         websocket <- map["data.websocket"]
         app <- map["data.apps.app"]
         app_config <- map["data.apps.app_config"]
+        active_admins <- map["data.active_admins"]
         user <- map["data.user.data"]
         cookies <- map["cookies"]
     }

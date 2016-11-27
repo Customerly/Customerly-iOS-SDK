@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		453CC13D1DEA2C0F00D85957 /* ActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* ActiveAdminsTableViewCell.swift */; };
 		453CC13F1DEA2C1A00D85957 /* SingleActiveAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13E1DEA2C1A00D85957 /* SingleActiveAdminTableViewCell.swift */; };
+		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
 		455CE1391DE0AABD00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE13E1DE0AABD00FF65DC /* CustomerlySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE13D1DE0AABD00FF65DC /* CustomerlySDKTests.swift */; };
 		455CE1401DE0AABD00FF65DC /* CustomerlySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,6 +90,7 @@
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* ActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
 		453CC13E1DEA2C1A00D85957 /* SingleActiveAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleActiveAdminTableViewCell.swift; sourceTree = "<group>"; };
+		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
 		455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerlySDK.h; sourceTree = "<group>"; };
 		455CE1331DE0AABD00FF65DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				455CE17D1DE0AB4500FF65DC /* CyStorageModel.swift */,
 				455CE17E1DE0AB4500FF65DC /* CyTrackingModel.swift */,
 				455CE17F1DE0AB4500FF65DC /* CyUserModel.swift */,
+				454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */,
 				455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */,
 			);
 			path = Models;
@@ -583,6 +586,7 @@
 				455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */,
 				455CE1901DE0AB4500FF65DC /* CyCookiesResponseModel.swift in Sources */,
 				455CE18A1DE0AB4500FF65DC /* CyMapping.swift in Sources */,
+				454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */,
 				455CE1961DE0AB4500FF65DC /* CyTrackingModel.swift in Sources */,
 				453CC13F1DEA2C1A00D85957 /* SingleActiveAdminTableViewCell.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
