@@ -24,6 +24,9 @@ let cy_sdk_version = "\(1)"
 let cy_api_version = "\(1)"
 let cy_socket_version = "\(1)"
 
+//Default parameters
+let base_color_template = UIColor(hexString: "638CA5") //Air Force Blue
+
 //Images
 func adminImageURL(id: Int, pxSize: Int) -> URL{
     return URL(string: "http://pictures.customerly.io/accounts/\(id)/\(pxSize)")!
