@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 let API_BASE_URL = "http://tracking.customerly.io"
 
 // The domain used for creating all Customerly errors.
@@ -21,3 +23,12 @@ let cy_app_name = "Customerly iOS SDK" //TODO: App end developer
 let cy_sdk_version = "\(1)"
 let cy_api_version = "\(1)"
 let cy_socket_version = "\(1)"
+
+//Images
+func adminImageURL(id: Int, pxSize: Int) -> URL{
+    return URL(string: "http://pictures.customerly.io/accounts/\(id)/\(pxSize)")!
+}
+
+func userImageURL(id: Int, pxSize: Int) -> URL{
+    return URL(string: "http://pictures.customerly.io/users/\(id)/\(pxSize)")!
+}

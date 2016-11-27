@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ActiveAdminsTableViewCell: UITableViewCell {
 
@@ -24,7 +25,6 @@ class ActiveAdminsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
@@ -37,9 +37,8 @@ extension ActiveAdminsTableViewCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleActiveAdminCell", for: indexPath)as! SingleActiveAdminTableViewCell
     
-        
-        Data(contentsOf: URL(string: "")!)
-        //cell.adminAvatarImageView = UIImage(data: <#T##Data#>)
+        cell.adminAvatarImageView.kf.setImage(with: adminImageURL(id: active_admins![indexPath.row].account_id!, pxSize: 250), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        cell.adminNameLabel.text = active_admins?[indexPath.row].name
         
         return cell
     }
