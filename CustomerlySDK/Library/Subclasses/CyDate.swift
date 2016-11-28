@@ -10,7 +10,11 @@ import UIKit
 
 extension Date {
     
-    func timeAgoSinceDate(_ date:Date,currentDate:Date) -> String {
+    static func timeAgoSinceUnixTime(unix_time: Double, currentDate: Date) -> String{
+        return timeAgoSinceDate(Date(timeIntervalSince1970:TimeInterval(unix_time)), currentDate: currentDate)
+    }
+    
+    static func timeAgoSinceDate(_ date: Date, currentDate: Date) -> String {
         let calendar = Calendar.current
         let now = currentDate
         let earliest = (now as NSDate).earlierDate(date)
@@ -44,7 +48,7 @@ extension Date {
         } else if (components.second! >= 3) {
             return "\(components.second!) seconds ago"
         } else {
-            return "Just now"
+            return "just now"
         }
     }
     
