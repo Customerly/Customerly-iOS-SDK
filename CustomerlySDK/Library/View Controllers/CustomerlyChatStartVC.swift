@@ -42,6 +42,19 @@ class CustomerlyChatStartVC: CyViewController{
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: Utils
+    func lastAdminActivity() -> String{
+        guard data?.active_admins?.count != nil, (data?.active_admins?.count)! >= 1 else {
+            return ""
+        }
+        
+        if let last_activity = data?.active_admins?[0].last_active{
+            return Date.timeAgoSinceUnixTime(unix_time: last_activity, currentDate: Date())
+        }
+        
+        return ""
+    }
+    
     //MARK: Actions
     @IBAction func dismissVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -82,7 +95,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
             
             cell.active_admins = data?.active_admins
-            
+            cell.lastActivityLabel.text = "Last activity " + lastAdminActivity()
             
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()

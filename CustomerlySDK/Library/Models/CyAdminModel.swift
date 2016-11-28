@@ -12,7 +12,7 @@ class CyAdminModel: Mappable {
     var account_id : Int?
     var email : String?
     var name : String?
-    var last_active : Int?
+    var last_active : Double?
     
     
     required init?(map: Map) {
