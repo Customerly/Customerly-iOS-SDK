@@ -8,9 +8,14 @@
 
 import UIKit
 
-class CustomerlyChatStartVC: UIViewController{
-
+class CustomerlyChatStartVC: CyViewController{
+    
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var chatTextField: CyTextField!
+    @IBOutlet weak var attachmentsButton: CyButton!
+    @IBOutlet weak var sendMessageButton: CyButton!
+    @IBOutlet weak var composeMessageViewBottomConstraint: NSLayoutConstraint!
+    
     var data: CyDataModel?
     
     //MARK: - Initialiser
@@ -28,9 +33,11 @@ class CustomerlyChatStartVC: UIViewController{
         chatTableView.estimatedRowHeight = 124
         data = CyStorage.getCyDataModel()
         
+        chatTextField.keyboardDelegate = self
+        
         title = data?.app?.name
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -40,18 +47,23 @@ class CustomerlyChatStartVC: UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    
+    @IBAction func newAttachments(_ sender: Any) {
+    }
+    
+    @IBAction func sendMessage(_ sender: Any) {
+    }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension CustomerlyChatStartVC: UITableViewDataSource{
@@ -59,7 +71,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
         
         //if no admins, the related admin cell and info cell is not showed
         guard (data?.active_admins?.count) != nil else {
-        return 0
+            return 0
         }
         
         return 2
@@ -86,6 +98,16 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             return cell
         }
         
+    }
+}
+
+extension CustomerlyChatStartVC: CyTextFieldKeyboardDelegate{
+    func keyboardShowed(height: CGFloat) {
+        composeMessageViewBottomConstraint.constant = height
+    }
+    
+    func keyboardHided(height: CGFloat) {
+        composeMessageViewBottomConstraint.constant = 0
     }
 }
 

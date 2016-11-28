@@ -187,7 +187,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo" userLabel="Compose Message View">
                                 <rect key="frame" x="0.0" y="521" width="375" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-sf-Dsu" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
@@ -205,7 +205,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Q3-W3-qOj" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="282" y="10" width="30" height="30"/>
@@ -214,6 +214,9 @@
                                             <constraint firstAttribute="width" constant="30" id="xgp-aF-ktn"/>
                                         </constraints>
                                         <state key="normal" image="attachments_button"/>
+                                        <connections>
+                                            <action selector="newAttachments:" destination="jqW-k1-gD2" eventType="touchUpInside" id="MzM-b3-8wc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPU-2h-EKe" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="332" y="10" width="30" height="30"/>
@@ -222,6 +225,9 @@
                                             <constraint firstAttribute="height" constant="30" id="mYW-ls-nBa"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="send_message_button"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="jqW-k1-gD2" eventType="touchUpInside" id="Tdk-GB-rFZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +274,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attachmentsButton" destination="0Q3-W3-qOj" id="3Aj-In-pfu"/>
                         <outlet property="chatTableView" destination="NhT-tc-8ei" id="ib8-hw-WbU"/>
+                        <outlet property="chatTextField" destination="HBx-XW-OCi" id="ngF-Iq-dpN"/>
+                        <outlet property="composeMessageViewBottomConstraint" destination="nEg-E8-rI7" id="gRg-sf-2Ju"/>
+                        <outlet property="sendMessageButton" destination="tPU-2h-EKe" id="JBB-wf-raQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMB-Gh-rSO" userLabel="First Responder" sceneMemberID="firstResponder"/>

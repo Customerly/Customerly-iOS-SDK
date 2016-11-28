@@ -49,6 +49,7 @@
 		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
 		45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */; };
 		45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FA19C01DEB4E0200D26059 /* Assets.xcassets */; };
+		45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19C21DEC283A00D26059 /* CyViewController.swift */; };
 		8BB17DE1066C10F2234DB656 /* Pods_CustomerlyDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */; };
 		E1092CF8A4E504B466FFFE22 /* Pods_CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */; };
 /* End PBXBuildFile section */
@@ -140,6 +141,7 @@
 		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
 		45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextField.swift; sourceTree = "<group>"; };
 		45FA19C01DEB4E0200D26059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45FA19C21DEC283A00D26059 /* CyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyViewController.swift; sourceTree = "<group>"; };
 		8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D40DE420A7DBA14760B190 /* Pods-CustomerlyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlyDemo/Pods-CustomerlyDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		45FA19B71DEB422B00D26059 /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				45FA19C21DEC283A00D26059 /* CyViewController.swift */,
 				45FA19B81DEB423600D26059 /* CyView.swift */,
 				45FA19BC1DEB4C2000D26059 /* CyButton.swift */,
 				45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */,
@@ -615,6 +618,7 @@
 				455CE1961DE0AB4500FF65DC /* CyTrackingModel.swift in Sources */,
 				453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
+				45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */,
 				455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */,
 				455CE1891DE0AB4500FF65DC /* CyLogging.swift in Sources */,
 				45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */,
