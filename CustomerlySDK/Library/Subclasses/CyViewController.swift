@@ -49,11 +49,11 @@ class CyViewController: UIViewController {
     func showAlert(title: String, message: String, buttonTitle: String) {
         
         self.view.endEditing(true)
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func showAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> ()){
