@@ -48,13 +48,13 @@ class CyViewController: UIViewController {
     //MARK: - Alerts
     func showAlert(title: String, message: String, buttonTitle: String) {
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        self.view.endEditing(true)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.Default, handler: nil))
         
-        self.present(alertController, animated: true, completion: nil)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
     
     func showAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> ()){
         
@@ -82,6 +82,29 @@ class CyViewController: UIViewController {
         
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlertWithTextField(title: String, message: String, buttonTitle: String, buttonCancel:String, textFieldPlaceholder: String, completion: @escaping (String?) -> (), cancel: @escaping () -> ()){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    
+        alertController.addTextField { (textField) in
+            textField.placeholder = textFieldPlaceholder
+        }
+        
+        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default) { (action) -> Void in
+            if let textField = alertController.textFields?.last{
+                completion(textField.text)
+            }
+            cancel()
+        }
+        let cancelAction = UIAlertAction(title: buttonCancel, style: UIAlertActionStyle.cancel) { (action) -> Void in
+            cancel()
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
         self.present(alertController, animated: true, completion: nil)
     }
     

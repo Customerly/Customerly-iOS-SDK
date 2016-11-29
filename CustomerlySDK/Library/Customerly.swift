@@ -81,10 +81,10 @@ open class Customerly: NSObject {
         
         
         CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            cyPrint("Success Ping Registered")
+            cyPrint("Success Ping")
             CyStorage.storeCyDataModel(cyData: responseData)
         }) { (error) in
-            cyPrint("Error Ping Registered", error)
+            cyPrint("Error Ping", error)
         }
     }
     

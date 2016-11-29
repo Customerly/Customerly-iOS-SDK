@@ -65,6 +65,46 @@ class CustomerlyChatStartVC: CyViewController{
     }
     
     @IBAction func sendMessage(_ sender: Any) {
+        
+        guard chatTextField.text != "" else{
+            return
+        }
+        
+        
+        if CyStorage.getCyDataModel()?.user != nil{
+            //TODO: send message
+        }
+        else{
+            //TODO: send message + email
+            showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
+                
+                let message = CyRequestSendMessageModel(JSON: [:])
+                if let dataStored = CyStorage.getCyDataModel(){
+                    message?.settings?.user_id = dataStored.user?.user_id
+                    message?.settings?.email = dataStored.user?.email
+                    message?.settings?.name = dataStored.user?.name
+                    message?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+                    message?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+                    message?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+                    message?.params?.message = self.chatTextField.text
+                    message?.params?.visitor_email = email
+                    
+                }
+                
+                
+                CyDataFetcher.sharedInstance.sendMessage(messageModel: message, completion: { (dataModel) in
+                    self.chatTextField.text = ""
+                }, failure: { (error) in
+                    
+                })
+                
+            }) { (cancel) in
+                
+            }
+        }
+        
+        
+        
     }
     
     /*

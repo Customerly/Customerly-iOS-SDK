@@ -15,7 +15,6 @@ class CyDataModel: Mappable {
     var app_config : CyAppConfigModel?
     var active_admins : [CyAdminModel]?
     var user : CyUserModel?
-    //var last_messages : String? //TODO: structure
     //var last_surveys : String? //TODO: structure
     var cookies : CyCookiesResponseModel?
     
