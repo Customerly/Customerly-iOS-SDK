@@ -12,7 +12,7 @@ class CyRequestSendMessageParamsModel: Mappable {
 
     var conversation_id: String?
     var message: String?
-    var attachments: [CyRequestMessageAttachment]?
+    var attachments: [CyRequestMessageAttachment]? = []
     var visitor_email: String?
     
     required init?(map: Map) {

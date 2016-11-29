@@ -75,6 +75,8 @@ class CustomerlyChatStartVC: CyViewController{
             //TODO: send message
         }
         else{
+            self.chatTextField.resignFirstResponder()
+            
             //TODO: send message + email
             showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
                 
@@ -88,9 +90,7 @@ class CustomerlyChatStartVC: CyViewController{
                     message?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
                     message?.params?.message = self.chatTextField.text
                     message?.params?.visitor_email = email
-                    
                 }
-                
                 
                 CyDataFetcher.sharedInstance.sendMessage(messageModel: message, completion: { (dataModel) in
                     self.chatTextField.text = ""
