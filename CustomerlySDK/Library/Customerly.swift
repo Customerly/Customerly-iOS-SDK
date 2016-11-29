@@ -29,13 +29,8 @@ open class Customerly: NSObject {
     open func configure(secretKey: String){
         customerlySecretKey = secretKey
         
-        //If user is not stored, ping ghost
-        if CyStorage.getCyDataModel()?.user == nil{
-            pingGhost()
-        }
-        else{
-            pingRegistered()
-        }
+        //If user is not stored, ping ghost, else ping registered
+            ping()
     }
     
     open func setUser(){
@@ -70,27 +65,7 @@ open class Customerly: NSObject {
     
     //MARK: - CLOSED APIs
     //MARK: Ping
-    func pingGhost(){
-        let pingRequestModel = CyRequestPingModel(JSON: [:])
-        pingRequestModel?.params = [:]
-        
-        //if some cookies are stored, CyRequestPingModel containes these cookies
-        if let dataStored = CyStorage.getCyDataModel(){
-            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
-        
-        
-        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            cyPrint("Success Ping Ghost")
-            CyStorage.storeCyDataModel(cyData: responseData)
-        }) { (error) in
-            cyPrint("Error Ping Ghost", error)
-        }
-    }
-    
-    func pingRegistered(){
+    func ping(){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         pingRequestModel?.params = [:]
         
