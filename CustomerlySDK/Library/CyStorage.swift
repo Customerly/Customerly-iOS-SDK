@@ -34,7 +34,7 @@ class CyStorage: NSObject {
         return nil
     }
     
-    //MARK: User Storage
+    //MARK: User Storage. For the moment this part is UNUSED
     func storeUserData(user: CyStorageModel?){
         if user != nil{
             UserDefaults.standard.set(user!.toJSON(), forKey: "userDataCustomerly")

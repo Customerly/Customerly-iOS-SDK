@@ -11,6 +11,7 @@ enum CyRouting{
     
     case Event([String: Any]?)
     case Ping([String: Any]?)
+    case MessageSend([String: Any]?)
     
     var urlRequest: URLRequest{
         let touple : (path: String, parameters: [String: Any]?) = {
@@ -20,6 +21,9 @@ enum CyRouting{
                 
             case .Ping(let params):
                 return("/ping/index/", params)
+                
+            case .MessageSend(let params):
+                return("/message/send/", params)
             }
         }()
         

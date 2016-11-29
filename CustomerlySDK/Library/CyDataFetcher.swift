@@ -83,4 +83,26 @@ open class CyDataFetcher: NSObject {
         
         task?.resume()
     }
+    
+    //MARK: Message
+    func sendMessage(messageModel:CyRequestSendMessageModel?, completion: @escaping (CyDataModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.MessageSend(messageModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            
+            let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
+            completion(ping)
+            
+        }
+        
+        task?.resume()
+    }
 }
