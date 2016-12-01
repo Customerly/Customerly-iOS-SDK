@@ -9,7 +9,7 @@
 import UIKit
 
 class CyViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,11 +18,11 @@ class CyViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func hideKeyboardOnTap(){
         self.view.endEditing(true)
     }
@@ -44,7 +44,7 @@ class CyViewController: UIViewController {
         
         return UIStoryboard(name: "CustomerlyChat", bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
     }
-
+    
     //MARK: - Alerts
     func showAlert(title: String, message: String, buttonTitle: String) {
         
@@ -87,7 +87,7 @@ class CyViewController: UIViewController {
     
     func showAlertWithTextField(title: String, message: String, buttonTitle: String, buttonCancel:String, textFieldPlaceholder: String, completion: @escaping (String?) -> (), cancel: @escaping () -> ()){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    
+        
         alertController.addTextField { (textField) in
             textField.placeholder = textFieldPlaceholder
         }
@@ -108,16 +108,23 @@ class CyViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Loader
+    func showLoader(view: UIView) -> CyView{
+        //LoaderView with view size, with indicator placed on center of loaderView
+        let loaderView = CyView(frame: view.bounds)
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        indicator.center = loaderView.center
+        loaderView.addSubview(indicator)
+        view.addSubview(loaderView)
+        indicator.startAnimating()
+        return loaderView
     }
-    */
-
+    
+    func hideLoader(loaderView: CyView?){
+        loaderView?.removeFromSuperview()
+    }
+    
 }
 
 
