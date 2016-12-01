@@ -1,5 +1,5 @@
 //
-//  CyRequestSendMessageModel.swift
+//  CySendMessageRequestModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 29/11/16.
@@ -8,10 +8,10 @@
 
 import ObjectMapper
 
-class CyRequestSendMessageModel: Mappable {
+class CySendMessageRequestModel: Mappable {
     
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
-    var params : CyRequestSendMessageParamsModel? = CyRequestSendMessageParamsModel(JSON: [:])
+    var params : CySendMessageRequestParamsModel? = CySendMessageRequestParamsModel(JSON: [:])
     var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
     required init?(map: Map) {

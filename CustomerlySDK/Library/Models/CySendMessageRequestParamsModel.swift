@@ -1,5 +1,5 @@
 //
-//  CyRequestSendMessageParamsModel.swift
+//  CySendMessageRequestParamsModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 29/11/16.
@@ -8,11 +8,11 @@
 
 import ObjectMapper
 
-class CyRequestSendMessageParamsModel: Mappable {
+class CySendMessageRequestParamsModel: Mappable {
 
     var conversation_id: String?
     var message: String?
-    var attachments: [CyRequestMessageAttachment]? = []
+    var attachments: [CyMessageAttachmentRequestModel]? = []
     var visitor_email: String?
     
     required init?(map: Map) {

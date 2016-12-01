@@ -1,5 +1,5 @@
 //
-//  CyRequestMessageAttachment.swift
+//  CyMessageAttachmentRequestModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 29/11/16.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class CyRequestMessageAttachment: Mappable {
+class CyMessageAttachmentRequestModel: Mappable {
 
     var filename : String? //for example attachment.jpg
     var base64 : String? //file encoding base 64
