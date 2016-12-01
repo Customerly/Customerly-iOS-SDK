@@ -12,7 +12,7 @@ class CyTrackingModel: Mappable {
 
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
     var nameTracking : String?
-    var cookies : CyCookiesModel? = CyCookiesModel(JSON: [:])
+    var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
     required init?(map: Map) {
     }

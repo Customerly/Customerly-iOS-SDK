@@ -1,5 +1,5 @@
 //
-//  CyCookiesModel.swift
+//  CyCookiesRequestModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 06/11/16.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class CyCookiesModel: Mappable {
+class CyCookiesRequestModel: Mappable {
 
     var customerly_user_token : String?
     var customerly_lead_token : String?

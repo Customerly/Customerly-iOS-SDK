@@ -12,7 +12,7 @@ class CyRequestSendMessageModel: Mappable {
     
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
     var params : CyRequestSendMessageParamsModel? = CyRequestSendMessageParamsModel(JSON: [:])
-    var cookies : CyCookiesModel? = CyCookiesModel(JSON: [:])
+    var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
     required init?(map: Map) {
     }
