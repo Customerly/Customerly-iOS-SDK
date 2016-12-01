@@ -28,23 +28,23 @@ extension Date {
         } else if (components.month! >= 2) {
             return "\(components.month!) months ago"
         } else if (components.month! >= 1){
-            return "\(components.month) month ago"
+            return "\(components.month!) month ago"
         } else if (components.weekOfYear! >= 2) {
             return "\(components.weekOfYear!) weeks ago"
         } else if (components.weekOfYear! >= 1){
-            return "\(components.weekOfYear) week ago"
+            return "\(components.weekOfYear!) week ago"
         } else if (components.day! >= 2) {
             return "\(components.day!) days ago"
         } else if (components.day! >= 1){
-            return "\(components.day) day ago"
+            return "\(components.day!) day ago"
         } else if (components.hour! >= 2) {
             return "\(components.hour!) hours ago"
         } else if (components.hour! >= 1){
-            return "\(components.hour) hour ago"
+            return "\(components.hour!) hour ago"
         } else if (components.minute! >= 2) {
             return "\(components.minute!) minutes ago"
         } else if (components.minute! >= 1){
-            return "\(components.minute) minute ago"
+            return "\(components.minute!) minute ago"
         } else if (components.second! >= 3) {
             return "\(components.second!) seconds ago"
         } else {
