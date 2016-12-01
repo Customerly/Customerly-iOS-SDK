@@ -18,6 +18,8 @@ class CustomerlyChatStartVC: CyViewController{
     
     var data: CyDataModel?
     
+    var existingChat: Bool = false
+    
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
     {
@@ -36,6 +38,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTextField.keyboardDelegate = self
         
         title = data?.app?.name
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,9 +73,11 @@ class CustomerlyChatStartVC: CyViewController{
             return
         }
         
+        let hud = showLoader(view: self.view)
         
         if CyStorage.getCyDataModel()?.user != nil{
             //TODO: send message
+            hideLoader(loaderView: hud)
         }
         else{
             self.chatTextField.resignFirstResponder()
@@ -80,7 +85,7 @@ class CustomerlyChatStartVC: CyViewController{
             //TODO: send message + email
             showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
                 
-                let message = CyRequestSendMessageModel(JSON: [:])
+                let message = CySendMessageRequestModel(JSON: [:])
                 if let dataStored = CyStorage.getCyDataModel(){
                     message?.settings?.user_id = dataStored.user?.user_id
                     message?.settings?.email = dataStored.user?.email
@@ -92,30 +97,19 @@ class CustomerlyChatStartVC: CyViewController{
                     message?.params?.visitor_email = email
                 }
                 
-                CyDataFetcher.sharedInstance.sendMessage(messageModel: message, completion: { (dataModel) in
+                CyDataFetcher.sharedInstance.sendMessage(messageModel: message, completion: { (responseSendMessage) in
                     self.chatTextField.text = ""
+                    CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
+                    self.hideLoader(loaderView: hud)
                 }, failure: { (error) in
-                    
+                    self.hideLoader(loaderView: hud)
                 })
                 
             }) { (cancel) in
                 
             }
         }
-        
-        
-        
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

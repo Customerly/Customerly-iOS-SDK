@@ -9,7 +9,6 @@
 import ObjectMapper
 
 class CyStorage: NSObject {
-
     
     //MARK: CyDataModel Storage
     static func storeCyDataModel(cyData : CyDataModel?){
@@ -34,14 +33,13 @@ class CyStorage: NSObject {
         return nil
     }
     
-    static func storeCyUserModel(user: CyUserModel?){
-        if user != nil{
+    static func storeCySingleParameters(user: CyUserModel? = nil, cookies: CyCookiesResponseModel? = nil){
             if let data = getCyDataModel(){
-                data.user = user
+                data.user = user ?? data.user
+                data.cookies = cookies ?? data.cookies
                 storeCyDataModel(cyData: data)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
             }
-        }
     }
     
 }

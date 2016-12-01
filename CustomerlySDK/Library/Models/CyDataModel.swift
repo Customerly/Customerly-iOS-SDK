@@ -10,13 +10,13 @@ import ObjectMapper
 
 class CyDataModel: Mappable {
 
-    var websocket : CyWebsocketModel?
-    var app : CyAppModel?
-    var app_config : CyAppConfigModel?
-    var active_admins : [CyAdminModel]?
-    var user : CyUserModel?
+    var websocket: CyWebsocketModel?
+    var app: CyAppModel?
+    var app_config: CyAppConfigModel?
+    var active_admins: [CyAdminModel]?
+    var user: CyUserModel?
     //var last_surveys : String? //TODO: structure
-    var cookies : CyCookiesResponseModel?
+    var cookies: CyCookiesResponseModel?
     
     
     required init?(map: Map) {

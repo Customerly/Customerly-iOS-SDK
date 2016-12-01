@@ -85,7 +85,7 @@ open class CyDataFetcher: NSObject {
     }
     
     //MARK: Message
-    func sendMessage(messageModel:CyRequestSendMessageModel?, completion: @escaping (CyDataModel?) -> Void, failure:@escaping (Error) -> Void){
+    func sendMessage(messageModel:CySendMessageRequestModel?, completion: @escaping (CyResponseSendMessageModel?) -> Void, failure:@escaping (Error) -> Void){
         var urlRequest = CyRouting.MessageSend(messageModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
@@ -98,7 +98,7 @@ open class CyDataFetcher: NSObject {
                 return
             }
             
-            let messageDataResponse = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
+            let messageDataResponse = Mapper<CyResponseSendMessageModel>().map(JSON: JSONParseDictionary(data: data!))
             completion(messageDataResponse)
             
         }

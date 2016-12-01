@@ -10,15 +10,21 @@ import ObjectMapper
 
 class CyResponseSendMessageModel: Mappable {
 
-    var filename : String? //for example attachment.jpg
-    var cookies : String? //file encoding base 64
+    var user : CyUserModel?
+    var conversation : CyConversationModel?
+    var message: CyMessageModel?
+    var timestamp : Int?
+    var cookies : CyCookiesResponseModel?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        filename <- map["filename"]
-        base64 <- map["base64"]
+        user <- map["data.user.data"]
+        conversation <- map["data.conversation"]
+        message <- map["data.message"]
+        timestamp <- map["data.timestamp"]
+        cookies <- map["cookies"]
     }
 }

@@ -15,6 +15,9 @@
 		455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */; };
 		455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */; };
 		455A0F951DF0AA41003EEA43 /* CyResponseSendMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */; };
+		455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */; };
+		455A0F991DF0C184003EEA43 /* CyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F981DF0C184003EEA43 /* CyMessageModel.swift */; };
+		455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */; };
 		455CE1391DE0AABD00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE13E1DE0AABD00FF65DC /* CustomerlySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE13D1DE0AABD00FF65DC /* CustomerlySDKTests.swift */; };
 		455CE1401DE0AABD00FF65DC /* CustomerlySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,6 +110,9 @@
 		455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageRequestParamsModel.swift; sourceTree = "<group>"; };
 		455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageAttachmentRequestModel.swift; sourceTree = "<group>"; };
 		455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyResponseSendMessageModel.swift; sourceTree = "<group>"; };
+		455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationModel.swift; sourceTree = "<group>"; };
+		455A0F981DF0C184003EEA43 /* CyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageModel.swift; sourceTree = "<group>"; };
+		455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAttachmentModel.swift; sourceTree = "<group>"; };
 		455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerlySDK.h; sourceTree = "<group>"; };
 		455CE1331DE0AABD00FF65DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 				455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */,
 				455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */,
 				455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */,
+				455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */,
+				455A0F981DF0C184003EEA43 /* CyMessageModel.swift */,
+				455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */,
 			);
 			name = "Message Send";
 			sourceTree = "<group>";
@@ -633,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */,
 				455CE1971DE0AB4500FF65DC /* CyUserModel.swift in Sources */,
 				455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */,
 				455CE1901DE0AB4500FF65DC /* CyCookiesResponseModel.swift in Sources */,
@@ -652,6 +662,7 @@
 				453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */,
 				455CE1851DE0AB4500FF65DC /* Customerly.swift in Sources */,
 				455A0F951DF0AA41003EEA43 /* CyResponseSendMessageModel.swift in Sources */,
+				455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */,
 				455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */,
 				455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */,
 				45FA19B91DEB423600D26059 /* CyView.swift in Sources */,
@@ -667,6 +678,7 @@
 				455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */,
 				455CE19A1DE0AB4500FF65DC /* CustomerlyChatStartVC.swift in Sources */,
 				45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */,
+				455A0F991DF0C184003EEA43 /* CyMessageModel.swift in Sources */,
 				455A0F881DEE248E003EEA43 /* CySendMessageRequestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
