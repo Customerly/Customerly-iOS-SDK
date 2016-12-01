@@ -27,33 +27,21 @@ class CyStorage: NSObject {
     }
     
     static func getCyDataModel() -> CyDataModel?{
-        if let userJSONModel = UserDefaults.standard.object(forKey: "cyDataModel") as? [String: AnyObject]{
-            let user = Mapper<CyDataModel>().map(JSON: userJSONModel)
-            return user
+        if let dataJSONModel = UserDefaults.standard.object(forKey: "cyDataModel") as? [String: AnyObject]{
+            let data = Mapper<CyDataModel>().map(JSON: dataJSONModel)
+            return data
         }
         return nil
     }
     
-    //MARK: User Storage. For the moment this part is UNUSED
-    func storeUserData(user: CyStorageModel?){
+    static func storeCyUserModel(user: CyUserModel?){
         if user != nil{
-            UserDefaults.standard.set(user!.toJSON(), forKey: "userDataCustomerly")
-            UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userDataCustomerly"), object: nil)
+            if let data = getCyDataModel(){
+                data.user = user
+                storeCyDataModel(cyData: data)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
+            }
         }
     }
     
-    func deleteUserData(){
-        UserDefaults.standard.set(nil, forKey: "userDataCustomerly")
-        UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userDataCustomerly"), object: nil)
-    }
-    
-    func getUserData() -> CyStorageModel?{
-        if let userJSONModel = UserDefaults.standard.object(forKey: "userDataCustomerly") as? [String: AnyObject]{
-            let user = Mapper<CyStorageModel>().map(JSON: userJSONModel)
-            return user
-        }
-        return nil
-    }
 }

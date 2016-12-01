@@ -98,8 +98,8 @@ open class CyDataFetcher: NSObject {
                 return
             }
             
-            let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
-            completion(ping)
+            let messageDataResponse = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
+            completion(messageDataResponse)
             
         }
         
