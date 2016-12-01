@@ -196,7 +196,7 @@
                                             <constraint firstAttribute="height" constant="24" id="ZwH-Ac-OqW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Provided by Customerly"/>
+                                        <state key="normal" title="Powered by Customerly"/>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask your question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-XW-OCi" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="266" height="35"/>
