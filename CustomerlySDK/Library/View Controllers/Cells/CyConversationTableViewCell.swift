@@ -17,6 +17,7 @@ class CyConversationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.size.width/2 //Circular avatar
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

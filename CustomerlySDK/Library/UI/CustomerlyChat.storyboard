@@ -300,15 +300,20 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="svi-6r-xiE">
+                                    <rect key="frame" x="0.0" y="106" width="375" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="conversationCell" id="NWg-gC-Ghz" customClass="CyConversationTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="conversationCell" id="NWg-gC-Ghz" customClass="CyConversationTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWg-gC-Ghz" id="iHa-1g-R49">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hee-cs-b98" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hee-cs-b98" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="14" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="wOD-48-sqg"/>
@@ -369,15 +374,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="2VF-qS-H7r"/>
+                            <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="2Y9-is-mgW"/>
                             <constraint firstAttribute="trailing" secondItem="x3N-vw-yFj" secondAttribute="trailing" id="R7s-d0-mvU"/>
-                            <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="Whs-Ps-h6K"/>
                             <constraint firstItem="x3N-vw-yFj" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="hVE-HI-rfO"/>
-                            <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="iGC-7p-5hA"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="2RQ-vQ-5Do"/>
                     <connections>
+                        <outlet property="tableView" destination="x3N-vw-yFj" id="Oy6-jX-kEP"/>
                         <segue destination="jqW-k1-gD2" kind="show" identifier="showChatStartVC" id="g2W-NF-zeV"/>
                     </connections>
                 </viewController>

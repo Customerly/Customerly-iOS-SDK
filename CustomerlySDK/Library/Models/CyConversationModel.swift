@@ -11,8 +11,8 @@ import ObjectMapper
 class CyConversationModel: Mappable {
 
     var conversation_id : String?
-    var user_id : String?
-    var last_message_date: String?
+    var user_id : Int?
+    var last_message_date: Double?
     var last_message_abstract : String?
     var last_account: CyAccountModel?
     

@@ -9,7 +9,11 @@
 import UIKit
 
 class CustomerlyConversationListVC: CyViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    var conversations : [CyConversationModel]?
+    var data: CyDataModel?
+    
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyConversationListVC
     {
@@ -18,27 +22,66 @@ class CustomerlyConversationListVC: CyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //TableView configuration
+        tableView.dataSource = self
+        data = CyStorage.getCyDataModel()
+        
+        title = data?.app?.name
+        
+        requestConversations()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    func requestConversations(){
+        let conversationRequest = CyConversationRequestModel(JSON: [:])
+        if let dataStored = CyStorage.getCyDataModel(){
+            conversationRequest?.settings?.user_id = dataStored.user?.user_id
+            conversationRequest?.settings?.email = dataStored.user?.email
+            conversationRequest?.settings?.name = dataStored.user?.name
+            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        
+        let hud = showLoader(view: self.view) //FIXME: This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes.
+        CyDataFetcher.sharedInstance.retriveConversations(conversationRequestModel: conversationRequest, completion: { (conversationResponse) in
+            self.conversations = conversationResponse?.conversations
+            self.tableView.reloadData()
+            self.hideLoader(loaderView: hud)
+        }, failure: { (error) in
+            self.hideLoader(loaderView: hud)
+        })
+    }
+    
 }
 
 extension CustomerlyConversationListVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return conversations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! CyConversationTableViewCell
-            
+        let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! CyConversationTableViewCell
         
-            
-            return cell
+        if let conversation = conversations?[indexPath.row]{
+            if conversation.last_account != nil{
+                cell.userAvatarImageView.kf.setImage(with: adminImageURL(id: conversation.last_account!.account_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell.userNameLabel.text = conversation.last_account?.name
+                cell.lastChatConversationLabel.text = conversation.last_message_abstract
+                cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
+            }else{
+                cell.userAvatarImageView.kf.setImage(with: userImageURL(id: conversation.user_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell.userNameLabel.text = "You"
+                cell.lastChatConversationLabel.text = conversation.last_message_abstract
+                cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
+            }
+        }
+        
+        return cell
     }
 }
