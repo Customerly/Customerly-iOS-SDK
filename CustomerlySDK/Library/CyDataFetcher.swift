@@ -35,7 +35,7 @@ open class CyDataFetcher: NSObject {
     }
     
     
-    //MARK: API track
+    //MARK: API Track
     func trackEventAPIRequest(eventName:String, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
         let trackingModel = CyTrackingModel(JSON: [:])
         trackingModel?.nameTracking = eventName
@@ -62,7 +62,7 @@ open class CyDataFetcher: NSObject {
         task?.resume()
     }
     
-    //MARK: API ping
+    //MARK: API Ping
     func pingAPIRequest(pingModel:CyRequestPingModel?, completion: @escaping (CyDataModel?) -> Void, failure:@escaping (Error) -> Void){
         var urlRequest = CyRouting.Ping(pingModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
@@ -84,8 +84,10 @@ open class CyDataFetcher: NSObject {
         task?.resume()
     }
     
-    //MARK: Message
-    func sendMessage(messageModel:CySendMessageRequestModel?, completion: @escaping (CyResponseSendMessageModel?) -> Void, failure:@escaping (Error) -> Void){
+    //MARK: API Chat
+    
+    //Send a message
+    func sendMessage(messageModel:CySendMessageRequestModel?, completion: @escaping (CySendMessageResponseModel?) -> Void, failure:@escaping (Error) -> Void){
         var urlRequest = CyRouting.MessageSend(messageModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
@@ -98,8 +100,30 @@ open class CyDataFetcher: NSObject {
                 return
             }
             
-            let messageDataResponse = Mapper<CyResponseSendMessageModel>().map(JSON: JSONParseDictionary(data: data!))
+            let messageDataResponse = Mapper<CySendMessageResponseModel>().map(JSON: JSONParseDictionary(data: data!))
             completion(messageDataResponse)
+            
+        }
+        
+        task?.resume()
+    }
+    
+    //Download all conversations
+    func retriveConversations(completion: @escaping (CyConversationRetrieveResponseModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.ConversationRetrieve().urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            
+            let conversations = Mapper<CyConversationRetrieveResponseModel>().map(JSON: JSONParseDictionary(data: data!))
+            completion(conversations)
             
         }
         

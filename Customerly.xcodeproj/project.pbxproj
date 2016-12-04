@@ -14,7 +14,7 @@
 		455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F891DEE2951003EEA43 /* CyColor.swift */; };
 		455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */; };
 		455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */; };
-		455A0F951DF0AA41003EEA43 /* CyResponseSendMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */; };
+		455A0F951DF0AA41003EEA43 /* CySendMessageResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F941DF0AA41003EEA43 /* CySendMessageResponseModel.swift */; };
 		455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */; };
 		455A0F991DF0C184003EEA43 /* CyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F981DF0C184003EEA43 /* CyMessageModel.swift */; };
 		455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */; };
@@ -22,6 +22,8 @@
 		455A0FA11DF47A90003EEA43 /* CyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0FA01DF47A90003EEA43 /* CyImageView.swift */; };
 		455A0FA31DF47ACB003EEA43 /* CyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0FA21DF47ACB003EEA43 /* CyLabel.swift */; };
 		455A0FA51DF47C3D003EEA43 /* CyConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */; };
+		455A0FA71DF47E08003EEA43 /* CyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0FA61DF47E08003EEA43 /* CyAccountModel.swift */; };
+		455A0FA91DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0FA81DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift */; };
 		455CE1391DE0AABD00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE13E1DE0AABD00FF65DC /* CustomerlySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE13D1DE0AABD00FF65DC /* CustomerlySDKTests.swift */; };
 		455CE1401DE0AABD00FF65DC /* CustomerlySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,7 +115,7 @@
 		455A0F891DEE2951003EEA43 /* CyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyColor.swift; sourceTree = "<group>"; };
 		455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageRequestParamsModel.swift; sourceTree = "<group>"; };
 		455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageAttachmentRequestModel.swift; sourceTree = "<group>"; };
-		455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyResponseSendMessageModel.swift; sourceTree = "<group>"; };
+		455A0F941DF0AA41003EEA43 /* CySendMessageResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageResponseModel.swift; sourceTree = "<group>"; };
 		455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationModel.swift; sourceTree = "<group>"; };
 		455A0F981DF0C184003EEA43 /* CyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageModel.swift; sourceTree = "<group>"; };
 		455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAttachmentModel.swift; sourceTree = "<group>"; };
@@ -121,6 +123,8 @@
 		455A0FA01DF47A90003EEA43 /* CyImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyImageView.swift; sourceTree = "<group>"; };
 		455A0FA21DF47ACB003EEA43 /* CyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyLabel.swift; sourceTree = "<group>"; };
 		455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationTableViewCell.swift; sourceTree = "<group>"; };
+		455A0FA61DF47E08003EEA43 /* CyAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAccountModel.swift; sourceTree = "<group>"; };
+		455A0FA81DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationRetrieveResponseModel.swift; sourceTree = "<group>"; };
 		455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerlySDK.h; sourceTree = "<group>"; };
 		455CE1331DE0AABD00FF65DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,8 +230,10 @@
 				455A0F871DEE248E003EEA43 /* CySendMessageRequestModel.swift */,
 				455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */,
 				455A0F8E1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift */,
-				455A0F941DF0AA41003EEA43 /* CyResponseSendMessageModel.swift */,
+				455A0F941DF0AA41003EEA43 /* CySendMessageResponseModel.swift */,
+				455A0FA81DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift */,
 				455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */,
+				455A0FA61DF47E08003EEA43 /* CyAccountModel.swift */,
 				455A0F981DF0C184003EEA43 /* CyMessageModel.swift */,
 				455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */,
 			);
@@ -676,16 +682,18 @@
 				455CE18E1DE0AB4500FF65DC /* CyAppModel.swift in Sources */,
 				453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */,
 				455CE1851DE0AB4500FF65DC /* Customerly.swift in Sources */,
-				455A0F951DF0AA41003EEA43 /* CyResponseSendMessageModel.swift in Sources */,
+				455A0F951DF0AA41003EEA43 /* CySendMessageResponseModel.swift in Sources */,
 				455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */,
 				455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */,
 				455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */,
+				455A0FA71DF47E08003EEA43 /* CyAccountModel.swift in Sources */,
 				45FA19B91DEB423600D26059 /* CyView.swift in Sources */,
 				455CE1861DE0AB4500FF65DC /* CyConfig.swift in Sources */,
 				455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */,
 				455CE1871DE0AB4500FF65DC /* CyDataFetcher.swift in Sources */,
 				455A0FA51DF47C3D003EEA43 /* CyConversationTableViewCell.swift in Sources */,
 				45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */,
+				455A0FA91DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift in Sources */,
 				455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */,
 				455CE18F1DE0AB4500FF65DC /* CyCookiesRequestModel.swift in Sources */,
 				455CE18B1DE0AB4500FF65DC /* CyRouting.swift in Sources */,

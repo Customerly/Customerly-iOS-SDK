@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class CyResponseSendMessageModel: Mappable {
+class CySendMessageResponseModel: Mappable {
 
     var user : CyUserModel?
     var conversation : CyConversationModel?

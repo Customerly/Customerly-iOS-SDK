@@ -14,6 +14,8 @@ class CyConversationModel: Mappable {
     var user_id : String?
     var last_message_date: String?
     var last_message_abstract : String?
+    var last_account: CyAccountModel?
+    
     
     required init?(map: Map) {
     }
@@ -24,6 +26,7 @@ class CyConversationModel: Mappable {
         user_id <- map["user_id"]
         last_message_date <- map["last_message_date"]
         last_message_abstract <- map["last_message_abstract"]
+        last_account <- map["last_account"]
     }
     
 }
