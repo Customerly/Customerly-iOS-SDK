@@ -10,8 +10,8 @@ import UIKit
 
 class CySingleActiveAdminTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var adminAvatarImageView: UIImageView!
-    @IBOutlet weak var adminNameLabel: UILabel!
+    @IBOutlet weak var adminAvatarImageView: CyImageView!
+    @IBOutlet weak var adminNameLabel: CyLabel!
     
     
     override func awakeFromNib() {

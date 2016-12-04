@@ -68,14 +68,14 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="347" height="72"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h1r-Hb-dC3">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h1r-Hb-dC3" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                                                         <rect key="frame" x="150" y="0.0" width="47" height="47"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="47" id="LZf-gR-835"/>
                                                                             <constraint firstAttribute="width" constant="47" id="h2h-3f-8B7"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-fh-xO9">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-fh-xO9" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="49" width="347" height="18"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="18" id="N3F-Oj-g3q"/>
@@ -101,7 +101,7 @@
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSJ-sj-bQv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSJ-sj-bQv" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="14" y="86" width="347" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ddF-7g-vvy"/>
@@ -142,7 +142,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-CY-Qpe" userLabel="Background View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="14" y="8" width="347" height="48"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="8" width="331" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -187,7 +187,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo" userLabel="Compose Message View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo" userLabel="Compose Message View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="521" width="375" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-sf-Dsu" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
@@ -297,13 +297,83 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="conversationCell" id="NWg-gC-Ghz" customClass="CyConversationTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="78"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWg-gC-Ghz" id="iHa-1g-R49">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hee-cs-b98" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="14" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="wOD-48-sqg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-jz-GkS" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="80" y="18" width="199" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="NSy-zI-eal"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-HB-87T" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="80" y="39" width="287" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="fsK-p3-GM0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Je-8k-ub2" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="287" y="18" width="80" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="El1-gg-c0c"/>
+                                                        <constraint firstAttribute="height" constant="21" id="ehJ-rv-9SB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="3xw-tm-Qtl"/>
+                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="6l4-yd-a7v"/>
+                                                <constraint firstItem="hee-cs-b98" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="14" id="BS4-2c-noY"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="NBa-0a-7D0"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="Waw-zE-jDY"/>
+                                                <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="8Je-8k-ub2" secondAttribute="bottom" id="cqp-Da-Hmi"/>
+                                                <constraint firstItem="O5x-HB-87T" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="jEU-Ui-NN0"/>
+                                                <constraint firstAttribute="trailing" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="mh0-2z-1ei"/>
+                                                <constraint firstAttribute="bottom" secondItem="hee-cs-b98" secondAttribute="bottom" constant="13" id="mkS-NI-vNL"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="8" id="njj-PX-AcL"/>
+                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="zse-Gm-l6R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="8Je-8k-ub2" id="ggl-M3-7rS"/>
+                                            <outlet property="lastChatConversationLabel" destination="O5x-HB-87T" id="kgB-O9-HNk"/>
+                                            <outlet property="userAvatarImageView" destination="hee-cs-b98" id="lW9-sn-xZx"/>
+                                            <outlet property="userNameLabel" destination="TzG-jz-GkS" id="MLC-ie-WaV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="x3N-vw-yFj" secondAttribute="trailing" id="R7s-d0-mvU"/>
+                            <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="Whs-Ps-h6K"/>
+                            <constraint firstItem="x3N-vw-yFj" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="hVE-HI-rfO"/>
+                            <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="iGC-7p-5hA"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="2RQ-vQ-5Do"/>
@@ -313,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f35-JN-djD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="378" y="194"/>
+            <point key="canvasLocation" x="376.80000000000001" y="193.85307346326837"/>
         </scene>
         <!--Customerly Navigation Controller-->
         <scene sceneID="VBU-Em-rdf">

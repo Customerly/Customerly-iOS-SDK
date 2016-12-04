@@ -10,6 +10,12 @@ import UIKit
 
 class CustomerlyConversationListVC: CyViewController {
 
+    //MARK: - Initialiser
+    static func instantiate() -> CustomerlyConversationListVC
+    {
+        return self.cyViewControllerFromStoryboard(storyboardName: "CustomerlyChat", vcIdentifier: "CustomerlyConversationListVC") as! CustomerlyConversationListVC
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,4 +26,19 @@ class CustomerlyConversationListVC: CyViewController {
     }
 
 
+}
+
+extension CustomerlyConversationListVC: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! CyConversationTableViewCell
+            
+        
+            
+            return cell
+    }
 }

@@ -65,8 +65,9 @@ open class Customerly: NSObject {
      */
     open func openSupport(from viewController: UIViewController){
         
-        if let user = CyStorage.getCyDataModel()?.user{
-            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
+        //If user exist, go to conversion list, else open a new conversation
+        if let _ = CyStorage.getCyDataModel()?.user{
+            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), sender: self)
         }
         else{
             viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
