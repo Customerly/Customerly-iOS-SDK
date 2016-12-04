@@ -6,8 +6,10 @@
 //
 //
 
-open class Customerly: NSObject {
+import Kingfisher
 
+open class Customerly: NSObject {
+    
     open static let sharedInstance = Customerly()
     var customerlySecretKey : String = ""
     
@@ -29,8 +31,11 @@ open class Customerly: NSObject {
     open func configure(secretKey: String){
         customerlySecretKey = secretKey
         
+        //Image cache expiration after one day
+        ImageCache.default.maxCachePeriodInSecond = 86400
+        
         //If user is not stored, ping ghost, else ping registered
-            ping()
+        ping()
     }
     
     open func setUser(){
@@ -60,7 +65,13 @@ open class Customerly: NSObject {
      */
     open func openSupport(from viewController: UIViewController){
         
-        viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
+        if let user = CyStorage.getCyDataModel()?.user{
+            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
+        }
+        else{
+            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
+        }
+        
     }
     
     //MARK: - CLOSED APIs

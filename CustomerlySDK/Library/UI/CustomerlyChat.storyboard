@@ -283,7 +283,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMB-Gh-rSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392.80000000000001" y="193.85307346326837"/>
+            <point key="canvasLocation" x="1207" y="194"/>
+        </scene>
+        <!--Customerly Conversation ListVC-->
+        <scene sceneID="z0T-hu-G3d">
+            <objects>
+                <viewController storyboardIdentifier="CustomerlyConversationListVC" id="RwC-Qi-QkA" customClass="CustomerlyConversationListVC" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wss-ir-clu"/>
+                        <viewControllerLayoutGuide type="bottom" id="kJb-XL-gje"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MCp-BZ-C95">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="2RQ-vQ-5Do"/>
+                    <connections>
+                        <segue destination="jqW-k1-gD2" kind="show" identifier="showChatStartVC" id="g2W-NF-zeV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f35-JN-djD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="194"/>
         </scene>
         <!--Customerly Navigation Controller-->
         <scene sceneID="VBU-Em-rdf">
@@ -294,7 +324,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jqW-k1-gD2" kind="relationship" relationship="rootViewController" id="v4E-35-mvQ"/>
+                        <segue destination="RwC-Qi-QkA" kind="relationship" relationship="rootViewController" id="RLl-m5-vc3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFc-Ye-1Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>

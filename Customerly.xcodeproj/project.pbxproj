@@ -18,6 +18,7 @@
 		455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */; };
 		455A0F991DF0C184003EEA43 /* CyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F981DF0C184003EEA43 /* CyMessageModel.swift */; };
 		455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */; };
+		455A0F9F1DF46F35003EEA43 /* CustomerlyConversationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F9E1DF46F35003EEA43 /* CustomerlyConversationListVC.swift */; };
 		455CE1391DE0AABD00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE13E1DE0AABD00FF65DC /* CustomerlySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE13D1DE0AABD00FF65DC /* CustomerlySDKTests.swift */; };
 		455CE1401DE0AABD00FF65DC /* CustomerlySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,6 +114,7 @@
 		455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationModel.swift; sourceTree = "<group>"; };
 		455A0F981DF0C184003EEA43 /* CyMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageModel.swift; sourceTree = "<group>"; };
 		455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAttachmentModel.swift; sourceTree = "<group>"; };
+		455A0F9E1DF46F35003EEA43 /* CustomerlyConversationListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyConversationListVC.swift; sourceTree = "<group>"; };
 		455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CE1321DE0AABD00FF65DC /* CustomerlySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerlySDK.h; sourceTree = "<group>"; };
 		455CE1331DE0AABD00FF65DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,8 +305,8 @@
 				455CE1731DE0AB4500FF65DC /* CyStorage.swift */,
 				45FA19C01DEB4E0200D26059 /* Assets.xcassets */,
 				455CE1741DE0AB4500FF65DC /* Models */,
-				455CE1811DE0AB4500FF65DC /* UI */,
 				45FA19B71DEB422B00D26059 /* Subclasses */,
+				455CE1811DE0AB4500FF65DC /* UI */,
 				455CE1831DE0AB4500FF65DC /* View Controllers */,
 			);
 			path = Library;
@@ -343,6 +345,7 @@
 			children = (
 				455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */,
 				455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */,
+				455A0F9E1DF46F35003EEA43 /* CustomerlyConversationListVC.swift */,
 				453CC13B1DEA2BF200D85957 /* Cells */,
 			);
 			path = "View Controllers";
@@ -642,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455A0F9F1DF46F35003EEA43 /* CustomerlyConversationListVC.swift in Sources */,
 				455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */,
 				455CE1971DE0AB4500FF65DC /* CyUserModel.swift in Sources */,
 				455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */,

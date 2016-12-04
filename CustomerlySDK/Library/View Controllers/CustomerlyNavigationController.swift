@@ -39,6 +39,10 @@ class CustomerlyNavigationController: UINavigationController {
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
         
+        if let app_config = CyStorage.getCyDataModel()?.app_config{
+            self.navigationBar.barTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
+        }
+        
     }
     
 }
