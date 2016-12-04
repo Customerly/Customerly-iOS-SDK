@@ -1,15 +1,15 @@
 //
-//  CySendMessageRequestModel.swift
+//  CyConversationRequestModel.swift
 //  Customerly
 //
-//  Created by Paolo Musolino on 29/11/16.
+//  Created by Paolo Musolino on 04/12/16.
 //  Copyright © 2016 Customerly. All rights reserved.
 //
 
 import ObjectMapper
 
-class CySendMessageRequestModel: Mappable {
-    
+class CyConversationRequestModel: Mappable {
+
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
     var params : CySendMessageRequestParamsModel? = CySendMessageRequestParamsModel(JSON: [:])
     var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])

@@ -109,8 +109,8 @@ open class CyDataFetcher: NSObject {
     }
     
     //Download all conversations
-    func retriveConversations(completion: @escaping (CyConversationRetrieveResponseModel?) -> Void, failure:@escaping (Error) -> Void){
-        var urlRequest = CyRouting.ConversationRetrieve().urlRequest
+    func retriveConversations(conversationRequestModel:CyConversationRequestModel?, completion: @escaping (CyConversationRetrieveResponseModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.ConversationRetrieve(conversationRequestModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
         let task = session?.dataTask(with: urlRequest) {

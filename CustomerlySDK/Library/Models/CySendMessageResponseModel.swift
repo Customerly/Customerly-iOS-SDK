@@ -1,5 +1,5 @@
 //
-//  CyResponseSendMessageModel.swift
+//  CySendMessageResponseModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 01/12/16.
