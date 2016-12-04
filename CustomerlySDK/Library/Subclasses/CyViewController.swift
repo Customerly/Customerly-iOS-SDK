@@ -118,6 +118,7 @@ class CyViewController: UIViewController {
         loaderView.addSubview(indicator)
         view.addSubview(loaderView)
         indicator.startAnimating()
+        loaderView.bringSubview(toFront: view)
         return loaderView
     }
     
