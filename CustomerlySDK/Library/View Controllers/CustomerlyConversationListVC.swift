@@ -87,14 +87,13 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
             if conversation.last_account != nil{
                 cell.userAvatarImageView.kf.setImage(with: adminImageURL(id: conversation.last_account!.account_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell.userNameLabel.text = conversation.last_account?.name
-                cell.lastChatConversationLabel.text = conversation.last_message_abstract
-                cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
             }else{
                 cell.userAvatarImageView.kf.setImage(with: userImageURL(id: conversation.user_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell.userNameLabel.text = "You"
-                cell.lastChatConversationLabel.text = conversation.last_message_abstract
-                cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
             }
+            
+            cell.lastChatConversationLabel.text = conversation.last_message_abstract
+            cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
         }
         
         return cell
