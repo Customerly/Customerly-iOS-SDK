@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452745DC1DF9C027006215B1 /* CyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452745DB1DF9C027006215B1 /* CyTableView.swift */; };
 		453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */; };
 		453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */; };
 		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
+		452745DB1DF9C027006215B1 /* CyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTableView.swift; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
 		453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySingleActiveAdminTableViewCell.swift; sourceTree = "<group>"; };
 		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				455A0F891DEE2951003EEA43 /* CyColor.swift */,
 				455A0FA01DF47A90003EEA43 /* CyImageView.swift */,
 				455A0FA21DF47ACB003EEA43 /* CyLabel.swift */,
+				452745DB1DF9C027006215B1 /* CyTableView.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
 				45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */,
+				452745DC1DF9C027006215B1 /* CyTableView.swift in Sources */,
 				455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */,
 				455CE1891DE0AB4500FF65DC /* CyLogging.swift in Sources */,
 				45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */,

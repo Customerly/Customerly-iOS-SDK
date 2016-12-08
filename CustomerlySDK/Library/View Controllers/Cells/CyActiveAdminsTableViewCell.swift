@@ -11,7 +11,7 @@ import Kingfisher
 
 class CyActiveAdminsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var adminsTableView: UITableView!
+    @IBOutlet weak var adminsTableView: CyTableView!
     @IBOutlet weak var lastActivityLabel: CyLabel!
     @IBOutlet weak var heightTableViewConstraint: NSLayoutConstraint!
     var active_admins : [CyAdminModel]?

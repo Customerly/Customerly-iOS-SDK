@@ -10,7 +10,7 @@ import UIKit
 
 class CustomerlyConversationListVC: CyViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: CyTableView!
     var conversations : [CyConversationModel]?
     var data: CyDataModel?
     

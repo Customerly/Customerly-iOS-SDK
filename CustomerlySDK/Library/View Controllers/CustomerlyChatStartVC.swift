@@ -10,7 +10,7 @@ import UIKit
 
 class CustomerlyChatStartVC: CyViewController{
     
-    @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var chatTableView: CyTableView!
     @IBOutlet weak var chatTextField: CyTextField!
     @IBOutlet weak var attachmentsButton: CyButton!
     @IBOutlet weak var sendMessageButton: CyButton!
