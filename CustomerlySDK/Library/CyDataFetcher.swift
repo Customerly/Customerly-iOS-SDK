@@ -76,7 +76,7 @@ open class CyDataFetcher: NSObject {
                 return
             }
             DispatchQueue.main.async {
-                let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
+                let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data))
                 completion(ping)
             }
         }
@@ -100,7 +100,7 @@ open class CyDataFetcher: NSObject {
                 return
             }
             DispatchQueue.main.async {
-                let messageDataResponse = Mapper<CySendMessageResponseModel>().map(JSON: JSONParseDictionary(data: data!))
+                let messageDataResponse = Mapper<CySendMessageResponseModel>().map(JSON: JSONParseDictionary(data: data))
                 completion(messageDataResponse)
             }
         }
@@ -122,7 +122,7 @@ open class CyDataFetcher: NSObject {
                 return
             }
             DispatchQueue.main.async {
-                let conversations = Mapper<CyConversationRetrieveResponseModel>().map(JSON: JSONParseDictionary(data: data!))
+                let conversations = Mapper<CyConversationRetrieveResponseModel>().map(JSON: JSONParseDictionary(data: data))
                 completion(conversations)
             }
         }
