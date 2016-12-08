@@ -29,7 +29,12 @@ class CustomerlyConversationListVC: CyViewController {
         
         title = data?.app?.name
         
+        
         requestConversations()
+        
+        tableView.addPullToRefresh { 
+            self.requestConversations()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,13 +52,21 @@ class CustomerlyConversationListVC: CyViewController {
             conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
         }
         
-        let hud = showLoader(view: self.view) //FIXME: This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes.
+        
+        var hud : CyView?
+        if tableView.pullToRefreshIsRefreshing() == false{
+            hud = showLoader(view: self.view) //FIXME: This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes.
+        }
+        
+        
         CyDataFetcher.sharedInstance.retriveConversations(conversationRequestModel: conversationRequest, completion: { (conversationResponse) in
             self.conversations = conversationResponse?.conversations
             self.tableView.reloadData()
             self.hideLoader(loaderView: hud)
+            self.tableView.endPulltoRefresh()
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
+            self.tableView.endPulltoRefresh()
         })
     }
     
