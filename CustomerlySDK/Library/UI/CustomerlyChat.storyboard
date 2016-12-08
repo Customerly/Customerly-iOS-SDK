@@ -316,13 +316,13 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hee-cs-b98" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="14" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="wOD-48-sqg"/>
+                                                        <constraint firstAttribute="width" constant="50" id="uaH-9b-FcZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-jz-GkS" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="18" width="199" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="NSy-zI-eal"/>
+                                                        <constraint firstAttribute="height" constant="21" id="yVF-Fd-ihR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -331,7 +331,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-HB-87T" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="39" width="287" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="fsK-p3-GM0"/>
+                                                        <constraint firstAttribute="height" constant="21" id="QPC-YJ-k9w"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -340,8 +340,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Je-8k-ub2" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="287" y="18" width="80" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="El1-gg-c0c"/>
-                                                        <constraint firstAttribute="height" constant="21" id="ehJ-rv-9SB"/>
+                                                        <constraint firstAttribute="height" constant="21" id="2gG-kt-Ddk"/>
+                                                        <constraint firstAttribute="width" constant="80" id="lfh-j7-xPV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -349,17 +349,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="3xw-tm-Qtl"/>
-                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="6l4-yd-a7v"/>
-                                                <constraint firstItem="hee-cs-b98" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="14" id="BS4-2c-noY"/>
-                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="NBa-0a-7D0"/>
-                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="Waw-zE-jDY"/>
-                                                <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="8Je-8k-ub2" secondAttribute="bottom" id="cqp-Da-Hmi"/>
-                                                <constraint firstItem="O5x-HB-87T" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="jEU-Ui-NN0"/>
-                                                <constraint firstAttribute="trailing" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="mh0-2z-1ei"/>
-                                                <constraint firstAttribute="bottom" secondItem="hee-cs-b98" secondAttribute="bottom" constant="13" id="mkS-NI-vNL"/>
-                                                <constraint firstAttribute="trailing" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="8" id="njj-PX-AcL"/>
-                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="zse-Gm-l6R"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="4Ua-3K-8Rf"/>
+                                                <constraint firstAttribute="trailing" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="B8f-fF-6d7"/>
+                                                <constraint firstAttribute="bottom" secondItem="hee-cs-b98" secondAttribute="bottom" constant="13" id="F93-yr-Sh2"/>
+                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="OJc-p9-PuH"/>
+                                                <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="8Je-8k-ub2" secondAttribute="bottom" id="S8n-MB-ZuX"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="8" id="bhX-dh-GR4"/>
+                                                <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="dOe-Cm-s08"/>
+                                                <constraint firstItem="O5x-HB-87T" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="fbY-AW-iw0"/>
+                                                <constraint firstItem="TzG-jz-GkS" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="uqh-7t-fvP"/>
+                                                <constraint firstItem="hee-cs-b98" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="14" id="vbr-2y-tH4"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="xZ6-Z9-EH0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

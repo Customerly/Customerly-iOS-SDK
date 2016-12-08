@@ -31,7 +31,7 @@ open class CyDataFetcher: NSObject {
         sessionConfiguration.timeoutIntervalForRequest = 15.0
         sessionConfiguration.requestCachePolicy = cachePolicy != nil ? cachePolicy! : .reloadIgnoringLocalCacheData
         
-        session = URLSession(configuration: sessionConfiguration)
+        self.session = URLSession(configuration: sessionConfiguration)
     }
     
     
@@ -54,9 +54,9 @@ open class CyDataFetcher: NSObject {
                 failure(response!.validate()!)
                 return
             }
-            
-            completion()
-            
+            DispatchQueue.main.async {
+                completion()
+            }
         }
         
         task?.resume()
@@ -75,10 +75,10 @@ open class CyDataFetcher: NSObject {
                 failure(response!.validate()!)
                 return
             }
-            
-            let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
-            completion(ping)
-            
+            DispatchQueue.main.async {
+                let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data!))
+                completion(ping)
+            }
         }
         
         task?.resume()
@@ -99,10 +99,10 @@ open class CyDataFetcher: NSObject {
                 failure(response!.validate()!)
                 return
             }
-            
-            let messageDataResponse = Mapper<CySendMessageResponseModel>().map(JSON: JSONParseDictionary(data: data!))
-            completion(messageDataResponse)
-            
+            DispatchQueue.main.async {
+                let messageDataResponse = Mapper<CySendMessageResponseModel>().map(JSON: JSONParseDictionary(data: data!))
+                completion(messageDataResponse)
+            }
         }
         
         task?.resume()
@@ -121,10 +121,10 @@ open class CyDataFetcher: NSObject {
                 failure(response!.validate()!)
                 return
             }
-            
-            let conversations = Mapper<CyConversationRetrieveResponseModel>().map(JSON: JSONParseDictionary(data: data!))
-            completion(conversations)
-            
+            DispatchQueue.main.async {
+                let conversations = Mapper<CyConversationRetrieveResponseModel>().map(JSON: JSONParseDictionary(data: data!))
+                completion(conversations)
+            }
         }
         
         task?.resume()

@@ -29,12 +29,14 @@ class CustomerlyConversationListVC: CyViewController {
         
         title = data?.app?.name
         
-        
-        requestConversations()
-        
-        tableView.addPullToRefresh { 
+        tableView.addPullToRefresh {
             self.requestConversations()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.requestConversations()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,9 +57,8 @@ class CustomerlyConversationListVC: CyViewController {
         
         var hud : CyView?
         if tableView.pullToRefreshIsRefreshing() == false{
-            hud = showLoader(view: self.view) //FIXME: This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes.
+            hud = showLoader(view: self.view)
         }
-        
         
         CyDataFetcher.sharedInstance.retriveConversations(conversationRequestModel: conversationRequest, completion: { (conversationResponse) in
             self.conversations = conversationResponse?.conversations
@@ -68,6 +69,7 @@ class CustomerlyConversationListVC: CyViewController {
             self.hideLoader(loaderView: hud)
             self.tableView.endPulltoRefresh()
         })
+        
     }
     
 }
