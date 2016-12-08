@@ -72,6 +72,11 @@ class CustomerlyConversationListVC: CyViewController {
         
     }
     
+    //MARK: Actions
+    @IBAction func dismissVC(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension CustomerlyConversationListVC: UITableViewDataSource{
