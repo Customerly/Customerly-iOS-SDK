@@ -38,16 +38,12 @@ open class Customerly: NSObject {
         update()
     }
     
-    open func setUser(){
-        
-    }
-    
     //MARK: Register user and update with attributes (alias ping)
     
     /*
      * If you want to register a user_id, you have to insert also an email.
      */
-    open func registerUser(user_id: String, email: String, name: String? = nil, attributes:Dictionary<String, AnyObject?>? = nil){
+    open func registerUser(user_id: String, email: String, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
         ping(user_id: user_id, email: email, name: name, attributes:attributes)
     }
     
@@ -56,12 +52,12 @@ open class Customerly: NSObject {
      * Attributes need to be only on first level.
      * Ex: ["Params1": 1, "Params2: "Hello"]. If you want to send a user_id, you have to insert also an email.
      */
-    open func update(attributes:Dictionary<String, AnyObject?>? = nil){
+    open func update(attributes:Dictionary<String, Any?>? = nil){
         ping(attributes: attributes)
     }
     
     //Private method
-    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, AnyObject?>? = nil){
+    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         pingRequestModel?.params = [:]
         

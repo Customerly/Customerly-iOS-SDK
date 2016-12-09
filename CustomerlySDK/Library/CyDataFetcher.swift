@@ -60,7 +60,6 @@ open class CyDataFetcher: NSObject {
     func pingAPIRequest(pingModel:CyRequestPingModel?, completion: @escaping (CyDataModel?) -> Void, failure:@escaping (Error) -> Void){
         var urlRequest = CyRouting.Ping(pingModel?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
-        
         let task = session?.dataTask(with: urlRequest) {
             (
             data, response, error) in

@@ -11,10 +11,22 @@ import CustomerlySDK
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var attributeNameTextField: UITextField!
+    @IBOutlet weak var attributeValueTextField: UITextField!
+    
+    @IBOutlet weak var userIdTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Customerly.sharedInstance.trackEvent(event: "an_event")
+        
+        //dismiss keyboard on tap on view
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardOnTap))
+        self.view.addGestureRecognizer(tapGesture)
+        
+        //track an event
+        Customerly.sharedInstance.trackEvent(event: "this_is_an_event")
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,5 +38,16 @@ class ViewController: UIViewController {
         Customerly.sharedInstance.openSupport(from: self)
     }
     
+    @IBAction func addAttribute(_ sender: Any) {
+        Customerly.sharedInstance.update(attributes: [attributeNameTextField.text ?? "" : attributeValueTextField.text ?? ""])
+    }
+    
+    @IBAction func registerUser(_ sender: Any) {
+        Customerly.sharedInstance.registerUser(user_id: userIdTextField.text ?? "", email: emailTextField.text ?? "", name: nameTextField.text)
+    }
+    
+    func hideKeyboardOnTap(){
+        self.view.endEditing(true)
+    }
 }
 
