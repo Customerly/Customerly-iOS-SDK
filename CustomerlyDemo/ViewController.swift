@@ -46,6 +46,10 @@ class ViewController: UIViewController {
         Customerly.sharedInstance.registerUser(user_id: userIdTextField.text ?? "", email: emailTextField.text ?? "", name: nameTextField.text)
     }
     
+    @IBAction func logoutUser(_ sender: Any) {
+        Customerly.sharedInstance.logoutUser()
+    }
+    
     func hideKeyboardOnTap(){
         self.view.endEditing(true)
     }

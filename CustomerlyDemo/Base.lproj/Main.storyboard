@@ -92,7 +92,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VsC-h4-wvc">
                                 <rect key="frame" x="8" y="195" width="359" height="30"/>
@@ -110,8 +110,17 @@
                                 </constraints>
                                 <state key="normal" title="Register User"/>
                                 <connections>
-                                    <action selector="addAttribute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guD-QN-A9T"/>
                                     <action selector="registerUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KI6-CH-ogL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpr-Cm-d1V">
+                                <rect key="frame" x="8" y="271" width="359" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Wit-z0-8wW"/>
+                                </constraints>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VO1-xy-7Oe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -137,9 +146,12 @@
                             <constraint firstAttribute="trailing" secondItem="44T-Lc-0o8" secondAttribute="trailing" constant="8" id="enA-gh-eku"/>
                             <constraint firstItem="Ei5-tP-4GY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h4j-gd-bd3"/>
                             <constraint firstItem="VsC-h4-wvc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="jVP-hD-kIH"/>
+                            <constraint firstItem="Fpr-Cm-d1V" firstAttribute="top" secondItem="ut7-Z4-E35" secondAttribute="bottom" constant="8" id="l6r-Fx-hLO"/>
                             <constraint firstItem="lkJ-7G-cnQ" firstAttribute="top" secondItem="44T-Lc-0o8" secondAttribute="bottom" constant="7" id="lhO-fS-zKu"/>
+                            <constraint firstAttribute="trailing" secondItem="Fpr-Cm-d1V" secondAttribute="trailing" constant="8" id="meW-Nr-l6t"/>
                             <constraint firstAttribute="trailing" secondItem="Tt5-Ut-emA" secondAttribute="trailing" constant="8" id="myE-Z9-teC"/>
                             <constraint firstAttribute="trailing" secondItem="dha-KS-unt" secondAttribute="trailing" constant="8" id="o7q-HA-9x9"/>
+                            <constraint firstItem="Fpr-Cm-d1V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="ohJ-FE-Dat"/>
                             <constraint firstItem="Tt5-Ut-emA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="q8v-xe-Vea"/>
                             <constraint firstItem="Ei5-tP-4GY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="tNc-az-73Q"/>
                             <constraint firstAttribute="trailing" secondItem="mFE-rA-RLA" secondAttribute="trailing" constant="8" id="tij-7T-AO9"/>

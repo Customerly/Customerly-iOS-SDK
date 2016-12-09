@@ -23,11 +23,7 @@ open class Customerly: NSObject {
         super.init()
     }
     
-    
-    
-    //MARK: - OPEN APIs
-    
-    //MARK: Configuration
+    //MARK: - Configuration
     open func configure(secretKey: String){
         customerlySecretKey = secretKey
         
@@ -35,10 +31,10 @@ open class Customerly: NSObject {
         ImageCache.default.maxCachePeriodInSecond = 86400
         
         //If user is not stored, ping ghost, else ping registered
-        update()
+        ping()
     }
     
-    //MARK: Register user and update with attributes (alias ping)
+    //MARK: - Register user and update with attributes (alias ping)
     
     /*
      * If you want to register a user_id, you have to insert also an email.
@@ -48,13 +44,22 @@ open class Customerly: NSObject {
     }
     
     /*
-     *Send an update to Customerly, with optionals attributes.
+     * If you want to logout a user, call logoutUser() to delete all local data and de-authenticate the user
+     */
+    open func logoutUser(){
+        CyStorage.deleteCyDataModel()
+        ping()
+    }
+    
+    /*
+     * Send an update to Customerly, with optionals attributes.
      * Attributes need to be only on first level.
      * Ex: ["Params1": 1, "Params2: "Hello"]. If you want to send a user_id, you have to insert also an email.
      */
     open func update(attributes:Dictionary<String, Any?>? = nil){
         ping(attributes: attributes)
     }
+    
     
     //Private method
     func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
@@ -75,8 +80,8 @@ open class Customerly: NSObject {
         
         //if user_id != nil and email != nil the api call send this data, otherwise the data stored
         if user_id != nil && email != nil{
-            pingRequestModel?.settings?.user_id = email
-            pingRequestModel?.settings?.email = user_id
+            pingRequestModel?.settings?.user_id = user_id
+            pingRequestModel?.settings?.email = email
             pingRequestModel?.settings?.name = name
         }
         
@@ -88,7 +93,7 @@ open class Customerly: NSObject {
         }
     }
     
-    //MARK: Event
+    //MARK: - Event
     /*
      * Track an event. The event string myst be alphanumeric, eventually with _ separator.
      * Valid string example: "tap_subscription_page"
@@ -116,7 +121,7 @@ open class Customerly: NSObject {
         }
     }
     
-    //MARK: Chat
+    //MARK: - Chat
     /*
      * Open the first view controller to the user, useful to chat with your Customer Support
      *

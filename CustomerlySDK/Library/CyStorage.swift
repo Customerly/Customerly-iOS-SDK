@@ -15,7 +15,7 @@ class CyStorage: NSObject {
         if cyData != nil{
             UserDefaults.standard.set(cyData!.toJSON(), forKey: "cyDataModel")
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CyStoredData"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
         }
     }
     
@@ -34,12 +34,12 @@ class CyStorage: NSObject {
     }
     
     static func storeCySingleParameters(user: CyUserModel? = nil, cookies: CyCookiesResponseModel? = nil){
-            if let data = getCyDataModel(){
-                data.user = user ?? data.user
-                data.cookies = cookies ?? data.cookies
-                storeCyDataModel(cyData: data)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
-            }
+        if let data = getCyDataModel(){
+            data.user = user ?? data.user
+            data.cookies = cookies ?? data.cookies
+            storeCyDataModel(cyData: data)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
+        }
     }
     
 }
