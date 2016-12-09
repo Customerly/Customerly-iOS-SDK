@@ -36,14 +36,8 @@ open class CyDataFetcher: NSObject {
     
     
     //MARK: API Track
-    func trackEventAPIRequest(eventName:String, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
-        let trackingModel = CyTrackingModel(JSON: [:])
-        trackingModel?.nameTracking = eventName
-        trackingModel?.settings?.email = "firstEventFromSDK@gmail.com"
-        trackingModel?.settings?.name = "Paolo Musolino"
-        trackingModel?.settings?.user_id = "ABC123"
-        trackingModel?.cookies?.customerly_user_token = "76601427f054d4822436ee69061e166eef7d5c5c4b6f9f50eda026a751667c74-214454"
-        var urlRequest = CyRouting.Event(trackingModel?.toJSON()).urlRequest
+    func trackEventAPIRequest(trackingRequest: CyTrackingRequestModel?, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.Event(trackingRequest?.toJSON()).urlRequest
         urlRequest.httpMethod = "POST"
         
         let task = session?.dataTask(with: urlRequest) {

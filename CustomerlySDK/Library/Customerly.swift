@@ -35,11 +35,61 @@ open class Customerly: NSObject {
         ImageCache.default.maxCachePeriodInSecond = 86400
         
         //If user is not stored, ping ghost, else ping registered
-        ping()
+        update()
     }
     
     open func setUser(){
         
+    }
+    
+    //MARK: Register user and update with attributes (alias ping)
+    
+    /*
+     * If you want to register a user_id, you have to insert also an email.
+     */
+    open func registerUser(user_id: String, email: String, name: String? = nil, attributes:Dictionary<String, AnyObject?>? = nil){
+        ping(user_id: user_id, email: email, name: name, attributes:attributes)
+    }
+    
+    /*
+     *Send an update to Customerly, with optionals attributes.
+     * Attributes need to be only on first level.
+     * Ex: ["Params1": 1, "Params2: "Hello"]. If you want to send a user_id, you have to insert also an email.
+     */
+    open func update(attributes:Dictionary<String, AnyObject?>? = nil){
+        ping(attributes: attributes)
+    }
+    
+    //Private method
+    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, AnyObject?>? = nil){
+        let pingRequestModel = CyRequestPingModel(JSON: [:])
+        pingRequestModel?.params = [:]
+        
+        //if some cookies are stored, CyRequestPingModel containes these cookies and the user information
+        if let dataStored = CyStorage.getCyDataModel(){
+            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
+            pingRequestModel?.settings?.email = dataStored.user?.email
+            pingRequestModel?.settings?.name = dataStored.user?.name
+            pingRequestModel?.settings?.attributes = attributes
+            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+            
+        }
+        
+        //if user_id != nil and email != nil the api call send this data, otherwise the data stored
+        if user_id != nil && email != nil{
+            pingRequestModel?.settings?.user_id = email
+            pingRequestModel?.settings?.email = user_id
+            pingRequestModel?.settings?.name = name
+        }
+        
+        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+            CyStorage.storeCyDataModel(cyData: responseData)
+            cyPrint("Success Ping")
+        }) { (error) in
+            cyPrint("Error Ping", error)
+        }
     }
     
     //MARK: Event
@@ -50,13 +100,25 @@ open class Customerly: NSObject {
      */
     open func trackEvent(event: String){
         
-        CyDataFetcher.sharedInstance.trackEventAPIRequest(eventName: event, completion: {
+        let trackingModel = CyTrackingRequestModel(JSON: [:])
+        trackingModel?.nameTracking = event
+        
+        //if some data are stored, CyTrackingRequestModel containes  cookies and the user information
+        if let dataStored = CyStorage.getCyDataModel(){
+            trackingModel?.settings?.user_id = dataStored.user?.user_id
+            trackingModel?.settings?.email = dataStored.user?.email
+            trackingModel?.settings?.name = dataStored.user?.name
+            trackingModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            trackingModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            trackingModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        
+        CyDataFetcher.sharedInstance.trackEventAPIRequest(trackingRequest: trackingModel, completion: {
             cyPrint("Success trackEvent", event)
         }) { (error) in
             cyPrint("Error trackEvent", error)
         }
     }
-    
     
     //MARK: Chat
     /*
@@ -73,31 +135,6 @@ open class Customerly: NSObject {
             viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
         }
         
-    }
-    
-    //MARK: - CLOSED APIs
-    //MARK: Ping
-    func ping(){
-        let pingRequestModel = CyRequestPingModel(JSON: [:])
-        pingRequestModel?.params = [:]
-        
-        //if some cookies are stored, CyRequestPingModel containes these cookies and in this case the user information
-        if let dataStored = CyStorage.getCyDataModel(){
-            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
-            pingRequestModel?.settings?.email = dataStored.user?.email
-            pingRequestModel?.settings?.name = dataStored.user?.name
-            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
-        
-        
-        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            cyPrint("Success Ping")
-            CyStorage.storeCyDataModel(cyData: responseData)
-        }) { (error) in
-            cyPrint("Error Ping", error)
-        }
     }
     
     

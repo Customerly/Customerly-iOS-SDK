@@ -51,7 +51,7 @@
 		455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17A1DE0AB4500FF65DC /* CyDeviceModel.swift */; };
 		455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */; };
 		455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17C1DE0AB4500FF65DC /* CySettingsModel.swift */; };
-		455CE1961DE0AB4500FF65DC /* CyTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17E1DE0AB4500FF65DC /* CyTrackingModel.swift */; };
+		455CE1961DE0AB4500FF65DC /* CyTrackingRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17E1DE0AB4500FF65DC /* CyTrackingRequestModel.swift */; };
 		455CE1971DE0AB4500FF65DC /* CyUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17F1DE0AB4500FF65DC /* CyUserModel.swift */; };
 		455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */; };
 		455CE1991DE0AB4500FF65DC /* CustomerlyChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */; };
@@ -161,7 +161,7 @@
 		455CE17A1DE0AB4500FF65DC /* CyDeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyDeviceModel.swift; sourceTree = "<group>"; };
 		455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyRequestPingModel.swift; sourceTree = "<group>"; };
 		455CE17C1DE0AB4500FF65DC /* CySettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySettingsModel.swift; sourceTree = "<group>"; };
-		455CE17E1DE0AB4500FF65DC /* CyTrackingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTrackingModel.swift; sourceTree = "<group>"; };
+		455CE17E1DE0AB4500FF65DC /* CyTrackingRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTrackingRequestModel.swift; sourceTree = "<group>"; };
 		455CE17F1DE0AB4500FF65DC /* CyUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyUserModel.swift; sourceTree = "<group>"; };
 		455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyWebsocketModel.swift; sourceTree = "<group>"; };
 		455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlyChat.storyboard; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 				455CE1791DE0AB4500FF65DC /* CyDataModel.swift */,
 				455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */,
 				455CE17C1DE0AB4500FF65DC /* CySettingsModel.swift */,
-				455CE17E1DE0AB4500FF65DC /* CyTrackingModel.swift */,
+				455CE17E1DE0AB4500FF65DC /* CyTrackingRequestModel.swift */,
 				455CE17F1DE0AB4500FF65DC /* CyUserModel.swift */,
 				454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */,
 				455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */,
@@ -677,7 +677,7 @@
 				454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */,
 				455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */,
 				45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */,
-				455CE1961DE0AB4500FF65DC /* CyTrackingModel.swift in Sources */,
+				455CE1961DE0AB4500FF65DC /* CyTrackingRequestModel.swift in Sources */,
 				453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
 				45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */,

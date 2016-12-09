@@ -1,5 +1,5 @@
 //
-//  CyTrackingModel.swift
+//  CyTrackingRequestModel.swift
 //  Customerly
 //
 //  Created by Paolo Musolino on 06/11/16.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class CyTrackingModel: Mappable {
+class CyTrackingRequestModel: Mappable {
 
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
     var nameTracking : String?
