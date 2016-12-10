@@ -13,6 +13,7 @@ enum CyRouting{
     case Ping([String: Any]?)
     case MessageSend([String: Any]?)
     case ConversationRetrieve([String: Any]?)
+    case ConversationMessagesRetrieve([String: Any]?)
     
     var urlRequest: URLRequest{
         let touple : (path: String, parameters: [String: Any]?) = {
@@ -28,6 +29,9 @@ enum CyRouting{
                 
             case .ConversationRetrieve(let params):
                 return("/conversation/retrieve/", params)
+                
+            case .ConversationMessagesRetrieve(let params):
+                return("/message/retrieve/", params)
             }
         }()
         

@@ -10,7 +10,7 @@ import ObjectMapper
 
 class CySendMessageRequestParamsModel: Mappable {
 
-    var conversation_id: String?
+    var conversation_id: Int?
     var message: String?
     var attachments: [CyMessageAttachmentRequestModel]? = []
     var visitor_email: String?

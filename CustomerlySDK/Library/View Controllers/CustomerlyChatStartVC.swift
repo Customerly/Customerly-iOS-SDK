@@ -18,7 +18,7 @@ class CustomerlyChatStartVC: CyViewController{
     
     var data: CyDataModel?
     
-    var existingChat: Bool = false
+    var conversationId: Int?
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
@@ -39,10 +39,44 @@ class CustomerlyChatStartVC: CyViewController{
         
         title = data?.app?.name
         
+        requestConversationMessages(conversation_id: conversationId)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: API
+    func requestConversationMessages(conversation_id: Int?){
+        guard conversation_id != nil else {
+            return
+        }
+        
+        let conversationRequest = CyConversationRequestModel(JSON: [:])
+        if let dataStored = CyStorage.getCyDataModel(){
+            conversationRequest?.settings?.user_id = dataStored.user?.user_id
+            conversationRequest?.settings?.email = dataStored.user?.email
+            conversationRequest?.settings?.name = dataStored.user?.name
+            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        conversationRequest?.conversation_id = conversation_id
+        
+        var hud : CyView?
+        if chatTableView.pullToRefreshIsRefreshing() == false{
+            hud = showLoader(view: self.view)
+        }
+        
+        CyDataFetcher.sharedInstance.retrieveConversationMessages(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
+            self.chatTableView.reloadData()
+            self.hideLoader(loaderView: hud)
+            self.chatTableView.endPulltoRefresh()
+        }, failure: { (error) in
+            self.hideLoader(loaderView: hud)
+            self.chatTableView.endPulltoRefresh()
+        })
+        
     }
     
     //MARK: Utils

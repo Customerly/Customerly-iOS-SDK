@@ -26,6 +26,7 @@ class CustomerlyConversationListVC: CyViewController {
         super.viewDidLoad()
         
         //TableView configuration
+        tableView.delegate = self
         tableView.dataSource = self
         data = CyStorage.getCyDataModel()
         
@@ -104,5 +105,15 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
         }
         
         return cell
+    }
+}
+
+extension CustomerlyConversationListVC: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Open chat VC with on specific conversation
+        let chatVC = CyViewController.cyViewControllerFromStoryboard(storyboardName: "CustomerlyChat", vcIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
+        chatVC.conversationId = conversations?[indexPath.row].conversation_id
+        show(chatVC, sender: self)
     }
 }

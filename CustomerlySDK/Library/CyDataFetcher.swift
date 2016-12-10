@@ -122,4 +122,27 @@ open class CyDataFetcher: NSObject {
         
         task?.resume()
     }
+    
+    //Download all messages in a conversation
+    func retrieveConversationMessages(conversationMessagesRequestModel:CyConversationRequestModel?, completion: @escaping (CyConversationMessagesResponseModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.ConversationMessagesRetrieve(conversationMessagesRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                let conversationMessages = Mapper<CyConversationMessagesResponseModel>().map(JSON: JSONParseDictionary(data: data))
+                completion(conversationMessages)
+            }
+        }
+        
+        task?.resume()
+    }
+
 }

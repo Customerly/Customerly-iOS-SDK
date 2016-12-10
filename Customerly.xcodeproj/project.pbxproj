@@ -62,6 +62,7 @@
 		458781C31DFC658700851DD9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 458781C21DFC658700851DD9 /* MessageCell.xib */; };
 		458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C41DFC673E00851DD9 /* CyTextView.swift */; };
 		458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */; };
+		458781C91DFC789400851DD9 /* CyConversationMessagesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */; };
 		45FA19B91DEB423600D26059 /* CyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19B81DEB423600D26059 /* CyView.swift */; };
 		45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */; };
 		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
@@ -173,6 +174,7 @@
 		458781C21DFC658700851DD9 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
 		458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageTableViewCell.swift; sourceTree = "<group>"; };
+		458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationMessagesResponseModel.swift; sourceTree = "<group>"; };
 		45FA19B81DEB423600D26059 /* CyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyView.swift; sourceTree = "<group>"; };
 		45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				455A0F961DF0BD20003EEA43 /* CyConversationModel.swift */,
 				455A0FA61DF47E08003EEA43 /* CyAccountModel.swift */,
 				455A0F981DF0C184003EEA43 /* CyMessageModel.swift */,
+				458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */,
 				455A0F9A1DF0C272003EEA43 /* CyAttachmentModel.swift */,
 			);
 			name = "Message Send";
@@ -322,11 +325,11 @@
 			children = (
 				455CE16C1DE0AB4500FF65DC /* Customerly.swift */,
 				455CE16D1DE0AB4500FF65DC /* CyConfig.swift */,
+				455CE1721DE0AB4500FF65DC /* CyRouting.swift */,
 				455CE16E1DE0AB4500FF65DC /* CyDataFetcher.swift */,
 				455CE16F1DE0AB4500FF65DC /* CyHTTPValidation.swift */,
 				455CE1701DE0AB4500FF65DC /* CyLogging.swift */,
 				455CE1711DE0AB4500FF65DC /* CyMapping.swift */,
-				455CE1721DE0AB4500FF65DC /* CyRouting.swift */,
 				455CE1731DE0AB4500FF65DC /* CyStorage.swift */,
 				45FA19C01DEB4E0200D26059 /* Assets.xcassets */,
 				455CE1741DE0AB4500FF65DC /* Models */,
@@ -706,6 +709,7 @@
 				455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */,
 				455A0FA71DF47E08003EEA43 /* CyAccountModel.swift in Sources */,
 				45FA19B91DEB423600D26059 /* CyView.swift in Sources */,
+				458781C91DFC789400851DD9 /* CyConversationMessagesResponseModel.swift in Sources */,
 				455CE1861DE0AB4500FF65DC /* CyConfig.swift in Sources */,
 				455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */,
 				455CE1871DE0AB4500FF65DC /* CyDataFetcher.swift in Sources */,

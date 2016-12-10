@@ -320,7 +320,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-jz-GkS" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="18" width="199" height="21"/>
+                                                    <rect key="frame" x="80" y="18" width="139" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="yVF-Fd-ihR"/>
                                                     </constraints>
@@ -338,10 +338,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Je-8k-ub2" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="287" y="18" width="80" height="21"/>
+                                                    <rect key="frame" x="227" y="18" width="140" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="2gG-kt-Ddk"/>
-                                                        <constraint firstAttribute="width" constant="80" id="lfh-j7-xPV"/>
+                                                        <constraint firstAttribute="width" constant="140" id="lfh-j7-xPV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>

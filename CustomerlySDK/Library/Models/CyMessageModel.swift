@@ -11,7 +11,7 @@ import ObjectMapper
 class CyMessageModel: Mappable {
 
     var conversation_message_id : String?
-    var conversation_id : String?
+    var conversation_id : Int?
     var user_id: String?
     var account_id: String?
     var content: String?
@@ -20,6 +20,7 @@ class CyMessageModel: Mappable {
     var type: Int?
     var close_conversation: Int?
     var attachments: [CyAttachmentModel]?
+    var account: CyAccountModel?
     
     required init?(map: Map) {
     }
@@ -35,6 +36,7 @@ class CyMessageModel: Mappable {
         seen_date <- map["seen_date"]
         type <- map["type"]
         attachments <- map["attachments"]
+        account <- map["account"]
     }
     
 }

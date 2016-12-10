@@ -32,6 +32,6 @@ func adminImageURL(id: Int, pxSize: Int) -> URL{
     return URL(string: "http://pictures.customerly.io/accounts/\(id)/\(pxSize)")!
 }
 
-func userImageURL(id: Int, pxSize: Int) -> URL{
+func userImageURL(id: String, pxSize: Int) -> URL{
     return URL(string: "http://pictures.customerly.io/users/\(id)/\(pxSize)")!
 }
