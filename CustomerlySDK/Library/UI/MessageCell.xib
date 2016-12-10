@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="17S-dl-S4S">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="17S-dl-S4S" customClass="CyMessageTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17S-dl-S4S" id="V9B-SS-TGt">
@@ -28,7 +28,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-15-1II">
                         <rect key="frame" x="45" y="0.0" width="285" height="43"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-vp-i0x">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-vp-i0x" customClass="CyTextView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="269" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -67,6 +67,11 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="leftAvatar" destination="2H4-JU-zzy" id="Jks-uK-ZM6"/>
+                <outlet property="messageTextView" destination="3NQ-vp-i0x" id="4yb-3E-06n"/>
+                <outlet property="rightAvatar" destination="5ai-hh-YUd" id="nvL-dW-RZT"/>
+            </connections>
             <point key="canvasLocation" x="-134.5" y="58"/>
         </tableViewCell>
     </objects>

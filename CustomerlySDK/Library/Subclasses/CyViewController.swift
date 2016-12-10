@@ -27,7 +27,7 @@ class CyViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // MARK: - Load VC From Storyboard
+    // MARK: - Load VC From Storyboard or Xib
     static func cyViewControllerFromStoryboard(storyboardName: String, vcIdentifier: String) -> UIViewController{
         let podBundle = Bundle(for: self.classForCoder())
         
@@ -44,6 +44,29 @@ class CyViewController: UIViewController {
         
         return UIStoryboard(name: "CustomerlyChat", bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
     }
+    
+    static func loadNib(nibName: String) -> [AnyObject]?{
+        let podBundle = Bundle(for: self.classForCoder())
+        
+        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
+            
+            if let bundle = Bundle(url: bundleURL) {
+                return bundle.loadNibNamed(nibName, owner: self, options: nil) as [AnyObject]?
+            }
+            else {
+                assertionFailure("Could not load the bundle")
+            }
+            
+        }
+        else if let nib = podBundle.loadNibNamed(nibName, owner: self, options: nil) as [AnyObject]?{
+            return nib
+        }
+        else{
+            assertionFailure("Could not create a path to the bundle")
+        }
+        return nil
+    }
+    
     
     //MARK: - Alerts
     func showAlert(title: String, message: String, buttonTitle: String) {

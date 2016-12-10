@@ -59,8 +59,9 @@
 		455CE19B1DE0BA7D00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE19C1DE0BA7D00FF65DC /* CustomerlySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
-		458781C31DFC658700851DD9 /* ConversationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 458781C21DFC658700851DD9 /* ConversationCell.xib */; };
+		458781C31DFC658700851DD9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 458781C21DFC658700851DD9 /* MessageCell.xib */; };
 		458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C41DFC673E00851DD9 /* CyTextView.swift */; };
+		458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */; };
 		45FA19B91DEB423600D26059 /* CyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19B81DEB423600D26059 /* CyView.swift */; };
 		45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */; };
 		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
@@ -169,8 +170,9 @@
 		455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlyChat.storyboard; sourceTree = "<group>"; };
 		455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyChatStartVC.swift; sourceTree = "<group>"; };
 		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
-		458781C21DFC658700851DD9 /* ConversationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationCell.xib; sourceTree = "<group>"; };
+		458781C21DFC658700851DD9 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
+		458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		45FA19B81DEB423600D26059 /* CyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyView.swift; sourceTree = "<group>"; };
 		45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */,
 				45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */,
 				455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */,
+				458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -358,7 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */,
-				458781C21DFC658700851DD9 /* ConversationCell.xib */,
+				458781C21DFC658700851DD9 /* MessageCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -558,7 +561,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458781C31DFC658700851DD9 /* ConversationCell.xib in Resources */,
+				458781C31DFC658700851DD9 /* MessageCell.xib in Resources */,
 				45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */,
 				455CE1991DE0AB4500FF65DC /* CustomerlyChat.storyboard in Resources */,
 			);
@@ -716,6 +719,7 @@
 				455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */,
 				455CE18C1DE0AB4500FF65DC /* CyStorage.swift in Sources */,
 				455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */,
+				458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */,
 				455CE19A1DE0AB4500FF65DC /* CustomerlyChatStartVC.swift in Sources */,
 				45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */,
 				455A0F991DF0C184003EEA43 /* CyMessageModel.swift in Sources */,
