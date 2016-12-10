@@ -298,9 +298,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="svi-6r-xiE">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="ams-jp-kjV">
                                     <rect key="frame" x="0.0" y="106" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -371,13 +371,69 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQR-W0-wAW" userLabel="Compose Message View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="521" width="375" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-fF-Bmk" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Evw-fB-6sl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Powered by Customerly"/>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Inizia una nuova conversazione" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ChH-K9-HvS" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="266" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="ZBJ-N2-96S"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTR-7S-sVU" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Jky-F3-R6E"/>
+                                            <constraint firstAttribute="height" constant="30" id="bgp-c5-eCz"/>
+                                        </constraints>
+                                        <state key="normal" image="attachments_button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMI-1n-hUo" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="332" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hAb-Wg-UGe"/>
+                                            <constraint firstAttribute="width" constant="30" id="xbG-im-TSe"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="send_message_button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ChH-K9-HvS" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="top" constant="8" id="DjI-lv-a5M"/>
+                                    <constraint firstItem="gTR-7S-sVU" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="top" constant="10" id="J8u-7I-8LQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="zcN-fF-Bmk" secondAttribute="trailing" id="JK0-h6-Olm"/>
+                                    <constraint firstItem="gTR-7S-sVU" firstAttribute="leading" secondItem="ChH-K9-HvS" secondAttribute="trailing" constant="8" id="M5w-01-cm4"/>
+                                    <constraint firstAttribute="trailing" secondItem="nMI-1n-hUo" secondAttribute="trailing" constant="13" id="OoY-vg-g02"/>
+                                    <constraint firstItem="nMI-1n-hUo" firstAttribute="leading" secondItem="gTR-7S-sVU" secondAttribute="trailing" constant="20" id="Vkg-rv-8bk"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="82" id="Xa4-d6-dGA"/>
+                                    <constraint firstAttribute="bottom" secondItem="zcN-fF-Bmk" secondAttribute="bottom" id="ZbB-P5-KQu"/>
+                                    <constraint firstItem="nMI-1n-hUo" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="top" constant="10" id="lGh-Vq-dw6"/>
+                                    <constraint firstItem="ChH-K9-HvS" firstAttribute="leading" secondItem="tQR-W0-wAW" secondAttribute="leading" constant="8" id="qwM-1F-S7e"/>
+                                    <constraint firstAttribute="height" constant="82" id="xzk-LF-B3h"/>
+                                    <constraint firstItem="zcN-fF-Bmk" firstAttribute="leading" secondItem="tQR-W0-wAW" secondAttribute="leading" id="ys6-Pb-xj6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="2VF-qS-H7r"/>
-                            <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="2Y9-is-mgW"/>
-                            <constraint firstAttribute="trailing" secondItem="x3N-vw-yFj" secondAttribute="trailing" id="R7s-d0-mvU"/>
-                            <constraint firstItem="x3N-vw-yFj" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="hVE-HI-rfO"/>
+                            <constraint firstAttribute="trailing" secondItem="tQR-W0-wAW" secondAttribute="trailing" id="1hC-CK-0gN"/>
+                            <constraint firstItem="tQR-W0-wAW" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="D7O-U3-xXv"/>
+                            <constraint firstItem="tQR-W0-wAW" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="HPo-g5-7A1"/>
+                            <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="agg-oJ-3E2"/>
+                            <constraint firstItem="x3N-vw-yFj" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="pb7-J4-t97"/>
+                            <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="bottom" id="sGZ-f9-wTm"/>
+                            <constraint firstAttribute="trailing" secondItem="x3N-vw-yFj" secondAttribute="trailing" id="zvM-Ac-Ocb"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -397,7 +453,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="x3N-vw-yFj" id="Oy6-jX-kEP"/>
                         <segue destination="jqW-k1-gD2" kind="show" identifier="showChatStartVC" id="g2W-NF-zeV"/>

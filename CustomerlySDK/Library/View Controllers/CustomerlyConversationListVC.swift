@@ -14,6 +14,8 @@ class CustomerlyConversationListVC: CyViewController {
     var conversations : [CyConversationModel]?
     var data: CyDataModel?
     
+    
+    
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyConversationListVC
     {

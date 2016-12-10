@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="17S-dl-S4S">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17S-dl-S4S" id="V9B-SS-TGt">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2H4-JU-zzy" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="75S-GQ-gsP"/>
+                            <constraint firstAttribute="width" constant="25" id="MG6-1u-DZr"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-15-1II">
+                        <rect key="frame" x="45" y="0.0" width="285" height="43"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-vp-i0x">
+                                <rect key="frame" x="8" y="8" width="269" height="27"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="lYy-Yp-VED"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3NQ-vp-i0x" firstAttribute="leading" secondItem="NcS-15-1II" secondAttribute="leading" constant="8" id="CkY-Ys-PqQ"/>
+                            <constraint firstAttribute="trailing" secondItem="3NQ-vp-i0x" secondAttribute="trailing" constant="8" id="aAi-kJ-Fds"/>
+                            <constraint firstAttribute="bottom" secondItem="3NQ-vp-i0x" secondAttribute="bottom" constant="8" id="ugx-AG-5yr"/>
+                            <constraint firstItem="3NQ-vp-i0x" firstAttribute="top" secondItem="NcS-15-1II" secondAttribute="top" constant="8" id="xqk-zi-ISr"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ai-hh-YUd" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                        <rect key="frame" x="340" y="0.0" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="SlC-Ul-Tyn"/>
+                            <constraint firstAttribute="height" constant="25" id="fCe-Mc-zF0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NcS-15-1II" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2H4-JU-zzy" secondAttribute="trailing" constant="10" id="T4z-xK-sc3"/>
+                    <constraint firstItem="NcS-15-1II" firstAttribute="top" secondItem="V9B-SS-TGt" secondAttribute="top" id="YgY-YU-ad6"/>
+                    <constraint firstAttribute="bottom" secondItem="NcS-15-1II" secondAttribute="bottom" constant="6" id="a0Y-cc-0hw"/>
+                    <constraint firstItem="5ai-hh-YUd" firstAttribute="top" secondItem="V9B-SS-TGt" secondAttribute="top" id="d83-Te-a53"/>
+                    <constraint firstItem="5ai-hh-YUd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NcS-15-1II" secondAttribute="trailing" constant="10" id="moH-zQ-zGY"/>
+                    <constraint firstAttribute="trailing" secondItem="5ai-hh-YUd" secondAttribute="trailing" constant="10" id="t8i-Yv-ELC"/>
+                    <constraint firstItem="2H4-JU-zzy" firstAttribute="top" secondItem="V9B-SS-TGt" secondAttribute="top" id="xy0-PQ-5fo"/>
+                    <constraint firstItem="2H4-JU-zzy" firstAttribute="leading" secondItem="V9B-SS-TGt" secondAttribute="leading" constant="10" id="ygB-DE-QjO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <point key="canvasLocation" x="-134.5" y="58"/>
+        </tableViewCell>
+    </objects>
+</document>

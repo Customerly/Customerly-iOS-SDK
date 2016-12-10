@@ -19,7 +19,15 @@ class CyView: UIView {
     @IBInspectable var shadowOffset : CGSize = CGSize(width: 0, height: 0)
     @IBInspectable var shadowRadius : CGFloat = 0
    
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.customize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.customize()

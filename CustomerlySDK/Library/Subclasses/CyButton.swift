@@ -26,6 +26,14 @@ class CyButton: UIButton {
     @IBInspectable var uncheckedImage : UIImage = UIImage()
     @IBInspectable var checkedImage : UIImage = UIImage()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.customize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
