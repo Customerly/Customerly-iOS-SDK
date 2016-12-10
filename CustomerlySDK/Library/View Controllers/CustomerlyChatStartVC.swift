@@ -46,7 +46,7 @@ class CustomerlyChatStartVC: CyViewController{
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: API
+    //MARK: APIs
     func requestConversationMessages(conversation_id: Int?){
         guard conversation_id != nil else {
             return

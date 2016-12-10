@@ -10,8 +10,8 @@ import UIKit
 
 class CyMessageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var leftAvatar: CyImageView!
-    @IBOutlet weak var rightAvatar: CyImageView!
+    @IBOutlet weak var adminAvatar: CyImageView!
+    @IBOutlet weak var userAvatar: CyImageView!
     @IBOutlet weak var messageTextView: CyTextView!
     
     
