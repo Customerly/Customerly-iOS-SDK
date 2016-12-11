@@ -13,7 +13,7 @@ class CyMessageModel: Mappable {
     var conversation_message_id : String?
     var conversation_id : Int?
     var user_id: String?
-    var account_id: String?
+    var account_id: Int?
     var content: String?
     var sent_date: Int?
     var seen_date: Int?

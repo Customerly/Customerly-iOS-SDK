@@ -93,10 +93,10 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
         
         if let conversation = conversations?[indexPath.row]{
             if conversation.last_account != nil{
-                cell.userAvatarImageView.kf.setImage(with: adminImageURL(id: conversation.last_account!.account_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell.userAvatarImageView.kf.setImage(with: adminImageURL(id: conversation.last_account!.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell.userNameLabel.text = conversation.last_account?.name
             }else{
-                cell.userAvatarImageView.kf.setImage(with: userImageURL(id: conversation.user_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell.userAvatarImageView.kf.setImage(with: userImageURL(id: conversation.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell.userNameLabel.text = "You"
             }
             

@@ -28,10 +28,16 @@ let cy_socket_version = "\(1)"
 let base_color_template = UIColor(hexString: "4397e6") //Air Force Blue
 
 //Images
-func adminImageURL(id: Int, pxSize: Int) -> URL{
-    return URL(string: "http://pictures.customerly.io/accounts/\(id)/\(pxSize)")!
-}
+func adminImageURL(id: Int?, pxSize: Int) -> URL{
+    if let admin_id = id{
+        return URL(string: "http://pictures.customerly.io/accounts/\(admin_id)/\(pxSize)")!
+    }
+    return URL(string: "http://pictures.customerly.io/accounts/-/\(pxSize)")!
+    }
 
-func userImageURL(id: String, pxSize: Int) -> URL{
-    return URL(string: "http://pictures.customerly.io/users/\(id)/\(pxSize)")!
+func userImageURL(id: String?, pxSize: Int) -> URL{
+    if let user_id = id{
+        return URL(string: "http://pictures.customerly.io/users/\(user_id)/\(pxSize)")!
+    }
+    return URL(string: "http://pictures.customerly.io/users/-/\(pxSize)")!
 }

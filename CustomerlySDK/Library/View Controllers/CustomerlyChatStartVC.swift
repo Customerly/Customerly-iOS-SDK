@@ -19,6 +19,7 @@ class CustomerlyChatStartVC: CyViewController{
     var data: CyDataModel?
     
     var conversationId: Int?
+    var messages : [CyMessageModel]?
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
@@ -33,6 +34,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.dataSource = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
+        chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
         data = CyStorage.getCyDataModel()
         
         chatTextField.keyboardDelegate = self
@@ -69,7 +71,9 @@ class CustomerlyChatStartVC: CyViewController{
         }
         
         CyDataFetcher.sharedInstance.retrieveConversationMessages(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
+            self.messages = conversationMessages?.messages
             self.chatTableView.reloadData()
+            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
             self.hideLoader(loaderView: hud)
             self.chatTableView.endPulltoRefresh()
         }, failure: { (error) in
@@ -150,6 +154,10 @@ class CustomerlyChatStartVC: CyViewController{
 extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if conversationId != nil{
+            return messages?.count ?? 0
+        }
+        
         //if no admins, the related admin cell and info cell is not showed
         guard (data?.active_admins?.count) != nil else {
             return 0
@@ -159,6 +167,36 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if conversationId != nil{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! CyMessageTableViewCell
+            
+            if let message = messages?[indexPath.item]{
+                if message.account_id != nil{
+                    cell.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    cell.setAdminVisual()
+                }else{
+                    cell.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    cell.setUserVisual()
+                }
+                
+                
+                do{
+                    let style = "<style>p{margin:0;padding:0}</style>"
+                    cell.messageTextView.attributedText = try NSAttributedString(data: ((style+message.content!).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                }
+                catch{
+                    cell.messageTextView.text = message.content
+                }
+            }
+            
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            
+            return cell
+        }
+        
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
             
@@ -167,7 +205,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()
-            
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
             
@@ -178,7 +215,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             return cell
         }
-        
     }
 }
 
