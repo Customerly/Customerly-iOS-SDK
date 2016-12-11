@@ -15,6 +15,7 @@ class CyViewController: UIViewController {
         
         //One Tap on view
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardOnTap))
+        tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         
     }

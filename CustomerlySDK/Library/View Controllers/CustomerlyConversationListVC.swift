@@ -110,7 +110,6 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
 
 extension CustomerlyConversationListVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         //Open chat VC with on specific conversation
         let chatVC = CyViewController.cyViewControllerFromStoryboard(storyboardName: "CustomerlyChat", vcIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
         chatVC.conversationId = conversations?[indexPath.row].conversation_id
