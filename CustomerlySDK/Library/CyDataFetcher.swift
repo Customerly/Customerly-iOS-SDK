@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class CyDataFetcher: NSObject {
+class CyDataFetcher: NSObject {
     
     var session : URLSession? //Session manager
     
