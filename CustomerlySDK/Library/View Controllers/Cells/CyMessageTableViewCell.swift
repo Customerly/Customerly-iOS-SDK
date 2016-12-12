@@ -27,6 +27,9 @@ class CyMessageTableViewCell: UITableViewCell {
         
         if let app_config = CyStorage.getCyDataModel()?.app_config{
             messageView.backgroundColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
+            if user_color_template != nil{
+                messageView.backgroundColor = user_color_template
+            }
         }
         
     }

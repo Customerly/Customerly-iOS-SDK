@@ -24,14 +24,16 @@ open class Customerly: NSObject {
     }
     
     //MARK: - Configuration
-    open func configure(secretKey: String){
+    open func configure(secretKey: String, widgetColor: UIColor? = nil){
         customerlySecretKey = secretKey
+        user_color_template = widgetColor
         
         //Image cache expiration after one day
         ImageCache.default.maxCachePeriodInSecond = 86400
         
         //If user is not stored, ping ghost, else ping registered
         ping()
+        
     }
     
     //MARK: - Register user and update with attributes (alias ping)

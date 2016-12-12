@@ -43,6 +43,10 @@ class CustomerlyNavigationController: UINavigationController {
             self.navigationBar.barTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
         }
         
+        if user_color_template != nil{
+            self.navigationBar.barTintColor = user_color_template
+        }
+        
     }
     
 }
