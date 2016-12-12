@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		452745DC1DF9C027006215B1 /* CyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452745DB1DF9C027006215B1 /* CyTableView.swift */; };
+		45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA01DFEF4160021E7F9 /* CySocket.swift */; };
+		45282DA41DFF0FF20021E7F9 /* CyTypingSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */; };
+		45282DA61DFF12470021E7F9 /* CyMessageSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */; };
+		45282DA81DFF21830021E7F9 /* CySeenMessageSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */; };
 		453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */; };
 		453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */; };
 		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
@@ -115,6 +119,10 @@
 /* Begin PBXFileReference section */
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
 		452745DB1DF9C027006215B1 /* CyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTableView.swift; sourceTree = "<group>"; };
+		45282DA01DFEF4160021E7F9 /* CySocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySocket.swift; sourceTree = "<group>"; };
+		45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTypingSocketModel.swift; sourceTree = "<group>"; };
+		45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageSocketModel.swift; sourceTree = "<group>"; };
+		45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySeenMessageSocketModel.swift; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
 		453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySingleActiveAdminTableViewCell.swift; sourceTree = "<group>"; };
 		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
@@ -225,6 +233,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45282DA21DFF0FCA0021E7F9 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */,
+				45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */,
+				45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */,
+			);
+			name = Socket;
+			sourceTree = "<group>";
+		};
 		453CC13B1DEA2BF200D85957 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +345,7 @@
 				455CE16D1DE0AB4500FF65DC /* CyConfig.swift */,
 				455CE1721DE0AB4500FF65DC /* CyRouting.swift */,
 				455CE16E1DE0AB4500FF65DC /* CyDataFetcher.swift */,
+				45282DA01DFEF4160021E7F9 /* CySocket.swift */,
 				455CE16F1DE0AB4500FF65DC /* CyHTTPValidation.swift */,
 				455CE1701DE0AB4500FF65DC /* CyLogging.swift */,
 				455CE1711DE0AB4500FF65DC /* CyMapping.swift */,
@@ -356,6 +375,7 @@
 				454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */,
 				455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */,
 				455A0F8B1DEE2D7B003EEA43 /* Message Send */,
+				45282DA21DFF0FCA0021E7F9 /* Socket */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -706,6 +726,7 @@
 				455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */,
 				455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */,
 				458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */,
+				45282DA81DFF21830021E7F9 /* CySeenMessageSocketModel.swift in Sources */,
 				455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */,
 				455A0FA71DF47E08003EEA43 /* CyAccountModel.swift in Sources */,
 				45FA19B91DEB423600D26059 /* CyView.swift in Sources */,
@@ -713,6 +734,7 @@
 				455CE1861DE0AB4500FF65DC /* CyConfig.swift in Sources */,
 				455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */,
 				455CE1871DE0AB4500FF65DC /* CyDataFetcher.swift in Sources */,
+				45282DA41DFF0FF20021E7F9 /* CyTypingSocketModel.swift in Sources */,
 				455A0FA51DF47C3D003EEA43 /* CyConversationTableViewCell.swift in Sources */,
 				45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */,
 				455A0FA91DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift in Sources */,
@@ -722,7 +744,9 @@
 				455CE18B1DE0AB4500FF65DC /* CyRouting.swift in Sources */,
 				455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */,
 				455CE18C1DE0AB4500FF65DC /* CyStorage.swift in Sources */,
+				45282DA61DFF12470021E7F9 /* CyMessageSocketModel.swift in Sources */,
 				455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */,
+				45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */,
 				458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */,
 				455CE19A1DE0AB4500FF65DC /* CustomerlyChatStartVC.swift in Sources */,
 				45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */,
