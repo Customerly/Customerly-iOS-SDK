@@ -8,7 +8,7 @@
 
 import Foundation
 
-let API_BASE_URL = "http://tracking.customerly.io"
+let API_BASE_URL = "https://tracking.customerly.io"
 
 // The domain used for creating all Customerly errors.
 let cy_domain = "io.customerly.CustomerlySDK"
@@ -31,14 +31,14 @@ var user_color_template: UIColor?
 //Images
 func adminImageURL(id: Int?, pxSize: Int) -> URL{
     if let admin_id = id{
-        return URL(string: "http://pictures.customerly.io/accounts/\(admin_id)/\(pxSize)")!
+        return URL(string: "https://pictures.cdn.customerly.io/accounts/\(admin_id)/\(pxSize)")!
     }
-    return URL(string: "http://pictures.customerly.io/accounts/-/\(pxSize)")!
+    return URL(string: "https://pictures.cdn.customerly.io/accounts/-/\(pxSize)")!
     }
 
 func userImageURL(id: String?, pxSize: Int) -> URL{
     if let user_id = id{
-        return URL(string: "http://pictures.customerly.io/users/\(user_id)/\(pxSize)")!
+        return URL(string: "https://pictures.cdn.customerly.io/users/\(user_id)/\(pxSize)")!
     }
-    return URL(string: "http://pictures.customerly.io/users/-/\(pxSize)")!
+    return URL(string: "https://pictures.cdn.customerly.io/users/-/\(pxSize)")!
 }
