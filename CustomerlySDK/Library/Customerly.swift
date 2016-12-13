@@ -31,9 +31,11 @@ open class Customerly: NSObject {
         //Image cache expiration after one day
         ImageCache.default.maxCachePeriodInSecond = 86400
         
-        //If user is not stored, ping ghost, else ping registered
-        ping()
-        
+        //If user is not stored, ping ghost, else ping registered. Connect to socket
+        ping(success: { () in
+             CySocket.sharedInstance.configure()
+             CySocket.sharedInstance.openConnection()
+        })
     }
     
     //MARK: - Register user and update with attributes (alias ping)
@@ -43,6 +45,7 @@ open class Customerly: NSObject {
      */
     open func registerUser(user_id: String, email: String, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
         ping(user_id: user_id, email: email, name: name, attributes:attributes)
+        
     }
     
     /*
@@ -64,7 +67,7 @@ open class Customerly: NSObject {
     
     
     //Private method
-    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
+    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         pingRequestModel?.params = [:]
         
@@ -90,8 +93,10 @@ open class Customerly: NSObject {
         CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
             CyStorage.storeCyDataModel(cyData: responseData)
             cyPrint("Success Ping")
+            success?()
         }) { (error) in
             cyPrint("Error Ping", error)
+            failure?()
         }
     }
     

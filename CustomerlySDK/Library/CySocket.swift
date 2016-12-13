@@ -24,15 +24,26 @@ class CySocket: NSObject {
     //MARK: Init
     override init() {
         super.init()
+    }
+    
+    func configure(){
         if let data = CyStorage.getCyDataModel(){
             if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
                 let websocketUrl = websocketEndpoint + ":" + websocketPort
                 
-                let params = ["nsp":"user", "app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id]
+                let params : [String: Any?] = ["nsp":"user", "app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id]
                 
                 socket = SocketIOClient(socketURL: URL(string: websocketUrl)!, config: [.log(true), .forcePolling(false), .secure(true), .forceNew(true), .connectParams(params)])
-                socket.connect()
             }
         }
     }
+    
+    func openConnection(){
+        socket?.connect()
+    }
+    
+    func closeConnection(){
+        socket?.disconnect()
+    }
+    
 }
