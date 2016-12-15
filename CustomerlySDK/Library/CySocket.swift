@@ -74,13 +74,24 @@ class CySocket: NSObject {
         }
     }
     
-    func emitMessage(message: String, timestamp : Int){
+    func emitMessage(message: String, timestamp: Int){
         let messageSocketModel = CyMessageSocketModel(JSON: [:])
         messageSocketModel?.timestamp = timestamp
         messageSocketModel?.user_id = 276036 //TODO: user
         
         if let json = messageSocketModel?.toJSON(){
             socket?.emit(CySocketEvent.message.rawValue, with: [json])
+        }
+    }
+    
+    func emitSeen(conversationMessageId: Int, timestamp: Int){
+        let seenSocketModel = CySeenMessageSocketModel(JSON: [:])
+        seenSocketModel?.seen_date = timestamp
+        seenSocketModel?.conversation_message_id = conversationMessageId
+        seenSocketModel?.user_id = 276036 //TODO: user
+        
+        if let json = seenSocketModel?.toJSON(){
+            socket?.emit(CySocketEvent.message_seen.rawValue, with: [json])
         }
     }
     
