@@ -12,6 +12,8 @@ enum CySocketEvent: String {
     case typing = "typing"
     case message_seen = "seen"
     case message = "message"
+    case ping_active = "a"
+    case ping = "p"
 }
 
 class CySocket: NSObject {
@@ -41,15 +43,15 @@ class CySocket: NSObject {
     func openConnection(){
         
         socket?.on("connect") {data, ack in
-            print("socket connected", data)
+            cyPrint("socket connected")
         }
         
         socket?.on("disconnect", callback: { (data, ack) in
-            print("socket disconnect", data)
+            cyPrint("socket disconnect")
         })
         
         socket?.on("error", callback: { (data, ack) in
-            print("Errore", data)
+            cyPrint("socket error")
         })
         
         socket?.connect()
@@ -60,10 +62,10 @@ class CySocket: NSObject {
     }
     
     //MARK: Emit
-    func emitIsTyping(typing : Bool){
+    func emitTyping(typing : Bool, conversationId: Int){
         let typingSocketModel = CyTypingSocketModel(JSON: [:])
-        typingSocketModel?.conversation_id = 127626
-        typingSocketModel?.user_id = 276036
+        typingSocketModel?.conversation_id = conversationId
+        typingSocketModel?.user_id = 276036 //TODO: user
         
         typingSocketModel?.is_typing = typing == true ? "y" : "n"
         
@@ -72,5 +74,24 @@ class CySocket: NSObject {
         }
     }
     
+    //MARK: Emit Ping
+    func emitPingActive(){
+        //emit ping when user is focused on a view of customerly
+        socket?.emit(CySocketEvent.ping_active.rawValue, [])
+    }
+    
+    func emitPing(){
+        //emit ping when user is not focused on a view of customerly
+        socket?.emit(CySocketEvent.ping.rawValue, [])
+    }
+    
     //MARK: On
+    func onTyping(typing: @escaping ((CyTypingSocketModel?) -> Void)){
+        socket?.on(CySocketEvent.typing.rawValue, callback: { (data, ack) in
+            if !data.isEmpty{
+                let typingModel = CyTypingSocketModel(JSON: data.first as! Dictionary)
+                typing(typingModel)
+            }
+        })
+    }
 }

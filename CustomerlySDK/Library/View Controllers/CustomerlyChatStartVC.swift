@@ -42,6 +42,7 @@ class CustomerlyChatStartVC: CyViewController{
         title = data?.app?.name
         
         requestConversationMessages(conversation_id: conversationId)
+    
     }
     
     override func didReceiveMemoryWarning() {
