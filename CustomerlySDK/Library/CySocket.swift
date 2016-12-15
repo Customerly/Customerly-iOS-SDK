@@ -74,6 +74,16 @@ class CySocket: NSObject {
         }
     }
     
+    func emitMessage(message: String, timestamp : Int){
+        let messageSocketModel = CyMessageSocketModel(JSON: [:])
+        messageSocketModel?.timestamp = timestamp
+        messageSocketModel?.user_id = 276036 //TODO: user
+        
+        if let json = messageSocketModel?.toJSON(){
+            socket?.emit(CySocketEvent.message.rawValue, with: [json])
+        }
+    }
+    
     //MARK: Emit Ping
     func emitPingActive(){
         //emit ping when user is focused on a view of customerly
@@ -91,6 +101,15 @@ class CySocket: NSObject {
             if !data.isEmpty{
                 let typingModel = CyTypingSocketModel(JSON: data.first as! Dictionary)
                 typing(typingModel)
+            }
+        })
+    }
+    
+    func onMessage(typing: @escaping ((CyMessageSocketModel?) -> Void)){
+        socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
+            if !data.isEmpty{
+                let messageModel = CyMessageSocketModel(JSON: data.first as! Dictionary)
+                typing(messageModel)
             }
         })
     }
