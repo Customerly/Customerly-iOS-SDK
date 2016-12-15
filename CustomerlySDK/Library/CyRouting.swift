@@ -8,9 +8,9 @@
 
 
 enum CyRouting{
-    
-    case Event([String: Any]?)
+
     case Ping([String: Any]?)
+    case Event([String: Any]?)
     case MessageSend([String: Any]?)
     case ConversationRetrieve([String: Any]?)
     case ConversationMessagesRetrieve([String: Any]?)
@@ -18,11 +18,12 @@ enum CyRouting{
     var urlRequest: URLRequest{
         let touple : (path: String, parameters: [String: Any]?) = {
             switch self{
-            case .Event(let params):
-                return("/event/", params)
-                
+            
             case .Ping(let params):
                 return("/ping/index/", params)
+                
+            case .Event(let params):
+                return("/event/", params)
                 
             case .MessageSend(let params):
                 return("/message/send/", params)
@@ -38,7 +39,7 @@ enum CyRouting{
         let url:URL = URL(string: API_BASE_URL)!
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(touple.path))
-        urlRequest.httpBody = createDataFromJSONDictionary(dataToSend: touple.parameters)
+        urlRequest.httpBody = CyRouting.createDataFromJSONDictionary(dataToSend: touple.parameters)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -46,7 +47,7 @@ enum CyRouting{
     }
     
     
-    func createDataFromJSONDictionary(dataToSend: [String:Any]?) -> Data?{
+    static func createDataFromJSONDictionary(dataToSend: [String:Any]?) -> Data?{
         
         guard dataToSend != nil else{
             return nil

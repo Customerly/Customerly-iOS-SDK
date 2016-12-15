@@ -8,7 +8,7 @@
 
 import SocketIO
 
-enum CySocketEvents: String {
+enum CySocketEvent: String {
     case typing = "typing"
     case message_seen = "seen"
     case message = "message"
@@ -16,12 +16,11 @@ enum CySocketEvents: String {
 
 class CySocket: NSObject {
     
-    var socket : SocketIOClient? //SocketIOClient manager
+    var socket : SocketIOClient?
     
     //MARK: Init
-    static let sharedInstance = CySocket()
+    static let sharedInstance = CySocket() //Socket Client manager
     
-    //MARK: Init
     override init() {
         super.init()
     }
@@ -29,16 +28,30 @@ class CySocket: NSObject {
     func configure(){
         if let data = CyStorage.getCyDataModel(){
             if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
-                let websocketUrl = websocketEndpoint + ":" + websocketPort
+                let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)
                 
-                let params : [String: Any?] = ["nsp":"user", "app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id]
-                
-                socket = SocketIOClient(socketURL: URL(string: websocketUrl)!, config: [.log(true), .forcePolling(false), .secure(true), .forceNew(true), .connectParams(params)])
+                let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id ?? -1, "nsp":"user"])
+        
+                socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(true), .secure(false), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
             }
         }
     }
     
+    //MARK: Open - Close Socket Connection
     func openConnection(){
+        
+        socket?.on("connect") {data, ack in
+            print("socket connected", data)
+        }
+        
+        socket?.on("disconnect", callback: { (data, ack) in
+            print("socket disconnect", data)
+        })
+        
+        socket?.on("error", callback: { (data, ack) in
+            print("Errore", data)
+        })
+        
         socket?.connect()
     }
     
@@ -46,4 +59,18 @@ class CySocket: NSObject {
         socket?.disconnect()
     }
     
+    //MARK: Emit
+    func emitIsTyping(typing : Bool){
+        let typingSocketModel = CyTypingSocketModel(JSON: [:])
+        typingSocketModel?.conversation_id = 127626
+        typingSocketModel?.user_id = 276036
+        
+        typingSocketModel?.is_typing = typing == true ? "y" : "n"
+        
+        if let json = typingSocketModel?.toJSON(){
+            socket?.emit(CySocketEvent.typing.rawValue, with: [json])
+        }
+    }
+    
+    //MARK: On
 }

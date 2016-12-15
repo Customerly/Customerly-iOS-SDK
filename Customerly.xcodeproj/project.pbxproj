@@ -12,6 +12,7 @@
 		45282DA41DFF0FF20021E7F9 /* CyTypingSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */; };
 		45282DA61DFF12470021E7F9 /* CyMessageSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */; };
 		45282DA81DFF21830021E7F9 /* CySeenMessageSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */; };
+		45282DAA1E0035AD0021E7F9 /* CyWebSocketParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */; };
 		453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */; };
 		453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */; };
 		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
@@ -123,6 +124,7 @@
 		45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTypingSocketModel.swift; sourceTree = "<group>"; };
 		45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageSocketModel.swift; sourceTree = "<group>"; };
 		45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySeenMessageSocketModel.swift; sourceTree = "<group>"; };
+		45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyWebSocketParamsModel.swift; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
 		453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySingleActiveAdminTableViewCell.swift; sourceTree = "<group>"; };
 		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		45282DA21DFF0FCA0021E7F9 /* Socket */ = {
 			isa = PBXGroup;
 			children = (
+				45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */,
 				45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */,
 				45282DA51DFF12470021E7F9 /* CyMessageSocketModel.swift */,
 				45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */,
@@ -718,6 +721,7 @@
 				455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */,
 				455CE1891DE0AB4500FF65DC /* CyLogging.swift in Sources */,
 				45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */,
+				45282DAA1E0035AD0021E7F9 /* CyWebSocketParamsModel.swift in Sources */,
 				455CE1881DE0AB4500FF65DC /* CyHTTPValidation.swift in Sources */,
 				455CE18E1DE0AB4500FF65DC /* CyAppModel.swift in Sources */,
 				453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */,
