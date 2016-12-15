@@ -36,9 +36,6 @@ open class Customerly: NSObject {
              CySocket.sharedInstance.configure()
              CySocket.sharedInstance.openConnection()
         })
-        
-        _ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPing), userInfo: nil, repeats: true)
-        //_ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPingActive), userInfo: nil, repeats: true)
     }
     
     //MARK: - Register user and update with attributes (alias ping)
@@ -152,11 +149,6 @@ open class Customerly: NSObject {
     func emitPingActive(){
         //emit ping when user is focused on a view of customerly
         CySocket.sharedInstance.emitPingActive()
-    }
-    
-    func emitPing(){
-        //emit ping when user is not focused on a view of customerly
-        CySocket.sharedInstance.emitPing()
     }
     
 }

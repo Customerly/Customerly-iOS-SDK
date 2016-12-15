@@ -13,7 +13,6 @@ enum CySocketEvent: String {
     case message_seen = "seen"
     case message = "message"
     case ping_active = "a"
-    case ping = "p"
 }
 
 class CySocket: NSObject {
@@ -25,6 +24,7 @@ class CySocket: NSObject {
     
     override init() {
         super.init()
+        _ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPingActive), userInfo: nil, repeats: true)
     }
     
     func configure(){
@@ -63,6 +63,7 @@ class CySocket: NSObject {
     
     //MARK: Emit
     func emitTyping(typing : Bool, conversationId: Int){
+        //Emit when user is typing
         let typingSocketModel = CyTypingSocketModel(JSON: [:])
         typingSocketModel?.conversation_id = conversationId
         typingSocketModel?.user_id = 276036 //TODO: user
@@ -75,6 +76,7 @@ class CySocket: NSObject {
     }
     
     func emitMessage(message: String, timestamp: Int){
+        //Emit when a message is sent
         let messageSocketModel = CyMessageSocketModel(JSON: [:])
         messageSocketModel?.timestamp = timestamp
         messageSocketModel?.user_id = 276036 //TODO: user
@@ -84,10 +86,11 @@ class CySocket: NSObject {
         }
     }
     
-    func emitSeen(conversationMessageId: Int, timestamp: Int){
+    func emitSeen(messageId: Int, timestamp: Int){
+        //Emit when a message is seen
         let seenSocketModel = CySeenMessageSocketModel(JSON: [:])
         seenSocketModel?.seen_date = timestamp
-        seenSocketModel?.conversation_message_id = conversationMessageId
+        seenSocketModel?.conversation_message_id = messageId
         seenSocketModel?.user_id = 276036 //TODO: user
         
         if let json = seenSocketModel?.toJSON(){
@@ -99,11 +102,6 @@ class CySocket: NSObject {
     func emitPingActive(){
         //emit ping when user is focused on a view of customerly
         socket?.emit(CySocketEvent.ping_active.rawValue, [])
-    }
-    
-    func emitPing(){
-        //emit ping when user is not focused on a view of customerly
-        socket?.emit(CySocketEvent.ping.rawValue, [])
     }
     
     //MARK: On
