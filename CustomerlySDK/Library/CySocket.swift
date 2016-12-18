@@ -62,7 +62,12 @@ class CySocket: NSObject {
     }
     
     //MARK: Emit
-    func emitTyping(typing : Bool, conversationId: Int){
+    func emitTyping(typing : Bool, conversationId: Int?){
+        
+        guard conversationId != nil else {
+            return
+        }
+        
         //Emit when user is typing
         let typingSocketModel = CyTypingSocketModel(JSON: [:])
         typingSocketModel?.conversation_id = conversationId

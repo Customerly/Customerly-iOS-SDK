@@ -8,33 +8,47 @@
 
 import UIKit
 
-@objc protocol CyTextFieldKeyboardDelegate: class{
+@objc protocol CyTextFieldDelegate: class{
     @objc optional func keyboardShowed(height:CGFloat)
     @objc optional func keyboardHided(height:CGFloat)
+    @objc optional func isTyping(typing: Bool)
 }
 
 class CyTextField: UITextField {
 
-    weak var keyboardDelegate: CyTextFieldKeyboardDelegate?
+    weak var cyDelegate: CyTextFieldDelegate?
+    var textTimer: Timer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+        self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.keyboardDelegate?.keyboardShowed!(height: keyboardSize.height)
+            self.cyDelegate?.keyboardShowed!(height: keyboardSize.height)
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.keyboardDelegate?.keyboardHided!(height: keyboardSize.height)
+            self.cyDelegate?.keyboardHided!(height: keyboardSize.height)
         }
     }
+    
+    func textFieldDidChange(){
+        self.cyDelegate?.isTyping!(typing: true)
+        textTimer?.invalidate()
+        textTimer = nil
+        textTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(stopTextDidChange), userInfo: nil, repeats: false)
+    }
+    
+    func stopTextDidChange(){
+        self.cyDelegate?.isTyping!(typing: false)
+    }
+    
 }

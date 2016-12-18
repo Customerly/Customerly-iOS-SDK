@@ -37,12 +37,11 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
         data = CyStorage.getCyDataModel()
         
-        chatTextField.keyboardDelegate = self
+        chatTextField.cyDelegate = self
         
         title = data?.app?.name
         
         requestConversationMessages(conversation_id: conversationId)
-    
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,7 +80,33 @@ class CustomerlyChatStartVC: CyViewController{
             self.hideLoader(loaderView: hud)
             self.chatTableView.endPulltoRefresh()
         })
+    }
+    
+    func sendMessage(message: String?, email: String? = nil, conversation_id: Int? = nil){
         
+        let hud = showLoader(view: self.view)
+        
+        let messageRequest = CySendMessageRequestModel(JSON: [:])
+        if let dataStored = CyStorage.getCyDataModel(){
+            messageRequest?.settings?.user_id = dataStored.user?.user_id
+            messageRequest?.settings?.email = dataStored.user?.email
+            messageRequest?.settings?.name = dataStored.user?.name
+            messageRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            messageRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            messageRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+            messageRequest?.params?.message = message
+            messageRequest?.params?.visitor_email = email
+            messageRequest?.params?.conversation_id = conversation_id
+        }
+        
+        CyDataFetcher.sharedInstance.sendMessage(messageModel: messageRequest, completion: { (responseSendMessage) in
+            self.chatTextField.text = ""
+            CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
+            CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSinceNow))
+            self.hideLoader(loaderView: hud)
+        }, failure: { (error) in
+            self.hideLoader(loaderView: hud)
+        })
     }
     
     //MARK: Utils
@@ -112,11 +137,8 @@ class CustomerlyChatStartVC: CyViewController{
             return
         }
         
-        let hud = showLoader(view: self.view)
-        
         if CyStorage.getCyDataModel()?.user != nil{
-            //TODO: send message
-            hideLoader(loaderView: hud)
+            self.sendMessage(message: self.chatTextField.text, conversation_id: self.conversationId)
         }
         else{
             self.chatTextField.resignFirstResponder()
@@ -124,25 +146,7 @@ class CustomerlyChatStartVC: CyViewController{
             //TODO: send message + email
             showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
                 
-                let message = CySendMessageRequestModel(JSON: [:])
-                if let dataStored = CyStorage.getCyDataModel(){
-                    message?.settings?.user_id = dataStored.user?.user_id
-                    message?.settings?.email = dataStored.user?.email
-                    message?.settings?.name = dataStored.user?.name
-                    message?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-                    message?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-                    message?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-                    message?.params?.message = self.chatTextField.text
-                    message?.params?.visitor_email = email
-                }
-                
-                CyDataFetcher.sharedInstance.sendMessage(messageModel: message, completion: { (responseSendMessage) in
-                    self.chatTextField.text = ""
-                    CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
-                    self.hideLoader(loaderView: hud)
-                }, failure: { (error) in
-                    self.hideLoader(loaderView: hud)
-                })
+                self.sendMessage(message: self.chatTextField.text, email: email)
                 
             }) { (cancel) in
                 
@@ -219,13 +223,17 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
 }
 
-extension CustomerlyChatStartVC: CyTextFieldKeyboardDelegate{
+extension CustomerlyChatStartVC: CyTextFieldDelegate{
     func keyboardShowed(height: CGFloat) {
         composeMessageViewBottomConstraint.constant = height
     }
     
     func keyboardHided(height: CGFloat) {
         composeMessageViewBottomConstraint.constant = 0
+    }
+    
+    func isTyping(typing: Bool) {
+        CySocket.sharedInstance.emitTyping(typing: typing, conversationId: conversationId)
     }
 }
 
