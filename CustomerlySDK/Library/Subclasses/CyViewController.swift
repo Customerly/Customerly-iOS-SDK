@@ -18,6 +18,9 @@ class CyViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         
+        //Photo delegate
+        imagePickerController.delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -150,5 +153,72 @@ class CyViewController: UIViewController {
         loaderView?.removeFromSuperview()
     }
     
+    //MARK: - Photos alias Image Picker
+    let imagePickerController = UIImagePickerController()
+    var imagePickerDelegate : CyImagePickerDelegate?
+    
+    func openImagePickerActionSheet(){
+        
+        let actionSheet = UIAlertController(title: "Select a file to send", message: "", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            actionSheet.dismiss(animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Take a Photo", style: .default, handler: { (action) in
+            self.shootPhoto()
+            actionSheet.dismiss(animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Image Gallery", style: .default, handler: { (action) in
+            self.photoFromLibrary()
+            actionSheet.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func shootPhoto(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.allowsEditing = false
+            imagePickerController.sourceType = .camera
+            imagePickerController.cameraCaptureMode = .photo
+            imagePickerController.modalPresentationStyle = .fullScreen
+            present(imagePickerController, animated: true, completion: nil)
+        } else {
+            showAlert(title: "Error", message: "Ops, the camera is not available", buttonTitle: "OK")
+        }
+    }
+    
+    func photoFromLibrary(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+        imagePickerController.allowsEditing = false
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        imagePickerController.modalPresentationStyle = .popover
+        present(imagePickerController, animated: true, completion: nil)
+        }
+        else{
+            showAlert(title: "Error", message: "Ops, the photo gallery is not available", buttonTitle: "OK")
+        }
+    }
 }
 
+//MARK: Image Picker Delegates
+
+@objc protocol CyImagePickerDelegate {
+    @objc optional func imageFromPicker(image:UIImage?)
+}
+
+extension CyViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var  chosenImage = UIImage()
+        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        imagePickerDelegate?.imageFromPicker!(image: chosenImage)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}

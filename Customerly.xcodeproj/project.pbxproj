@@ -544,6 +544,7 @@
 				TargetAttributes = {
 					455CE12E1DE0AABD00FF65DC = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					455CE1371DE0AABD00FF65DC = {
