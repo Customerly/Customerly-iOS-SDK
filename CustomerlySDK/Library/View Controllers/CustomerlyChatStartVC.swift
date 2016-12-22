@@ -19,7 +19,8 @@ class CustomerlyChatStartVC: CyViewController{
     var data: CyDataModel?
     
     var conversationId: Int?
-    var messages : [CyMessageModel]?
+    var messages : [CyMessageModel]? = []
+    
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
@@ -39,9 +40,14 @@ class CustomerlyChatStartVC: CyViewController{
         
         chatTextField.cyDelegate = self
         
-        title = data?.app?.name
+        title = "Chat"
         
         requestConversationMessages(conversation_id: conversationId)
+        
+        //New message is arrived
+        CySocket.sharedInstance.onMessage { (message) in
+            self.requestConversationMessagesNews(conversation_id: self.conversationId, timestamp: message?.timestamp)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,6 +88,31 @@ class CustomerlyChatStartVC: CyViewController{
         })
     }
     
+    func requestConversationMessagesNews(conversation_id: Int?, timestamp: Int?){
+        guard conversation_id != nil else {
+            return
+        }
+        
+        let conversationRequest = CyConversationRequestModel(JSON: [:])
+        if let dataStored = CyStorage.getCyDataModel(){
+            conversationRequest?.settings?.user_id = dataStored.user?.user_id
+            conversationRequest?.settings?.email = dataStored.user?.email
+            conversationRequest?.settings?.name = dataStored.user?.name
+            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        conversationRequest?.timestamp = timestamp
+        
+        CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
+            if conversationMessages?.messages != nil{
+                self.messages?.append(contentsOf: conversationMessages!.messages!)
+                self.chatTableView.reloadData()
+            }
+        }, failure: { (error) in
+        })
+    }
+    
     func sendMessage(message: String?, email: String? = nil, conversation_id: Int? = nil){
         
         let hud = showLoader(view: self.view)
@@ -103,6 +134,7 @@ class CustomerlyChatStartVC: CyViewController{
             self.chatTextField.text = ""
             CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
             CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSinceNow))
+            self.conversationId = responseSendMessage?.conversation?.conversation_id
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
@@ -122,12 +154,19 @@ class CustomerlyChatStartVC: CyViewController{
         return ""
     }
     
-    //MARK: Actions
-    @IBAction func dismissVC(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    //MARK: Message Array Manipulation
+    func addMessages(messagesArray: [CyMessageModel]? = nil){
+        if messagesArray != nil{
+            for message in messagesArray!{
+                if message.conversation_id == conversationId{
+                    messages?.append(message)
+                }
+            }
+            chatTableView.reloadData()
+        }
     }
     
-    
+    //MARK: Actions
     @IBAction func newAttachments(_ sender: Any) {
         self.openImagePickerActionSheet()
     }
@@ -144,11 +183,9 @@ class CustomerlyChatStartVC: CyViewController{
         else{
             self.chatTextField.resignFirstResponder()
             
-            //TODO: send message + email
             showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
                 
                 self.sendMessage(message: self.chatTextField.text, email: email)
-                
             }) { (cancel) in
                 
             }

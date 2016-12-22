@@ -13,7 +13,8 @@ class CustomerlyNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        applyCyNavBarCustomization()
+        applyNavBarCustomization()
+        applySwipeGesture()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +28,7 @@ class CustomerlyNavigationController: UINavigationController {
     }
 
     //MARK: Customizations
-    func applyCyNavBarCustomization(){
+    func applyNavBarCustomization(){
         
         self.navigationBar.barTintColor = base_color_template //background color navbar
         self.navigationBar.tintColor = UIColor.white //tint color elements on navbar
@@ -49,4 +50,18 @@ class CustomerlyNavigationController: UINavigationController {
         
     }
     
+    //enable "swipe left to right" gesture to navigate to the previous controller when the back button is custom
+    func applySwipeGesture(){
+        if self.responds(to: #selector(getter: interactivePopGestureRecognizer)){
+            self.interactivePopGestureRecognizer?.isEnabled = true
+            self.interactivePopGestureRecognizer?.delegate = self
+        }
+    }
+    
+}
+
+extension CustomerlyNavigationController: UIGestureRecognizerDelegate{
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

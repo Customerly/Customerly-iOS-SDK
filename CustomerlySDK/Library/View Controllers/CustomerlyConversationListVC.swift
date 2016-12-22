@@ -30,7 +30,8 @@ class CustomerlyConversationListVC: CyViewController {
         tableView.dataSource = self
         data = CyStorage.getCyDataModel()
         
-        title = data?.app?.name
+        title = "Conversations"
+        addLeftCloseButton()
         
         tableView.addPullToRefresh {
             self.requestConversations()
@@ -78,6 +79,12 @@ class CustomerlyConversationListVC: CyViewController {
     //MARK: Actions
     @IBAction func dismissVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func newConversation(_ sender: Any) {
+        //Open chat VC with a new conversation
+        let chatVC = CyViewController.cyViewControllerFromStoryboard(storyboardName: "CustomerlyChat", vcIdentifier: "CustomerlyChatStartVC") as! CustomerlyChatStartVC
+        show(chatVC, sender: self)
     }
     
 }

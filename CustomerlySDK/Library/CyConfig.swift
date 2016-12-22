@@ -23,6 +23,7 @@ let cy_app_name = "Customerly iOS SDK" //TODO: App end developer
 let cy_sdk_version = "\(1)"
 let cy_api_version = "\(1)"
 let cy_socket_version = "\(1)"
+let cy_preferred_language = NSLocale.preferredLanguages.count > 0 ? NSLocale.preferredLanguages[0] : nil
 
 //Default parameters
 let base_color_template = UIColor(hexString: "4397e6") //Air Force Blue
@@ -36,7 +37,7 @@ func adminImageURL(id: Int?, pxSize: Int) -> URL{
     return URL(string: "https://pictures.cdn.customerly.io/accounts/-/\(pxSize)")!
     }
 
-func userImageURL(id: String?, pxSize: Int) -> URL{
+func userImageURL(id: Int?, pxSize: Int) -> URL{
     if let user_id = id{
         return URL(string: "https://pictures.cdn.customerly.io/users/\(user_id)/\(pxSize)")!
     }

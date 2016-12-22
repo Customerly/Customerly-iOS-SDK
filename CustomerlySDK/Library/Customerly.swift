@@ -140,7 +140,9 @@ open class Customerly: NSObject {
             viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), sender: self)
         }
         else{
-            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyChatStartVC.instantiate()), sender: self)
+            let chatStartVC = CustomerlyChatStartVC.instantiate()
+            chatStartVC.addLeftCloseButton()
+            viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
         }
         
     }

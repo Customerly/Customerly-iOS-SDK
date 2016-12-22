@@ -153,6 +153,20 @@ class CyViewController: UIViewController {
         loaderView?.removeFromSuperview()
     }
     
+    //MARK: Dismiss VC
+    func addLeftCloseButton(){
+        let closeButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
+        closeButton.setTitle("X", for: .normal)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0)
+        closeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        let buttonItem = UIBarButtonItem(customView: closeButton)
+        self.navigationItem.leftBarButtonItem = buttonItem
+    }
+    
+    func dismissVC(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: - Photos alias Image Picker
     let imagePickerController = UIImagePickerController()
     var imagePickerDelegate : CyImagePickerDelegate?

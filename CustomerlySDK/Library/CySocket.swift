@@ -34,7 +34,7 @@ class CySocket: NSObject {
                 
                 let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id ?? -1, "nsp":"user"])
         
-                socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(true), .secure(false), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
+                socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(false), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
             }
         }
     }
@@ -119,11 +119,11 @@ class CySocket: NSObject {
         })
     }
     
-    func onMessage(typing: @escaping ((CyMessageSocketModel?) -> Void)){
+    func onMessage(message: @escaping ((CyMessageSocketModel?) -> Void)){
         socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let messageModel = CyMessageSocketModel(JSON: data.first as! Dictionary)
-                typing(messageModel)
+                message(messageModel)
             }
         })
     }
