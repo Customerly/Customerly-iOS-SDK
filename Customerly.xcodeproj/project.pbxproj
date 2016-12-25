@@ -75,6 +75,7 @@
 		45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FA19C01DEB4E0200D26059 /* Assets.xcassets */; };
 		45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19C21DEC283A00D26059 /* CyViewController.swift */; };
 		45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19C61DECC5FD00D26059 /* CyDate.swift */; };
+		45FF40981E102FED002707C3 /* CyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF40971E102FED002707C3 /* CyString.swift */; };
 		8BB17DE1066C10F2234DB656 /* Pods_CustomerlyDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */; };
 		E1092CF8A4E504B466FFFE22 /* Pods_CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */; };
 /* End PBXBuildFile section */
@@ -192,6 +193,7 @@
 		45FA19C01DEB4E0200D26059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45FA19C21DEC283A00D26059 /* CyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyViewController.swift; sourceTree = "<group>"; };
 		45FA19C61DECC5FD00D26059 /* CyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyDate.swift; sourceTree = "<group>"; };
+		45FF40971E102FED002707C3 /* CyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyString.swift; sourceTree = "<group>"; };
 		8CB8EB1905F4E874BAA89670 /* Pods_CustomerlySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E04C0ED8FA868A83B0BBE2C /* Pods_CustomerlyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomerlyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D40DE420A7DBA14760B190 /* Pods-CustomerlyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlyDemo/Pods-CustomerlyDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				455A0FA01DF47A90003EEA43 /* CyImageView.swift */,
 				455A0FA21DF47ACB003EEA43 /* CyLabel.swift */,
 				452745DB1DF9C027006215B1 /* CyTableView.swift */,
+				45FF40971E102FED002707C3 /* CyString.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -544,7 +547,7 @@
 				TargetAttributes = {
 					455CE12E1DE0AABD00FF65DC = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					455CE1371DE0AABD00FF65DC = {
@@ -703,6 +706,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FF40981E102FED002707C3 /* CyString.swift in Sources */,
 				455A0FA31DF47ACB003EEA43 /* CyLabel.swift in Sources */,
 				455A0F9F1DF46F35003EEA43 /* CustomerlyConversationListVC.swift in Sources */,
 				455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */,

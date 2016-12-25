@@ -9,7 +9,7 @@
 import UIKit
 
 class CyMessageTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var adminAvatar: CyImageView!
     @IBOutlet weak var userAvatar: CyImageView!
     @IBOutlet weak var messageView: UIView!
@@ -33,11 +33,11 @@ class CyMessageTableViewCell: UITableViewCell {
         }
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
     func setAdminVisual(){
         
         messageTextView.textAlignment = .left
@@ -54,4 +54,7 @@ class CyMessageTableViewCell: UITableViewCell {
         messageViewRightConstraint.isActive = true
         messageViewLeftConstraint.isActive = false
     }
+    
 }
+
+

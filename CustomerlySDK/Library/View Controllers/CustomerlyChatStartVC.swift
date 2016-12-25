@@ -108,6 +108,7 @@ class CustomerlyChatStartVC: CyViewController{
             if conversationMessages?.messages != nil{
                 self.messages?.append(contentsOf: conversationMessages!.messages!)
                 self.chatTableView.reloadData()
+                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
             }
         }, failure: { (error) in
         })
@@ -224,8 +225,21 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 
                 
                 do{
-                    let style = "<style>p{margin:0;padding:0}</style>"
-                    cell.messageTextView.attributedText = try NSAttributedString(data: ((style+message.content!).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                    let style = "<style>p{margin:0;padding:0} img{width:\(abs(self.view.bounds.size.width/2))px;display:block;}</style>"
+                    let attributedMessage = try NSMutableAttributedString(data: ((style+message.content!.removeImageTagsFromHTML()).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                  
+//                    if message.attachments != nil{
+//                        for attachment in message.attachments!{
+//                            let textAttachment = NSTextAttachment()
+//                            //try Data(contentsOf: URL(string: attachment.path!)!)
+//                            textAttachment.image = UIImage(named: "attachments_button")
+//                            textAttachment.bounds = cell.bounds
+//                            let attString = NSAttributedString(attachment: textAttachment)
+//                            attributedMessage.append(attString)
+//                        }
+//                    }
+                    cell.messageTextView.attributedText = attributedMessage
+                    
                 }
                 catch{
                     cell.messageTextView.text = message.content
