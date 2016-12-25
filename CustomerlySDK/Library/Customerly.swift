@@ -43,9 +43,8 @@ open class Customerly: NSObject {
     /*
      * If you want to register a user_id, you have to insert also an email.
      */
-    open func registerUser(user_id: String, email: String, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
+    open func registerUser(user_id: String? = nil, email: String, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
         ping(user_id: user_id, email: email, name: name, attributes:attributes)
-        
     }
     
     /*

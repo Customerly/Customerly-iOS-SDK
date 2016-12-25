@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func registerUser(_ sender: Any) {
-        Customerly.sharedInstance.registerUser(user_id: userIdTextField.text ?? "", email: emailTextField.text ?? "", name: nameTextField.text)
+        Customerly.sharedInstance.registerUser(user_id: userIdTextField.text, email: emailTextField.text ?? "", name: nameTextField.text)
     }
     
     @IBAction func logoutUser(_ sender: Any) {
