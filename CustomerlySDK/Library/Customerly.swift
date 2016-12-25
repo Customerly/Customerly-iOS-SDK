@@ -79,13 +79,16 @@ open class Customerly: NSObject {
             pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
             pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
             pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-            
         }
         
-        //if user_id != nil and email != nil the api call send this data, otherwise the data stored
-        if user_id != nil && email != nil{
+        //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored
+        if user_id != nil{
             pingRequestModel?.settings?.user_id = user_id
+        }
+        if email != nil{
             pingRequestModel?.settings?.email = email
+        }
+        if name != nil{
             pingRequestModel?.settings?.name = name
         }
         
