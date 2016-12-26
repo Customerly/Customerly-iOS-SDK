@@ -40,6 +40,7 @@ class CustomerlyChatStartVC: CyViewController{
         data = CyStorage.getCyDataModel()
         
         chatTextField.cyDelegate = self
+        imagePickerDelegate = self
         
         title = "Chat"
         
@@ -115,7 +116,7 @@ class CustomerlyChatStartVC: CyViewController{
         })
     }
     
-    func sendMessage(message: String?, email: String? = nil, conversation_id: Int? = nil){
+    func sendMessage(message: String?, email: String? = nil, conversation_id: Int? = nil, attachment: CyMessageAttachmentRequestModel? = nil){
         
         let hud = showLoader(view: self.view)
         
@@ -130,6 +131,9 @@ class CustomerlyChatStartVC: CyViewController{
             messageRequest?.params?.message = message
             messageRequest?.params?.visitor_email = email
             messageRequest?.params?.conversation_id = conversation_id
+            if attachment != nil{
+                messageRequest?.params?.attachments?.append(attachment!)
+            }
         }
         
         CyDataFetcher.sharedInstance.sendMessage(messageModel: messageRequest, completion: { (responseSendMessage) in
@@ -300,6 +304,17 @@ extension CustomerlyChatStartVC: CyTextFieldDelegate{
     
     func isTyping(typing: Bool) {
         CySocket.sharedInstance.emitTyping(typing: typing, conversationId: conversationId)
+    }
+}
+
+extension CustomerlyChatStartVC: CyImagePickerDelegate{
+    func imageFromPicker(image: UIImage?) {
+        if image != nil && CyStorage.getCyDataModel()?.user != nil{
+            let messageAttachment = CyMessageAttachmentRequestModel(JSON: [:])
+            messageAttachment?.filename = "image.jpg"
+            messageAttachment?.base64 = UIImageJPEGRepresentation(image!, 0.7)?.base64EncodedString()
+            sendMessage(message: "", conversation_id: self.conversationId, attachment: messageAttachment)
+        }
     }
 }
 
