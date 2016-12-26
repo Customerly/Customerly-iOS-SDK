@@ -278,7 +278,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             cell.active_admins = data?.active_admins
             cell.lastActivityLabel.text = "Last activity " + lastAdminActivity()
-            
+            cell.welcomeMessageLabel.text = data?.user?.is_user == true ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()
             cell.setNeedsLayout()

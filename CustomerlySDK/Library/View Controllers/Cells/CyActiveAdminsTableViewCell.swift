@@ -13,6 +13,7 @@ class CyActiveAdminsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var adminsTableView: CyTableView!
     @IBOutlet weak var lastActivityLabel: CyLabel!
+    @IBOutlet weak var welcomeMessageLabel: CyLabel!
     @IBOutlet weak var heightTableViewConstraint: NSLayoutConstraint!
     var active_admins : [CyAdminModel]?
     

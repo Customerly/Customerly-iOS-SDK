@@ -31,15 +31,15 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="activeAdminsCell" id="P7h-7b-6Ic" customClass="CyActiveAdminsTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="34" width="375" height="124"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="activeAdminsCell" rowHeight="163" id="P7h-7b-6Ic" customClass="CyActiveAdminsTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="34" width="375" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P7h-7b-6Ic" id="9Rc-4d-7bR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-9x-dWe" userLabel="Background View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="14" width="347" height="96"/>
+                                                    <rect key="frame" x="14" y="14" width="347" height="135"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -63,7 +63,7 @@
                                                     <rect key="frame" x="14" y="20" width="347" height="61"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="61" id="Dw2-7p-XiS"/>
+                                                        <constraint firstAttribute="height" constant="61" id="Dw2-7p-XiS"/>
                                                     </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="singleActiveAdminCell" id="Shn-4s-V6W" customClass="CySingleActiveAdminTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
@@ -107,9 +107,18 @@
                                                     </prototypes>
                                                 </tableView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSJ-sj-bQv" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="86" width="347" height="21"/>
+                                                    <rect key="frame" x="22" y="87" width="331" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="ddF-7g-vvy"/>
+                                                        <constraint firstAttribute="height" constant="21" id="1F0-EQ-nwL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqb-Sa-c4c" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="29" y="114" width="317" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="cDb-Av-XIc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,16 +126,19 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="pSJ-sj-bQv" secondAttribute="bottom" constant="17" id="0Jb-j5-pVM"/>
+                                                <constraint firstAttribute="trailing" secondItem="pSJ-sj-bQv" secondAttribute="trailing" constant="22" id="2UG-Jn-W0h"/>
                                                 <constraint firstItem="Btg-jf-xOU" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="20" id="Bdf-Vf-b3J"/>
+                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="Btg-jf-xOU" secondAttribute="bottom" constant="6" id="COB-LD-bQ6"/>
                                                 <constraint firstAttribute="bottom" secondItem="zDS-9x-dWe" secondAttribute="bottom" constant="14" id="GE4-h4-hX2"/>
+                                                <constraint firstItem="rqb-Sa-c4c" firstAttribute="top" secondItem="pSJ-sj-bQv" secondAttribute="bottom" constant="6" id="HFY-E8-zdB"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="14" id="HHO-2c-N8l"/>
+                                                <constraint firstAttribute="bottom" secondItem="rqb-Sa-c4c" secondAttribute="bottom" constant="23" id="Iaz-dX-VQe"/>
                                                 <constraint firstItem="Btg-jf-xOU" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="KvG-ma-BtS"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="U59-Gb-lcZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Btg-jf-xOU" secondAttribute="trailing" constant="14" id="V1x-8Z-qbs"/>
-                                                <constraint firstAttribute="trailing" secondItem="pSJ-sj-bQv" secondAttribute="trailing" constant="14" id="XHJ-Wz-Jav"/>
-                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="exC-Fd-wkA"/>
-                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="Btg-jf-xOU" secondAttribute="bottom" constant="5" id="nu0-0C-JQ7"/>
+                                                <constraint firstItem="rqb-Sa-c4c" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="29" id="Yjv-TR-kBw"/>
+                                                <constraint firstAttribute="trailing" secondItem="rqb-Sa-c4c" secondAttribute="trailing" constant="29" id="gpH-JY-HNe"/>
+                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="22" id="iwJ-1s-CKp"/>
                                                 <constraint firstAttribute="trailing" secondItem="zDS-9x-dWe" secondAttribute="trailing" constant="14" id="zjh-YC-TKJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -135,10 +147,11 @@
                                             <outlet property="adminsTableView" destination="Btg-jf-xOU" id="Me4-N0-hMc"/>
                                             <outlet property="heightTableViewConstraint" destination="Dw2-7p-XiS" id="88R-Wn-TKl"/>
                                             <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
+                                            <outlet property="welcomeMessageLabel" destination="rqb-Sa-c4c" id="xE9-Yu-W2z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoCustomerlyCell" rowHeight="70" id="Mtg-LX-7gi" customClass="CyInfoTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="158" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="197" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mtg-LX-7gi" id="CCI-pl-1Ll">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
