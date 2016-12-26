@@ -36,6 +36,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
         chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
+        chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageWithImagesCell")
         data = CyStorage.getCyDataModel()
         
         chatTextField.cyDelegate = self
@@ -155,6 +156,22 @@ class CustomerlyChatStartVC: CyViewController{
         return ""
     }
     
+    func getAttachmentsImages(message: CyMessageModel) -> [String]?{
+        var images : [String] = []
+        if message.attachments != nil{
+            for attachment in message.attachments!{
+                if attachment.path?.containOneSuffix(suffixes: [".jpg", ".JPEG", ".png", ".PNG", ".tif", ".TIFF"]) == true{
+                    images.append(attachment.path!)
+                }
+            }
+        }
+        if let imagesFromHTML = message.content?.arrayOfImagesFromHTML(){
+            images = images + imagesFromHTML
+        }
+        
+        return images.count > 0 ? images : nil
+    }
+    
     //MARK: Message Array Manipulation
     func addMessages(messagesArray: [CyMessageModel]? = nil){
         if messagesArray != nil{
@@ -212,46 +229,42 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if conversationId != nil{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! CyMessageTableViewCell
+            
+            var cell : CyMessageTableViewCell?
             
             if let message = messages?[indexPath.item]{
-                if message.account_id != nil{
-                    cell.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                    cell.setAdminVisual()
-                }else{
-                    cell.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                    cell.setUserVisual()
+                
+                if let images = getAttachmentsImages(message: message){
+                    cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
+                    cell?.imagesAttachments = images
+                }
+                else{
+                    cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? CyMessageTableViewCell
                 }
                 
+                if message.account_id != nil{
+                    cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    cell?.setAdminVisual()
+                }else{
+                    cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    cell?.setUserVisual()
+                }
                 
                 do{
                     let style = "<style>p{margin:0;padding:0} img{width:\(abs(self.view.bounds.size.width/2))px;display:block;}</style>"
                     let attributedMessage = try NSMutableAttributedString(data: ((style+message.content!.removeImageTagsFromHTML()).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                  
-//                    if message.attachments != nil{
-//                        for attachment in message.attachments!{
-//                            let textAttachment = NSTextAttachment()
-//                            //try Data(contentsOf: URL(string: attachment.path!)!)
-//                            textAttachment.image = UIImage(named: "attachments_button")
-//                            textAttachment.bounds = cell.bounds
-//                            let attString = NSAttributedString(attachment: textAttachment)
-//                            attributedMessage.append(attString)
-//                        }
-//                    }
-                    cell.messageTextView.attributedText = attributedMessage
-                    
+                    cell?.messageTextView.attributedText = attributedMessage
                 }
                 catch{
-                    cell.messageTextView.text = message.content
+                    cell?.messageTextView.text = message.content
                 }
             }
             
-            cell.setNeedsUpdateConstraints()
-            cell.updateConstraintsIfNeeded()
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            
-            return cell
+            cell?.setNeedsUpdateConstraints()
+            cell?.updateConstraintsIfNeeded()
+            cell?.setNeedsLayout()
+            cell?.layoutIfNeeded()
+            return cell!
         }
         
         if indexPath.row == 0{
@@ -264,7 +277,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             cell.updateConstraintsIfNeeded()
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
-            
             return cell
         }
         else{

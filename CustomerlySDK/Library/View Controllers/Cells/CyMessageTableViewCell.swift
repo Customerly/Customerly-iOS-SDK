@@ -14,8 +14,12 @@ class CyMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatar: CyImageView!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageTextView: CyTextView!
+    @IBOutlet weak var imagesTableView: CyTableView?
     @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet var messageViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imagesTableViewHeightConstraint: NSLayoutConstraint?
+
+    var imagesAttachments : [String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +36,9 @@ class CyMessageTableViewCell: UITableViewCell {
             }
         }
         
+        imagesTableView?.delegate = self
+        imagesTableView?.dataSource = self
+        imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "imageMessageCell")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,4 +64,24 @@ class CyMessageTableViewCell: UITableViewCell {
     
 }
 
+extension CyMessageTableViewCell: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return imagesAttachments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "imageMessageCell", for: indexPath) as! CyImageMassageTableViewCell
+        
+        cell.messageImageView.kf.setImage(with: URL(string:imagesAttachments[indexPath.row]), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        imagesTableViewHeightConstraint?.constant = imagesTableView!.contentSize.height
+        print("entra qui")
+        return cell
+    }
+}
+
+extension CyMessageTableViewCell: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
 

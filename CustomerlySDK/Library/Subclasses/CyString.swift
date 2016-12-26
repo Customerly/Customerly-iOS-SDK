@@ -27,7 +27,7 @@ extension String {
                 let nsMatchedString = (matchedString as NSString)
                 resultArray.append(nsMatchedString.substring(with: match!.range))
             }
-            return resultArray
+            return resultArray.count > 0 ? resultArray : nil
         }
         catch{
         }
@@ -56,6 +56,16 @@ extension String {
         }
         
         return self
+    }
+    
+    //Check if a string contains almost one suffix from suffixes array
+    func containOneSuffix(suffixes: [String]) -> Bool{
+        for suffix in suffixes{
+            if self.hasSuffix(suffix){
+                return true
+            }
+        }
+        return false
     }
 }
 
