@@ -71,7 +71,7 @@ class CySocket: NSObject {
         //Emit when user is typing
         let typingSocketModel = CyTypingSocketModel(JSON: [:])
         typingSocketModel?.conversation_id = conversationId
-        typingSocketModel?.user_id = 276036 //TODO: user
+        typingSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         typingSocketModel?.is_typing = typing == true ? "y" : "n"
         
@@ -84,7 +84,7 @@ class CySocket: NSObject {
         //Emit when a message is sent
         let messageSocketModel = CyMessageSocketModel(JSON: [:])
         messageSocketModel?.timestamp = timestamp
-        messageSocketModel?.user_id = 276036 //TODO: user
+        messageSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         if let json = messageSocketModel?.toJSON(){
             socket?.emit(CySocketEvent.message.rawValue, with: [json])
@@ -96,7 +96,7 @@ class CySocket: NSObject {
         let seenSocketModel = CySeenMessageSocketModel(JSON: [:])
         seenSocketModel?.seen_date = timestamp
         seenSocketModel?.conversation_message_id = messageId
-        seenSocketModel?.user_id = 276036 //TODO: user
+        seenSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         if let json = seenSocketModel?.toJSON(){
             socket?.emit(CySocketEvent.message_seen.rawValue, with: [json])
