@@ -31,7 +31,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit." translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-vp-i0x" customClass="CyTextView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="269" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="lYy-Yp-VED"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="lYy-Yp-VED"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

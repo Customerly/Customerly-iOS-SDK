@@ -21,6 +21,16 @@ class CyMessageTableViewCell: UITableViewCell {
 
     var imagesAttachments : [String] = []
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         messageView.layer.cornerRadius = 4.0
@@ -35,10 +45,6 @@ class CyMessageTableViewCell: UITableViewCell {
                 messageView.backgroundColor = user_color_template
             }
         }
-        
-        imagesTableView?.delegate = self
-        imagesTableView?.dataSource = self
-        imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "imageMessageCell")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,7 +52,6 @@ class CyMessageTableViewCell: UITableViewCell {
     }
     
     func setAdminVisual(){
-        
         messageTextView.textAlignment = .left
         userAvatar.isHidden = true
         adminAvatar.isHidden = false
@@ -62,6 +67,20 @@ class CyMessageTableViewCell: UITableViewCell {
         messageViewLeftConstraint.isActive = false
     }
     
+    func cellContainsImages(configForImages: Bool){
+        if configForImages == true{
+            imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "imageMessageCell")
+            imagesTableView?.delegate = self
+            imagesTableView?.dataSource = self
+            imagesTableView?.reloadData()
+        }
+        else{
+            imagesTableView = nil
+            imagesTableView?.delegate = nil
+            imagesTableView?.dataSource = nil
+            imagesAttachments = []
+        }
+    }
 }
 
 extension CyMessageTableViewCell: UITableViewDataSource{
@@ -72,12 +91,15 @@ extension CyMessageTableViewCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageMessageCell", for: indexPath) as! CyImageMassageTableViewCell
         
+        cell.messageImageView.kf.indicatorType = .activity
         cell.messageImageView.kf.setImage(with: URL(string:imagesAttachments[indexPath.row]), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+    
         imagesTableViewHeightConstraint?.constant = imagesTableView!.contentSize.height
-        print("entra qui")
         return cell
     }
+
 }
+
 
 extension CyMessageTableViewCell: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

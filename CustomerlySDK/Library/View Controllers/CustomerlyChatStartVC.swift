@@ -237,9 +237,11 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 if let images = getAttachmentsImages(message: message){
                     cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
                     cell?.imagesAttachments = images
+                    cell?.cellContainsImages(configForImages: true)
                 }
                 else{
                     cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? CyMessageTableViewCell
+                    cell?.cellContainsImages(configForImages: false)
                 }
                 
                 if message.account_id != nil{

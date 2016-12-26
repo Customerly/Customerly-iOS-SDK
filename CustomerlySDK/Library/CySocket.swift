@@ -43,15 +43,15 @@ class CySocket: NSObject {
     func openConnection(){
         
         socket?.on("connect") {data, ack in
-            cyPrint("socket connected")
+            cyPrint("Socket connected")
         }
         
         socket?.on("disconnect", callback: { (data, ack) in
-            cyPrint("socket disconnect")
+            cyPrint("Socket disconnect")
         })
         
         socket?.on("error", callback: { (data, ack) in
-            cyPrint("socket error")
+            cyPrint("Socket error")
         })
         
         socket?.connect()
