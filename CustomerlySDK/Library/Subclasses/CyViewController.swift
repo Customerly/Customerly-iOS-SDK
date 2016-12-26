@@ -227,7 +227,7 @@ class CyViewController: UIViewController {
 extension CyViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var  chosenImage = UIImage()
-        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imagePickerDelegate?.imageFromPicker!(image: chosenImage)
         picker.dismiss(animated: true, completion: nil)
     }

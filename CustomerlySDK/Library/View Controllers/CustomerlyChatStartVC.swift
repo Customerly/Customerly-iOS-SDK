@@ -160,7 +160,7 @@ class CustomerlyChatStartVC: CyViewController{
         var images : [String] = []
         if message.attachments != nil{
             for attachment in message.attachments!{
-                if attachment.path?.containOneSuffix(suffixes: [".jpg", ".JPEG", ".png", ".PNG", ".tif", ".TIFF"]) == true{
+                if attachment.path?.containOneSuffix(suffixes: [".jpg", ".JPEG", ".jpeg", ".png", ".PNG", ".tif", ".TIFF"]) == true{
                     images.append(attachment.path!)
                 }
             }
