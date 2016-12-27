@@ -296,6 +296,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                     cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? CyMessageTableViewCell
                     cell?.cellContainsImages(configForImages: false)
                 }
+                cell?.vcThatShowThisCell = self
                 
                 if message.account_id != nil{
                     cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)

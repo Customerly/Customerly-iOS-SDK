@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VVV-ho-lSM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Customerly Gallery View Controller-->
+        <scene sceneID="tvv-TS-e2C">
+            <objects>
+                <viewController storyboardIdentifier="CustomerlyGalleryViewController" id="VVV-ho-lSM" customClass="CustomerlyGalleryViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QdQ-Ld-cYM"/>
+                        <viewControllerLayoutGuide type="bottom" id="M5d-fx-jEd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wXc-J6-uTd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qXx-T9-GtU" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-9e-bzU" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Yxk-Eq-Iw6"/>
+                                    <constraint firstAttribute="width" constant="46" id="puB-h5-0Y1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="dismissVC:" destination="VVV-ho-lSM" eventType="touchUpInside" id="YK0-7f-hnp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qfa-9e-bzU" firstAttribute="top" secondItem="QdQ-Ld-cYM" secondAttribute="bottom" id="6nc-lk-Wm1"/>
+                            <constraint firstItem="M5d-fx-jEd" firstAttribute="top" secondItem="qXx-T9-GtU" secondAttribute="bottom" id="FWL-kt-Ilc"/>
+                            <constraint firstItem="qXx-T9-GtU" firstAttribute="leading" secondItem="wXc-J6-uTd" secondAttribute="leading" id="R4i-nR-3h5"/>
+                            <constraint firstItem="Qfa-9e-bzU" firstAttribute="leading" secondItem="wXc-J6-uTd" secondAttribute="leading" constant="16" id="et0-rY-D8g"/>
+                            <constraint firstAttribute="trailing" secondItem="qXx-T9-GtU" secondAttribute="trailing" id="rTb-1U-Upp"/>
+                            <constraint firstItem="qXx-T9-GtU" firstAttribute="top" secondItem="wXc-J6-uTd" secondAttribute="top" id="smN-Ja-d1B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageGallery" destination="qXx-T9-GtU" id="pgW-XK-2q7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hab-SO-ou8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="432.80000000000001" y="-307.1964017991005"/>
+        </scene>
+    </scenes>
+</document>

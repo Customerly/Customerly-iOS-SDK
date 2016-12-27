@@ -46,7 +46,7 @@ class CyViewController: UIViewController {
             
         }
         
-        return UIStoryboard(name: "CustomerlyChat", bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
+        return UIStoryboard(name: storyboardName, bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
     }
     
     static func loadNib(nibName: String) -> [AnyObject]?{

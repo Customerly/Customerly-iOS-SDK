@@ -18,7 +18,8 @@ class CyMessageTableViewCell: UITableViewCell {
     @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet var messageViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imagesTableViewHeightConstraint: NSLayoutConstraint?
-
+    var vcThatShowThisCell : CyViewController?
+    
     var imagesAttachments : [String] = []
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -103,7 +104,12 @@ extension CyMessageTableViewCell: UITableViewDataSource{
 
 extension CyMessageTableViewCell: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let cell = tableView.cellForRow(at: indexPath) as! CyImageMassageTableViewCell
+        if cell.messageImageView.image != nil{
+            let galleryVC = CustomerlyGalleryViewController.instantiate()
+            galleryVC.image = cell.messageImageView.image
+            vcThatShowThisCell?.present(galleryVC, animated: true, completion: nil)
+        }
     }
 }
 
