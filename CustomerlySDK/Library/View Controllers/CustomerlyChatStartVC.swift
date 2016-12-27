@@ -74,19 +74,16 @@ class CustomerlyChatStartVC: CyViewController{
         conversationRequest?.params?.conversation_id = conversation_id
         
         var hud : CyView?
-        if chatTableView.pullToRefreshIsRefreshing() == false{
-            hud = showLoader(view: self.view)
-        }
+        hud = showLoader(view: self.view)
         
         CyDataFetcher.sharedInstance.retrieveConversationMessages(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             self.messages = conversationMessages?.messages
+            self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
             self.chatTableView.reloadData()
             self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
             self.hideLoader(loaderView: hud)
-            self.chatTableView.endPulltoRefresh()
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
-            self.chatTableView.endPulltoRefresh()
         })
     }
     
@@ -108,7 +105,8 @@ class CustomerlyChatStartVC: CyViewController{
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             if conversationMessages?.messages != nil{
-                self.messages?.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages!.messages!, conversation_id: self.conversationId))
+                self.messages?.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
+                self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
                 self.chatTableView.reloadData()
                 self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
             }
@@ -139,12 +137,37 @@ class CustomerlyChatStartVC: CyViewController{
         CyDataFetcher.sharedInstance.sendMessage(messageModel: messageRequest, completion: { (responseSendMessage) in
             self.chatTextField.text = ""
             CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
-            CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSinceNow))
+            CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSince1970))
             self.conversationId = responseSendMessage?.conversation?.conversation_id
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
         })
+    }
+    
+    func messageSeen(message: CyMessageModel?){
+        guard message?.account != nil else {
+            return
+        }
+        
+        CySocket.sharedInstance.emitSeen(messageId: message?.conversation_message_id, timestamp: Int(Date().timeIntervalSince1970))
+        
+        let messageSeenRequest = CyMessageSeenRequestModel(JSON: [:])
+        messageSeenRequest?.conversation_message_id = message?.conversation_message_id
+        messageSeenRequest?.seen_date = Int(Date().timeIntervalSince1970)
+        if let dataStored = CyStorage.getCyDataModel(){
+            messageSeenRequest?.settings?.user_id = dataStored.user?.user_id
+            messageSeenRequest?.settings?.email = dataStored.user?.email
+            messageSeenRequest?.settings?.name = dataStored.user?.name
+            messageSeenRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            messageSeenRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            messageSeenRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        CyDataFetcher.sharedInstance.messageSeen(messageSeenRequestModel: messageSeenRequest, completion: {
+            
+        }) { (error) in
+            
+        }
     }
     
     //MARK: Utils
@@ -187,8 +210,19 @@ class CustomerlyChatStartVC: CyViewController{
                 result.append(message)
             }
         }
-    
+        
         return result
+    }
+    
+    func getTheLastMessageFromAdmin(messagesArray: [CyMessageModel]?, conversation_id: Int?) -> CyMessageModel?{
+        let messagesArray = getOnlyMessagesForThisConversation(messagesArray: messagesArray, conversation_id: conversation_id)
+        for message in messagesArray.reversed(){
+            if message.account != nil{
+                return message
+            }
+        }
+        
+        return nil
     }
     
     //MARK: Message Array Manipulation

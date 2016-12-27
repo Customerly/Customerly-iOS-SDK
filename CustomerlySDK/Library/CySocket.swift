@@ -91,7 +91,7 @@ class CySocket: NSObject {
         }
     }
     
-    func emitSeen(messageId: Int, timestamp: Int){
+    func emitSeen(messageId: Int?, timestamp: Int){
         //Emit when a message is seen
         let seenSocketModel = CySeenMessageSocketModel(JSON: [:])
         seenSocketModel?.seen_date = timestamp

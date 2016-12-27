@@ -166,5 +166,26 @@ class CyDataFetcher: NSObject {
         
         task?.resume()
     }
+    
+    //Admin message seen from user
+    func messageSeen(messageSeenRequestModel:CyMessageSeenRequestModel?, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.MessageSeen(messageSeenRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+        
+        task?.resume()
+    }
 
 }

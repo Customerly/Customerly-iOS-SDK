@@ -10,7 +10,7 @@ import ObjectMapper
 
 class CyMessageModel: Mappable {
 
-    var conversation_message_id : String?
+    var conversation_message_id : Int?
     var conversation_id : Int?
     var user_id: Int?
     var account_id: Int?
