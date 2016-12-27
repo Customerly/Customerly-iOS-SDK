@@ -27,7 +27,7 @@ class CySocket: NSObject {
         _ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPingActive), userInfo: nil, repeats: true)
     }
     
-    func configure(){ //TODO: disconnect and configure + openConnection when logout() is called
+    func configure(){ //TODO: disconnect and configure + openConnection when logout() is called. Another problem: first connection as ghost user, socket is not connected
         if let data = CyStorage.getCyDataModel(){
             if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
                 let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)

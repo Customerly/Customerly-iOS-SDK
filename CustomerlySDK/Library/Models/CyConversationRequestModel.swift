@@ -12,7 +12,6 @@ class CyConversationRequestModel: Mappable {
 
     var settings : CySettingsModel? = CySettingsModel(JSON: [:])
     var params : CySendMessageRequestParamsModel? = CySendMessageRequestParamsModel(JSON: [:])
-    var conversation_id : Int?
     var timestamp : Int?
     var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
@@ -23,7 +22,6 @@ class CyConversationRequestModel: Mappable {
     {
         settings <- map["settings"]
         params <- map["params"]
-        conversation_id <- map["params.conversation_id"]
         timestamp <- map ["params.timestamp"]
         cookies <- map["cookies"]
     }

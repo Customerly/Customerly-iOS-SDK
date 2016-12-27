@@ -71,7 +71,7 @@ class CustomerlyChatStartVC: CyViewController{
             conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
             conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
         }
-        conversationRequest?.conversation_id = conversation_id
+        conversationRequest?.params?.conversation_id = conversation_id
         
         var hud : CyView?
         if chatTableView.pullToRefreshIsRefreshing() == false{
@@ -108,7 +108,7 @@ class CustomerlyChatStartVC: CyViewController{
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             if conversationMessages?.messages != nil{
-                self.messages?.append(contentsOf: conversationMessages!.messages!)
+                self.messages?.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages!.messages!, conversation_id: self.conversationId))
                 self.chatTableView.reloadData()
                 self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
             }
@@ -174,6 +174,21 @@ class CustomerlyChatStartVC: CyViewController{
         }
         
         return images.count > 0 ? images : nil
+    }
+    
+    func getOnlyMessagesForThisConversation(messagesArray : [CyMessageModel]?, conversation_id: Int?) -> [CyMessageModel]{
+        guard messagesArray != nil && conversation_id != nil else {
+            return []
+        }
+        
+        var result : [CyMessageModel] = []
+        for message in messagesArray!{
+            if message.conversation_id == conversation_id{
+                result.append(message)
+            }
+        }
+    
+        return result
     }
     
     //MARK: Message Array Manipulation
