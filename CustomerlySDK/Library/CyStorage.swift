@@ -43,9 +43,19 @@ class CyStorage: NSObject {
     }
     
     static func storeCySingleParameters(user: CyUserModel? = nil, cookies: CyCookiesResponseModel? = nil){
+        
         if let data = getCyDataModel(){
-            data.user = user ?? data.user
-            data.cookies = cookies ?? data.cookies
+            //if user is already logged (standard user, not lead), store user data, else user_id = nil and email = nil
+            let alteredData = data
+            alteredData.user = user ?? alteredData.user
+            alteredData.cookies = cookies ?? alteredData.cookies
+            if alteredData.user?.is_user == 0{
+                alteredData.user?.user_id = nil
+                alteredData.user?.email = nil
+                alteredData.user?.name = nil
+            }
+            data.user = alteredData.user
+            data.cookies = alteredData.cookies
             storeCyDataModel(cyData: data)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
         }
