@@ -30,6 +30,7 @@ class CyDataFetcher: NSObject {
         let sessionConfiguration = URLSessionConfiguration.default //URLSessionConfiguration()
         sessionConfiguration.timeoutIntervalForRequest = 15.0
         sessionConfiguration.requestCachePolicy = cachePolicy != nil ? cachePolicy! : .reloadIgnoringLocalCacheData
+        sessionConfiguration.httpAdditionalHeaders = ["Accept-Language": cy_preferred_language ?? "en"]
         
         self.session = URLSession(configuration: sessionConfiguration)
     }

@@ -18,7 +18,6 @@ class CyDeviceModel: Mappable {
     var sdk_version : String = cy_sdk_version
     var api_version : String = cy_api_version
     var socket_version : String = cy_socket_version
-    var language : String? = cy_preferred_language
     
     required init?(map: Map) {
     }
@@ -33,7 +32,6 @@ class CyDeviceModel: Mappable {
         sdk_version <- map["sdk_version"]
         api_version <- map["api_version"]
         socket_version <- map["socket_version"]
-        language <- map["language"]
     }
     
 }

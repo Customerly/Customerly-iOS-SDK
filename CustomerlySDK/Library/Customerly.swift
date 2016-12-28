@@ -43,8 +43,8 @@ open class Customerly: NSObject {
     /*
      * If you want to register a user_id, you have to insert also an email.
      */
-    open func registerUser(user_id: String? = nil, email: String, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
-        ping(user_id: user_id, email: email, name: name, attributes:attributes)
+    open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
+        ping(email: email, user_id: user_id, name: name, attributes:attributes)
     }
     
     /*
@@ -66,7 +66,7 @@ open class Customerly: NSObject {
     
     
     //Private method
-    func ping(user_id: String? = nil, email: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         pingRequestModel?.params = [:]
         
