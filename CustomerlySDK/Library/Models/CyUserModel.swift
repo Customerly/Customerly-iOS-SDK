@@ -15,7 +15,7 @@ class CyUserModel: Mappable {
     var user_id : String?
     var email : String?
     var name : String?
-    var is_user : Bool?
+    var is_user : Int?
     
     required init?(map: Map) {
     }
