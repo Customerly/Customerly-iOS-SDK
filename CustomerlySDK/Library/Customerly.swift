@@ -33,8 +33,8 @@ open class Customerly: NSObject {
         
         //If user is not stored, ping ghost, else ping registered. Connect to socket
         ping(success: { () in
-             CySocket.sharedInstance.configure()
-             CySocket.sharedInstance.openConnection()
+            CySocket.sharedInstance.configure()
+            CySocket.sharedInstance.openConnection()
         })
     }
     
@@ -70,7 +70,7 @@ open class Customerly: NSObject {
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         pingRequestModel?.params = [:]
         
-        //if some cookies are stored, CyRequestPingModel containes these cookies and the user information
+        //if some cookies are stored, CyRequestPingModel containes these cookies and user informations
         if let dataStored = CyStorage.getCyDataModel(){
             pingRequestModel?.settings?.user_id = dataStored.user?.user_id
             pingRequestModel?.settings?.email = dataStored.user?.email
