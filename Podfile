@@ -3,9 +3,9 @@ use_frameworks!
 
 target 'CustomerlySDK' do
 
-	pod 'ObjectMapper', '2.2.1'
-	pod "Kingfisher", '3.2.1'
-	pod 'Socket.IO-Client-Swift', '8.1.2'
+	pod 'ObjectMapper', '2.2.2'
+	pod "Kingfisher", '3.2.4'
+	pod 'Socket.IO-Client-Swift', '8.2.0'
 	
 end
 
