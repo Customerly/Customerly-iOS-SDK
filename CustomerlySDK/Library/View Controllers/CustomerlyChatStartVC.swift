@@ -19,7 +19,7 @@ class CustomerlyChatStartVC: CyViewController{
     var data: CyDataModel?
     
     var conversationId: Int?
-    var messages : [CyMessageModel]? = []
+    var messages : [CyMessageModel] = []
     
     
     //MARK: - Initialiser
@@ -46,10 +46,7 @@ class CustomerlyChatStartVC: CyViewController{
         
         requestConversationMessages(conversation_id: conversationId)
         
-        //New message is arrived
-        CySocket.sharedInstance.onMessage { (message) in
-            self.requestConversationMessagesNews(conversation_id: self.conversationId, timestamp: message?.timestamp)
-        }
+        onMessageArrived()
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,10 +74,10 @@ class CustomerlyChatStartVC: CyViewController{
         hud = showLoader(view: self.view)
         
         CyDataFetcher.sharedInstance.retrieveConversationMessages(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
-            self.messages = conversationMessages?.messages
+            self.messages = conversationMessages?.messages ?? []
             self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
             self.chatTableView.reloadData()
-            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
+            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
@@ -105,10 +102,10 @@ class CustomerlyChatStartVC: CyViewController{
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             if conversationMessages?.messages != nil{
-                self.messages?.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
+                self.messages.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
                 self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
                 self.chatTableView.reloadData()
-                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages!.count-1, section: 0), at: .top, animated: true)
+                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
             }
         }, failure: { (error) in
         })
@@ -136,8 +133,22 @@ class CustomerlyChatStartVC: CyViewController{
         
         CyDataFetcher.sharedInstance.sendMessage(messageModel: messageRequest, completion: { (responseSendMessage) in
             self.chatTextField.text = ""
+            
             CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
-            CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSince1970))
+            
+            //if user lead, reconfigure socket, and emit only when reconnected
+            if email != nil{
+                CySocket.sharedInstance.reconfigure(connected: { (connected) in
+                    if connected == true{
+                        CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSince1970))
+                        self.onMessageArrived()
+                    }
+                })
+            }
+            else{
+                CySocket.sharedInstance.emitMessage(message: message ?? "", timestamp: responseSendMessage?.timestamp ?? Int(Date().timeIntervalSince1970))
+            }
+            
             self.conversationId = responseSendMessage?.conversation?.conversation_id
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
@@ -167,6 +178,16 @@ class CustomerlyChatStartVC: CyViewController{
             
         }) { (error) in
             
+        }
+    }
+    
+    func onMessageArrived(){
+        if CySocket.sharedInstance.isConnected(){
+            //New message is arrived
+            CySocket.sharedInstance.onMessage { (message) in
+                
+                self.requestConversationMessagesNews(conversation_id: self.conversationId, timestamp: message?.timestamp)
+            }
         }
     }
     
@@ -230,7 +251,7 @@ class CustomerlyChatStartVC: CyViewController{
         if messagesArray != nil{
             for message in messagesArray!{
                 if message.conversation_id == conversationId{
-                    messages?.append(message)
+                    messages.append(message)
                 }
             }
             chatTableView.reloadData()
@@ -268,8 +289,8 @@ class CustomerlyChatStartVC: CyViewController{
 extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if conversationId != nil{
-            return messages?.count ?? 0
+        if conversationId != nil && messages.count >= 0 {
+            return messages.count
         }
         
         //if no admins, the related admin cell and info cell is not showed
@@ -281,40 +302,40 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if conversationId != nil{
+        if conversationId != nil && messages.count >= 0{
             
             var cell : CyMessageTableViewCell?
             
-            if let message = messages?[indexPath.item]{
-                
-                if let images = getAttachmentsImages(message: message){
-                    cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
-                    cell?.imagesAttachments = images
-                    cell?.cellContainsImages(configForImages: true)
-                }
-                else{
-                    cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? CyMessageTableViewCell
-                    cell?.cellContainsImages(configForImages: false)
-                }
-                cell?.vcThatShowThisCell = self
-                
-                if message.account_id != nil{
-                    cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                    cell?.setAdminVisual()
-                }else{
-                    cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                    cell?.setUserVisual()
-                }
-                
-                do{
-                    let style = "<style>p{margin:0;padding:0} img{width:\(abs(self.view.bounds.size.width/2))px;display:block;}</style>"
-                    let attributedMessage = try NSMutableAttributedString(data: ((style+message.content!.removeImageTagsFromHTML()).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                    cell?.messageTextView.attributedText = attributedMessage
-                }
-                catch{
-                    cell?.messageTextView.text = message.content
-                }
+            let message = messages[indexPath.item]
+            
+            if let images = getAttachmentsImages(message: message){
+                cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
+                cell?.imagesAttachments = images
+                cell?.cellContainsImages(configForImages: true)
             }
+            else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? CyMessageTableViewCell
+                cell?.cellContainsImages(configForImages: false)
+            }
+            cell?.vcThatShowThisCell = self
+            
+            if message.account_id != nil{
+                cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell?.setAdminVisual()
+            }else{
+                cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell?.setUserVisual()
+            }
+            
+            do{
+                let style = "<style>p{margin:0;padding:0} img{width:\(abs(self.view.bounds.size.width/2))px;display:block;}</style>"
+                let attributedMessage = try NSMutableAttributedString(data: ((style+message.content!.removeImageTagsFromHTML()).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                cell?.messageTextView.attributedText = attributedMessage
+            }
+            catch{
+                cell?.messageTextView.text = message.content
+            }
+            
             
             cell?.setNeedsUpdateConstraints()
             cell?.updateConstraintsIfNeeded()

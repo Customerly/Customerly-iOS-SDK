@@ -44,7 +44,9 @@ open class Customerly: NSObject {
      * If you want to register a user_id, you have to insert also an email.
      */
     open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
-        ping(email: email, user_id: user_id, name: name, attributes:attributes)
+        ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
+            CySocket.sharedInstance.reconfigure()
+        })
     }
     
     /*
@@ -52,6 +54,7 @@ open class Customerly: NSObject {
      */
     open func logoutUser(){
         CyStorage.deleteCyDataModel()
+        CySocket.sharedInstance.closeConnection()
         ping()
     }
     
@@ -82,11 +85,9 @@ open class Customerly: NSObject {
         }
         
         //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored
-        if user_id != nil{
-            pingRequestModel?.settings?.user_id = user_id
-        }
         if email != nil{
             pingRequestModel?.settings?.email = email
+            pingRequestModel?.settings?.user_id = user_id
         }
         if name != nil{
             pingRequestModel?.settings?.name = name

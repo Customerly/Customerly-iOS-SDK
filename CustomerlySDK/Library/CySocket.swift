@@ -17,7 +17,7 @@ enum CySocketEvent: String {
 
 class CySocket: NSObject {
     
-    var socket : SocketIOClient?
+    var socket: SocketIOClient?
     
     //MARK: Init
     static let sharedInstance = CySocket() //Socket Client manager
@@ -27,16 +27,39 @@ class CySocket: NSObject {
         _ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPingActive), userInfo: nil, repeats: true)
     }
     
-    func configure(){ //TODO: disconnect and configure + openConnection when logout() is called. Another problem: first connection as ghost user, socket is not connected
-        if let data = CyStorage.getCyDataModel(){
-            if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
-                let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)
-                
-                let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlySecretKey, "id":data.user?.crmhero_user_id ?? -1, "nsp":"user"])
+    func configure(){
         
-                socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(false), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
+        if let data = CyStorage.getCyDataModel(){
+            if data.user?.crmhero_user_id != nil{
+                if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
+                    let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)
+                    
+                    let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlySecretKey, "id":data.user!.crmhero_user_id!, "nsp":"user"])
+                    
+                    socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
+                    
+                }
             }
         }
+    }
+    
+    //Reconfigure socket with new user
+    func reconfigure(connected: ((Bool?) -> Void)? = nil){
+        socket?.disconnect()
+        configure()
+        openConnection()
+        
+        socket?.on("connect") {data, ack in
+            connected?(true)
+        }
+        
+        socket?.on("error", callback: { (data, ack) in
+            connected?(false)
+        })
+        
+        socket?.on("disconnect", callback: { (data, ack) in
+            connected?(false)
+        })
     }
     
     //MARK: Open - Close Socket Connection
@@ -59,6 +82,7 @@ class CySocket: NSObject {
     
     func closeConnection(){
         socket?.disconnect()
+        socket?.removeAllHandlers()
     }
     
     //MARK: Emit
@@ -111,6 +135,7 @@ class CySocket: NSObject {
     
     //MARK: On
     func onTyping(typing: @escaping ((CyTypingSocketModel?) -> Void)){
+        socket?.off(CySocketEvent.typing.rawValue)
         socket?.on(CySocketEvent.typing.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let typingModel = CyTypingSocketModel(JSON: data.first as! Dictionary)
@@ -120,11 +145,22 @@ class CySocket: NSObject {
     }
     
     func onMessage(message: @escaping ((CyMessageSocketModel?) -> Void)){
-        socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
+        socket?.off(CySocketEvent.message.rawValue)
+        self.socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let messageModel = CyMessageSocketModel(JSON: data.first as! Dictionary)
                 message(messageModel)
             }
         })
     }
+
+    //MARK: - Utils
+    func isConnected() -> Bool{
+        if socket?.status == .connected{
+            return true
+        }
+        
+        return false
+    }
+    
 }
