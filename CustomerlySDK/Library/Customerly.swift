@@ -61,7 +61,7 @@ open class Customerly: NSObject {
     /*
      * Send an update to Customerly, with optionals attributes.
      * Attributes need to be only on first level.
-     * Ex: ["Params1": 1, "Params2: "Hello"]. If you want to send a user_id, you have to insert also an email.
+     * Ex: ["Params1": 1, "Params2: "Hello"].
      */
     open func update(attributes:Dictionary<String, Any?>? = nil){
         ping(attributes: attributes)
