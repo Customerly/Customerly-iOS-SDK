@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hn3-Gq-xCx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Customerly Survey View Controller-->
+        <scene sceneID="ecB-xr-12E">
+            <objects>
+                <viewController storyboardIdentifier="CustomerlySurveyViewController" id="hn3-Gq-xCx" customClass="CustomerlySurveyViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jGR-ZC-mWu"/>
+                        <viewControllerLayoutGuide type="bottom" id="iAo-ju-tDW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GEy-tU-Td6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2Z-Nr-ZZh" userLabel="background" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy4-Dy-kPY" userLabel="Survey Alert View">
+                                <rect key="frame" x="30" y="163" width="315" height="340"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLC-jz-ObF" userLabel="Header View">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykT-4W-iT6">
+                                                <rect key="frame" x="41" y="15" width="233" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayr-JQ-h5Z">
+                                                <rect key="frame" x="274" y="0.0" width="35" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="Yke-xJ-MTk"/>
+                                                </constraints>
+                                                <state key="normal" image="survey_close_button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbw-5z-R7Q">
+                                                <rect key="frame" x="6" y="0.0" width="35" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="f7a-tW-qef"/>
+                                                </constraints>
+                                                <state key="normal" image="survey_back_button"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="ayr-JQ-h5Z" firstAttribute="leading" secondItem="ykT-4W-iT6" secondAttribute="trailing" id="0Ln-kM-7qQ"/>
+                                            <constraint firstItem="ykT-4W-iT6" firstAttribute="top" secondItem="tLC-jz-ObF" secondAttribute="top" constant="15" id="62X-XP-bUJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="ayr-JQ-h5Z" secondAttribute="bottom" id="HhM-Sg-FU4"/>
+                                            <constraint firstItem="dbw-5z-R7Q" firstAttribute="leading" secondItem="tLC-jz-ObF" secondAttribute="leading" constant="6" id="J7R-d7-FSS"/>
+                                            <constraint firstItem="dbw-5z-R7Q" firstAttribute="top" secondItem="tLC-jz-ObF" secondAttribute="top" id="L1z-oE-Aek"/>
+                                            <constraint firstAttribute="height" constant="50" id="RQd-3C-SD4"/>
+                                            <constraint firstItem="ayr-JQ-h5Z" firstAttribute="top" secondItem="tLC-jz-ObF" secondAttribute="top" id="giI-kr-PK7"/>
+                                            <constraint firstAttribute="bottom" secondItem="dbw-5z-R7Q" secondAttribute="bottom" id="l1D-xS-hZQ"/>
+                                            <constraint firstItem="ykT-4W-iT6" firstAttribute="leading" secondItem="dbw-5z-R7Q" secondAttribute="trailing" id="nI1-5u-299"/>
+                                            <constraint firstAttribute="bottom" secondItem="ykT-4W-iT6" secondAttribute="bottom" constant="14" id="okW-z3-3hq"/>
+                                            <constraint firstAttribute="trailing" secondItem="ayr-JQ-h5Z" secondAttribute="trailing" constant="6" id="udt-78-yyq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="tLC-jz-ObF" firstAttribute="top" secondItem="fy4-Dy-kPY" secondAttribute="top" id="1ty-EX-hcw"/>
+                                    <constraint firstAttribute="height" constant="340" id="9mA-Fk-X7y"/>
+                                    <constraint firstAttribute="trailing" secondItem="tLC-jz-ObF" secondAttribute="trailing" id="dxC-yh-9V5"/>
+                                    <constraint firstItem="tLC-jz-ObF" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" id="rIG-7F-aog"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fy4-Dy-kPY" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" constant="30" id="5o6-T5-Sc3"/>
+                            <constraint firstAttribute="bottom" secondItem="w2Z-Nr-ZZh" secondAttribute="bottom" id="8zd-wd-db1"/>
+                            <constraint firstAttribute="trailing" secondItem="w2Z-Nr-ZZh" secondAttribute="trailing" id="Apy-L6-s75"/>
+                            <constraint firstAttribute="trailing" secondItem="fy4-Dy-kPY" secondAttribute="trailing" constant="30" id="JAc-Ql-CbA"/>
+                            <constraint firstItem="fy4-Dy-kPY" firstAttribute="centerY" secondItem="GEy-tU-Td6" secondAttribute="centerY" id="MPa-gC-ZIT"/>
+                            <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" id="ZEJ-z5-qU5"/>
+                            <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="top" secondItem="GEy-tU-Td6" secondAttribute="top" id="aIF-9v-U0X"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8R-Fe-aJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80.799999999999997" y="155.17241379310346"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="survey_back_button" width="20" height="20"/>
+        <image name="survey_close_button" width="20" height="20"/>
+    </resources>
+</document>
