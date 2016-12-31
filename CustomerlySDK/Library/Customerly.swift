@@ -64,7 +64,7 @@ open class Customerly: NSObject {
      * Ex: ["Params1": 1, "Params2: "Hello"].
      */
     open func update(attributes:Dictionary<String, Any?>? = nil){
-        CyStorage.getCyDataModel()?.user?.is_user == 1{
+        if CyStorage.getCyDataModel()?.user?.is_user == 1{
             ping(attributes: attributes)
         }
     }
