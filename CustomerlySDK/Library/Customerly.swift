@@ -67,6 +67,9 @@ open class Customerly: NSObject {
         if CyStorage.getCyDataModel()?.user?.is_user == 1{
             ping(attributes: attributes)
         }
+        else{
+            cyPrint("Only registered users may have attributes.")
+        }
     }
     
     
