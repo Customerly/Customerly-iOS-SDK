@@ -52,6 +52,11 @@ class ViewController: UIViewController {
         Customerly.sharedInstance.logoutUser()
     }
     
+    @IBAction func openSurveyIfAvailable(_ sender: Any) {
+        Customerly.sharedInstance.openSurvey(from: self)
+    }
+    
+    
     func hideKeyboardOnTap(){
         self.view.endEditing(true)
     }

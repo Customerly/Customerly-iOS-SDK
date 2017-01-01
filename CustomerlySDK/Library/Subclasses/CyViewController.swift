@@ -49,7 +49,7 @@ class CyViewController: UIViewController {
         return UIStoryboard(name: storyboardName, bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
     }
     
-    static func loadNib(nibName: String) -> [AnyObject]?{
+    static func cyLoadNib(nibName: String) -> [AnyObject]?{
         let podBundle = Bundle(for: self.classForCoder())
         
         if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){

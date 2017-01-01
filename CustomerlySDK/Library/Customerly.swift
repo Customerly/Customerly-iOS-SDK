@@ -144,7 +144,7 @@ open class Customerly: NSObject {
     open func openSupport(from viewController: UIViewController){
         
         //If user exist, go to conversion list, else open a new conversation
-        if let _ = CyStorage.getCyDataModel()?.user{
+        if CyStorage.getCyDataModel()?.user?.is_user != nil{ //then, is_user == 0 (lead) or is_user == 1 (registered user)
             viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), sender: self)
         }
         else{
@@ -153,6 +153,16 @@ open class Customerly: NSObject {
             viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
         }
         
+    }
+    
+    //MARK: - Survey
+    /*
+     * Open a Survey View Controller if a survey is available
+     *
+     */
+    open func openSurvey(from viewController: UIViewController){
+        let surveyVC = CustomerlySurveyViewController.instantiate()
+        viewController.show(surveyVC, sender: self)
     }
     
     //MARK: - Socket
