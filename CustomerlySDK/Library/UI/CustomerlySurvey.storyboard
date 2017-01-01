@@ -26,7 +26,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy4-Dy-kPY" userLabel="Survey Alert View">
-                                <rect key="frame" x="30" y="163" width="315" height="340"/>
+                                <rect key="frame" x="30" y="273" width="315" height="120"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLC-jz-ObF" userLabel="Header View">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
@@ -98,7 +98,7 @@
                                     <constraint firstAttribute="trailing" secondItem="7Zb-I7-jaR" secondAttribute="trailing" constant="8" id="1ag-sq-50o"/>
                                     <constraint firstAttribute="trailing" secondItem="lig-AW-tB1" secondAttribute="trailing" constant="8" id="1bi-zO-x9N"/>
                                     <constraint firstItem="tLC-jz-ObF" firstAttribute="top" secondItem="fy4-Dy-kPY" secondAttribute="top" id="1ty-EX-hcw"/>
-                                    <constraint firstAttribute="height" constant="340" id="9mA-Fk-X7y"/>
+                                    <constraint firstAttribute="height" priority="750" constant="120" id="9mA-Fk-X7y"/>
                                     <constraint firstItem="7Zb-I7-jaR" firstAttribute="top" secondItem="lig-AW-tB1" secondAttribute="bottom" constant="8" id="ELD-qG-CAh"/>
                                     <constraint firstItem="7Zb-I7-jaR" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" constant="8" id="av5-Py-cwu"/>
                                     <constraint firstItem="lig-AW-tB1" firstAttribute="top" secondItem="tLC-jz-ObF" secondAttribute="bottom" constant="8" id="dCr-iO-CpY"/>
@@ -112,10 +112,12 @@
                             <constraint firstItem="fy4-Dy-kPY" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" constant="30" id="5o6-T5-Sc3"/>
                             <constraint firstAttribute="bottom" secondItem="w2Z-Nr-ZZh" secondAttribute="bottom" id="8zd-wd-db1"/>
                             <constraint firstAttribute="trailing" secondItem="w2Z-Nr-ZZh" secondAttribute="trailing" id="Apy-L6-s75"/>
+                            <constraint firstItem="fy4-Dy-kPY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GEy-tU-Td6" secondAttribute="top" constant="20" id="G8c-0G-4c7"/>
                             <constraint firstAttribute="trailing" secondItem="fy4-Dy-kPY" secondAttribute="trailing" constant="30" id="JAc-Ql-CbA"/>
                             <constraint firstItem="fy4-Dy-kPY" firstAttribute="centerY" secondItem="GEy-tU-Td6" secondAttribute="centerY" id="MPa-gC-ZIT"/>
                             <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" id="ZEJ-z5-qU5"/>
                             <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="top" secondItem="GEy-tU-Td6" secondAttribute="top" id="aIF-9v-U0X"/>
+                            <constraint firstItem="iAo-ju-tDW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fy4-Dy-kPY" secondAttribute="bottom" constant="20" id="mBq-mB-YUU"/>
                         </constraints>
                     </view>
                     <connections>
@@ -130,6 +132,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8R-Fe-aJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-146.40000000000001" y="134.48275862068968"/>
+        </scene>
+        <!--Cy Survey List View Controller-->
+        <scene sceneID="kKr-AQ-hw4">
+            <objects>
+                <viewController storyboardIdentifier="CySurveyListViewController" id="bog-Df-YxJ" customClass="CySurveyListViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uX1-Wv-DLv"/>
+                        <viewControllerLayoutGuide type="bottom" id="vsk-Jv-Q1e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DIE-fU-eMF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ckx-b9-Dzy" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="1Iq-Or-FeR"/>
+                                </constraints>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="hkO-zM-zt6">
+                                    <rect key="frame" x="0.0" y="76" width="375" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="surveyButtonCell" rowHeight="48" id="8Na-Rr-scO" customClass="CySurveyButtonTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Na-Rr-scO" id="IsQ-Ud-xPC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUa-RZ-kXP" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="40"/>
+                                                    <color key="backgroundColor" red="0.2627450980392157" green="0.59215686274509804" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="XUa-RZ-kXP" secondAttribute="bottom" constant="8" id="Hd7-rb-syY"/>
+                                                <constraint firstAttribute="trailing" secondItem="XUa-RZ-kXP" secondAttribute="trailing" constant="8" id="K5z-8b-Xmi"/>
+                                                <constraint firstItem="XUa-RZ-kXP" firstAttribute="leading" secondItem="IsQ-Ud-xPC" secondAttribute="leading" constant="8" id="dLW-qC-g2j"/>
+                                                <constraint firstItem="XUa-RZ-kXP" firstAttribute="top" secondItem="IsQ-Ud-xPC" secondAttribute="top" id="lEk-JL-t2f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="XUa-RZ-kXP" id="OJ3-5k-tUU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ckx-b9-Dzy" firstAttribute="leading" secondItem="DIE-fU-eMF" secondAttribute="leading" id="MMf-ZK-Rkh"/>
+                            <constraint firstAttribute="trailing" secondItem="ckx-b9-Dzy" secondAttribute="trailing" id="Mgv-2B-EQr"/>
+                            <constraint firstItem="ckx-b9-Dzy" firstAttribute="top" secondItem="DIE-fU-eMF" secondAttribute="top" id="SMk-tO-kmf"/>
+                            <constraint firstItem="vsk-Jv-Q1e" firstAttribute="top" secondItem="ckx-b9-Dzy" secondAttribute="bottom" id="ulv-Jt-2GJ"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="tableView" destination="ckx-b9-Dzy" id="uN0-z3-AKi"/>
+                        <outlet property="tableViewHeightConstraint" destination="1Iq-Or-FeR" id="4rW-o3-o7o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N6R-Zt-guJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="605.60000000000002" y="171.81409295352324"/>
         </scene>
     </scenes>
     <resources>
