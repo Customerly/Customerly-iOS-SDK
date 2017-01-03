@@ -39,11 +39,15 @@ class CustomerlySurveyViewController: CyViewController {
         //let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyPickerViewController") as! CySurveyPickerViewController
         
         //Slider
-        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveySliderViewController") as! CySurveySliderViewController
-        surveyComponent.horizontalSlider.minimumValue = 10
-        surveyComponent.horizontalSlider.maximumValue = 100
-        surveyComponent.minLabel.text = "10"
-        surveyComponent.maxLabel.text = "100"
+//        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveySliderViewController") as! CySurveySliderViewController
+//        surveyComponent.horizontalSlider.minimumValue = 10
+//        surveyComponent.horizontalSlider.maximumValue = 100
+//        surveyComponent.minLabel.text = "10"
+//        surveyComponent.maxLabel.text = "100"
+        
+        //Stars
+        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyStarsViewController") as! CySurveyStarsViewController
+        
         
         
     }

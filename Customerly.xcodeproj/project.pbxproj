@@ -74,6 +74,7 @@
 		45E61F011E1984810088D6C5 /* CySurveyButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E61F001E1984810088D6C5 /* CySurveyButtonTableViewCell.swift */; };
 		45F9E0AF1E1C46D300C7241F /* CySurveyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0AE1E1C46D300C7241F /* CySurveyPickerViewController.swift */; };
 		45F9E0B11E1C4AF300C7241F /* CySurveySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B01E1C4AF300C7241F /* CySurveySliderViewController.swift */; };
+		45F9E0B31E1C532B00C7241F /* CySurveyStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */; };
 		45FA19B91DEB423600D26059 /* CyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19B81DEB423600D26059 /* CyView.swift */; };
 		45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */; };
 		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
@@ -204,6 +205,7 @@
 		45E61F001E1984810088D6C5 /* CySurveyButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyButtonTableViewCell.swift; sourceTree = "<group>"; };
 		45F9E0AE1E1C46D300C7241F /* CySurveyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyPickerViewController.swift; sourceTree = "<group>"; };
 		45F9E0B01E1C4AF300C7241F /* CySurveySliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveySliderViewController.swift; sourceTree = "<group>"; };
+		45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyStarsViewController.swift; sourceTree = "<group>"; };
 		45FA19B81DEB423600D26059 /* CyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyView.swift; sourceTree = "<group>"; };
 		45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				45E61EFE1E1983FA0088D6C5 /* CySurveyListViewController.swift */,
 				45F9E0AE1E1C46D300C7241F /* CySurveyPickerViewController.swift */,
 				45F9E0B01E1C4AF300C7241F /* CySurveySliderViewController.swift */,
+				45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */,
 			);
 			name = Survey;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */,
 				455CE18C1DE0AB4500FF65DC /* CyStorage.swift in Sources */,
 				45282DA61DFF12470021E7F9 /* CyMessageSocketModel.swift in Sources */,
+				45F9E0B31E1C532B00C7241F /* CySurveyStarsViewController.swift in Sources */,
 				455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */,
 				45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */,
 				458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */,

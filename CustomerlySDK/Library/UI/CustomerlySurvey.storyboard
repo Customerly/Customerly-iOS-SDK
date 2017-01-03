@@ -74,7 +74,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lig-AW-tB1" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="58" width="299" height="21"/>
+                                        <rect key="frame" x="14" y="58" width="287" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="3MN-fx-JaK"/>
                                         </constraints>
@@ -83,7 +83,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zb-I7-jaR" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="87" width="299" height="21"/>
+                                        <rect key="frame" x="14" y="87" width="287" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0qm-si-ll8"/>
                                         </constraints>
@@ -94,13 +94,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="lig-AW-tB1" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" constant="8" id="0pQ-CE-1Hn"/>
-                                    <constraint firstAttribute="trailing" secondItem="7Zb-I7-jaR" secondAttribute="trailing" constant="8" id="1ag-sq-50o"/>
-                                    <constraint firstAttribute="trailing" secondItem="lig-AW-tB1" secondAttribute="trailing" constant="8" id="1bi-zO-x9N"/>
+                                    <constraint firstItem="lig-AW-tB1" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" constant="14" id="0pQ-CE-1Hn"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Zb-I7-jaR" secondAttribute="trailing" constant="14" id="1ag-sq-50o"/>
+                                    <constraint firstAttribute="trailing" secondItem="lig-AW-tB1" secondAttribute="trailing" constant="14" id="1bi-zO-x9N"/>
                                     <constraint firstItem="tLC-jz-ObF" firstAttribute="top" secondItem="fy4-Dy-kPY" secondAttribute="top" id="1ty-EX-hcw"/>
                                     <constraint firstAttribute="height" priority="750" constant="120" id="9mA-Fk-X7y"/>
                                     <constraint firstItem="7Zb-I7-jaR" firstAttribute="top" secondItem="lig-AW-tB1" secondAttribute="bottom" constant="8" id="ELD-qG-CAh"/>
-                                    <constraint firstItem="7Zb-I7-jaR" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" constant="8" id="av5-Py-cwu"/>
+                                    <constraint firstItem="7Zb-I7-jaR" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" constant="14" id="av5-Py-cwu"/>
                                     <constraint firstItem="lig-AW-tB1" firstAttribute="top" secondItem="tLC-jz-ObF" secondAttribute="bottom" constant="8" id="dCr-iO-CpY"/>
                                     <constraint firstAttribute="trailing" secondItem="tLC-jz-ObF" secondAttribute="trailing" id="dxC-yh-9V5"/>
                                     <constraint firstItem="tLC-jz-ObF" firstAttribute="leading" secondItem="fy4-Dy-kPY" secondAttribute="leading" id="rIG-7F-aog"/>
@@ -384,10 +384,109 @@
             </objects>
             <point key="canvasLocation" x="1965.5999999999999" y="171.81409295352324"/>
         </scene>
+        <!--Cy Survey Stars View Controller-->
+        <scene sceneID="mBl-fg-hys">
+            <objects>
+                <viewController storyboardIdentifier="CySurveyStarsViewController" id="8ar-mD-Dz9" customClass="CySurveyStarsViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yjG-88-cW6"/>
+                        <viewControllerLayoutGuide type="bottom" id="DLX-Ii-NTZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ewf-ac-VYb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-sp-zyh" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="63" y="15" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HJN-4i-jza"/>
+                                    <constraint firstAttribute="width" constant="40" id="LZE-wy-G70"/>
+                                </constraints>
+                                <state key="normal" image="survey_star_full"/>
+                                <connections>
+                                    <action selector="selectStars:" destination="8ar-mD-Dz9" eventType="touchUpInside" id="crh-ZW-E9x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1a-pN-f91" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="115" y="15" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="GlQ-jH-Rap"/>
+                                    <constraint firstAttribute="height" constant="40" id="T0P-hB-VUo"/>
+                                </constraints>
+                                <state key="normal" image="survey_star_full"/>
+                                <connections>
+                                    <action selector="selectStars:" destination="8ar-mD-Dz9" eventType="touchUpInside" id="ftZ-iA-HHC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-16-vLr" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="167" y="15" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5OZ-XM-h2T"/>
+                                    <constraint firstAttribute="width" constant="40" id="O2f-BO-AUT"/>
+                                </constraints>
+                                <state key="normal" image="survey_star_full"/>
+                                <connections>
+                                    <action selector="selectStars:" destination="8ar-mD-Dz9" eventType="touchUpInside" id="mmT-ao-ufI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OI3-LB-EE6" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="219" y="15" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6B4-Yu-Skr"/>
+                                    <constraint firstAttribute="width" constant="40" id="pXK-Ro-zxw"/>
+                                </constraints>
+                                <state key="normal" image="survey_star_full"/>
+                                <connections>
+                                    <action selector="selectStars:" destination="8ar-mD-Dz9" eventType="touchUpInside" id="oeJ-Fp-jTY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nX8-fl-HBi" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="271" y="15" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5nu-lo-n70"/>
+                                    <constraint firstAttribute="width" constant="40" id="Jla-oh-bnQ"/>
+                                </constraints>
+                                <state key="normal" image="survey_star_full"/>
+                                <connections>
+                                    <action selector="selectStars:" destination="8ar-mD-Dz9" eventType="touchUpInside" id="IJz-Jr-DF2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OI3-LB-EE6" firstAttribute="leading" secondItem="zmn-16-vLr" secondAttribute="trailing" constant="12" id="0Vq-7l-8A1"/>
+                            <constraint firstItem="zmn-16-vLr" firstAttribute="centerX" secondItem="ewf-ac-VYb" secondAttribute="centerX" id="80J-h1-Cow"/>
+                            <constraint firstItem="nX8-fl-HBi" firstAttribute="leading" secondItem="OI3-LB-EE6" secondAttribute="trailing" constant="12" id="BIN-lR-kYz"/>
+                            <constraint firstItem="t1a-pN-f91" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="J2i-J2-qeF"/>
+                            <constraint firstItem="zmn-16-vLr" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="MQT-xl-7bK"/>
+                            <constraint firstItem="zmn-16-vLr" firstAttribute="leading" secondItem="t1a-pN-f91" secondAttribute="trailing" constant="12" id="aQl-hH-sE0"/>
+                            <constraint firstItem="OI3-LB-EE6" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="bWW-Fn-vyB"/>
+                            <constraint firstItem="UGe-sp-zyh" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="jfG-K6-AhV"/>
+                            <constraint firstItem="nX8-fl-HBi" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="lEx-i7-BW2"/>
+                            <constraint firstItem="zmn-16-vLr" firstAttribute="top" secondItem="ewf-ac-VYb" secondAttribute="top" constant="15" id="lRn-Uq-wdH"/>
+                            <constraint firstItem="t1a-pN-f91" firstAttribute="leading" secondItem="UGe-sp-zyh" secondAttribute="trailing" constant="12" id="npV-as-CZg"/>
+                            <constraint firstAttribute="bottom" secondItem="zmn-16-vLr" secondAttribute="bottom" constant="15" id="yup-SS-Hgi"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="70"/>
+                    <connections>
+                        <outlet property="starButton1" destination="UGe-sp-zyh" id="Evv-oC-eIi"/>
+                        <outlet property="starButton2" destination="t1a-pN-f91" id="9wD-wO-edt"/>
+                        <outlet property="starButton3" destination="zmn-16-vLr" id="nLP-Lr-yKa"/>
+                        <outlet property="starButton4" destination="OI3-LB-EE6" id="hYy-Jf-1Qo"/>
+                        <outlet property="starButton5" destination="nX8-fl-HBi" id="phf-Bh-7pc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iZr-o7-jaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2626" y="172"/>
+        </scene>
     </scenes>
     <resources>
         <image name="survey_back_button" width="20" height="20"/>
         <image name="survey_close_button" width="20" height="20"/>
         <image name="survey_radiobutton" width="20" height="20"/>
+        <image name="survey_star_full" width="40" height="40"/>
     </resources>
 </document>
