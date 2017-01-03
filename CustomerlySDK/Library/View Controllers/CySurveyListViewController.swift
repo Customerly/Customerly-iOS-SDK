@@ -13,6 +13,8 @@ class CySurveyListViewController: CyViewController {
     @IBOutlet weak var tableView: CyTableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
+    var showRadioButtons = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,11 +36,11 @@ extension CySurveyListViewController: UITableViewDelegate{
 
 extension CySurveyListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "surveyButtonCell", for: indexPath) as! CySurveyButtonTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: (showRadioButtons == false ? "surveyButtonCell" : "radioButtonCell"), for: indexPath) as! CySurveyButtonTableViewCell
         
         tableViewHeightConstraint.constant = tableView.contentSize.height
         

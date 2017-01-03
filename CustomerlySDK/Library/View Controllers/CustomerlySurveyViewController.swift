@@ -32,16 +32,12 @@ class CustomerlySurveyViewController: CyViewController {
         headerTitleLabel.text = "Survey"
         alertView.layer.cornerRadius = 4
         
-        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyListViewController") as? (UIView?, CySurveyListViewController?)
-//        if let aView = surveyComponent?.0{
-//            aView.addConstraint(NSLayoutConstraint(item: aView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 1000))
-//        }
-        
+        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyListViewController") as! CySurveyListViewController?
         
     }
     
     @discardableResult
-    func loadSurveyViewControllerComponent(viewControllerIdentifier: String) -> (view:UIView?, viewController:UIViewController?){
+    func loadSurveyViewControllerComponent(viewControllerIdentifier: String) -> (UIViewController?){
         
         let controller = CyViewController.cyViewControllerFromStoryboard(storyboardName: "CustomerlySurvey", vcIdentifier: viewControllerIdentifier)
         addChildViewController(controller)
@@ -58,9 +54,9 @@ class CustomerlySurveyViewController: CyViewController {
                 NSLayoutConstraint(item: aView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
                 ])
             
-            return (aView, controller)
+            return (controller)
         }
-        return (nil, nil)
+        return nil
     }
     
     

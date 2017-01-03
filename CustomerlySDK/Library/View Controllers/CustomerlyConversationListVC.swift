@@ -30,7 +30,7 @@ class CustomerlyConversationListVC: CyViewController {
         tableView.dataSource = self
         data = CyStorage.getCyDataModel()
         
-        title = "Conversations"
+        title = "Support"
         addLeftCloseButton()
         
         tableView.addPullToRefresh {

@@ -152,7 +152,7 @@
                                     <constraint firstAttribute="height" constant="300" id="1Iq-Or-FeR"/>
                                 </constraints>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="hkO-zM-zt6">
-                                    <rect key="frame" x="0.0" y="76" width="375" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="124" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -188,6 +188,35 @@
                                             <outlet property="button" destination="XUa-RZ-kXP" id="OJ3-5k-tUU"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="radioButtonCell" rowHeight="48" id="JZv-wM-UfV" customClass="CySurveyButtonTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="76" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JZv-wM-UfV" id="btq-Eg-sIx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0N-4T-rg8" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Button" image="survey_radiobutton">
+                                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a0N-4T-rg8" firstAttribute="leading" secondItem="btq-Eg-sIx" secondAttribute="leading" constant="8" id="12w-33-Tqb"/>
+                                                <constraint firstAttribute="trailing" secondItem="a0N-4T-rg8" secondAttribute="trailing" constant="8" id="JsP-L0-zzy"/>
+                                                <constraint firstAttribute="bottom" secondItem="a0N-4T-rg8" secondAttribute="bottom" constant="8" id="rae-44-2Ak"/>
+                                                <constraint firstItem="a0N-4T-rg8" firstAttribute="top" secondItem="btq-Eg-sIx" secondAttribute="top" id="ytC-vy-Pdr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="a0N-4T-rg8" id="y2w-At-2IH"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -214,5 +243,6 @@
     <resources>
         <image name="survey_back_button" width="20" height="20"/>
         <image name="survey_close_button" width="20" height="20"/>
+        <image name="survey_radiobutton" width="20" height="20"/>
     </resources>
 </document>
