@@ -239,6 +239,65 @@
             </objects>
             <point key="canvasLocation" x="605.60000000000002" y="171.81409295352324"/>
         </scene>
+        <!--Cy Survey Picker View Controller-->
+        <scene sceneID="b34-6X-jna">
+            <objects>
+                <viewController storyboardIdentifier="CySurveyPickerViewController" id="Sc7-2K-iTm" customClass="CySurveyPickerViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nwn-SM-TJE"/>
+                        <viewControllerLayoutGuide type="bottom" id="O6a-qQ-sOF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="19O-uW-rYU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za2-xs-UAK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QG0-CB-USN"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbe-gf-LCk" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="123" y="110" width="129" height="40"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.59215686270000001" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="c6b-Oq-WMh"/>
+                                    <constraint firstAttribute="width" constant="129" id="oAx-lg-cRC"/>
+                                </constraints>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirm:" destination="Sc7-2K-iTm" eventType="touchUpInside" id="VjY-FG-aKC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="za2-xs-UAK" firstAttribute="top" secondItem="19O-uW-rYU" secondAttribute="top" id="Khl-6U-Fk3"/>
+                            <constraint firstItem="bbe-gf-LCk" firstAttribute="centerX" secondItem="19O-uW-rYU" secondAttribute="centerX" id="SVM-QO-l7O"/>
+                            <constraint firstItem="O6a-qQ-sOF" firstAttribute="top" secondItem="bbe-gf-LCk" secondAttribute="bottom" constant="10" id="bcm-VY-cuq"/>
+                            <constraint firstItem="za2-xs-UAK" firstAttribute="leading" secondItem="19O-uW-rYU" secondAttribute="leading" id="lMe-0p-XaZ"/>
+                            <constraint firstAttribute="trailing" secondItem="za2-xs-UAK" secondAttribute="trailing" id="uYO-RC-HmJ"/>
+                            <constraint firstItem="bbe-gf-LCk" firstAttribute="top" secondItem="za2-xs-UAK" secondAttribute="bottom" constant="10" id="yoY-I4-9go"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="160"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="bbe-gf-LCk" id="WE8-OD-48N"/>
+                        <outlet property="picker" destination="za2-xs-UAK" id="ohb-ok-u0q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccg-CJ-DDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269.5999999999999" y="171.81409295352324"/>
+        </scene>
     </scenes>
     <resources>
         <image name="survey_back_button" width="20" height="20"/>

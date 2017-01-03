@@ -32,7 +32,11 @@ class CustomerlySurveyViewController: CyViewController {
         headerTitleLabel.text = "Survey"
         alertView.layer.cornerRadius = 4
         
-        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyListViewController") as! CySurveyListViewController?
+        //List
+        //let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyListViewController") as! CySurveyListViewController?
+        
+        //Picker
+        //let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyPickerViewController") as! CySurveyPickerViewController
         
     }
     
