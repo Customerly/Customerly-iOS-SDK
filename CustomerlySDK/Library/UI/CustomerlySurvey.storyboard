@@ -352,7 +352,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="confirm:" destination="Sc7-2K-iTm" eventType="touchUpInside" id="XfF-8Y-cXc"/>
                                     <action selector="confirm:" destination="6KM-YN-gjd" eventType="touchUpInside" id="uyP-XX-0RT"/>
                                 </connections>
                             </button>
@@ -481,6 +480,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZr-o7-jaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626" y="172"/>
+        </scene>
+        <!--Cy Survey Text Field View Controller-->
+        <scene sceneID="AGN-Wj-Ilm">
+            <objects>
+                <viewController storyboardIdentifier="CySurveyTextFieldViewController" id="Cq1-X5-xf8" customClass="CySurveyTextFieldViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dSo-tf-ub0"/>
+                        <viewControllerLayoutGuide type="bottom" id="lle-E1-KPe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="agK-2e-0C6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oEf-A9-hkd" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="bQb-D0-YEw"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-cu-Cno" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="123" y="52" width="129" height="40"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.59215686270000001" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mb6-6H-LBe"/>
+                                    <constraint firstAttribute="width" constant="129" id="wum-Fh-f2m"/>
+                                </constraints>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirm:" destination="Cq1-X5-xf8" eventType="touchUpInside" id="u3I-aa-YhA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oEf-A9-hkd" firstAttribute="top" secondItem="agK-2e-0C6" secondAttribute="top" id="VYt-HX-b9r"/>
+                            <constraint firstItem="aF3-cu-Cno" firstAttribute="centerX" secondItem="agK-2e-0C6" secondAttribute="centerX" id="dXM-Gj-qUe"/>
+                            <constraint firstItem="lle-E1-KPe" firstAttribute="top" secondItem="aF3-cu-Cno" secondAttribute="bottom" constant="10" id="hn0-oy-LnY"/>
+                            <constraint firstItem="aF3-cu-Cno" firstAttribute="top" secondItem="oEf-A9-hkd" secondAttribute="bottom" constant="10" id="iqR-A9-NU7"/>
+                            <constraint firstAttribute="trailing" secondItem="oEf-A9-hkd" secondAttribute="trailing" id="qOh-UG-QZs"/>
+                            <constraint firstItem="oEf-A9-hkd" firstAttribute="leading" secondItem="agK-2e-0C6" secondAttribute="leading" id="xXz-G6-60O"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="102"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="aF3-cu-Cno" id="hnI-vi-vca"/>
+                        <outlet property="textField" destination="oEf-A9-hkd" id="4K2-Nh-u14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tay-QB-NVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3284" y="171.81409295352324"/>
         </scene>
     </scenes>
     <resources>

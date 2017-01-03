@@ -46,8 +46,10 @@ class CustomerlySurveyViewController: CyViewController {
 //        surveyComponent.maxLabel.text = "100"
         
         //Stars
-        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyStarsViewController") as! CySurveyStarsViewController
+        //let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyStarsViewController") as! CySurveyStarsViewController
         
+        //TextField
+        let surveyComponent = loadSurveyViewControllerComponent(viewControllerIdentifier: "CySurveyTextFieldViewController") as! CySurveyTextFieldViewController
         
         
     }
