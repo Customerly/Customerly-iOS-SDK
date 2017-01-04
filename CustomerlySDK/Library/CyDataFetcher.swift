@@ -188,5 +188,90 @@ class CyDataFetcher: NSObject {
         
         task?.resume()
     }
+    
+    //MARK: API Survey
+    func submitSurvey(surveyRequestModel:CySurveyParamsRequestModel?, completion: @escaping (CySurveyResponseModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.SurveySubmit(surveyRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: JSONParseDictionary(data: data))
+                completion(surveyResponse)
+            }
+        }
+        
+        task?.resume()
+    }
+    
+    func surveyBack(surveyRequestModel:CySurveyParamsRequestModel?, completion: @escaping (CySurveyResponseModel?) -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.SurveyBack(surveyRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: JSONParseDictionary(data: data))
+                completion(surveyResponse)
+            }
+        }
+        
+        task?.resume()
+    }
+    
+    func surveySeen(surveyRequestModel:CySurveyParamsRequestModel?, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.SurveySeen(surveyRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+        
+        task?.resume()
+    }
+    
+    func surveyReject(surveyRequestModel:CySurveyParamsRequestModel?, completion: @escaping () -> Void, failure:@escaping (Error) -> Void){
+        var urlRequest = CyRouting.SurveyReject(surveyRequestModel?.toJSON()).urlRequest
+        urlRequest.httpMethod = "POST"
+        
+        let task = session?.dataTask(with: urlRequest) {
+            (
+            data, response, error) in
+            
+            guard response?.validate() == nil else{
+                failure(response!.validate()!)
+                return
+            }
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+        
+        task?.resume()
+    }
 
 }
+
+

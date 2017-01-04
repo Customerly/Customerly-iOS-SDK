@@ -16,6 +16,10 @@ enum CyRouting{
     case ConversationMessagesRetrieve([String: Any]?)
     case ConversationMessagesRetrieveNews([String: Any]?)
     case MessageSeen([String: Any]?)
+    case SurveySubmit([String: Any]?)
+    case SurveyBack([String: Any]?)
+    case SurveySeen([String: Any]?)
+    case SurveyReject([String: Any]?)
     
     var urlRequest: URLRequest{
         let touple : (path: String, parameters: [String: Any]?) = {
@@ -41,6 +45,19 @@ enum CyRouting{
                 
             case .MessageSeen(let params):
                 return("/message/seen/", params)
+                
+            case .SurveySubmit(let params):
+                return("/survey/submit/", params)
+                
+            case .SurveyBack(let params):
+                return("/survey/back/", params)
+                
+            case .SurveySeen(let params):
+                return("/survey/seen/", params)
+                
+            case .SurveyReject(let params):
+                return("/survey/reject/", params)
+                
             }
         }()
         
