@@ -161,8 +161,11 @@ open class Customerly: NSObject {
      *
      */
     open func openSurvey(from viewController: UIViewController){
-        let surveyVC = CustomerlySurveyViewController.instantiate()
-        viewController.show(surveyVC, sender: self)
+        if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
+            let surveyVC = CustomerlySurveyViewController.instantiate()
+            surveyVC.survey = survey
+            viewController.show(surveyVC, sender: self)
+        }
     }
     
     //MARK: - Socket

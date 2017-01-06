@@ -15,7 +15,8 @@ class CySurveyStarsViewController: CyViewController {
     @IBOutlet weak var starButton3: CyButton!
     @IBOutlet weak var starButton4: CyButton!
     @IBOutlet weak var starButton5: CyButton!
-    
+    var returnClosure: SurveyParamsReturn?
+    var survey: CySurveyResponseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,10 @@ class CySurveyStarsViewController: CyViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func selectedChoice(datas: CySurveyParamsRequestModel? = nil,params:SurveyParamsReturn? = nil){
+        self.returnClosure = params
     }
     
     func selectStars(stars: Int){
@@ -41,6 +46,19 @@ class CySurveyStarsViewController: CyViewController {
     // MARK: Actions
     @IBAction func selectStars(_ sender: UIButton) {
         selectStars(stars: sender.tag)
+        
+        let surveyParams = CySurveyParamsRequestModel(JSON: [:])
+        surveyParams?.survey_id = survey?.survey_id
+        surveyParams?.answer = "\(sender.tag)"
+        if let dataStored = CyStorage.getCyDataModel(){
+            surveyParams?.settings?.user_id = dataStored.user?.user_id
+            surveyParams?.settings?.email = dataStored.user?.email
+            surveyParams?.settings?.name = dataStored.user?.name
+            surveyParams?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            surveyParams?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        self.returnClosure?(surveyParams)
     }
 
 }

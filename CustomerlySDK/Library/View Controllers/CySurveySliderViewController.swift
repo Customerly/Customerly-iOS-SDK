@@ -14,7 +14,8 @@ class CySurveySliderViewController: CyViewController {
     @IBOutlet weak var maxLabel: CyLabel!
     @IBOutlet weak var horizontalSlider: UISlider!
     @IBOutlet weak var confirmButton: CyButton!
-    
+    var returnClosure: SurveyParamsReturn?
+    var survey: CySurveyResponseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,9 @@ class CySurveySliderViewController: CyViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func selectedChoice(datas: CySurveyParamsRequestModel? = nil,params:SurveyParamsReturn? = nil){
+        self.returnClosure = params
+    }
 
     //MARK: Actions
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -32,8 +36,18 @@ class CySurveySliderViewController: CyViewController {
     }
     
     @IBAction func confirm(_ sender: Any) {
-        
-        //return Int(horizontalSlider.value)
+        let surveyParams = CySurveyParamsRequestModel(JSON: [:])
+        surveyParams?.survey_id = survey?.survey_id
+        surveyParams?.answer = "\(Int(horizontalSlider.value))"
+        if let dataStored = CyStorage.getCyDataModel(){
+            surveyParams?.settings?.user_id = dataStored.user?.user_id
+            surveyParams?.settings?.email = dataStored.user?.email
+            surveyParams?.settings?.name = dataStored.user?.name
+            surveyParams?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            surveyParams?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        self.returnClosure?(surveyParams)
     }
 
 }

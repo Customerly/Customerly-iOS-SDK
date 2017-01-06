@@ -203,8 +203,10 @@ class CyDataFetcher: NSObject {
                 return
             }
             DispatchQueue.main.async {
-                let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: JSONParseDictionary(data: data))
-                completion(surveyResponse)
+                if let surveyData = JSONParseDictionary(data: data)["data"] as? [String:Any]{
+                    let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: surveyData)
+                    completion(surveyResponse)
+                }
             }
         }
         
@@ -224,8 +226,10 @@ class CyDataFetcher: NSObject {
                 return
             }
             DispatchQueue.main.async {
-                let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: JSONParseDictionary(data: data))
-                completion(surveyResponse)
+                if let surveyData = JSONParseDictionary(data: data)["data"] as? [String:Any]{
+                    let surveyResponse = Mapper<CySurveyResponseModel>().map(JSON: surveyData)
+                    completion(surveyResponse)
+                }
             }
         }
         

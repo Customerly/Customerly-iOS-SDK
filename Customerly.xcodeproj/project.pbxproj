@@ -65,7 +65,7 @@
 		455CE19C1DE0BA7D00FF65DC /* CustomerlySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
 		4579C0451E1D988A0035DAC4 /* CySurveyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */; };
-		4579C0471E1DA00D0035DAC4 /* CySurveyChoiseResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0461E1DA00D0035DAC4 /* CySurveyChoiseResponseModel.swift */; };
+		4579C0471E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */; };
 		4579C0491E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */; };
 		458781C31DFC658700851DD9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 458781C21DFC658700851DD9 /* MessageCell.xib */; };
 		458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C41DFC673E00851DD9 /* CyTextView.swift */; };
@@ -200,7 +200,7 @@
 		455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyChatStartVC.swift; sourceTree = "<group>"; };
 		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
 		4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyResponseModel.swift; sourceTree = "<group>"; };
-		4579C0461E1DA00D0035DAC4 /* CySurveyChoiseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyChoiseResponseModel.swift; sourceTree = "<group>"; };
+		4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyChoiceResponseModel.swift; sourceTree = "<group>"; };
 		4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyParamsRequestModel.swift; sourceTree = "<group>"; };
 		458781C21DFC658700851DD9 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
@@ -453,7 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */,
-				4579C0461E1DA00D0035DAC4 /* CySurveyChoiseResponseModel.swift */,
+				4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */,
 				4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */,
 			);
 			name = Survey;
@@ -844,7 +844,7 @@
 				45282DA61DFF12470021E7F9 /* CyMessageSocketModel.swift in Sources */,
 				45F9E0B31E1C532B00C7241F /* CySurveyStarsViewController.swift in Sources */,
 				455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */,
-				4579C0471E1DA00D0035DAC4 /* CySurveyChoiseResponseModel.swift in Sources */,
+				4579C0471E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift in Sources */,
 				45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */,
 				458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */,
 				45FF40A41E12E4AB002707C3 /* CustomerlyGalleryViewController.swift in Sources */,

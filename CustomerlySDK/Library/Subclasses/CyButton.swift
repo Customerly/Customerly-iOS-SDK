@@ -69,7 +69,6 @@ class CyButton: UIButton {
     //MARK: Action Closure
     func touchUpInside(action: (() -> Void)? = nil){
         self.action = action
-        
     }
     
     func tapped(sender: CyButton) {

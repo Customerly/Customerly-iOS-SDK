@@ -18,7 +18,8 @@ class CySurveyResponseModel: Mappable {
     var question_type: Int?
     var limit_from: Int?
     var limit_to: Int?
-    var choises: [CySurveyChoiseResponseModel]?
+    var step: Int?
+    var choices: [CySurveyChoiceResponseModel]?
     
     required init?(map: Map) {
     }
@@ -33,6 +34,7 @@ class CySurveyResponseModel: Mappable {
         question_type <- map["question.type"]
         limit_from <- map["question.limit_from"]
         limit_to <- map["question.limit_to"]
-        choises <- map["question.choises"]
+        step <- map["question.step"]
+        choices <- map["question.choices"]
     }
 }
