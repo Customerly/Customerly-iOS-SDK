@@ -27,7 +27,7 @@ class CySurveyListViewController: CyViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func selectedChoice(datas: CySurveyParamsRequestModel? = nil,params:SurveyParamsReturn? = nil){
+    func selectedChoice(datas: CySurveyParamsRequestModel? = nil, params:SurveyParamsReturn? = nil){
         self.returnClosure = params
     }
     

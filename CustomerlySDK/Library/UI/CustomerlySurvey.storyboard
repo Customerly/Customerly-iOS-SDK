@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2Z-Nr-ZZh" userLabel="background" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                            <imageView alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2Z-Nr-ZZh" userLabel="background" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="alertView" destination="fy4-Dy-kPY" id="iTz-st-xO3"/>
                         <outlet property="backButton" destination="dbw-5z-R7Q" id="7Jz-4c-1vB"/>
+                        <outlet property="backgroundAlertView" destination="w2Z-Nr-ZZh" id="aH6-f2-zCZ"/>
                         <outlet property="headerTitleLabel" destination="ykT-4W-iT6" id="pMa-mv-MTQ"/>
                         <outlet property="headerView" destination="tLC-jz-ObF" id="i3n-Mi-ufE"/>
                         <outlet property="surveyDescriptionLabel" destination="7Zb-I7-jaR" id="t5B-SB-cUm"/>

@@ -10,6 +10,12 @@ import UIKit
 
 typealias SurveyParamsReturn = ((CySurveyParamsRequestModel?) -> Void)
 
+public enum CySurveyDismiss: Int {
+    case postponed = 0 //survey closed without invalidation (tap out of alert)
+    case completed = 1 //survey closed after that user completed it (user closed survey in "thank you message" step)
+    case rejected = 2 //survey closed and reject (user closed survey before "thank you message" step)
+}
+
 enum CySurveyType: Int {
     case buttons = 0
     case radiobuttons = 1
@@ -23,14 +29,17 @@ enum CySurveyType: Int {
 
 class CustomerlySurveyViewController: CyViewController {
     
+    @IBOutlet weak var backgroundAlertView: CyImageView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var headerTitleLabel: CyLabel!
     @IBOutlet weak var surveyTitleLabel: CyLabel!
     @IBOutlet weak var surveyDescriptionLabel: CyLabel!
-    
     var survey: CySurveyResponseModel?
+    var surveyOnClosure: ((Void) -> Void)?
+    var surveyOnDismiss: ((CySurveyDismiss?) -> Void)?
+    var firstSurveyVC: CustomerlySurveyViewController?
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlySurveyViewController
@@ -44,6 +53,15 @@ class CustomerlySurveyViewController: CyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+         * firstSurveyVC is a reference to the first survey VC. Is useful to send surveyOnDismiss messages
+         * If no firstSurveyVC is allocated, the firstSurveyVC will be the current survey VC
+         * firstSurveyVC will be passed to the next surveyVC
+         */
+        if firstSurveyVC == nil{
+            firstSurveyVC = self
+        }
+        
         headerTitleLabel.text = "Survey"
         alertView.layer.cornerRadius = 4
         
@@ -52,19 +70,33 @@ class CustomerlySurveyViewController: CyViewController {
             backButton.isHidden = true
         }
         
+        //One Tap on background view to dismiss survey
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissVCWithoutInvalidation))
+        tapGesture.cancelsTouchesInView = false
+        backgroundAlertView.addGestureRecognizer(tapGesture)
+        
         showSurvey()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if survey != nil{
+            surveyOnClosure?()
+        }
     }
     
     func showSurvey(){
         
         guard survey != nil else {
-            dismiss()
+            dismissVC()
             return
         }
         
         surveySeenAPI()
         
         if let surveyModel = survey{
+            updateStoredSurvey()
             
             if let questionTitle = surveyModel.question_title{
                 surveyTitleLabel.text = questionTitle
@@ -73,18 +105,17 @@ class CustomerlySurveyViewController: CyViewController {
                 surveyDescriptionLabel.text = questionSubtitle
             }
             
-            //No more survey, then thank you message
+            //No more survey, then show html thank you message
             if surveyModel.question_type == nil{
                 backButton.isHidden = true
                 do{
-                let style = "<style>p{margin:0;padding:0}</style>"
-                let attributedMessage = try NSMutableAttributedString(data: ((style+(surveyModel.thankyou_text ?? "")).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                surveyTitleLabel.attributedText = attributedMessage
+                    let style = "<style>p{margin:0;padding:0}</style>"
+                    let attributedMessage = try NSMutableAttributedString(data: ((style+(surveyModel.thankyou_text ?? "")).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                    surveyTitleLabel.attributedText = attributedMessage
                     alertView.addConstraints([
-                        NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: 12)
-                    ])
+                        NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
+                        ])
                 }
-                
                 catch{
                     
                 }
@@ -158,12 +189,10 @@ class CustomerlySurveyViewController: CyViewController {
                 })
                 break
             default:
-                dismiss()
+                dismissVC()
                 return
             }
         }
-        
-        
     }
     
     /*
@@ -196,6 +225,15 @@ class CustomerlySurveyViewController: CyViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: Closures
+    func onShow(on: (() -> Void)?){
+        self.surveyOnClosure = on
+    }
+    
+    func onDismiss(onDis: ((CySurveyDismiss?) -> Void)?){
+        self.surveyOnDismiss = onDis
     }
     
     //MARK: APIs
@@ -263,26 +301,25 @@ class CustomerlySurveyViewController: CyViewController {
             surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
         }
         
-        removeStoredSurvey()
         CyDataFetcher.sharedInstance.surveyReject(surveyRequestModel: surveyParams, completion: {
-            self.dismiss()
         }) { (error) in
-            self.dismiss()
         }
+        
+        //If the survey contain only the "thank you message", dismiss with completion, else with rejection
+        survey?.question_type == nil ? dismissVCWithCompletion() : dismissVCWithRejection()
+        removeStoredSurvey()
     }
     
     //MARK: Actions
     func showNextQuestion(surveyResponse: CySurveyResponseModel?){
         if let response = surveyResponse{
             let surveyVC = CustomerlySurveyViewController.instantiate()
-            
+            surveyVC.firstSurveyVC = firstSurveyVC
             surveyVC.survey = response
             
             self.presentingViewController?.dismiss(animated: false, completion: nil)
             self.presentingViewController?.present(surveyVC, animated: true, completion:nil)
         }
-        
-        
     }
     
     @IBAction func back(_ sender: Any) {
@@ -293,14 +330,39 @@ class CustomerlySurveyViewController: CyViewController {
         surveyRejectAPI()
     }
     
-    func dismiss(){
-        self.dismissVC()
+    //Survey dismiss
+    func dismissVCWithoutInvalidation(){
+        firstSurveyVC?.surveyOnDismiss?(CySurveyDismiss.postponed)
+        dismissVC()
     }
     
+    func dismissVCWithCompletion(){
+        firstSurveyVC?.surveyOnDismiss?(CySurveyDismiss.completed)
+        dismissVC()
+    }
+    
+    func dismissVCWithRejection(){
+        firstSurveyVC?.surveyOnDismiss?(CySurveyDismiss.rejected)
+        dismissVC()
+    }
+    
+    
+    //MARK: Utils
     func removeStoredSurvey(){
         if let data = CyStorage.getCyDataModel(){
             data.last_surveys?.removeFirst()
             CyStorage.storeCyDataModel(cyData: data)
         }
     }
+    
+    func updateStoredSurvey(){
+        if let data = CyStorage.getCyDataModel(){
+            data.last_surveys?.removeFirst()
+            if survey != nil{
+                data.last_surveys?.insert(survey!, at: 0)
+                CyStorage.storeCyDataModel(cyData: data)
+            }
+        }
+    }
+    
 }

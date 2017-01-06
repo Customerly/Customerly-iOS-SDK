@@ -160,12 +160,27 @@ open class Customerly: NSObject {
      * Open a Survey View Controller if a survey is available
      *
      */
-    open func openSurvey(from viewController: UIViewController){
+    @discardableResult
+    open func openSurvey(from viewController: UIViewController, onShow: (() -> Void)? = nil, onDismiss: ((CySurveyDismiss?) -> Void)? = nil){
         if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
             let surveyVC = CustomerlySurveyViewController.instantiate()
             surveyVC.survey = survey
             viewController.show(surveyVC, sender: self)
+            surveyVC.onShow(on: { 
+                onShow!()
+            })
+            surveyVC.onDismiss(onDis: { (cySurveyDismiss) in
+                onDismiss!(cySurveyDismiss)
+            })
         }
+    }
+    
+    open func isSurveyAvailable() -> Bool{
+        if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
+            return true
+        }
+        
+        return false
     }
     
     //MARK: - Socket

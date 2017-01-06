@@ -53,7 +53,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openSurveyIfAvailable(_ sender: Any) {
-        Customerly.sharedInstance.openSurvey(from: self)
+        
+        Customerly.sharedInstance.openSurvey(from: self, onShow: {
+            print("Survey showed")
+        }) { (surveyDismiss) in
+            if surveyDismiss == .postponed{
+                print("Survey postponed")
+            }
+            else if surveyDismiss == .completed{
+                print("Survey completed")
+            }
+            else if surveyDismiss == .rejected{
+                print("Survey rejected")
+            }
+        }
+        
+        //Or simply
+        //Customerly.sharedInstance.openSurvey(from: self)
     }
     
     
