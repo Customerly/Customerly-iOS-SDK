@@ -80,6 +80,9 @@ class CustomerlySurveyViewController: CyViewController {
                 let style = "<style>p{margin:0;padding:0}</style>"
                 let attributedMessage = try NSMutableAttributedString(data: ((style+(surveyModel.thankyou_text ?? "")).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 surveyTitleLabel.attributedText = attributedMessage
+                    alertView.addConstraints([
+                        NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: 12)
+                    ])
                 }
                 
                 catch{
