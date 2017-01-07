@@ -20,7 +20,7 @@ class CustomerlyChatStartVC: CyViewController{
     
     var conversationId: Int?
     var messages : [CyMessageModel] = []
-    
+    var onMessageSocketUUID: UUID? //useful to remove handler "on message" when view controller is dismissed
     
     //MARK: - Initialiser
     static func instantiate() -> CustomerlyChatStartVC
@@ -47,6 +47,13 @@ class CustomerlyChatStartVC: CyViewController{
         requestConversationMessages(conversation_id: conversationId)
         
         onMessageArrived()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //On vc dismiss remove (off) "on message" socket handler
+        CySocket.sharedInstance.removeHandlerWithUUID(uuid: onMessageSocketUUID)
     }
     
     override func didReceiveMemoryWarning() {
@@ -184,8 +191,7 @@ class CustomerlyChatStartVC: CyViewController{
     func onMessageArrived(){
         if CySocket.sharedInstance.isConnected(){
             //New message is arrived
-            CySocket.sharedInstance.onMessage { (message) in
-                
+            onMessageSocketUUID = CySocket.sharedInstance.onMessage { (message) in
                 self.requestConversationMessagesNews(conversation_id: self.conversationId, timestamp: message?.timestamp)
             }
         }

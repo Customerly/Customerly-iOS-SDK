@@ -134,26 +134,30 @@ class CySocket: NSObject {
     }
     
     //MARK: On
-    func onTyping(typing: @escaping ((CyTypingSocketModel?) -> Void)){
-        socket?.off(CySocketEvent.typing.rawValue)
-        socket?.on(CySocketEvent.typing.rawValue, callback: { (data, ack) in
+    func onTyping(typing: @escaping ((CyTypingSocketModel?) -> Void)) -> UUID?{
+        //socket?.off(CySocketEvent.typing.rawValue) off all handlers under "typing"
+        let uuid = socket?.on(CySocketEvent.typing.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let typingModel = CyTypingSocketModel(JSON: data.first as! Dictionary)
                 typing(typingModel)
             }
         })
+        
+        return uuid
     }
     
-    func onMessage(message: @escaping ((CyMessageSocketModel?) -> Void)){
-        socket?.off(CySocketEvent.message.rawValue)
-        self.socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
+    func onMessage(message: @escaping ((CyMessageSocketModel?) -> Void)) -> UUID?{
+        //socket?.off(CySocketEvent.message.rawValue) off all handlers under "message"
+        let uuid = self.socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let messageModel = CyMessageSocketModel(JSON: data.first as! Dictionary)
                 message(messageModel)
             }
         })
+        
+        return uuid
     }
-
+    
     //MARK: - Utils
     func isConnected() -> Bool{
         if socket?.status == .connected{
@@ -163,4 +167,9 @@ class CySocket: NSObject {
         return false
     }
     
+    func removeHandlerWithUUID(uuid: UUID?){
+        if uuid != nil{
+            socket?.off(id: uuid!)
+        }
+    }
 }
