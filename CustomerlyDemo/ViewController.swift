@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addAttribute(_ sender: Any) {
-        Customerly.sharedInstance.update(attributes: [attributeNameTextField.text ?? "" : attributeValueTextField.text ?? ""])
+        Customerly.sharedInstance.setAttributes(attributes: [attributeNameTextField.text ?? "" : attributeValueTextField.text ?? ""])
     }
     
     @IBAction func registerUser(_ sender: Any) {
@@ -72,6 +72,15 @@ class ViewController: UIViewController {
         //Customerly.sharedInstance.openSurvey(from: self)
     }
     
+    @IBAction func getUpdates(_ sender: Any) {
+        Customerly.sharedInstance.update(success: { (newSurvey, newMessage) in
+            print("Update success")
+            print("New survey?", "\(newSurvey)", " - New message?", "\(newMessage)")
+            
+        }) { 
+            print("Update failure")
+        }
+    }
     
     func hideKeyboardOnTap(){
         self.view.endEditing(true)

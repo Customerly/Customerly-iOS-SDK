@@ -38,7 +38,7 @@ open class Customerly: NSObject {
         })
     }
     
-    //MARK: - Register user and update with attributes (alias ping)
+    //MARK: - Register user, get updates and add new attributes
     
     /*
      * If you want to register a user_id, you have to insert also an email.
@@ -51,6 +51,7 @@ open class Customerly: NSObject {
     
     /*
      * If you want to logout a user, call logoutUser() to delete all local data and de-authenticate the user
+     *
      */
     open func logoutUser(){
         CyStorage.deleteCyDataModel()
@@ -59,11 +60,31 @@ open class Customerly: NSObject {
     }
     
     /*
-     * Send an update to Customerly, with optionals attributes.
-     * Attributes need to be only on first level.
-     * Ex: ["Params1": 1, "Params2: "Hello"].
+     * Get ad update from Customerly about surveys and unread messages
+     *
      */
-    open func update(attributes:Dictionary<String, Any?>? = nil){
+    open func update(success: ((_ newSurvey: Bool, _ newMessage: Bool) -> Void)? = nil, failure: (() -> Void)? = nil){
+        ping(success: {
+            var survey = false
+            var message = false
+            if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
+                survey = true
+            }
+            if let _ = CyStorage.getCyDataModel()?.last_messages?.first{
+                message = true
+            }
+            success?(survey, message)
+        }) {
+            failure?()
+        }
+    }
+    
+    /*
+     * Send an update attributes to Customerly, with optionals attributes.
+     * Attributes need to be only on first level.
+     * Ex: ["Params1": 3, "Params2: "Hello"].
+     */
+    open func setAttributes(attributes:Dictionary<String, Any?>? = nil){
         if CyStorage.getCyDataModel()?.user?.is_user == 1{
             ping(attributes: attributes)
         }
@@ -152,7 +173,6 @@ open class Customerly: NSObject {
             chatStartVC.addLeftCloseButton()
             viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
         }
-        
     }
     
     //MARK: - Survey
@@ -166,7 +186,7 @@ open class Customerly: NSObject {
             let surveyVC = CustomerlySurveyViewController.instantiate()
             surveyVC.survey = survey
             viewController.show(surveyVC, sender: self)
-            surveyVC.onShow(on: { 
+            surveyVC.onShow(on: {
                 onShow!()
             })
             surveyVC.onDismiss(onDis: { (cySurveyDismiss) in
