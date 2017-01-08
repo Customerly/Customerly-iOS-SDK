@@ -77,6 +77,9 @@ class ViewController: UIViewController {
             print("Update success")
             print("New survey?", "\(newSurvey)", " - New message?", "\(newMessage)")
             
+            if newMessage == true{
+                Customerly.sharedInstance.openLastSupportConversation(from: self)
+            }
         }) { 
             print("Update failure")
         }

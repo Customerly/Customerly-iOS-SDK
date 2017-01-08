@@ -146,6 +146,19 @@ open class Customerly: NSObject {
         }
     }
     
+    /*
+     * If available, opens the chat on the last unread message
+     *
+     */
+    open func openLastSupportConversation(from viewController: UIViewController){
+        if CyStorage.getCyDataModel()?.user?.is_user != nil, let last_message = CyStorage.getCyDataModel()?.last_messages?.first{ //then, is_user == 0 (lead) or is_user == 1 (registered user)
+            let chatStartVC = CustomerlyChatStartVC.instantiate()
+            chatStartVC.conversationId = last_message.conversation_id
+            chatStartVC.addLeftCloseButton()
+            viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
+        }
+    }
+    
     //MARK: - Survey
     /*
      * Open a Survey View Controller if a survey is available
