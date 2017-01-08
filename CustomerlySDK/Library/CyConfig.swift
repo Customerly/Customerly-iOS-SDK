@@ -9,6 +9,7 @@
 import Foundation
 
 let API_BASE_URL = "https://tracking.customerly.io"
+let CUSTOMERLY_URL = "https://www.customerly.io"
 
 // The domain used for creating all Customerly errors.
 let cy_domain = "io.customerly.CustomerlySDK"

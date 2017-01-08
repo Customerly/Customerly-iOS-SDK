@@ -14,6 +14,7 @@ class CustomerlyChatStartVC: CyViewController{
     @IBOutlet weak var chatTextField: CyTextField!
     @IBOutlet weak var attachmentsButton: CyButton!
     @IBOutlet weak var sendMessageButton: CyButton!
+    @IBOutlet weak var poweredByButton: CyButton!
     @IBOutlet weak var composeMessageViewBottomConstraint: NSLayoutConstraint!
     
     var data: CyDataModel?
@@ -38,6 +39,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageWithImagesCell")
         data = CyStorage.getCyDataModel()
+        poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
         chatTextField.cyDelegate = self
         imagePickerDelegate = self
@@ -290,6 +292,9 @@ class CustomerlyChatStartVC: CyViewController{
         }
     }
     
+    @IBAction func openPoweredBy(_ sender: Any) {
+        UIApplication.shared.openURL(URL(string: CUSTOMERLY_URL)!)
+    }
 }
 
 extension CustomerlyChatStartVC: UITableViewDataSource{

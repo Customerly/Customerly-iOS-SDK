@@ -11,6 +11,7 @@ import UIKit
 class CustomerlyConversationListVC: CyViewController {
     
     @IBOutlet weak var tableView: CyTableView!
+    @IBOutlet weak var poweredByButton: CyButton!
     var conversations : [CyConversationModel]?
     var data: CyDataModel?
     
@@ -29,6 +30,7 @@ class CustomerlyConversationListVC: CyViewController {
         tableView.delegate = self
         tableView.dataSource = self
         data = CyStorage.getCyDataModel()
+        poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
         title = "Support"
         addLeftCloseButton()
@@ -87,6 +89,9 @@ class CustomerlyConversationListVC: CyViewController {
         show(chatVC, sender: self)
     }
     
+    @IBAction func openPoweredBy(_ sender: Any) {
+        UIApplication.shared.openURL(URL(string: CUSTOMERLY_URL)!)
+    }
 }
 
 extension CustomerlyConversationListVC: UITableViewDataSource{
