@@ -39,13 +39,7 @@ class CyMessageTableViewCell: UITableViewCell {
         adminAvatar.layer.cornerRadius = adminAvatar.frame.size.width/2 //Circular avatar for admin
         userAvatar.layer.cornerRadius = userAvatar.frame.size.width/2 //Circular avatar for user
         self.backgroundColor = UIColor.clear
-        
-        if let app_config = CyStorage.getCyDataModel()?.app_config{
-            messageView.backgroundColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
-            if user_color_template != nil{
-                messageView.backgroundColor = user_color_template
-            }
-        }
+        messageView.backgroundColor = base_color_template
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
