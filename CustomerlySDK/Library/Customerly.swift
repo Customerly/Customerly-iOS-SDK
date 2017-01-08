@@ -54,7 +54,7 @@ open class Customerly: NSObject {
         }, failure: {
             failure?()
         })
-    
+        
     }
     
     /*
@@ -87,10 +87,10 @@ open class Customerly: NSObject {
      */
     open func setAttributes(attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         if CyStorage.getCyDataModel()?.user?.is_user == 1{
-            ping(attributes: attributes, success: { 
+            ping(attributes: attributes, success: {
                 let news = self.checkNews()
                 success?(news.survey, news.message)
-            }, failure: { 
+            }, failure: {
                 failure?()
             })
         }
@@ -169,7 +169,15 @@ open class Customerly: NSObject {
                 CyStorage.storeCyDataModel(cyData: tempData)
             }
         }
-        
+    }
+    
+    open func isLastSupportConversationAvailable() -> Bool{
+        if let data = CyStorage.getCyDataModel(){
+            if data.user?.is_user != nil && data.last_messages?.first != nil{
+                return true
+            }
+        }
+        return false
     }
     
     
