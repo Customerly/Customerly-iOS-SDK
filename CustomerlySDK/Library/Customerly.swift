@@ -137,12 +137,12 @@ open class Customerly: NSObject {
         
         //If user exist, go to conversion list, else open a new conversation
         if CyStorage.getCyDataModel()?.user?.is_user != nil{ //then, is_user == 0 (lead) or is_user == 1 (registered user)
-            viewController.show(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), sender: self)
+            viewController.present(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), animated: true, completion: nil)
         }
         else{
             let chatStartVC = CustomerlyChatStartVC.instantiate()
             chatStartVC.addLeftCloseButton()
-            viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
+            viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
         }
     }
     
@@ -151,13 +151,27 @@ open class Customerly: NSObject {
      *
      */
     open func openLastSupportConversation(from viewController: UIViewController){
-        if CyStorage.getCyDataModel()?.user?.is_user != nil, let last_message = CyStorage.getCyDataModel()?.last_messages?.first{ //then, is_user == 0 (lead) or is_user == 1 (registered user)
-            let chatStartVC = CustomerlyChatStartVC.instantiate()
-            chatStartVC.conversationId = last_message.conversation_id
-            chatStartVC.addLeftCloseButton()
-            viewController.show(CustomerlyNavigationController(rootViewController: chatStartVC), sender: self)
+        if let data = CyStorage.getCyDataModel(){
+            if data.user?.is_user != nil && data.last_messages?.first != nil{ //then, is_user == 0 (lead) or is_user == 1 (registered user) and there is at least a message
+                let chatStartVC = CustomerlyChatStartVC.instantiate()
+                chatStartVC.conversationId = data.last_messages?.first?.conversation_id
+                chatStartVC.addLeftCloseButton()
+                viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+                
+                //remove all the stored messages that contain the same conversation_id of the opened conversation
+                let tempData = data
+                tempData.last_messages = []
+                for i in (0..<data.last_messages!.count){
+                    if data.last_messages?[i].conversation_id != data.last_messages?.first?.conversation_id{
+                        tempData.last_messages?.append(data.last_messages![i])
+                    }
+                }
+                CyStorage.storeCyDataModel(cyData: tempData)
+            }
         }
+        
     }
+    
     
     //MARK: - Survey
     /*
@@ -169,7 +183,7 @@ open class Customerly: NSObject {
         if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
             let surveyVC = CustomerlySurveyViewController.instantiate()
             surveyVC.survey = survey
-            viewController.show(surveyVC, sender: self)
+            viewController.present(surveyVC, animated: true, completion: nil)
             surveyVC.onShow(on: {
                 onShow!()
             })
