@@ -8,6 +8,8 @@
 
 import Kingfisher
 
+public typealias SuccessResponse = ((_ newSurvey: Bool, _ newMessage: Bool) -> Void)
+
 open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
@@ -43,10 +45,16 @@ open class Customerly: NSObject {
     /*
      * If you want to register a user_id, you have to insert also an email.
      */
-    open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil){
+    open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+        
         ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
             CySocket.sharedInstance.reconfigure()
+            let news = self.checkNews()
+            success?(news.survey, news.message)
+        }, failure: {
+            failure?()
         })
+    
     }
     
     /*
@@ -63,17 +71,10 @@ open class Customerly: NSObject {
      * Get ad update from Customerly about surveys and unread messages
      *
      */
-    open func update(success: ((_ newSurvey: Bool, _ newMessage: Bool) -> Void)? = nil, failure: (() -> Void)? = nil){
+    open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         ping(success: {
-            var survey = false
-            var message = false
-            if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
-                survey = true
-            }
-            if let _ = CyStorage.getCyDataModel()?.last_messages?.first{
-                message = true
-            }
-            success?(survey, message)
+            let news = self.checkNews()
+            success?(news.survey, news.message)
         }) {
             failure?()
         }
@@ -84,47 +85,17 @@ open class Customerly: NSObject {
      * Attributes need to be only on first level.
      * Ex: ["Params1": 3, "Params2: "Hello"].
      */
-    open func setAttributes(attributes:Dictionary<String, Any?>? = nil){
+    open func setAttributes(attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         if CyStorage.getCyDataModel()?.user?.is_user == 1{
-            ping(attributes: attributes)
+            ping(attributes: attributes, success: { 
+                let news = self.checkNews()
+                success?(news.survey, news.message)
+            }, failure: { 
+                failure?()
+            })
         }
         else{
             cyPrint("Only registered users may have attributes.")
-        }
-    }
-    
-    
-    //Private method
-    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
-        let pingRequestModel = CyRequestPingModel(JSON: [:])
-        pingRequestModel?.params = [:]
-        
-        //if some cookies are stored, CyRequestPingModel containes these cookies and user informations
-        if let dataStored = CyStorage.getCyDataModel(){
-            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
-            pingRequestModel?.settings?.email = dataStored.user?.email
-            pingRequestModel?.settings?.name = dataStored.user?.name
-            pingRequestModel?.settings?.attributes = attributes
-            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
-        
-        //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored
-        if email != nil{
-            pingRequestModel?.settings?.email = email
-            pingRequestModel?.settings?.user_id = user_id
-        }
-        if name != nil{
-            pingRequestModel?.settings?.name = name
-        }
-        
-        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            CyStorage.storeCyDataModel(cyData: responseData)
-            cyPrint("Success Ping")
-            success?()
-        }) { (error) in
-            cyPrint("Error Ping", error)
             failure?()
         }
     }
@@ -203,10 +174,60 @@ open class Customerly: NSObject {
         return false
     }
     
-    //MARK: - Socket
+    //MARK: - Private Methods
+    
+    //MARK: Socket
     func emitPingActive(){
         //emit ping when user is focused on a view of customerly
         CySocket.sharedInstance.emitPingActive()
+    }
+    
+    //MARK: Ping
+    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        let pingRequestModel = CyRequestPingModel(JSON: [:])
+        pingRequestModel?.params = [:]
+        
+        //if some cookies are stored, CyRequestPingModel containes these cookies and user informations
+        if let dataStored = CyStorage.getCyDataModel(){
+            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
+            pingRequestModel?.settings?.email = dataStored.user?.email
+            pingRequestModel?.settings?.name = dataStored.user?.name
+            pingRequestModel?.settings?.attributes = attributes
+            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        
+        //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored
+        if email != nil{
+            pingRequestModel?.settings?.email = email
+            pingRequestModel?.settings?.user_id = user_id
+        }
+        if name != nil{
+            pingRequestModel?.settings?.name = name
+        }
+        
+        CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+            CyStorage.storeCyDataModel(cyData: responseData)
+            cyPrint("Success Ping")
+            success?()
+        }) { (error) in
+            cyPrint("Error Ping", error)
+            failure?()
+        }
+    }
+    
+    func checkNews() -> (survey: Bool, message: Bool){
+        var survey = false
+        var message = false
+        if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
+            survey = true
+        }
+        if let _ = CyStorage.getCyDataModel()?.last_messages?.first{
+            message = true
+        }
+        
+        return (survey, message)
     }
     
 }
