@@ -10,6 +10,33 @@
 import UIKit
 
 extension String {
+    
+    func attributedStringFromHTML(font: UIFont, color: UIColor) -> NSMutableAttributedString?{
+        do{
+            print(font.fontDescriptor.postscriptName)
+            let bodyHtml: String = "<style>p{margin:0;padding:0}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
+            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            return attributedMessage
+        }
+        catch{
+            
+        }
+        return nil
+    }
+    
+    func attributedStringFromHTMLWithImages(font: UIFont, color: UIColor, imageMaxWidth: CGFloat) -> NSMutableAttributedString?{
+        do{
+            print(font.fontDescriptor.postscriptName)
+            let bodyHtml: String = "<style>p{margin:0;padding:0} img{width:\(imageMaxWidth))px;display:block;}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
+            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            return attributedMessage
+        }
+        catch{
+            
+        }
+        return nil
+    }
+    
     func arrayOfImagesFromHTML() -> [String]?{
         let pattern =  "<img [^>]*src=\"([^\"]+)\"[^>]*>"
         

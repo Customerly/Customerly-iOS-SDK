@@ -107,7 +107,7 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
                 cell.userNameLabel.text = "You"
             }
             
-            cell.lastChatConversationLabel.text = conversation.last_message_abstract
+            cell.lastChatConversationLabel.attributedText = conversation.last_message_abstract?.attributedStringFromHTML(font: UIFont.systemFont(ofSize: 14.0), color: UIColor.black)
             cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
         }
         

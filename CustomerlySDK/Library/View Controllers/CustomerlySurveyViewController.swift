@@ -108,17 +108,10 @@ class CustomerlySurveyViewController: CyViewController {
             //No more survey, then show html thank you message
             if surveyModel.question_type == nil{
                 backButton.isHidden = true
-                do{
-                    let style = "<style>p{margin:0;padding:0}</style>"
-                    let attributedMessage = try NSMutableAttributedString(data: ((style+(surveyModel.thankyou_text ?? "")).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                    surveyTitleLabel.attributedText = attributedMessage
-                    alertView.addConstraints([
-                        NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
-                        ])
-                }
-                catch{
-                    
-                }
+                surveyTitleLabel.attributedText = surveyModel.thankyou_text?.attributedStringFromHTML(font: UIFont.systemFont(ofSize: 14.0), color: UIColor.black)
+                alertView.addConstraints([
+                    NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
+                    ])
                 return
             }
             

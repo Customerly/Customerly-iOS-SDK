@@ -333,15 +333,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.setUserVisual()
             }
             
-            do{
-                let style = "<style>p{margin:0;padding:0} img{width:\(abs(self.view.bounds.size.width/2))px;display:block;}</style>"
-                let attributedMessage = try NSMutableAttributedString(data: ((style+message.content!.removeImageTagsFromHTML()).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                cell?.messageTextView.attributedText = attributedMessage
-            }
-            catch{
-                cell?.messageTextView.text = message.content
-            }
-            
+            cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont.systemFont(ofSize: 14.0), color: UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
             
             cell?.setNeedsUpdateConstraints()
             cell?.updateConstraintsIfNeeded()
