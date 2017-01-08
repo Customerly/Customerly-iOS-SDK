@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         
         //track an event
         Customerly.sharedInstance.trackEvent(event: "this_is_an_event")
+        
+        Customerly.sharedInstance.realTimeMessages { (htmlMessage) in
+            print("OH OH OH, A NEW MESSAGE!!", htmlMessage ?? "")
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +84,7 @@ class ViewController: UIViewController {
             if newMessage == true{
                 Customerly.sharedInstance.openLastSupportConversation(from: self)
             }
-        }) { 
+        }) {
             print("Update failure")
         }
     }

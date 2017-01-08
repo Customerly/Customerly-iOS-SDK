@@ -171,6 +171,10 @@ open class Customerly: NSObject {
         }
     }
     
+    /*
+     * Check if there is an unread message
+     *
+     */
     open func isLastSupportConversationAvailable() -> Bool{
         if let data = CyStorage.getCyDataModel(){
             if data.user?.is_user != nil && data.last_messages?.first != nil{
@@ -178,6 +182,18 @@ open class Customerly: NSObject {
             }
         }
         return false
+    }
+    
+    /*
+     * Closure that notify every time a new message from the support is coming.
+     * To render the html message you can use an attributed string.
+     */
+    open func realTimeMessages(htmlMessage:((String?) -> Void)?){
+        realTimeMessageFromSocket { (socketMessage) in
+            self.requestConversationMessagesNews(timestamp: socketMessage?.timestamp, message: { (message) in
+                htmlMessage?(message?.content)
+            })
+        }
     }
     
     
@@ -201,6 +217,10 @@ open class Customerly: NSObject {
         }
     }
     
+    /*
+     * Check if there is a new survey to show
+     *
+     */
     open func isSurveyAvailable() -> Bool{
         if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
             return true
@@ -209,7 +229,7 @@ open class Customerly: NSObject {
         return false
     }
     
-    //MARK: - Private Methods
+    //MARK: - PRIVATE METHODS
     
     //MARK: Socket
     func emitPingActive(){
@@ -264,5 +284,34 @@ open class Customerly: NSObject {
         
         return (survey, message)
     }
+
+    //MARK: Real time messages
+    var realTimeMessagesClosure: ((CyMessageSocketModel?) -> Void)?
+    
+    func realTimeMessageFromSocket(socketMessage: ((CyMessageSocketModel?) -> Void)?){
+        self.realTimeMessagesClosure = socketMessage
+    }
+    
+    func requestConversationMessagesNews(timestamp: Int?, message:@escaping ((CyMessageModel?) -> Void)){
+        
+        let conversationRequest = CyConversationRequestModel(JSON: [:])
+        if let dataStored = CyStorage.getCyDataModel(){
+            conversationRequest?.settings?.user_id = dataStored.user?.user_id
+            conversationRequest?.settings?.email = dataStored.user?.email
+            conversationRequest?.settings?.name = dataStored.user?.name
+            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
+            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
+            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+        }
+        conversationRequest?.timestamp = timestamp
+        
+        CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
+            if conversationMessages?.messages != nil && conversationMessages?.messages?.last?.account_id != nil{
+                message(conversationMessages?.messages?.last)
+            }
+        }, failure: { (error) in
+        })
+    }
+
     
 }

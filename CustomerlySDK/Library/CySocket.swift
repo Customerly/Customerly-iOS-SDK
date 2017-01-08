@@ -18,6 +18,7 @@ enum CySocketEvent: String {
 class CySocket: NSObject {
     
     var socket: SocketIOClient?
+    var actualOnMessage: UUID?
     
     //MARK: Init
     static let sharedInstance = CySocket() //Socket Client manager
@@ -76,6 +77,11 @@ class CySocket: NSObject {
         socket?.on("error", callback: { (data, ack) in
             cyPrint("Socket error")
         })
+        
+        removeHandlerWithUUID(uuid: actualOnMessage)
+        actualOnMessage = onMessage { (messageSocket) in
+            Customerly.sharedInstance.realTimeMessagesClosure?(messageSocket)
+        }
         
         socket?.connect()
     }
