@@ -115,10 +115,10 @@ extension String{
         }
         
         if resourceBundle != nil{
-            return NSLocalizedString(self, tableName: "Customerly", bundle: resourceBundle!, value: "", comment: comment)
+            return NSLocalizedString(self, tableName: "Localizable", bundle: resourceBundle!, value: "", comment: comment)
         }
         
-        return NSLocalizedString(self, tableName: "Customerly", bundle: Bundle.main, value: "", comment: comment)
+        return NSLocalizedString(self, tableName: "Localizable", bundle: Bundle.main, value: "", comment: comment)
     }
     
 }

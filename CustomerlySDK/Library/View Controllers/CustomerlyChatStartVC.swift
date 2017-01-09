@@ -45,7 +45,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTextField.cyDelegate = self
         imagePickerDelegate = self
         
-        title = "chatViewTitle".localized(comment: "Chat View")
+        title = "chatTitleView".localized(comment: "Chat View")
         
         requestConversationMessages(conversation_id: conversationId)
         

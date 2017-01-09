@@ -75,7 +75,7 @@
 		45E61EF71E16AD340088D6C5 /* CustomerlySurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */; };
 		45E61EFF1E1983FA0088D6C5 /* CySurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E61EFE1E1983FA0088D6C5 /* CySurveyListViewController.swift */; };
 		45E61F011E1984810088D6C5 /* CySurveyButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E61F001E1984810088D6C5 /* CySurveyButtonTableViewCell.swift */; };
-		45E924FB1E22DEA300514EA3 /* Customerly.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E924FD1E22DEA300514EA3 /* Customerly.strings */; };
+		45E924FB1E22DEA300514EA3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E924FD1E22DEA300514EA3 /* Localizable.strings */; };
 		45F9E0AF1E1C46D300C7241F /* CySurveyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0AE1E1C46D300C7241F /* CySurveyPickerViewController.swift */; };
 		45F9E0B11E1C4AF300C7241F /* CySurveySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B01E1C4AF300C7241F /* CySurveySliderViewController.swift */; };
 		45F9E0B31E1C532B00C7241F /* CySurveyStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */; };
@@ -207,11 +207,12 @@
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
 		458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationMessagesResponseModel.swift; sourceTree = "<group>"; };
+		45DC04B81E243565004DB406 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E61EF41E16ACBC0088D6C5 /* CustomerlySurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlySurveyViewController.swift; sourceTree = "<group>"; };
 		45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlySurvey.storyboard; sourceTree = "<group>"; };
 		45E61EFE1E1983FA0088D6C5 /* CySurveyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyListViewController.swift; sourceTree = "<group>"; };
 		45E61F001E1984810088D6C5 /* CySurveyButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyButtonTableViewCell.swift; sourceTree = "<group>"; };
-		45E924FC1E22DEA300514EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Customerly.strings; sourceTree = "<group>"; };
+		45E924FC1E22DEA300514EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45F9E0AE1E1C46D300C7241F /* CySurveyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyPickerViewController.swift; sourceTree = "<group>"; };
 		45F9E0B01E1C4AF300C7241F /* CySurveySliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveySliderViewController.swift; sourceTree = "<group>"; };
 		45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyStarsViewController.swift; sourceTree = "<group>"; };
@@ -395,7 +396,7 @@
 				455CE1711DE0AB4500FF65DC /* CyMapping.swift */,
 				455CE1731DE0AB4500FF65DC /* CyStorage.swift */,
 				45FA19C01DEB4E0200D26059 /* Assets.xcassets */,
-				45E924FD1E22DEA300514EA3 /* Customerly.strings */,
+				45E924FD1E22DEA300514EA3 /* Localizable.strings */,
 				455CE1741DE0AB4500FF65DC /* Models */,
 				45FA19B71DEB422B00D26059 /* Subclasses */,
 				455CE1811DE0AB4500FF65DC /* UI */,
@@ -650,6 +651,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 455CE1231DE0AA9F00FF65DC;
 			productRefGroup = 455CE1301DE0AABD00FF65DC /* Products */;
@@ -670,7 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FF409E1E114EFE002707C3 /* ImageMessageCell.xib in Resources */,
-				45E924FB1E22DEA300514EA3 /* Customerly.strings in Resources */,
+				45E924FB1E22DEA300514EA3 /* Localizable.strings in Resources */,
 				458781C31DFC658700851DD9 /* MessageCell.xib in Resources */,
 				45FF40A21E12E486002707C3 /* CustomerlyImageGallery.storyboard in Resources */,
 				45E61EF71E16AD340088D6C5 /* CustomerlySurvey.storyboard in Resources */,
@@ -922,12 +924,13 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		45E924FD1E22DEA300514EA3 /* Customerly.strings */ = {
+		45E924FD1E22DEA300514EA3 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				45E924FC1E22DEA300514EA3 /* Base */,
+				45DC04B81E243565004DB406 /* it */,
 			);
-			name = Customerly.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -936,6 +939,7 @@
 		455CE1281DE0AA9F00FF65DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -962,6 +966,7 @@
 		455CE1291DE0AA9F00FF65DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
