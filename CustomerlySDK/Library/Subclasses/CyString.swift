@@ -92,5 +92,33 @@ extension String {
         }
         return false
     }
+    
+    
+    
 }
 
+//MARK: Localizable Strings
+extension String{
+    func localized(comment: String = "") -> String{
+        let frameworkBundle = Bundle(for: Customerly.self)
+        
+        var resourceBundle: Bundle?
+        
+        if let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("CustomerlySDK.bundle"),
+            let resourceBundleGenerated = Bundle(url: bundleURL) {
+            
+            // Installed using CocoaPods
+            resourceBundle = resourceBundleGenerated
+            
+        } else {
+            resourceBundle = frameworkBundle
+        }
+        
+        if resourceBundle != nil{
+            return NSLocalizedString(self, tableName: "Customerly", bundle: resourceBundle!, value: "", comment: comment)
+        }
+        
+        return NSLocalizedString(self, tableName: "Customerly", bundle: Bundle.main, value: "", comment: comment)
+    }
+    
+}

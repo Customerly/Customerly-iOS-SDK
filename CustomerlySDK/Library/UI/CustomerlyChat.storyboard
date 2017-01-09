@@ -382,17 +382,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQR-W0-wAW" userLabel="Compose Message View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="521" width="375" height="82"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-fF-Bmk" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Evw-fB-6sl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Powered by Customerly"/>
-                                        <connections>
-                                            <action selector="openPoweredBy:" destination="RwC-Qi-QkA" eventType="touchUpInside" id="Ujh-rv-XYj"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsI-j5-jXa" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="345" height="35"/>
                                         <color key="backgroundColor" red="0.18823529411764706" green="0.49019607843137253" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
@@ -409,6 +398,17 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="newConversation:" destination="RwC-Qi-QkA" eventType="touchUpInside" id="VPM-mE-DJI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-fF-Bmk" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Evw-fB-6sl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Powered by Customerly"/>
+                                        <connections>
+                                            <action selector="openPoweredBy:" destination="RwC-Qi-QkA" eventType="touchUpInside" id="Ujh-rv-XYj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -441,6 +441,7 @@
                     <navigationItem key="navigationItem" id="2RQ-vQ-5Do"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="newConversationButton" destination="LsI-j5-jXa" id="kdJ-Hm-q5n"/>
                         <outlet property="poweredByButton" destination="zcN-fF-Bmk" id="Lnv-Ud-wqO"/>
                         <outlet property="tableView" destination="x3N-vw-yFj" id="Oy6-jX-kEP"/>
                         <segue destination="jqW-k1-gD2" kind="show" identifier="showChatStartVC" id="g2W-NF-zeV"/>

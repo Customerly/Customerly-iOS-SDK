@@ -1,0 +1,57 @@
+/*
+ Localizable.strings
+ Customerly
+ 
+ Created by Paolo Musolino on 08/01/17.
+ Copyright © 2017 Customerly. All rights reserved.
+ */
+
+/* Image Picker Action Sheet */
+"actionSheetImagePicker_title" = "Select a file to send";
+"actionSheetImagePicker_cancel" = "Cancel";
+"actionSheetImagePicker_takePhoto" = "Take a Photo";
+"actionSheetImagePicker_imageGallery" = "Image Gallery";
+"actionSheetImagePicker_error" = "Error";
+"actionSheetImagePicker_confirm" = "OK";
+"actionSheetImagePicker_error_cameraNotAvailable" = "Ops, the camera is not available";
+"actionSheetImagePicker_error_galleryNotAvailable" = "Ops, the photo gallery is not available";
+
+/* Time Ago Since Date */
+"timeAgoSinceDate_yearsAgo %d" = "%d years ago";
+"timeAgoSinceDate_yearAgo %d" = "%d year ago";
+"timeAgoSinceDate_monthsAgo %d" = "%d months ago";
+"timeAgoSinceDate_monthAgo %d" = "%d month ago";
+"timeAgoSinceDate_weeksAgo %d" = "%d weeks ago";
+"timeAgoSinceDate_weekAgo %d" = "%d week ago";
+"timeAgoSinceDate_daysAgo %d" = "%d days ago";
+"timeAgoSinceDate_dayAgo %d" = "%d day ago";
+"timeAgoSinceDate_hoursAgo %d" = "%d hours ago";
+"timeAgoSinceDate_hourAgo %d" = "%d hour ago";
+"timeAgoSinceDate_minutesAgo %d" = "%d minutes ago";
+"timeAgoSinceDate_minuteAgo %d" = "%d minute ago";
+"timeAgoSinceDate_secondsAgo %d" = "%d seconds ago";
+"timeAgoSinceDate_justNow %d" = "Just now";
+
+/* Conversation List */
+"conversationListTitleView" = "Support";
+"youUser" = "You";
+"conversationListPoweredBy" = "Powered by Customerly";
+"newConversationButton" = "Start a new conversation";
+
+/* Chat View */
+"chatTitleView" = "Chat";
+"chatInsertEmail" = "Insert your email";
+"chatOK" = "OK";
+"chatCancel" = "Cancel";
+"chatEmail" = "Email";
+"chatAdminLastActivity" = "Last activity ";
+"chatViewPoweredBy" = "Powered by Customerly";
+
+/* Survey View */
+"surveyTitleView" = "Survey";
+"confirmSliderButton %d" = "Confirm %d";
+
+/* Extra */
+"pullToRefresh" = "Pull to refresh";
+
+

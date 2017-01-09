@@ -11,6 +11,7 @@ import UIKit
 class CustomerlyConversationListVC: CyViewController {
     
     @IBOutlet weak var tableView: CyTableView!
+    @IBOutlet weak var newConversationButton: CyButton!
     @IBOutlet weak var poweredByButton: CyButton!
     var conversations : [CyConversationModel]?
     var data: CyDataModel?
@@ -30,9 +31,11 @@ class CustomerlyConversationListVC: CyViewController {
         tableView.delegate = self
         tableView.dataSource = self
         data = CyStorage.getCyDataModel()
+        newConversationButton.setTitle("newConversationButton".localized(comment: "Conversation List"), for: .normal)
+        poweredByButton.setTitle("conversationListPoweredBy".localized(comment: "Conversation List"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
-        title = "Support"
+        title = "conversationListTitleView".localized(comment: "Conversation List")
         addLeftCloseButton()
         
         tableView.addPullToRefresh {
@@ -109,7 +112,7 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
                 cell.userNameLabel.text = conversation.last_account?.name
             }else{
                 cell.userAvatarImageView.kf.setImage(with: userImageURL(id: conversation.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                cell.userNameLabel.text = "You"
+                cell.userNameLabel.text = "youUser".localized(comment: "Conversation list")
             }
             
             cell.lastChatConversationLabel.attributedText = conversation.last_message_abstract?.attributedStringFromHTML(font: UIFont.systemFont(ofSize: 14.0), color: UIColor.black)

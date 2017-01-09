@@ -32,7 +32,8 @@ class CySurveySliderViewController: CyViewController {
 
     //MARK: Actions
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        confirmButton.setTitle("Confirm " + "\(Int(sender.value))", for: .normal)
+        
+        confirmButton.setTitle(String.localizedStringWithFormat("confirmSliderButton %d".localized(comment: "Survey View"),  Int(sender.value)), for: .normal)
     }
     
     @IBAction func confirm(_ sender: Any) {

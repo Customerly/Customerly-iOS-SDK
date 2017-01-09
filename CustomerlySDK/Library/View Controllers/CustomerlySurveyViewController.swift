@@ -62,7 +62,7 @@ class CustomerlySurveyViewController: CyViewController {
             firstSurveyVC = self
         }
         
-        headerTitleLabel.text = "Survey"
+        headerTitleLabel.text = "Survey".localized(comment: "Survey View")
         alertView.layer.cornerRadius = 4
         
         //If step zero, hide backButton

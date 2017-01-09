@@ -39,12 +39,13 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageWithImagesCell")
         data = CyStorage.getCyDataModel()
+        poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
         chatTextField.cyDelegate = self
         imagePickerDelegate = self
         
-        title = "Chat"
+        title = "chatViewTitle".localized(comment: "Chat View")
         
         requestConversationMessages(conversation_id: conversationId)
         
@@ -283,7 +284,7 @@ class CustomerlyChatStartVC: CyViewController{
         else{
             self.chatTextField.resignFirstResponder()
             
-            showAlertWithTextField(title: data?.app?.name ?? "", message: "Insert your email", buttonTitle: "OK", buttonCancel: "Cancel", textFieldPlaceholder: "Email", completion: { (email) in
+            showAlertWithTextField(title: data?.app?.name ?? "", message: "chatInsertEmail".localized(comment: "Chat View"), buttonTitle: "chatOK".localized(comment: "Chat View"), buttonCancel: "chatCancel".localized(comment: "Chat View"), textFieldPlaceholder: "chatEmail".localized(comment: "Chat View"), completion: { (email) in
                 
                 self.sendMessage(message: self.chatTextField.text, email: email)
             }) { (cancel) in
@@ -351,7 +352,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
             
             cell.active_admins = data?.active_admins
-            cell.lastActivityLabel.text = "Last activity " + lastAdminActivity()
+            cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + lastAdminActivity()
             cell.welcomeMessageLabel.text = data?.user?.is_user == 1 ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()

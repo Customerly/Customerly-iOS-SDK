@@ -173,18 +173,18 @@ class CyViewController: UIViewController {
     
     func openImagePickerActionSheet(){
         
-        let actionSheet = UIAlertController(title: "Select a file to send", message: "", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "actionSheetImagePicker_title".localized(comment:"ImagePickerActionSheet"), message: "", preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: "actionSheetImagePicker_cancel".localized(comment:"ImagePickerActionSheet"), style: .cancel, handler: { (action) in
             actionSheet.dismiss(animated: true, completion: nil)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Take a Photo", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: "actionSheetImagePicker_takePhoto".localized(comment:"ImagePickerActionSheet"), style: .default, handler: { (action) in
             self.shootPhoto()
             actionSheet.dismiss(animated: true, completion: nil)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Image Gallery", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: "actionSheetImagePicker_imageGallery".localized(comment:"ImagePickerActionSheet"), style: .default, handler: { (action) in
             self.photoFromLibrary()
             actionSheet.dismiss(animated: true, completion: nil)
         }))
@@ -200,7 +200,7 @@ class CyViewController: UIViewController {
             imagePickerController.modalPresentationStyle = .fullScreen
             present(imagePickerController, animated: true, completion: nil)
         } else {
-            showAlert(title: "Error", message: "Ops, the camera is not available", buttonTitle: "OK")
+            showAlert(title: "actionSheetImagePicker_error".localized(comment:"ImagePickerActionSheet"), message: "actionSheetImagePicker_error_cameraNotAvailable".localized(comment:"ImagePickerActionSheet"), buttonTitle: "actionSheetImagePicker_confirm".localized(comment:"ImagePickerActionSheet"))
         }
     }
     
@@ -213,7 +213,7 @@ class CyViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
         }
         else{
-            showAlert(title: "Error", message: "Ops, the photo gallery is not available", buttonTitle: "OK")
+            showAlert(title: "actionSheetImagePicker_error".localized(comment:"ImagePickerActionSheet"), message:"actionSheetImagePicker_error_galleryNotAvailable".localized(comment:"ImagePickerActionSheet"), buttonTitle: "actionSheetImagePicker_error".localized(comment:"actionSheetImagePicker_confirm"))
         }
     }
 }
