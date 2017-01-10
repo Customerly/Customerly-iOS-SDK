@@ -30,7 +30,7 @@
 "timeAgoSinceDate_minutesAgo %d" = "%d minuti fa";
 "timeAgoSinceDate_minuteAgo %d" = "%d minuto fa";
 "timeAgoSinceDate_secondsAgo %d" = "%d secondi fa";
-"timeAgoSinceDate_justNow %d" = "Ora";
+"timeAgoSinceDate_justNow" = "Ora";
 
 /* Conversation List */
 "conversationListTitleView" = "Supporto";
@@ -44,7 +44,7 @@
 "chatOK" = "OK";
 "chatCancel" = "Annulla";
 "chatEmail" = "Email";
-"chatAdminLastActivity" = "Ultima attività ";
+"chatAdminLastActivity" = "Ultima attività";
 "chatViewPoweredBy" = "Offerto da Customerly";
 
 /* Survey View */

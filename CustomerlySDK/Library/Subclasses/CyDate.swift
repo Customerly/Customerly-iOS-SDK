@@ -48,7 +48,7 @@ extension Date {
         } else if (components.second! >= 3) {
             return String.localizedStringWithFormat("timeAgoSinceDate_secondsAgo %d".localized(comment: "Time Ago Since Date"),  components.second!)
         } else {
-            return String.localizedStringWithFormat("timeAgoSinceDate_justNow %d".localized(comment: "Time Ago Since Date"),  components.second!)
+            return String.localizedStringWithFormat("timeAgoSinceDate_justNow".localized(comment: "Time Ago Since Date"),  components.second!)
         }
     }
     

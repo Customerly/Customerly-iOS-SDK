@@ -109,7 +109,6 @@ extension String{
             
             // Installed using CocoaPods
             resourceBundle = resourceBundleGenerated
-            
         } else {
             resourceBundle = frameworkBundle
         }

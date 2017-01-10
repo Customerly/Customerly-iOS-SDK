@@ -352,7 +352,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
             
             cell.active_admins = data?.active_admins
-            cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + lastAdminActivity()
+            cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + " " + lastAdminActivity()
             cell.welcomeMessageLabel.text = data?.user?.is_user == 1 ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()
