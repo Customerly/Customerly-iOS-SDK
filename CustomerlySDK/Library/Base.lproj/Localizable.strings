@@ -46,6 +46,8 @@
 "chatEmail" = "Email";
 "chatAdminLastActivity" = "Last activity";
 "chatViewPoweredBy" = "Powered by Customerly";
+"chatViewContactSupportLabel" = "Contact support writing your question below.";
+"chatViewTextFieldPlaceholder" = "Ask your question";
 
 /* Survey View */
 "surveyTitleView" = "Survey";

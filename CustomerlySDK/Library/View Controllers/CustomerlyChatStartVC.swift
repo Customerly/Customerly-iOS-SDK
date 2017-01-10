@@ -42,6 +42,7 @@ class CustomerlyChatStartVC: CyViewController{
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
+        chatTextField.placeholder = "chatViewTextFieldPlaceholder".localized(comment: "Chat View")
         chatTextField.cyDelegate = self
         imagePickerDelegate = self
         
@@ -362,7 +363,11 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCustomerlyCell", for: indexPath) as! CyInfoTableViewCell
-            
+            cell.contactSupportLabel.text = "chatViewContactSupportLabel".localized(comment: "Chat View")
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
             return cell
         }
     }

@@ -160,8 +160,11 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-CY-Qpe" userLabel="Background View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="14" y="8" width="347" height="48"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="8" width="331" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="gt4-Lo-44k"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -172,7 +175,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="hmG-by-9mF" secondAttribute="trailing" constant="8" id="Knv-gl-XEs"/>
                                                         <constraint firstAttribute="bottom" secondItem="hmG-by-9mF" secondAttribute="bottom" constant="8" id="emm-s0-ZDo"/>
                                                         <constraint firstItem="hmG-by-9mF" firstAttribute="top" secondItem="IJ2-CY-Qpe" secondAttribute="top" constant="8" id="nyd-oL-J4h"/>
-                                                        <constraint firstAttribute="height" constant="48" id="uBM-mp-C61"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="uBM-mp-C61"/>
                                                         <constraint firstItem="hmG-by-9mF" firstAttribute="leading" secondItem="IJ2-CY-Qpe" secondAttribute="leading" constant="8" id="zNS-6x-fgh"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -202,6 +205,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="contactSupportLabel" destination="hmG-by-9mF" id="o5G-CX-lM3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -318,7 +324,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWg-gC-Ghz" id="iHa-1g-R49">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hee-cs-b98" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">

@@ -46,6 +46,8 @@
 "chatEmail" = "Email";
 "chatAdminLastActivity" = "Ultima attività";
 "chatViewPoweredBy" = "Offerto da Customerly";
+"chatViewContactSupportLabel" = "Contatta l'assistenza scrivendo la tua domanda qui sotto.";
+"chatViewTextFieldPlaceholder" = "Scrivi la tua domanda";
 
 /* Survey View */
 "surveyTitleView" = "Sondaggio";
