@@ -72,22 +72,47 @@ If you are setting up a new project, you need to install the SDK. You may have a
 
 First of all, if you don't have an Xcode project yet, create one now, then install the SDK following the paragraph `Cocoapods`.
 
-1) Import the Customerly iOS SDK module in your UIApplicationDelegate subclass:
+**1)** Import the Customerly iOS SDK module in your UIApplicationDelegate subclass:
 
 ```
 import CustomerlySDK
 ```
-2) Configure a Customerly iOS SDK shared instance, typically in your application's *application:didFinishLaunchingWithOptions:* method:
+**2)** Configure a Customerly iOS SDK shared instance, typically in your application's *application:didFinishLaunchingWithOptions:* method:
 
 ```
 Customerly.sharedInstance.configure(secretKey: "YOUR_CUSTOMERLY_SECRET_KEY")
 ```
 
-3) From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
+**3)** From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
 
 
 
 ### User registration
+You can register logged in users of your app into Customerly calling the method `registerUser:`
+
+Example:
+
+```
+Customerly.sharedInstance.registerUser(email: "axlrose@example.com", user_id: "123ABC", name: "Axl Rose")
+```
+
+or using a closure
+
+```
+Customerly.sharedInstance.registerUser(email: "axlrose@example.com", user_id: "123ABC", name: "Axl Rose", success: { (newSurvey, newMessage) in
+                //Success
+            }, failure: { 
+                //Failure
+            })
+```
+
+You can also logout users:
+
+```
+Customerly.sharedInstance.logoutUser()
+```
+
+If you don't have a login method inside your apps don't worry, users can use the chat using their emails.
 
 
 
