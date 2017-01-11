@@ -20,6 +20,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 - [x] Track events
 - [x] Support via chat in real time
 - [x] Surveys
+- [x] English & Italian localizations
 - [x] Many more is coming....
 
 ## Requirements
@@ -33,7 +34,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 ## CocoaPods
 ----------------
 
-To use the Customerly SDK we recommend to use Cocoapods.
+To use the Customerly SDK we recommend to use Cocoapods 1.0.0 or later
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
@@ -67,6 +68,27 @@ We recommend to use only the open methods of the class Customerly.
 
 ## Usage
 ----------------
+If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.0.0 or later to install the SDK.
+
+First of all, if you don't have an Xcode project yet, create one now, then install the SDK following the paragraph `Cocoapods`.
+
+1) Import the Customerly iOS SDK module in your UIApplicationDelegate subclass:
+
+```
+import CustomerlySDK
+```
+2) Configure a Customerly iOS SDK shared instance, typically in your application's *application:didFinishLaunchingWithOptions:* method:
+
+```
+Customerly.sharedInstance.configure(secretKey: "YOUR_CUSTOMERLY_SECRET_KEY")
+```
+
+3) From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
+
+
+
+### User registration
+
 
 
 ## Contributing
