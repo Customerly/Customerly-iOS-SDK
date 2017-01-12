@@ -85,10 +85,11 @@ Customerly.sharedInstance.configure(secretKey: "YOUR_CUSTOMERLY_SECRET_KEY")
 
 **3)** From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
 
+**If in doubt, you can look at the examples in the demo application.**
 
 
 ### User registration
-You can register logged in users of your app into Customerly calling the method `registerUser:`
+You can register logged in users of your app into Customerly calling the method `registerUser:`. You’ll also need to register your user anywhere they log in.
 
 Example:
 
@@ -112,8 +113,87 @@ You can also logout users:
 Customerly.sharedInstance.logoutUser()
 ```
 
+In this method, *user_id*, *name*, *attributes*, *success* and *failure* are optionals.
+
 If you don't have a login method inside your apps don't worry, users can use the chat using their emails.
 
+###Chat
+You can open the support view controller calling the method `openSupport:`
+
+```
+Customerly.sharedInstance.openSupport(from: self)
+```
+where *self* is your current view controller.
+
+If you need to know in your app when a new message is coming, you can register the *realTimeMessages:* handler
+
+```
+Customerly.sharedInstance.realTimeMessages { (htmlMessage) in
+            print("OH OH OH, A NEW MESSAGE!!", htmlMessage)
+        }
+```
+If you want to get a generic update and open the last unread message (if available), call `update:`
+
+```
+Customerly.sharedInstance.update(success: { (newSurvey, newMessage) in
+            print("Update success")
+            print("New survey?", "\(newSurvey)", " - New message?", "\(newMessage)")
+            
+            if newMessage == true{
+                Customerly.sharedInstance.openLastSupportConversation(from: self)
+            }
+        }) {
+            print("Update failure")
+        }
+
+```
+
+###Surveys
+
+With the Customerly SDK you can deliver surveys directly into your app.
+
+You can present a survey from your actual view controller in this way:
+
+```
+if Customerly.sharedInstance.isSurveyAvailable(){
+            Customerly.sharedInstance.openSurvey(from: self, onShow: {
+                print("Survey showed")
+            }) { (surveyDismiss) in
+                if surveyDismiss == .postponed{
+                    print("Survey postponed")
+                }
+                else if surveyDismiss == .completed{
+                    print("Survey completed")
+                }
+                else if surveyDismiss == .rejected{
+                    print("Survey rejected")
+                }
+            }
+        }
+```
+
+or if you need something simpler
+
+```
+Customerly.sharedInstance.openSurvey(from: self)
+```
+Remember that you can get updates about new surveys available using the `update:` method.
+
+###Attributes
+Inside attributes you can add every custom data you prefer to track.
+
+```swift
+// Eg. This attribute define what kind of pricing plan the user has purchased 
+Customerly.sharedInstance.setAttributes(attributes: ["pricing_plan_type" : "basic"])
+```
+
+###Events
+Send to Customerly every event you want to segment users better
+
+```
+// Eg. This send an event that track a potential purchase
+Customerly.sharedInstance.trackEvent(event: "added_to_cart")
+```
 
 
 ## Contributing
