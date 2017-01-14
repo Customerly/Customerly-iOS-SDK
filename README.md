@@ -1,4 +1,3 @@
-</p>
 <p align="center">
 <img src="https://www.cdn.customerly.io/assets/img/Logo_Customerly_Name_Colored.svg">
 </p>
