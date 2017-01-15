@@ -49,7 +49,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'CustomerlySDK', :git => 'GITURL'
+pod 'CustomerlySDK', :git => 'https://github.com/customerly/Customerly-iOS-SDK'
 ```
 
 Then, run the following command:

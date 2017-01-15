@@ -49,7 +49,10 @@ class CustomerlyChatStartVC: CyViewController{
         title = "chatTitleView".localized(comment: "Chat View")
         
         requestConversationMessages(conversation_id: conversationId)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         onMessageArrived()
     }
     
