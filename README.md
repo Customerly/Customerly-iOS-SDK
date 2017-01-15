@@ -11,6 +11,10 @@ Deliver Surveys directly into your app and get the responses in one place. Study
 
 The Customerly iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
 
+<p align="center">
+  <img src="https://github.com/customerly/customerly.github.io/blob/master/ios/resources/chat-preview.png?raw=true" width=500 alt="Icon"/>
+</p>
+
 ## Features
 ----------------
 
