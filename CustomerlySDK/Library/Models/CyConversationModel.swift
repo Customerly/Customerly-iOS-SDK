@@ -16,7 +16,6 @@ class CyConversationModel: Mappable {
     var last_message_abstract : String?
     var last_account: CyAccountModel?
     
-    
     required init?(map: Map) {
     }
     

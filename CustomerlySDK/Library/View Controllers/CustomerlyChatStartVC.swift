@@ -71,14 +71,7 @@ class CustomerlyChatStartVC: CyViewController{
         }
         
         let conversationRequest = CyConversationRequestModel(JSON: [:])
-        if let dataStored = CyStorage.getCyDataModel(){
-            conversationRequest?.settings?.user_id = dataStored.user?.user_id
-            conversationRequest?.settings?.email = dataStored.user?.email
-            conversationRequest?.settings?.name = dataStored.user?.name
-            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.params?.conversation_id = conversation_id
         
         var hud : CyView?
@@ -88,7 +81,9 @@ class CustomerlyChatStartVC: CyViewController{
             self.messages = conversationMessages?.messages ?? []
             self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
             self.chatTableView.reloadData()
-            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
+            if self.messages.count > 0{
+                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
+            }
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
@@ -101,14 +96,7 @@ class CustomerlyChatStartVC: CyViewController{
         }
         
         let conversationRequest = CyConversationRequestModel(JSON: [:])
-        if let dataStored = CyStorage.getCyDataModel(){
-            conversationRequest?.settings?.user_id = dataStored.user?.user_id
-            conversationRequest?.settings?.email = dataStored.user?.email
-            conversationRequest?.settings?.name = dataStored.user?.name
-            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.timestamp = timestamp
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
@@ -126,16 +114,30 @@ class CustomerlyChatStartVC: CyViewController{
         
         let hud = showLoader(view: self.view)
         
+        if email != nil{
+            let pingRequestModel = CyRequestPingModel(JSON: [:])
+            pingRequestModel?.token = CyStorage.getCyDataModel()?.token
+            pingRequestModel?.params?.lead_email = email
+            
+            CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+                CyStorage.storeCyDataModel(cyData: responseData)
+                self.sendMessageRequest(message: message, email: email, conversation_id: conversation_id, attachment: attachment, hud: hud)
+            }, failure: { (error) in
+                self.hideLoader(loaderView: hud)
+            })
+            
+            return
+        }
+        
+        sendMessageRequest(message: message, email: email, conversation_id: conversation_id, attachment: attachment, hud: hud)
+    }
+    
+    func sendMessageRequest(message: String?, email: String? = nil, conversation_id: Int? = nil, attachment: CyMessageAttachmentRequestModel? = nil, hud: CyView){
+        
         let messageRequest = CySendMessageRequestModel(JSON: [:])
         if let dataStored = CyStorage.getCyDataModel(){
-            messageRequest?.settings?.user_id = dataStored.user?.user_id
-            messageRequest?.settings?.email = dataStored.user?.email
-            messageRequest?.settings?.name = dataStored.user?.name
-            messageRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            messageRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            messageRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+            messageRequest?.token = dataStored.token
             messageRequest?.params?.message = message
-            messageRequest?.params?.visitor_email = email
             messageRequest?.params?.conversation_id = conversation_id
             if attachment != nil{
                 messageRequest?.params?.attachments?.append(attachment!)
@@ -144,8 +146,6 @@ class CustomerlyChatStartVC: CyViewController{
         
         CyDataFetcher.sharedInstance.sendMessage(messageModel: messageRequest, completion: { (responseSendMessage) in
             self.chatTextField.text = ""
-            
-            CyStorage.storeCySingleParameters(user: responseSendMessage?.user, cookies: responseSendMessage?.cookies)
             
             //if user lead, reconfigure socket, and emit only when reconnected
             if email != nil{
@@ -177,14 +177,7 @@ class CustomerlyChatStartVC: CyViewController{
         let messageSeenRequest = CyMessageSeenRequestModel(JSON: [:])
         messageSeenRequest?.conversation_message_id = message?.conversation_message_id
         messageSeenRequest?.seen_date = Int(Date().timeIntervalSince1970)
-        if let dataStored = CyStorage.getCyDataModel(){
-            messageSeenRequest?.settings?.user_id = dataStored.user?.user_id
-            messageSeenRequest?.settings?.email = dataStored.user?.email
-            messageSeenRequest?.settings?.name = dataStored.user?.name
-            messageSeenRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            messageSeenRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            messageSeenRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        messageSeenRequest?.token = CyStorage.getCyDataModel()?.token
         CyDataFetcher.sharedInstance.messageSeen(messageSeenRequestModel: messageSeenRequest, completion: {
             
         }) { (error) in
@@ -354,7 +347,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             cell.active_admins = data?.active_admins
             cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + " " + lastAdminActivity()
-            cell.welcomeMessageLabel.text = data?.user?.is_user == 1 ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
+            cell.welcomeMessageLabel.text = data?.token?.userTypeFromToken() == CyUserType.user ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
             cell.setNeedsUpdateConstraints()
             cell.updateConstraintsIfNeeded()
             cell.setNeedsLayout()

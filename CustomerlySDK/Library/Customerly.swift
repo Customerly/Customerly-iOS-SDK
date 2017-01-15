@@ -37,6 +37,7 @@ open class Customerly: NSObject {
         ping(success: { () in
             CySocket.sharedInstance.configure()
             CySocket.sharedInstance.openConnection()
+            cyPrint("Success Configure")
         })
     }
     
@@ -50,8 +51,10 @@ open class Customerly: NSObject {
         ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
             CySocket.sharedInstance.reconfigure()
             let news = self.checkNews()
+            cyPrint("Success Register User")
             success?(news.survey, news.message)
         }, failure: {
+            cyPrint("Failure Register User")
             failure?()
         })
         
@@ -74,8 +77,10 @@ open class Customerly: NSObject {
     open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         ping(success: {
             let news = self.checkNews()
+            cyPrint("Success Update")
             success?(news.survey, news.message)
         }) {
+            cyPrint("Failure Update")
             failure?()
         }
     }
@@ -86,11 +91,13 @@ open class Customerly: NSObject {
      * Ex: ["Params1": 3, "Params2: "Hello"].
      */
     open func setAttributes(attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
-        if CyStorage.getCyDataModel()?.user?.is_user == 1{
+        if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
             ping(attributes: attributes, success: {
                 let news = self.checkNews()
+                cyPrint("Success Set Attributes")
                 success?(news.survey, news.message)
             }, failure: {
+                cyPrint("Failure Set Attributes")
                 failure?()
             })
         }
@@ -110,21 +117,12 @@ open class Customerly: NSObject {
         
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
-        
-        //if some data are stored, CyTrackingRequestModel containes  cookies and the user information
-        if let dataStored = CyStorage.getCyDataModel(){
-            trackingModel?.settings?.user_id = dataStored.user?.user_id
-            trackingModel?.settings?.email = dataStored.user?.email
-            trackingModel?.settings?.name = dataStored.user?.name
-            trackingModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            trackingModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            trackingModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
-        
+        trackingModel?.token = CyStorage.getCyDataModel()?.token //if some data are stored, CyTrackingRequestModel contain the token
+                
         CyDataFetcher.sharedInstance.trackEventAPIRequest(trackingRequest: trackingModel, completion: {
             cyPrint("Success trackEvent", event)
         }) { (error) in
-            cyPrint("Error trackEvent", error)
+            cyPrint("Failure trackEvent", error)
         }
     }
     
@@ -135,8 +133,10 @@ open class Customerly: NSObject {
      */
     open func openSupport(from viewController: UIViewController){
         
+        let data = CyStorage.getCyDataModel()
+        
         //If user exist, go to conversion list, else open a new conversation
-        if CyStorage.getCyDataModel()?.user?.is_user != nil{ //then, is_user == 0 (lead) or is_user == 1 (registered user)
+        if data?.token?.userTypeFromToken() == CyUserType.lead || data?.token?.userTypeFromToken() == CyUserType.user{ //then, the user is lead or registered
             viewController.present(CustomerlyNavigationController(rootViewController: CustomerlyConversationListVC.instantiate()), animated: true, completion: nil)
         }
         else{
@@ -152,7 +152,7 @@ open class Customerly: NSObject {
      */
     open func openLastSupportConversation(from viewController: UIViewController){
         if let data = CyStorage.getCyDataModel(){
-            if data.user?.is_user != nil && data.last_messages?.first != nil{ //then, is_user == 0 (lead) or is_user == 1 (registered user) and there is at least a message
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{ //then, user is lead or register user and there is at least a message
                 let chatStartVC = CustomerlyChatStartVC.instantiate()
                 chatStartVC.conversationId = data.last_messages?.first?.conversation_id
                 chatStartVC.addLeftCloseButton()
@@ -177,7 +177,7 @@ open class Customerly: NSObject {
      */
     open func isLastSupportConversationAvailable() -> Bool{
         if let data = CyStorage.getCyDataModel(){
-            if data.user?.is_user != nil && data.last_messages?.first != nil{
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{
                 return true
             }
         }
@@ -192,6 +192,7 @@ open class Customerly: NSObject {
         realTimeMessageFromSocket { (socketMessage) in
             self.requestConversationMessagesNews(timestamp: socketMessage?.timestamp, message: { (message) in
                 htmlMessage?(message?.content)
+                cyPrint("New realTime message", message?.content ?? "")
             })
         }
     }
@@ -240,26 +241,23 @@ open class Customerly: NSObject {
     //MARK: Ping
     func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
-        pingRequestModel?.params = [:]
         
         //if some cookies are stored, CyRequestPingModel containes these cookies and user informations
         if let dataStored = CyStorage.getCyDataModel(){
-            pingRequestModel?.settings?.user_id = dataStored.user?.user_id
-            pingRequestModel?.settings?.email = dataStored.user?.email
-            pingRequestModel?.settings?.name = dataStored.user?.name
-            pingRequestModel?.settings?.attributes = attributes
-            pingRequestModel?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            pingRequestModel?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            pingRequestModel?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
+            pingRequestModel?.token = dataStored.token
+            pingRequestModel?.params?.user_id = dataStored.user?.user_id
+            pingRequestModel?.params?.email = dataStored.user?.email
+            pingRequestModel?.params?.name = dataStored.user?.name
+            pingRequestModel?.params?.attributes = attributes
         }
         
         //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored
         if email != nil{
-            pingRequestModel?.settings?.email = email
-            pingRequestModel?.settings?.user_id = user_id
+            pingRequestModel?.params?.email = email
+            pingRequestModel?.params?.user_id = user_id
         }
         if name != nil{
-            pingRequestModel?.settings?.name = name
+            pingRequestModel?.params?.name = name
         }
         
         CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
@@ -267,7 +265,7 @@ open class Customerly: NSObject {
             cyPrint("Success Ping")
             success?()
         }) { (error) in
-            cyPrint("Error Ping", error)
+            cyPrint("Failure Ping", error)
             failure?()
         }
     }
@@ -295,14 +293,7 @@ open class Customerly: NSObject {
     func requestConversationMessagesNews(timestamp: Int?, message:@escaping ((CyMessageModel?) -> Void)){
         
         let conversationRequest = CyConversationRequestModel(JSON: [:])
-        if let dataStored = CyStorage.getCyDataModel(){
-            conversationRequest?.settings?.user_id = dataStored.user?.user_id
-            conversationRequest?.settings?.email = dataStored.user?.email
-            conversationRequest?.settings?.name = dataStored.user?.name
-            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.timestamp = timestamp
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in

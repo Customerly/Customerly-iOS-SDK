@@ -11,15 +11,13 @@ import ObjectMapper
 class CyConversationRetrieveResponseModel: Mappable {
 
     var conversations : [CyConversationModel]?
-    var cookies : CyCookiesResponseModel?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        conversations <- map["data.conversations"]
-        cookies <- map["cookies"]
+        conversations <- map["conversations"]
     }
     
 }

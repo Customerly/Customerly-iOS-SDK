@@ -10,21 +10,19 @@ import ObjectMapper
 
 class CySurveyParamsRequestModel: Mappable {
 
-    var settings : CySettingsModel? = CySettingsModel(JSON: [:])
+    var token : String?
     var survey_id : Int?
     var choice_id: Int?
     var answer: String?
-    var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        settings <- map["settings"]
+        token <- map["token"]
         survey_id <- map["params.survey_id"]
         choice_id <- map["params.choice_id"]
         answer <- map["params.answer"]
-        cookies <- map["cookies"]
     }
 }

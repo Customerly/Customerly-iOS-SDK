@@ -244,14 +244,7 @@ class CustomerlySurveyViewController: CyViewController {
         if survey != nil && survey?.seen_at == nil{
             let surveyParams = CySurveyParamsRequestModel(JSON: [:])
             surveyParams?.survey_id = survey?.survey_id
-            if let dataStored = CyStorage.getCyDataModel(){
-                surveyParams?.settings?.user_id = dataStored.user?.user_id
-                surveyParams?.settings?.email = dataStored.user?.email
-                surveyParams?.settings?.name = dataStored.user?.name
-                surveyParams?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-                surveyParams?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-                surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-            }
+            surveyParams?.token = CyStorage.getCyDataModel()?.token
             
             CyDataFetcher.sharedInstance.surveySeen(surveyRequestModel: surveyParams, completion: {
                 
@@ -264,14 +257,7 @@ class CustomerlySurveyViewController: CyViewController {
     func surveyBackAPI(){
         let surveyParams = CySurveyParamsRequestModel(JSON: [:])
         surveyParams?.survey_id = survey?.survey_id
-        if let dataStored = CyStorage.getCyDataModel(){
-            surveyParams?.settings?.user_id = dataStored.user?.user_id
-            surveyParams?.settings?.email = dataStored.user?.email
-            surveyParams?.settings?.name = dataStored.user?.name
-            surveyParams?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            surveyParams?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        surveyParams?.token = CyStorage.getCyDataModel()?.token
         
         let hud = showLoader(view: alertView)
         CyDataFetcher.sharedInstance.surveyBack(surveyRequestModel: surveyParams, completion: { (surveyResponse) in
@@ -285,14 +271,7 @@ class CustomerlySurveyViewController: CyViewController {
     func surveyRejectAPI(){
         let surveyParams = CySurveyParamsRequestModel(JSON: [:])
         surveyParams?.survey_id = survey?.survey_id
-        if let dataStored = CyStorage.getCyDataModel(){
-            surveyParams?.settings?.user_id = dataStored.user?.user_id
-            surveyParams?.settings?.email = dataStored.user?.email
-            surveyParams?.settings?.name = dataStored.user?.name
-            surveyParams?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            surveyParams?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            surveyParams?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
+        surveyParams?.token = CyStorage.getCyDataModel()?.token
         
         CyDataFetcher.sharedInstance.surveyReject(surveyRequestModel: surveyParams, completion: {
         }) { (error) in

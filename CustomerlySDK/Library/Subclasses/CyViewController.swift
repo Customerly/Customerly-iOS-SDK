@@ -206,11 +206,12 @@ class CyViewController: UIViewController {
     
     func photoFromLibrary(){
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-        imagePickerController.allowsEditing = false
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        imagePickerController.modalPresentationStyle = .popover
-        present(imagePickerController, animated: true, completion: nil)
+            imagePickerController.allowsEditing = false
+            imagePickerController.sourceType = .photoLibrary
+            //with this line commented, we can take from photoLibrary only photo
+            //imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            imagePickerController.modalPresentationStyle = .popover
+            present(imagePickerController, animated: true, completion: nil)
         }
         else{
             showAlert(title: "actionSheetImagePicker_error".localized(comment:"ImagePickerActionSheet"), message:"actionSheetImagePicker_error_galleryNotAvailable".localized(comment:"ImagePickerActionSheet"), buttonTitle: "actionSheetImagePicker_error".localized(comment:"actionSheetImagePicker_confirm"))

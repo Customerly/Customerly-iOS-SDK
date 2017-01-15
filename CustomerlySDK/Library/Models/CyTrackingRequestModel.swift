@@ -10,17 +10,15 @@ import ObjectMapper
 
 class CyTrackingRequestModel: Mappable {
 
-    var settings : CySettingsModel? = CySettingsModel(JSON: [:])
+    var token : String?
     var nameTracking : String?
-    var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        settings <- map["settings"]
+        token <- map["token"]
         nameTracking <- map["params.name"]
-        cookies <- map["cookies"]
     }
 }

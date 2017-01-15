@@ -54,15 +54,7 @@ class CustomerlyConversationListVC: CyViewController {
     //MARK: APIs
     func requestConversations(){
         let conversationRequest = CyConversationRequestModel(JSON: [:])
-        if let dataStored = CyStorage.getCyDataModel(){
-            conversationRequest?.settings?.user_id = dataStored.user?.user_id
-            conversationRequest?.settings?.email = dataStored.user?.email
-            conversationRequest?.settings?.name = dataStored.user?.name
-            conversationRequest?.cookies?.customerly_lead_token = dataStored.cookies?.customerly_lead_token
-            conversationRequest?.cookies?.customerly_temp_token = dataStored.cookies?.customerly_temp_token
-            conversationRequest?.cookies?.customerly_user_token = dataStored.cookies?.customerly_user_token
-        }
-        
+        conversationRequest?.token = CyStorage.getCyDataModel()?.token
         
         var hud : CyView?
         if tableView.pullToRefreshIsRefreshing() == false{

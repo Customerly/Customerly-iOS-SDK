@@ -15,7 +15,6 @@ class CyUserModel: Mappable {
     var user_id : String?
     var email : String?
     var name : String?
-    var is_user : Int?
     
     required init?(map: Map) {
     }
@@ -27,6 +26,5 @@ class CyUserModel: Mappable {
         user_id <- map["user_id"]
         email <- map["email"]
         name <- map["name"]
-        is_user <- map["is_user"]
     }
 }

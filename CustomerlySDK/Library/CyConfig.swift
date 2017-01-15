@@ -45,3 +45,9 @@ func userImageURL(id: Int?, pxSize: Int) -> URL{
     }
     return URL(string: "https://pictures.cdn.customerly.io/users/-/\(pxSize)")!
 }
+
+enum CyUserType: Int {
+    case anonymous = 1
+    case lead = 2
+    case user = 4
+}

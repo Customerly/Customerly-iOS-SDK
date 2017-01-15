@@ -10,17 +10,15 @@ import ObjectMapper
 
 class CyRequestPingModel: Mappable {
 
-    var settings : CySettingsModel? = CySettingsModel(JSON: [:])
-    var params : [String:String]?
-    var cookies : CyCookiesRequestModel? = CyCookiesRequestModel(JSON: [:])
+    var token: String?
+    var params: CySettingsModel? = CySettingsModel(JSON: [:])
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        settings <- map["settings"]
+        token <- map["token"]
         params <- map["params"]
-        cookies <- map["cookies"]
     }
 }

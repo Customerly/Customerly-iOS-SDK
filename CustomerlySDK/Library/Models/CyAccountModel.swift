@@ -15,7 +15,6 @@ class CyAccountModel: Mappable {
     var email: String?
     var last_active : Int?
     
-    
     required init?(map: Map) {
     }
     

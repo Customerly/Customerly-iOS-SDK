@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451FCB9B1E2A8094006E315D /* CyTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FCB9A1E2A8094006E315D /* CyTokenModel.swift */; };
 		452745DC1DF9C027006215B1 /* CyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452745DB1DF9C027006215B1 /* CyTableView.swift */; };
 		45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA01DFEF4160021E7F9 /* CySocket.swift */; };
 		45282DA41DFF0FF20021E7F9 /* CyTypingSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */; };
@@ -50,8 +51,6 @@
 		455CE18C1DE0AB4500FF65DC /* CyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1731DE0AB4500FF65DC /* CyStorage.swift */; };
 		455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1751DE0AB4500FF65DC /* CyAppConfigModel.swift */; };
 		455CE18E1DE0AB4500FF65DC /* CyAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1761DE0AB4500FF65DC /* CyAppModel.swift */; };
-		455CE18F1DE0AB4500FF65DC /* CyCookiesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1771DE0AB4500FF65DC /* CyCookiesRequestModel.swift */; };
-		455CE1901DE0AB4500FF65DC /* CyCookiesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1781DE0AB4500FF65DC /* CyCookiesResponseModel.swift */; };
 		455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1791DE0AB4500FF65DC /* CyDataModel.swift */; };
 		455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17A1DE0AB4500FF65DC /* CyDeviceModel.swift */; };
 		455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */; };
@@ -138,6 +137,7 @@
 
 /* Begin PBXFileReference section */
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
+		451FCB9A1E2A8094006E315D /* CyTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTokenModel.swift; sourceTree = "<group>"; };
 		452745DB1DF9C027006215B1 /* CyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTableView.swift; sourceTree = "<group>"; };
 		45282DA01DFEF4160021E7F9 /* CySocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySocket.swift; sourceTree = "<group>"; };
 		45282DA31DFF0FF20021E7F9 /* CyTypingSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTypingSocketModel.swift; sourceTree = "<group>"; };
@@ -188,8 +188,6 @@
 		455CE1731DE0AB4500FF65DC /* CyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyStorage.swift; sourceTree = "<group>"; };
 		455CE1751DE0AB4500FF65DC /* CyAppConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAppConfigModel.swift; sourceTree = "<group>"; };
 		455CE1761DE0AB4500FF65DC /* CyAppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAppModel.swift; sourceTree = "<group>"; };
-		455CE1771DE0AB4500FF65DC /* CyCookiesRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyCookiesRequestModel.swift; sourceTree = "<group>"; };
-		455CE1781DE0AB4500FF65DC /* CyCookiesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyCookiesResponseModel.swift; sourceTree = "<group>"; };
 		455CE1791DE0AB4500FF65DC /* CyDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyDataModel.swift; sourceTree = "<group>"; };
 		455CE17A1DE0AB4500FF65DC /* CyDeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyDeviceModel.swift; sourceTree = "<group>"; };
 		455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyRequestPingModel.swift; sourceTree = "<group>"; };
@@ -410,10 +408,9 @@
 			children = (
 				455CE1751DE0AB4500FF65DC /* CyAppConfigModel.swift */,
 				455CE1761DE0AB4500FF65DC /* CyAppModel.swift */,
-				455CE1771DE0AB4500FF65DC /* CyCookiesRequestModel.swift */,
-				455CE1781DE0AB4500FF65DC /* CyCookiesResponseModel.swift */,
 				455CE17A1DE0AB4500FF65DC /* CyDeviceModel.swift */,
 				455CE1791DE0AB4500FF65DC /* CyDataModel.swift */,
+				451FCB9A1E2A8094006E315D /* CyTokenModel.swift */,
 				455CE17B1DE0AB4500FF65DC /* CyRequestPingModel.swift */,
 				455CE17C1DE0AB4500FF65DC /* CySettingsModel.swift */,
 				455CE17E1DE0AB4500FF65DC /* CyTrackingRequestModel.swift */,
@@ -798,7 +795,6 @@
 				455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */,
 				455CE1971DE0AB4500FF65DC /* CyUserModel.swift in Sources */,
 				455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */,
-				455CE1901DE0AB4500FF65DC /* CyCookiesResponseModel.swift in Sources */,
 				455CE18A1DE0AB4500FF65DC /* CyMapping.swift in Sources */,
 				45E61EFF1E1983FA0088D6C5 /* CySurveyListViewController.swift in Sources */,
 				455A0FA11DF47A90003EEA43 /* CyImageView.swift in Sources */,
@@ -824,6 +820,7 @@
 				455CE1851DE0AB4500FF65DC /* Customerly.swift in Sources */,
 				455A0F951DF0AA41003EEA43 /* CySendMessageResponseModel.swift in Sources */,
 				455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */,
+				451FCB9B1E2A8094006E315D /* CyTokenModel.swift in Sources */,
 				455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */,
 				458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */,
 				45282DA81DFF21830021E7F9 /* CySeenMessageSocketModel.swift in Sources */,
@@ -843,7 +840,6 @@
 				455A0FA91DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift in Sources */,
 				455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */,
 				455A0FAB1DF48022003EEA43 /* CyConversationRequestModel.swift in Sources */,
-				455CE18F1DE0AB4500FF65DC /* CyCookiesRequestModel.swift in Sources */,
 				455CE18B1DE0AB4500FF65DC /* CyRouting.swift in Sources */,
 				45F9E0B51E1C5A1E00C7241F /* CySurveyTextFieldViewController.swift in Sources */,
 				455CE18D1DE0AB4500FF65DC /* CyAppConfigModel.swift in Sources */,

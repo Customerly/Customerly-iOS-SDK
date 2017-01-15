@@ -13,7 +13,6 @@ class CySendMessageRequestParamsModel: Mappable {
     var conversation_id: Int?
     var message: String?
     var attachments: [CyMessageAttachmentRequestModel]? = []
-    var visitor_email: String?
     
     required init?(map: Map) {
     }
@@ -23,7 +22,6 @@ class CySendMessageRequestParamsModel: Mappable {
         conversation_id <- map["conversation_id"]
         message <- map["message"]
         attachments <- map["attachments"]
-        visitor_email <- map["visitor_email"]
     }
     
 }

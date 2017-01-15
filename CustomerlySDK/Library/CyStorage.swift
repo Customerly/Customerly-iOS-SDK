@@ -13,9 +13,9 @@ class CyStorage: NSObject {
     //MARK: CyDataModel Storage
     static func storeCyDataModel(cyData : CyDataModel?){
         
-        //if user is already logged (standard user, not lead), store user data, else user_id = nil and email = nil
+        //if user is already logged (standard user, not lead, not anonymous), store user data, else user_id = nil and email = nil
         let alteredData = cyData
-        if alteredData?.user?.is_user == 0{
+        if alteredData?.token?.userTypeFromToken() != CyUserType.user{
             alteredData?.user?.user_id = nil
             alteredData?.user?.email = nil
             alteredData?.user?.name = nil
@@ -24,14 +24,12 @@ class CyStorage: NSObject {
         if alteredData != nil{
             UserDefaults.standard.set(alteredData!.toJSON(), forKey: "cyDataModel")
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
         }
     }
     
     static func deleteCyDataModel(){
         UserDefaults.standard.set(nil, forKey: "cyDataModel")
         UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
     }
     
     static func getCyDataModel() -> CyDataModel?{
@@ -42,20 +40,19 @@ class CyStorage: NSObject {
         return nil
     }
     
-    static func storeCySingleParameters(user: CyUserModel? = nil, cookies: CyCookiesResponseModel? = nil){
+    static func storeCySingleParameters(user: CyUserModel? = nil, token: String? = nil){
         
         if let data = getCyDataModel(){
-            //if user is already logged (standard user, not lead), store user data, else user_id = nil and email = nil
+            //if user is already logged (standard user, not lead, not anonymous), store user data, else user_id = nil and email = nil
             let alteredData = data
             alteredData.user = user ?? data.user
-            alteredData.cookies = cookies ?? data.cookies
-            if alteredData.user?.is_user == 0{
+            alteredData.token = token ?? data.token
+            if alteredData.token?.userTypeFromToken() != CyUserType.user{
                 alteredData.user?.user_id = nil
                 alteredData.user?.email = nil
                 alteredData.user?.name = nil
             }
             storeCyDataModel(cyData: alteredData)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cyDataModel"), object: nil)
         }
     }
     

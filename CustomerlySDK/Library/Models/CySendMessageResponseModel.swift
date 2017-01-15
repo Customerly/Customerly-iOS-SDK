@@ -10,21 +10,21 @@ import ObjectMapper
 
 class CySendMessageResponseModel: Mappable {
 
-    var user : CyUserModel?
-    var conversation : CyConversationModel?
+    var token: String?
+    var user: CyUserModel?
+    var conversation: CyConversationModel?
     var message: CyMessageModel?
-    var timestamp : Int?
-    var cookies : CyCookiesResponseModel?
+    var timestamp: Int?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map)
     {
-        user <- map["data.user.data"]
-        conversation <- map["data.conversation"]
-        message <- map["data.message"]
-        timestamp <- map["data.timestamp"]
-        cookies <- map["cookies"]
+        token <- map["token"]
+        user <- map["user.data"]
+        conversation <- map["conversation"]
+        message <- map["message"]
+        timestamp <- map["timestamp"]
     }
 }
