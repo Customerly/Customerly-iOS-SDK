@@ -58,13 +58,6 @@ Then, run the following command:
 $ pod install
 ```
 
-## Manually
-----------------
-1. Download and drop ```/Library``` folder in your project.  
-2. Congratulations!  
-
-We recommend to use only the open methods of the class Customerly.
-
 ## Usage
 ----------------
 If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.0.0 or later to install the SDK.
@@ -210,4 +203,4 @@ Made with ❤️ by [Paolo Musolino](https://github.com/Codeido) for Customerly.
 
 ## License
 ----------------
-Customerly iOS SDK is available under the XXX license. See the LICENSE file for more info.
+Customerly iOS SDK is available under the Apache License 2.0. See the LICENSE file for more info.
