@@ -10,11 +10,12 @@ import ObjectMapper
 
 class CyConversationModel: Mappable {
 
-    var conversation_id : Int?
-    var user_id : Int?
+    var conversation_id: Int?
+    var user_id: Int?
     var last_message_date: Double?
     var last_message_abstract : String?
     var last_account: CyAccountModel?
+    var unread: Bool = false
     
     required init?(map: Map) {
     }
@@ -26,6 +27,7 @@ class CyConversationModel: Mappable {
         last_message_date <- map["last_message_date"]
         last_message_abstract <- map["last_message_abstract"]
         last_account <- map["last_account"]
+        unread <- map["unread"]
     }
     
 }

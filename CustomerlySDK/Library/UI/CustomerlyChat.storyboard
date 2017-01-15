@@ -347,6 +347,14 @@
                                                         <constraint firstAttribute="width" constant="50" id="uaH-9b-FcZ"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nfs-Yv-Phu" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="50" y="14" width="15" height="15"/>
+                                                    <color key="backgroundColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="8U8-xi-mBI"/>
+                                                        <constraint firstAttribute="width" constant="15" id="Vpj-Oc-B6v"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-jz-GkS" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="18" width="139" height="21"/>
                                                     <constraints>
@@ -380,7 +388,9 @@
                                                 <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="4Ua-3K-8Rf"/>
                                                 <constraint firstAttribute="trailing" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="B8f-fF-6d7"/>
                                                 <constraint firstAttribute="bottom" secondItem="hee-cs-b98" secondAttribute="bottom" constant="13" id="F93-yr-Sh2"/>
+                                                <constraint firstItem="nfs-Yv-Phu" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="14" id="KFN-4c-F0v"/>
                                                 <constraint firstItem="TzG-jz-GkS" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="OJc-p9-PuH"/>
+                                                <constraint firstItem="nfs-Yv-Phu" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="50" id="PMM-qs-jNP"/>
                                                 <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="8Je-8k-ub2" secondAttribute="bottom" id="S8n-MB-ZuX"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="8" id="bhX-dh-GR4"/>
                                                 <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="dOe-Cm-s08"/>
@@ -393,6 +403,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="8Je-8k-ub2" id="ggl-M3-7rS"/>
                                             <outlet property="lastChatConversationLabel" destination="O5x-HB-87T" id="kgB-O9-HNk"/>
+                                            <outlet property="selectionLayerImageView" destination="nfs-Yv-Phu" id="ehI-oz-Ie4"/>
                                             <outlet property="userAvatarImageView" destination="hee-cs-b98" id="lW9-sn-xZx"/>
                                             <outlet property="userNameLabel" destination="TzG-jz-GkS" id="MLC-ie-WaV"/>
                                         </connections>
