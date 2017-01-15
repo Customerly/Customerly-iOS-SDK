@@ -39,7 +39,6 @@ class CyMessageTableViewCell: UITableViewCell {
         adminAvatar.layer.cornerRadius = adminAvatar.frame.size.width/2 //Circular avatar for admin
         userAvatar.layer.cornerRadius = userAvatar.frame.size.width/2 //Circular avatar for user
         self.backgroundColor = UIColor.clear
-        messageView.backgroundColor = base_color_template
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,6 +51,7 @@ class CyMessageTableViewCell: UITableViewCell {
         adminAvatar.isHidden = false
         messageViewRightConstraint.isActive = false
         messageViewLeftConstraint.isActive = true
+        messageView.backgroundColor = UIColor(hexString: "#eceff1")
     }
     
     func setUserVisual(){
@@ -60,6 +60,7 @@ class CyMessageTableViewCell: UITableViewCell {
         messageTextView.textAlignment = .right
         messageViewRightConstraint.isActive = true
         messageViewLeftConstraint.isActive = false
+        messageView.backgroundColor = base_color_template
     }
     
     func cellContainsImages(configForImages: Bool){
