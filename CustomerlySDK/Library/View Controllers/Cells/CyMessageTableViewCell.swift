@@ -35,7 +35,7 @@ class CyMessageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         messageView.layer.cornerRadius = 4.0
-        messageTextView.textContainerInset = UIEdgeInsetsMake(2, 0, -15, 0) //remove padding
+        messageTextView.textContainerInset = UIEdgeInsetsMake(2, 0, -12, 0) //remove padding
         adminAvatar.layer.cornerRadius = adminAvatar.frame.size.width/2 //Circular avatar for admin
         userAvatar.layer.cornerRadius = userAvatar.frame.size.width/2 //Circular avatar for user
         self.backgroundColor = UIColor.clear

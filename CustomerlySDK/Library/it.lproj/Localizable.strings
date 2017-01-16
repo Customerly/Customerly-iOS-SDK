@@ -48,6 +48,7 @@
 "chatViewPoweredBy" = "Offerto da Customerly";
 "chatViewContactSupportLabel" = "Contatta l'assistenza scrivendo la tua domanda qui sotto.";
 "chatViewTextFieldPlaceholder" = "Scrivi la tua domanda";
+"chatViewRichMessageText" = "Questo messaggio è stato inviato via email. Tocca qui per leggerlo.";
 
 /* Survey View */
 "surveyTitleView" = "Sondaggio";

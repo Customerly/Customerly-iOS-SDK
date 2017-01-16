@@ -34,6 +34,7 @@ class CustomerlyChatStartVC: CyViewController{
         
         //TableView configuration
         chatTableView.dataSource = self
+        chatTableView.delegate = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
         chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
@@ -252,6 +253,30 @@ class CustomerlyChatStartVC: CyViewController{
         return nil
     }
     
+    func getRichEmailMessage() -> NSMutableAttributedString{
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: "mail_icon", in: Bundle(for: Customerly.classForCoder()), compatibleWith: nil)
+        attachment.bounds.size = CGSize(width: 50, height: 39)
+        
+        let attributedAttachment = NSAttributedString(attachment: attachment)
+        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#999999")])
+        
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(attributedAttachment)
+        attributedString.append(attributedText)
+        
+        attributedString.enumerateAttribute(NSAttachmentAttributeName, in: NSRange(location: 0, length: attributedString.length)) { (attribute, range, stop) -> Void in
+            if (attribute as? NSTextAttachment) != nil {
+                //center all attachments in attributed string
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.alignment = .center
+                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+            }
+        }
+        return attributedString
+    }
+    
     //MARK: Message Array Manipulation
     func addMessages(messagesArray: [CyMessageModel]? = nil){
         if messagesArray != nil{
@@ -315,7 +340,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             var cell : CyMessageTableViewCell?
             
-            let message = messages[indexPath.item]
+            let message = messages[indexPath.row]
             
             if let images = getAttachmentsImages(message: message){
                 cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
@@ -336,15 +361,14 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.setUserVisual()
             }
             
-//            if message.rich_mail == true{
-//                
-//                "Questo messaggio è stato inviato via email. Tocca qui per leggerlo."
-//                
-//            }
-//            else{
-            
-            cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
-           // }
+            if message.rich_mail == true{
+                cell?.messageTextView.attributedText = getRichEmailMessage()
+                cell?.messageTextView.isUserInteractionEnabled = false
+            }
+            else{
+                cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
+                cell?.messageTextView.isUserInteractionEnabled = true
+            }
             
             cell?.setNeedsUpdateConstraints()
             cell?.updateConstraintsIfNeeded()
@@ -373,6 +397,18 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
             return cell
+        }
+    }
+}
+
+extension CustomerlyChatStartVC: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("entra qui")
+        let message = messages[indexPath.row]
+        if message.rich_mail == true{
+            if message.rich_mail_url != nil && URL(string: message.rich_mail_url!) != nil{
+                UIApplication.shared.openURL(URL(string: message.rich_mail_url!)!)
+            }
         }
     }
 }

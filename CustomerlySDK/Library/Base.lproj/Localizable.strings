@@ -48,6 +48,7 @@
 "chatViewPoweredBy" = "Powered by Customerly";
 "chatViewContactSupportLabel" = "Contact support writing your question below.";
 "chatViewTextFieldPlaceholder" = "Ask your question";
+"chatViewRichMessageText" = "This message was sent by email. Tap to read.";
 
 /* Survey View */
 "surveyTitleView" = "Survey";
