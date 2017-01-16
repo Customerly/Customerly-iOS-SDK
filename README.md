@@ -17,7 +17,6 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 </p>
 
 ## Features
-----------------
 
 - [x] Register your users
 - [x] Set attributes
@@ -28,7 +27,6 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 - [x] Many more is coming....
 
 ## Requirements
-----------------
 
 - iOS 8.0+
 - Xcode 8+
@@ -36,7 +34,6 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 - The Objective-C compatibility is coming soon
 
 ## CocoaPods
-----------------
 
 To use the Customerly SDK we recommend to use Cocoapods 1.0.0 or later
 
@@ -64,7 +61,6 @@ $ pod install
 ```
 
 ## Usage
-----------------
 If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.0.0 or later to install the SDK.
 
 First of all, if you don't have an Xcode project yet, create one now, then install the SDK following the paragraph `Cocoapods`.
@@ -207,5 +203,4 @@ Made with ❤️ by [Paolo Musolino](https://github.com/Codeido) for Customerly.
 
 
 ## License
-----------------
 Customerly iOS SDK is available under the Apache License 2.0. See the LICENSE file for more info.
