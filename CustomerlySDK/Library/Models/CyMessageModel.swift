@@ -19,6 +19,8 @@ class CyMessageModel: Mappable {
     var seen_date: Int?
     var type: Int?
     var close_conversation: Int?
+    var rich_mail: Bool = false
+    var rich_mail_url: String?
     var attachments: [CyAttachmentModel]?
     var account: CyAccountModel?
     
@@ -35,6 +37,9 @@ class CyMessageModel: Mappable {
         sent_date <- map["sent_date"]
         seen_date <- map["seen_date"]
         type <- map["type"]
+        close_conversation <- map["close_conversation"]
+        rich_mail <- map["rich_mail"]
+        rich_mail_url <- map["rich_mail_url"]
         attachments <- map["attachments"]
         account <- map["account"]
     }

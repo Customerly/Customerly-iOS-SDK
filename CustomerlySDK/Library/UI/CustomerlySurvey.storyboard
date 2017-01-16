@@ -52,7 +52,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="Yke-xJ-MTk"/>
                                                 </constraints>
-                                                <state key="normal" image="survey_close_button"/>
+                                                <state key="normal" image="close_button"/>
                                                 <connections>
                                                     <action selector="close:" destination="hn3-Gq-xCx" eventType="touchUpInside" id="hGe-xF-qGw"/>
                                                 </connections>
@@ -546,8 +546,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close_button" width="20" height="20"/>
         <image name="survey_back_button" width="20" height="20"/>
-        <image name="survey_close_button" width="20" height="20"/>
         <image name="survey_radiobutton" width="20" height="20"/>
         <image name="survey_star_full" width="40" height="40"/>
     </resources>

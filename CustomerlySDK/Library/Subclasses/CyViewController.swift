@@ -155,9 +155,10 @@ class CyViewController: UIViewController {
     
     //MARK: Dismiss VC
     func addLeftCloseButton(){
-        let closeButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
-        closeButton.setTitle("X", for: .normal)
-        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0)
+        let closeButton = UIButton(type: .system)
+        closeButton.frame = CGRect(x:0, y:0, width:15, height:15)
+        closeButton.tintColor = UIColor.white
+        closeButton.setImage(UIImage(named: "close_button", in: Bundle(for: Customerly.classForCoder()), compatibleWith: nil), for: .normal)
         closeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         let buttonItem = UIBarButtonItem(customView: closeButton)
         self.navigationItem.leftBarButtonItem = buttonItem

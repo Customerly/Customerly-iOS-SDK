@@ -15,6 +15,7 @@ class CyConversationTableViewCell: UITableViewCell {
     @IBOutlet weak var lastChatConversationLabel: CyLabel!
     @IBOutlet weak var dateLabel: CyLabel!
     @IBOutlet weak var selectionLayerImageView: CyImageView!
+    @IBOutlet weak var selectionLineLayerImageView: CyImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,6 @@ class CyConversationTableViewCell: UITableViewCell {
     
     func unreadConversation(unread: Bool){
         selectionLayerImageView.isHidden = !unread
-        selectionLayerImageView.layer.cornerRadius = selectionLayerImageView.frame.size.width/2
+        selectionLineLayerImageView.isHidden = !unread
     }
 }

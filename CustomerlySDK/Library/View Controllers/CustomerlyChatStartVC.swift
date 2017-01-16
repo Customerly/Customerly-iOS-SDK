@@ -336,7 +336,14 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.setUserVisual()
             }
             
+//            if message.rich_mail == true{
+//                
+//                "Questo messaggio è stato inviato via email. Tocca qui per leggerlo."
+//                
+//            }
+//            else{
             cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont.systemFont(ofSize: 14.0), color: message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
+           // }
             
             cell?.setNeedsUpdateConstraints()
             cell?.updateConstraintsIfNeeded()
