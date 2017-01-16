@@ -109,7 +109,7 @@ extension CustomerlyConversationListVC: UITableViewDataSource{
             
             cell.unreadConversation(unread: conversation.unread)
             
-            cell.lastChatConversationLabel.attributedText = conversation.last_message_abstract?.attributedStringFromHTML(font: UIFont.systemFont(ofSize: 14.0), color:  (conversation.unread == true ? UIColor.black : UIColor(hexString: "#999999")))
+            cell.lastChatConversationLabel.attributedText = conversation.last_message_abstract?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  (conversation.unread == true ? UIColor.black : UIColor(hexString: "#999999")))
             cell.dateLabel.text = Date.timeAgoSinceUnixTime(unix_time: conversation.last_message_date!, currentDate: Date())
         }
         
