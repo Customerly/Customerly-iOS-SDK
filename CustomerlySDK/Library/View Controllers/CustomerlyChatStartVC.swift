@@ -403,7 +403,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
 
 extension CustomerlyChatStartVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("entra qui")
         let message = messages[indexPath.row]
         if message.rich_mail == true{
             if message.rich_mail_url != nil && URL(string: message.rich_mail_url!) != nil{
