@@ -52,4 +52,44 @@ extension Date {
         }
     }
     
+    func daysFromDate(date: Date) -> Int?{
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: self)
+        let date2 = calendar.startOfDay(for: date)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        return components.day
+    }
+    
+    func minutesFromDate(date: Date) -> Int?{
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: self)
+        let date2 = calendar.startOfDay(for: date)
+        
+        let components = calendar.dateComponents([.minute], from: date1, to: date2)
+        return components.minute
+    }
+    
+    func getCompleteDate() -> (second: Int, minute: Int, hour: Int, day: Int, month: Int, year: Int){
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: self)
+        let minute = calendar.component(.minute, from: self)
+        let second = calendar.component(.second, from: self)
+        let year = calendar.component(.year, from: self)
+        let month = calendar.component(.month, from: self)
+        let day = calendar.component(.day, from: self)
+        
+        return(second, minute, hour, day, month, year)
+    }
+    
+    func isTheSameDay(of date: Date) -> Bool{
+        return Calendar.current.isDate(self, inSameDayAs: date)
+    }
+    
+    func hoursAndMinutes() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
 }

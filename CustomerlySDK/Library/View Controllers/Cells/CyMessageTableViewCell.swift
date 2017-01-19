@@ -14,6 +14,7 @@ class CyMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatar: CyImageView!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageTextView: CyTextView!
+    @IBOutlet weak var dateLabel: CyLabel!
     @IBOutlet weak var imagesTableView: CyTableView?
     @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet var messageViewRightConstraint: NSLayoutConstraint!

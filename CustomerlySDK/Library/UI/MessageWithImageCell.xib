@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageWithImagesCell" rowHeight="111" id="DKh-ay-SUI" customClass="CyMessageTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DKh-ay-SUI" id="MFM-41-umS">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSE-2z-qei" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-HJ-f50">
-                        <rect key="frame" x="45" y="0.0" width="285" height="107.5"/>
+                        <rect key="frame" x="45" y="0.0" width="285" height="123.5"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit." translatesAutoresizingMaskIntoConstraints="NO" id="18E-j1-Esf" customClass="CyTextView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="269" height="33"/>
@@ -45,16 +45,28 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="eQ8-du-2z4"/>
                                 </constraints>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVH-V0-08q" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="235" y="103.5" width="42" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="jSa-cK-aYd"/>
+                                    <constraint firstAttribute="width" constant="42" id="tre-cx-0Qx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="18E-j1-Esf" firstAttribute="top" secondItem="TKe-HJ-f50" secondAttribute="top" constant="8" id="224-On-jC7"/>
                             <constraint firstItem="2OH-WL-hjR" firstAttribute="leading" secondItem="TKe-HJ-f50" secondAttribute="leading" constant="8" id="3yh-Jf-xxU"/>
                             <constraint firstAttribute="trailing" secondItem="2OH-WL-hjR" secondAttribute="trailing" constant="8" id="AWo-dp-X8B"/>
+                            <constraint firstAttribute="trailing" secondItem="yVH-V0-08q" secondAttribute="trailing" constant="8" id="Bmp-EF-B6w"/>
                             <constraint firstItem="18E-j1-Esf" firstAttribute="leading" secondItem="TKe-HJ-f50" secondAttribute="leading" constant="8" id="I4d-qn-K9x"/>
                             <constraint firstAttribute="trailing" secondItem="18E-j1-Esf" secondAttribute="trailing" constant="8" id="Kr1-hu-sb6"/>
-                            <constraint firstAttribute="bottom" secondItem="2OH-WL-hjR" secondAttribute="bottom" constant="8" id="TIY-7u-s1F"/>
+                            <constraint firstItem="yVH-V0-08q" firstAttribute="top" secondItem="2OH-WL-hjR" secondAttribute="bottom" constant="4" id="pwr-Ru-bij"/>
                             <constraint firstItem="2OH-WL-hjR" firstAttribute="top" secondItem="18E-j1-Esf" secondAttribute="bottom" constant="8" id="v0M-rP-pbC"/>
+                            <constraint firstAttribute="bottom" secondItem="yVH-V0-08q" secondAttribute="bottom" constant="8" id="xsV-Q8-RpH"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6iP-9b-si0" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
@@ -81,6 +93,7 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="adminAvatar" destination="pSE-2z-qei" id="dqX-Ck-tD0"/>
+                <outlet property="dateLabel" destination="yVH-V0-08q" id="rPo-l4-mdO"/>
                 <outlet property="imagesTableView" destination="2OH-WL-hjR" id="c0q-lU-mVX"/>
                 <outlet property="imagesTableViewHeightConstraint" destination="EhI-Om-vYM" id="g1r-wZ-A2L"/>
                 <outlet property="messageTextView" destination="18E-j1-Esf" id="dvr-nG-tNt"/>

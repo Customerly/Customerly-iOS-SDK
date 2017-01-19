@@ -289,6 +289,52 @@ class CustomerlyChatStartVC: CyViewController{
         }
     }
     
+    func generateDateSections(messagesArray: [CyMessageModel]) -> [Date]{
+        
+        var tempArray: [Date] = []
+        for message in messagesArray{
+            if let sent_date = message.sent_date{
+                let messageDate = Date(timeIntervalSince1970:TimeInterval(Double(sent_date)))
+                
+                if tempArray.count == 0{
+                    tempArray.append(messageDate)
+                }
+                
+                var add = false
+                for date in tempArray{
+                    if messageDate.isTheSameDay(of: date){
+                        add = false
+                    }
+                    else{
+                        add = true
+                    }
+                }
+                
+                if add == true{
+                    tempArray.append(messageDate)
+                }
+            }
+        }
+        
+        print(tempArray)
+        return tempArray
+    }
+    
+    func getMessagesInSection(messagesArray: [CyMessageModel], sectionDate: Date) -> [CyMessageModel]{
+        
+        var messageArray: [CyMessageModel] = []
+        for message in messagesArray{
+            if let sent_date = message.sent_date{
+                let messageDate = Date(timeIntervalSince1970:TimeInterval(Double(sent_date)))
+                
+                if messageDate.isTheSameDay(of: sectionDate){
+                    messageArray.append(message)
+                }
+            }
+        }
+        return messageArray
+    }
+    
     //MARK: Actions
     @IBAction func newAttachments(_ sender: Any) {
         self.openImagePickerActionSheet()
@@ -369,6 +415,12 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
                 cell?.messageTextView.isUserInteractionEnabled = true
             }
+            
+            cell?.dateLabel.textColor = message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white
+            if let sent_date = message.sent_date {
+                cell?.dateLabel.text = Date(timeIntervalSince1970:TimeInterval(sent_date)).hoursAndMinutes()
+            }
+            
             
             cell?.setNeedsUpdateConstraints()
             cell?.updateConstraintsIfNeeded()
