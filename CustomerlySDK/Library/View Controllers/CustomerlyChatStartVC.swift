@@ -370,6 +370,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if conversationId != nil && messages.count >= 0 {
+            tableView.backgroundColor = UIColor.white
             return messages.count
         }
         
@@ -378,6 +379,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             return 0
         }
         
+        tableView.backgroundColor = UIColor(hexString: "#EDEEEB")
         return 2
     }
     
