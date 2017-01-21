@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 					The Customerly iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
                    DESC
   s.homepage     = "https://github.com/customerly/Customerly-iOS-SDK"
-  s.screenshots  = "https://raw.githubusercontent.com/Codeido/PMAlertController/master/preview_pmalertacontroller.jpg"
+  s.screenshots  = "https://raw.githubusercontent.com/customerly/customerly.github.io/master/ios/resources/chat-preview.png"
   s.license      = { :type => "Apache License 2.0", :file => "LICENSE" }
   s.author             = { "Paolo Musolino" => "info@codeido.com" }
   s.social_media_url   = "https://www.facebook.com/customerly/"
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source_files  = "Library/**/*"
   s.frameworks  = "UIKit", "Foundation"
   s.requires_arc = true
-  spec.dependency 'ObjectMapper', '2.2.2'
-  spec.dependency 'Kingfisher', '3.2.4'
-  spec.dependency 'Socket.IO-Client-Swift', '8.2.0'
+  s.dependency 'ObjectMapper', '2.2.2'
+  s.dependency 'Kingfisher', '3.2.4'
+  s.dependency 'Socket.IO-Client-Swift', '8.2.0'
 end
