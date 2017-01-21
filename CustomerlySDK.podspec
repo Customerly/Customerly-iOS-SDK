@@ -15,6 +15,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/customerly/Customerly-iOS-SDK.git", :tag => s.version }
   s.source_files  = "CustomerlySDK/Library/**/*.swift"
+  s.resource_bundles = {
+    'PMAlertController' => ['CustomerlySDK/Library/**/*.xcassets', 'CustomerlySDK/Library/**/*.lproj', 'CustomerlySDK/Library/UI/**/*.storyboard', 'CustomerlySDK/Library/UI/**/*.xib']
+  }
   s.frameworks  = "UIKit", "Foundation"
   s.requires_arc = true
   s.dependency 'ObjectMapper', '2.2.2'
