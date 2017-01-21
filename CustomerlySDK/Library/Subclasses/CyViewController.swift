@@ -33,7 +33,7 @@ class CyViewController: UIViewController {
     
     // MARK: - Load VC From Storyboard or Xib
     static func cyViewControllerFromStoryboard(storyboardName: String, vcIdentifier: String) -> UIViewController{
-        let podBundle = Bundle(for: self.classForCoder())
+        let podBundle = Bundle(for: Customerly.classForCoder())
         
         if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
             
