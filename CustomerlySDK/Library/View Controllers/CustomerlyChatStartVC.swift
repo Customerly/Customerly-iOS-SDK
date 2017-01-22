@@ -197,6 +197,14 @@ class CustomerlyChatStartVC: CyViewController{
     }
     
     //MARK: Utils
+    func conversationExist() -> Bool{
+        if conversationId != nil && messages.count >= 0 {
+            return true
+        }
+        
+        return false
+    }
+    
     func lastAdminActivity() -> String{
         guard data?.active_admins?.count != nil, (data?.active_admins?.count)! >= 1 else {
             return ""
@@ -377,7 +385,7 @@ class CustomerlyChatStartVC: CyViewController{
 extension CustomerlyChatStartVC: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if conversationId != nil && messages.count >= 0 {
+        if conversationExist(){
             return generateDateSections(messagesArray: messages).count
         }
         
@@ -385,7 +393,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if conversationId != nil && messages.count >= 0 {
+        if conversationExist(){
             return 35
         }
         
@@ -393,7 +401,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if conversationId != nil && messages.count >= 0 {
+        if conversationExist(){
             let  headerCell = tableView.dequeueReusableCell(withIdentifier: "headerDateCell") as! CyHeaderDateTableViewCell
             headerCell.dateLabel.text = generateDateSections(messagesArray: messages)[section].monthDayYear()
             return headerCell
@@ -404,7 +412,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if conversationId != nil && messages.count >= 0 {
+        if conversationExist(){
             tableView.backgroundColor = UIColor.white
             return getMessagesInSection(messagesArray: messages, sectionDate: generateDateSections(messagesArray: messages)[section]).count
         }
@@ -419,7 +427,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if conversationId != nil && messages.count >= 0{
+        if conversationExist(){
             
             var cell : CyMessageTableViewCell?
             
