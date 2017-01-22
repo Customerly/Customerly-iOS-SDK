@@ -63,6 +63,7 @@
 		455CE19B1DE0BA7D00FF65DC /* CustomerlySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; };
 		455CE19C1DE0BA7D00FF65DC /* CustomerlySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
+		456DE3E91E34F0A9008B115D /* CyHeaderDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */; };
 		4579C0451E1D988A0035DAC4 /* CySurveyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */; };
 		4579C0471E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */; };
 		4579C0491E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */; };
@@ -198,6 +199,7 @@
 		455CE1821DE0AB4500FF65DC /* CustomerlyChat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlyChat.storyboard; sourceTree = "<group>"; };
 		455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyChatStartVC.swift; sourceTree = "<group>"; };
 		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
+		456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyHeaderDateTableViewCell.swift; sourceTree = "<group>"; };
 		4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyResponseModel.swift; sourceTree = "<group>"; };
 		4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyChoiceResponseModel.swift; sourceTree = "<group>"; };
 		4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyParamsRequestModel.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */,
 				45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */,
 				455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */,
+				456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */,
 				458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */,
 				45FF40991E114C94002707C3 /* CyImageMassageTableViewCell.swift */,
 				45E61EFC1E1981490088D6C5 /* Survey Cells */,
@@ -833,6 +836,7 @@
 				455CE1931DE0AB4500FF65DC /* CyRequestPingModel.swift in Sources */,
 				455CE1871DE0AB4500FF65DC /* CyDataFetcher.swift in Sources */,
 				45282DA41DFF0FF20021E7F9 /* CyTypingSocketModel.swift in Sources */,
+				456DE3E91E34F0A9008B115D /* CyHeaderDateTableViewCell.swift in Sources */,
 				45F9E0B11E1C4AF300C7241F /* CySurveySliderViewController.swift in Sources */,
 				455A0FA51DF47C3D003EEA43 /* CyConversationTableViewCell.swift in Sources */,
 				4579C0491E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift in Sources */,

@@ -16,7 +16,7 @@ open class Customerly: NSObject {
     var customerlySecretKey : String = ""
     
     /**
-      Enable verbose logging, that is useful for debugging. By default is enabled.
+     Enable verbose logging, that is useful for debugging. By default is enabled.
      */
     open var verboseLogging : Bool = true
     
@@ -44,7 +44,7 @@ open class Customerly: NSObject {
     //MARK: - Register user, get updates and add new attributes
     
     /**
-      If you want to register a user_id, you have to insert also an email.
+     If you want to register a user_id, you have to insert also an email.
      */
     open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         
@@ -61,7 +61,7 @@ open class Customerly: NSObject {
     }
     
     /**
-      If you want to logout a user, call logoutUser() to delete all local data and de-authenticate the user
+     If you want to logout a user, call logoutUser() to delete all local data and de-authenticate the user
      */
     open func logoutUser(){
         CyStorage.deleteCyDataModel()
@@ -70,7 +70,7 @@ open class Customerly: NSObject {
     }
     
     /**
-      Get ad update from Customerly about surveys and unread messages
+     Get ad update from Customerly about surveys and unread messages
      */
     open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         ping(success: {
@@ -84,9 +84,9 @@ open class Customerly: NSObject {
     }
     
     /**
-      Send an update attributes to Customerly, with optionals attributes.
-      Attributes need to be only on first level.
-      Ex: ["Params1": 3, "Params2: "Hello"].
+     Send an update attributes to Customerly, with optionals attributes.
+     Attributes need to be only on first level.
+     Ex: ["Params1": 3, "Params2: "Hello"].
      */
     open func setAttributes(attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
@@ -107,16 +107,16 @@ open class Customerly: NSObject {
     
     //MARK: - Event
     /**
-      Track an event. The event string myst be alphanumeric, eventually with _ separator.
-      Valid string example: "tap_subscription_page"
-      Not valid string: "tap subscription page"
+     Track an event. The event string myst be alphanumeric, eventually with _ separator.
+     Valid string example: "tap_subscription_page"
+     Not valid string: "tap subscription page"
      */
     open func trackEvent(event: String){
         
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
         trackingModel?.token = CyStorage.getCyDataModel()?.token //if some data are stored, CyTrackingRequestModel contain the token
-                
+        
         CyDataFetcher.sharedInstance.trackEventAPIRequest(trackingRequest: trackingModel, completion: {
             cyPrint("Success trackEvent", event)
         }) { (error) in
@@ -126,7 +126,7 @@ open class Customerly: NSObject {
     
     //MARK: - Chat
     /**
-      Open the first view controller to the user, useful to chat with your Customer Support
+     Open the first view controller to the user, useful to chat with your Customer Support
      */
     open func openSupport(from viewController: UIViewController){
         
@@ -144,7 +144,7 @@ open class Customerly: NSObject {
     }
     
     /**
-      If available, opens the chat on the last unread message
+     If available, opens the chat on the last unread message
      */
     open func openLastSupportConversation(from viewController: UIViewController){
         if let data = CyStorage.getCyDataModel(){
@@ -168,7 +168,7 @@ open class Customerly: NSObject {
     }
     
     /**
-      Check if there is an unread message
+     Check if there is an unread message
      */
     open func isLastSupportConversationAvailable() -> Bool{
         if let data = CyStorage.getCyDataModel(){
@@ -180,8 +180,8 @@ open class Customerly: NSObject {
     }
     
     /**
-      Closure that notify every time a new message from the support is coming.
-      To render the html message you can use an attributed string.
+     Closure that notify every time a new message from the support is coming.
+     To render the html message you can use an attributed string.
      */
     open func realTimeMessages(htmlMessage:((String?) -> Void)?){
         realTimeMessageFromSocket { (socketMessage) in
@@ -213,7 +213,7 @@ open class Customerly: NSObject {
     }
     
     /**
-      Check if there is a new survey to show
+     Check if there is a new survey to show
      */
     open func isSurveyAvailable() -> Bool{
         if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
@@ -275,7 +275,7 @@ open class Customerly: NSObject {
         
         return (survey, message)
     }
-
+    
     //MARK: Real time messages
     var realTimeMessagesClosure: ((CyMessageSocketModel?) -> Void)?
     
@@ -296,6 +296,6 @@ open class Customerly: NSObject {
         }, failure: { (error) in
         })
     }
-
+    
     
 }

@@ -85,9 +85,7 @@ class CustomerlyChatStartVC: CyViewController{
             self.messages = conversationMessages?.messages ?? []
             self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
             self.chatTableView.reloadData()
-            if self.messages.count > 0{
-                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
-            }
+            self.scrollToLastMessage()
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
@@ -108,7 +106,7 @@ class CustomerlyChatStartVC: CyViewController{
                 self.messages.append(contentsOf: self.getOnlyMessagesForThisConversation(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
                 self.messageSeen(message: self.getTheLastMessageFromAdmin(messagesArray: conversationMessages?.messages, conversation_id: self.conversationId))
                 self.chatTableView.reloadData()
-                self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
+                self.scrollToLastMessage()
             }
         }, failure: { (error) in
         })
@@ -277,6 +275,16 @@ class CustomerlyChatStartVC: CyViewController{
         return attributedString
     }
     
+    func scrollToLastMessage(){
+        let sections = generateDateSections(messagesArray: messages)
+        if sections.count > 0{
+            let messagesInSection = getMessagesInSection(messagesArray: messages, sectionDate: sections.last!)
+            if messagesInSection.count > 0{
+                self.chatTableView.scrollToRow(at: IndexPath(row: messagesInSection.count-1, section: sections.count-1), at: .top, animated: true)
+            }
+        }
+    }
+    
     //MARK: Message Array Manipulation
     func addMessages(messagesArray: [CyMessageModel]? = nil){
         if messagesArray != nil{
@@ -316,7 +324,6 @@ class CustomerlyChatStartVC: CyViewController{
             }
         }
         
-        print(tempArray)
         return tempArray
     }
     
@@ -332,6 +339,7 @@ class CustomerlyChatStartVC: CyViewController{
                 }
             }
         }
+        
         return messageArray
     }
     
@@ -367,11 +375,38 @@ class CustomerlyChatStartVC: CyViewController{
 }
 
 extension CustomerlyChatStartVC: UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if conversationId != nil && messages.count >= 0 {
+            return generateDateSections(messagesArray: messages).count
+        }
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if conversationId != nil && messages.count >= 0 {
+            return 35
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if conversationId != nil && messages.count >= 0 {
+            let  headerCell = tableView.dequeueReusableCell(withIdentifier: "headerDateCell") as! CyHeaderDateTableViewCell
+            headerCell.dateLabel.text = generateDateSections(messagesArray: messages)[section].monthDayYear()
+            return headerCell
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if conversationId != nil && messages.count >= 0 {
             tableView.backgroundColor = UIColor.white
-            return messages.count
+            return getMessagesInSection(messagesArray: messages, sectionDate: generateDateSections(messagesArray: messages)[section]).count
         }
         
         //if no admins, the related admin cell and info cell is not showed
@@ -388,7 +423,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             var cell : CyMessageTableViewCell?
             
-            let message = messages[indexPath.row]
+            let message = getMessagesInSection(messagesArray: messages, sectionDate: generateDateSections(messagesArray: messages)[indexPath.section])[indexPath.row]
             
             if let images = getAttachmentsImages(message: message){
                 cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
