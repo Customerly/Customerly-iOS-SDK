@@ -20,7 +20,8 @@ class CustomerlyChatStartVC: CyViewController{
     var data: CyDataModel?
     
     var conversationId: Int?
-    var messages : [CyMessageModel] = []
+    var messages: [CyMessageModel] = []
+    var dateSections : [Date] = [] //dates section (every date is a day with a list of messages inside)
     var onMessageSocketUUID: UUID? //useful to remove handler "on message" when view controller is dismissed
     
     //MARK: - Initialiser
@@ -284,11 +285,10 @@ class CustomerlyChatStartVC: CyViewController{
     }
     
     func scrollToLastMessage(){
-        let sections = generateDateSections(messagesArray: messages)
-        if sections.count > 0{
-            let messagesInSection = getMessagesInSection(messagesArray: messages, sectionDate: sections.last!)
+        if dateSections.count > 0{
+            let messagesInSection = getMessagesInSection(messagesArray: messages, sectionDate: dateSections.last!)
             if messagesInSection.count > 0{
-                self.chatTableView.scrollToRow(at: IndexPath(row: messagesInSection.count-1, section: sections.count-1), at: .top, animated: true)
+                self.chatTableView.scrollToRow(at: IndexPath(row: messagesInSection.count-1, section: dateSections.count-1), at: .top, animated: true)
             }
         }
     }
@@ -386,7 +386,8 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if conversationExist(){
-            return generateDateSections(messagesArray: messages).count
+            dateSections = generateDateSections(messagesArray: messages)
+            return dateSections.count
         }
         
         return 1
@@ -403,7 +404,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if conversationExist(){
             let  headerCell = tableView.dequeueReusableCell(withIdentifier: "headerDateCell") as! CyHeaderDateTableViewCell
-            headerCell.dateLabel.text = generateDateSections(messagesArray: messages)[section].monthDayYear()
+            headerCell.dateLabel.text = dateSections[section].monthDayYear()
             return headerCell
         }
         
@@ -414,7 +415,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
         
         if conversationExist(){
             tableView.backgroundColor = UIColor.white
-            return getMessagesInSection(messagesArray: messages, sectionDate: generateDateSections(messagesArray: messages)[section]).count
+            return getMessagesInSection(messagesArray: messages, sectionDate:dateSections[section]).count
         }
         
         //if no admins, the related admin cell and info cell is not showed
@@ -431,7 +432,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             var cell : CyMessageTableViewCell?
             
-            let message = getMessagesInSection(messagesArray: messages, sectionDate: generateDateSections(messagesArray: messages)[indexPath.section])[indexPath.row]
+            let message = getMessagesInSection(messagesArray: messages, sectionDate: dateSections[indexPath.section])[indexPath.row]
             
             if let images = getAttachmentsImages(message: message){
                 cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
