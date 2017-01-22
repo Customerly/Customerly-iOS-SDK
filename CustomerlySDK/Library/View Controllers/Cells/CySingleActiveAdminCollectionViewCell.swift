@@ -1,15 +1,15 @@
 //
-//  CySingleActiveAdminTableViewCell.swift
+//  CySingleActiveAdminCollectionViewCell.swift
 //  Customerly
 //
-//  Created by Paolo Musolino on 26/11/16.
-//
+//  Created by Paolo Musolino on 22/01/17.
+//  Copyright © 2017 Customerly. All rights reserved.
 //
 
 import UIKit
 
-class CySingleActiveAdminTableViewCell: UITableViewCell {
-
+class CySingleActiveAdminCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var adminAvatarImageView: CyImageView!
     @IBOutlet weak var adminNameLabel: CyLabel!
     
@@ -18,10 +18,4 @@ class CySingleActiveAdminTableViewCell: UITableViewCell {
         super.awakeFromNib()
         adminAvatarImageView.layer.cornerRadius = adminAvatarImageView.frame.size.width/2 //Circular avatar
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 }

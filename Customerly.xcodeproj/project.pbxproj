@@ -15,7 +15,6 @@
 		45282DA81DFF21830021E7F9 /* CySeenMessageSocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */; };
 		45282DAA1E0035AD0021E7F9 /* CyWebSocketParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */; };
 		453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */; };
-		453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */; };
 		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
 		455A0F881DEE248E003EEA43 /* CySendMessageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F871DEE248E003EEA43 /* CySendMessageRequestModel.swift */; };
 		455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F891DEE2951003EEA43 /* CyColor.swift */; };
@@ -64,6 +63,8 @@
 		455CE19C1DE0BA7D00FF65DC /* CustomerlySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455CE12F1DE0AABD00FF65DC /* CustomerlySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */; };
 		456DE3E91E34F0A9008B115D /* CyHeaderDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */; };
+		456DE3EB1E351E6D008B115D /* CyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DE3EA1E351E6D008B115D /* CyCollectionView.swift */; };
+		456DE3ED1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456DE3EC1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift */; };
 		4579C0451E1D988A0035DAC4 /* CySurveyResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */; };
 		4579C0471E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */; };
 		4579C0491E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */; };
@@ -146,7 +147,6 @@
 		45282DA71DFF21830021E7F9 /* CySeenMessageSocketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySeenMessageSocketModel.swift; sourceTree = "<group>"; };
 		45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyWebSocketParamsModel.swift; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
-		453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySingleActiveAdminTableViewCell.swift; sourceTree = "<group>"; };
 		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
 		455A0F871DEE248E003EEA43 /* CySendMessageRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageRequestModel.swift; sourceTree = "<group>"; };
 		455A0F891DEE2951003EEA43 /* CyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyColor.swift; sourceTree = "<group>"; };
@@ -200,6 +200,8 @@
 		455CE1841DE0AB4500FF65DC /* CustomerlyChatStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyChatStartVC.swift; sourceTree = "<group>"; };
 		455CE1A01DE0C85500FF65DC /* CustomerlyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlyNavigationController.swift; sourceTree = "<group>"; };
 		456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyHeaderDateTableViewCell.swift; sourceTree = "<group>"; };
+		456DE3EA1E351E6D008B115D /* CyCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyCollectionView.swift; sourceTree = "<group>"; };
+		456DE3EC1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySingleActiveAdminCollectionViewCell.swift; sourceTree = "<group>"; };
 		4579C0441E1D988A0035DAC4 /* CySurveyResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyResponseModel.swift; sourceTree = "<group>"; };
 		4579C0461E1DA00D0035DAC4 /* CySurveyChoiceResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyChoiceResponseModel.swift; sourceTree = "<group>"; };
 		4579C0481E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyParamsRequestModel.swift; sourceTree = "<group>"; };
@@ -289,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */,
-				453CC13E1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift */,
+				456DE3EC1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift */,
 				45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */,
 				455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */,
 				456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */,
@@ -497,6 +499,7 @@
 				455A0FA01DF47A90003EEA43 /* CyImageView.swift */,
 				455A0FA21DF47ACB003EEA43 /* CyLabel.swift */,
 				452745DB1DF9C027006215B1 /* CyTableView.swift */,
+				456DE3EA1E351E6D008B115D /* CyCollectionView.swift */,
 				45FF40971E102FED002707C3 /* CyString.swift */,
 			);
 			path = Subclasses;
@@ -792,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456DE3EB1E351E6D008B115D /* CyCollectionView.swift in Sources */,
 				45FF40981E102FED002707C3 /* CyString.swift in Sources */,
 				455A0FA31DF47ACB003EEA43 /* CyLabel.swift in Sources */,
 				455A0F9F1DF46F35003EEA43 /* CustomerlyConversationListVC.swift in Sources */,
@@ -807,7 +811,6 @@
 				455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */,
 				45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */,
 				455CE1961DE0AB4500FF65DC /* CyTrackingRequestModel.swift in Sources */,
-				453CC13F1DEA2C1A00D85957 /* CySingleActiveAdminTableViewCell.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
 				45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */,
 				45E61F011E1984810088D6C5 /* CySurveyButtonTableViewCell.swift in Sources */,
@@ -841,6 +844,7 @@
 				455A0FA51DF47C3D003EEA43 /* CyConversationTableViewCell.swift in Sources */,
 				4579C0491E1DA19D0035DAC4 /* CySurveyParamsRequestModel.swift in Sources */,
 				45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */,
+				456DE3ED1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift in Sources */,
 				455A0FA91DF47EC2003EEA43 /* CyConversationRetrieveResponseModel.swift in Sources */,
 				455CE1921DE0AB4500FF65DC /* CyDeviceModel.swift in Sources */,
 				455A0FAB1DF48022003EEA43 /* CyConversationRequestModel.swift in Sources */,

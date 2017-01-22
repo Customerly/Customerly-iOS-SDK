@@ -522,10 +522,12 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
 
 extension CustomerlyChatStartVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let message = messages[indexPath.row]
-        if message.rich_mail == true{
-            if message.rich_mail_url != nil && URL(string: message.rich_mail_url!) != nil{
-                UIApplication.shared.openURL(URL(string: message.rich_mail_url!)!)
+        if conversationExist(){
+            let message = getMessagesInSection(messagesArray: messages, sectionDate: dateSections[indexPath.section])[indexPath.row]
+            if message.rich_mail == true{
+                if message.rich_mail_url != nil && URL(string: message.rich_mail_url!) != nil{
+                    UIApplication.shared.openURL(URL(string: message.rich_mail_url!)!)
+                }
             }
         }
     }
