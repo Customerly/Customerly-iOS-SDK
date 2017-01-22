@@ -16,9 +16,9 @@ open class Customerly: NSObject {
     var customerlySecretKey : String = ""
     
     /**
-     Enable verbose logging, that is useful for debugging. By default is enabled.
+     Enable verbose logging, that is useful for debugging. By default is disabled.
      */
-    open var verboseLogging : Bool = true
+    open var verboseLogging : Bool = false
     
     //MARK: Init
     override init() {

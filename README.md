@@ -76,6 +76,12 @@ import CustomerlySDK
 Customerly.sharedInstance.configure(secretKey: "YOUR_CUSTOMERLY_SECRET_KEY")
 ```
 
+If you want to enable the logging in console, you can set verboseLogging variable to true. By default verbose logging is disabled.
+
+```
+Customerly.sharedInstance.verboseLogging = true
+```
+
 **3)** From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
 
 **If in doubt, you can look at the examples in the demo application.**

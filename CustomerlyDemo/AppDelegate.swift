@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Customerly.sharedInstance.configure(secretKey: "008bc975", widgetColor: UIColor(red: 31/255, green: 177/255, blue: 252/255, alpha: 1.0))
-
             
         return true
     }
