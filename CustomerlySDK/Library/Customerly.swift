@@ -26,7 +26,7 @@ open class Customerly: NSObject {
     }
     
     //MARK: - Configuration
-    open func configure(secretKey: String, widgetColor: UIColor? = nil){
+    @objc open func configure(secretKey: String, widgetColor: UIColor? = nil){
         customerlySecretKey = secretKey
         user_color_template = widgetColor
         
@@ -46,7 +46,7 @@ open class Customerly: NSObject {
     /**
      If you want to register a user_id, you have to insert also an email.
      */
-    open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         
         ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
             CySocket.sharedInstance.reconfigure()
@@ -63,7 +63,7 @@ open class Customerly: NSObject {
     /**
      If you want to logout a user, call logoutUser() to delete all local data and de-authenticate the user
      */
-    open func logoutUser(){
+    @objc open func logoutUser(){
         CyStorage.deleteCyDataModel()
         CySocket.sharedInstance.closeConnection()
         ping()
@@ -72,7 +72,7 @@ open class Customerly: NSObject {
     /**
      Get ad update from Customerly about surveys and unread messages
      */
-    open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         ping(success: {
             let news = self.checkNews()
             cyPrint("Success Update")
@@ -88,7 +88,7 @@ open class Customerly: NSObject {
      Attributes need to be only on first level.
      Ex: ["Params1": 3, "Params2: "Hello"].
      */
-    open func setAttributes(attributes:Dictionary<String, Any?>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func setAttributes(attributes:Dictionary<String, Any>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
             ping(attributes: attributes, success: {
                 let news = self.checkNews()
@@ -111,7 +111,7 @@ open class Customerly: NSObject {
      Valid string example: "tap_subscription_page"
      Not valid string: "tap subscription page"
      */
-    open func trackEvent(event: String){
+    @objc open func trackEvent(event: String){
         
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
@@ -128,7 +128,7 @@ open class Customerly: NSObject {
     /**
      Open the first view controller to the user, useful to chat with your Customer Support
      */
-    open func openSupport(from viewController: UIViewController){
+    @objc open func openSupport(from viewController: UIViewController){
         
         let data = CyStorage.getCyDataModel()
         
@@ -146,7 +146,7 @@ open class Customerly: NSObject {
     /**
      If available, opens the chat on the last unread message
      */
-    open func openLastSupportConversation(from viewController: UIViewController){
+    @objc open func openLastSupportConversation(from viewController: UIViewController){
         if let data = CyStorage.getCyDataModel(){
             if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{ //then, user is lead or register user and there is at least a message
                 let chatStartVC = CustomerlyChatStartVC.instantiate()
@@ -170,7 +170,7 @@ open class Customerly: NSObject {
     /**
      Check if there is an unread message
      */
-    open func isLastSupportConversationAvailable() -> Bool{
+    @objc open func isLastSupportConversationAvailable() -> Bool{
         if let data = CyStorage.getCyDataModel(){
             if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{
                 return true
@@ -183,7 +183,7 @@ open class Customerly: NSObject {
      Closure that notify every time a new message from the support is coming.
      To render the html message you can use an attributed string.
      */
-    open func realTimeMessages(htmlMessage:((String?) -> Void)?){
+    @objc open func realTimeMessages(htmlMessage:((String?) -> Void)?){
         realTimeMessageFromSocket { (socketMessage) in
             self.requestConversationMessagesNews(timestamp: socketMessage?.timestamp, message: { (message) in
                 htmlMessage?(message?.content)
@@ -198,7 +198,7 @@ open class Customerly: NSObject {
      Open a Survey View Controller if a survey is available
      */
     @discardableResult
-    open func openSurvey(from viewController: UIViewController, onShow: (() -> Void)? = nil, onDismiss: ((CySurveyDismiss?) -> Void)? = nil){
+    @objc open func openSurvey(from viewController: UIViewController, onShow: (() -> Void)? = nil, onDismiss: ((CySurveyDismiss) -> Void)? = nil){
         if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
             let surveyVC = CustomerlySurveyViewController.instantiate()
             surveyVC.survey = survey
@@ -215,7 +215,7 @@ open class Customerly: NSObject {
     /**
      Check if there is a new survey to show
      */
-    open func isSurveyAvailable() -> Bool{
+    @objc open func isSurveyAvailable() -> Bool{
         if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
             return true
         }
@@ -232,7 +232,7 @@ open class Customerly: NSObject {
     }
     
     //MARK: Ping
-    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any?>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         
         //if some cookies are stored, CyRequestPingModel containes these cookies and user informations

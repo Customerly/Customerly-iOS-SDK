@@ -3,8 +3,9 @@
 <img src="https://www.cdn.customerly.io/assets/img/Logo_Customerly_Name_Colored.svg">
 </p>
 
- 
   [![Language](https://img.shields.io/badge/Swift-3-orange.svg)]()
+  [![Language](https://img.shields.io/badge/Objective--C-compatible-blue.svg)]()
+  [![License](https://img.shields.io/badge/license-Apache%20License%202.0-red.svg)]()
   
 **customerly.io** is the perfect tool to getting closer to your customers. Help them where they are with the customer support widget. Manage your audience based on their behaviours, build campaigns and automations.
 
@@ -24,14 +25,14 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 - [x] Support via chat in real time
 - [x] Surveys
 - [x] English & Italian localizations
+- [x] Objective-C compatibility
 - [x] Many more is coming....
 
 ## Requirements
 
 - iOS 8.0+
 - Xcode 8+
-- Swift 3
-- The Objective-C compatibility is coming soon
+- Swift 3 or Objective-C
 
 ## CocoaPods
 

@@ -16,7 +16,7 @@ class CySettingsModel: Mappable {
     var lead_email: String?
     var name: String?
     var device: CyDeviceModel? = CyDeviceModel(JSON: [:])
-    var attributes : Dictionary<String, Any?>?
+    var attributes : Dictionary<String, Any>?
     
     required init?(map: Map) {
     }

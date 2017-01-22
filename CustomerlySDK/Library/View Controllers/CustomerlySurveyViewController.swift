@@ -10,7 +10,7 @@ import UIKit
 
 typealias SurveyParamsReturn = ((CySurveyParamsRequestModel?) -> Void)
 
-public enum CySurveyDismiss: Int {
+@objc public enum CySurveyDismiss: Int {
     case postponed = 0 //survey closed without invalidation (tap out of alert)
     case completed = 1 //survey closed after that user completed it (user closed survey in "thank you message" step)
     case rejected = 2 //survey closed and reject (user closed survey before "thank you message" step)
@@ -38,7 +38,7 @@ class CustomerlySurveyViewController: CyViewController {
     @IBOutlet weak var surveyDescriptionLabel: CyLabel!
     var survey: CySurveyResponseModel?
     var surveyOnClosure: ((Void) -> Void)?
-    var surveyOnDismiss: ((CySurveyDismiss?) -> Void)?
+    var surveyOnDismiss: ((CySurveyDismiss) -> Void)?
     var firstSurveyVC: CustomerlySurveyViewController?
     
     //MARK: - Initialiser
@@ -225,7 +225,7 @@ class CustomerlySurveyViewController: CyViewController {
         self.surveyOnClosure = on
     }
     
-    func onDismiss(onDis: ((CySurveyDismiss?) -> Void)?){
+    func onDismiss(onDis: ((CySurveyDismiss) -> Void)?){
         self.surveyOnDismiss = onDis
     }
     
