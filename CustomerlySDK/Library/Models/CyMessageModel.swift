@@ -23,6 +23,7 @@ class CyMessageModel: Mappable {
     var rich_mail_url: String?
     var attachments: [CyAttachmentModel]?
     var account: CyAccountModel?
+    var showAvatar: Bool = true //indicate if the avatar need to be showed or not
     
     required init?(map: Map) {
     }
@@ -39,7 +40,7 @@ class CyMessageModel: Mappable {
         type <- map["type"]
         close_conversation <- map["close_conversation"]
         rich_mail <- map["rich_mail"]
-        rich_mail_url <- map["rich_mail_url"]
+        rich_mail_url <- map["rich_mail_link"]
         attachments <- map["attachments"]
         account <- map["account"]
     }

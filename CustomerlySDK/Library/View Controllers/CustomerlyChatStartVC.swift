@@ -338,14 +338,33 @@ class CustomerlyChatStartVC: CyViewController{
     func getMessagesInSection(messagesArray: [CyMessageModel], sectionDate: Date) -> [CyMessageModel]{
         
         var messageArray: [CyMessageModel] = []
+        
+        var i = 0
         for message in messagesArray{
             if let sent_date = message.sent_date{
                 let messageDate = Date(timeIntervalSince1970:TimeInterval(Double(sent_date)))
                 
                 if messageDate.isTheSameDay(of: sectionDate){
+                    
+                    //Avatar configuration
+                    if i == 0 {
+                        message.showAvatar = true
+                    }
+                    else{
+                        if messagesArray[i-1].user_id != nil && messagesArray[i-1].user_id == message.user_id {
+                            message.showAvatar = false
+                        }
+                        else if messagesArray[i-1].account_id != nil && messagesArray[i-1].account_id == message.account_id {
+                            message.showAvatar = false
+                        }
+                        else{
+                            message.showAvatar = true
+                        }
+                    }
                     messageArray.append(message)
                 }
             }
+            i += 1
         }
         
         return messageArray
@@ -448,9 +467,11 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             if message.account_id != nil{
                 cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell?.setAdminVisual()
+                cell?.adminAvatar.isHidden = !message.showAvatar
             }else{
                 cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 cell?.setUserVisual()
+                cell?.userAvatar.isHidden = !message.showAvatar
             }
             
             if message.rich_mail == true{
