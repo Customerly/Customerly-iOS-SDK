@@ -42,14 +42,26 @@ open class Customerly: NSObject {
         })
         
         realTimeMessages { (message) in
-            guard Customerly.sharedInstance.customerlyIsOpen != true else {
-                return
-            }
-            let banner = CyBanner(name: message?.account?.name, attributedSubtitle: message?.content?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
-            banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-            banner.show(didTapBlock: {
-               self.openSupportConversationOnChat(message: message)
-            })
+            self.showCustomizedBanner(with: message)
+        }
+    }
+    
+    /**
+     Update Customerly SDK data every time app is opened by adding the following code to your AppDelegate:
+     ```    
+     func applicationDidBecomeActive(_ application: UIApplication) {
+        Customerly.sharedInstance.activateApp()
+     }
+     ```
+     */
+    @objc open func activateApp(){
+        ping(success: {
+            //Success
+            let message = self.getLastUnreadMessage()
+            self.showCustomizedBanner(with: message)
+            
+        }) {
+            //Failure
         }
     }
     
@@ -286,7 +298,7 @@ open class Customerly: NSObject {
     }
     
     //MARK: Messages
-    func openSupportConversationOnChat(message: CyMessageModel?){
+    func openSupportConversationOnMessage(message: CyMessageModel?){
         
         guard message != nil else {
             return
@@ -306,12 +318,23 @@ open class Customerly: NSObject {
      If available, opens the chat on the last unread message
      */
     func openLastSupportConversation(from viewController: UIViewController){
+        
+        if let lastMessage = getLastUnreadMessage(){
+            let chatStartVC = CustomerlyChatStartVC.instantiate()
+            chatStartVC.conversationId = lastMessage.conversation_id
+            chatStartVC.addLeftCloseButton()
+            viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+        }
+    }
+
+    //Get the last unread message, and remove all the stored messages that contain the same conversation_id
+    func getLastUnreadMessage() -> CyMessageModel?{
         if let data = CyStorage.getCyDataModel(){
-            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{ //then, user is lead or register user and there is at least a message
-                let chatStartVC = CustomerlyChatStartVC.instantiate()
-                chatStartVC.conversationId = data.last_messages?.first?.conversation_id
-                chatStartVC.addLeftCloseButton()
-                viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+            //user is lead or register user and there is at least a message
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{
+                
+                
+                let message = data.last_messages?.first
                 
                 //remove all the stored messages that contain the same conversation_id of the opened conversation
                 let tempData = data
@@ -322,8 +345,29 @@ open class Customerly: NSObject {
                     }
                 }
                 CyStorage.storeCyDataModel(cyData: tempData)
+                
+                return message
             }
         }
+        
+        return nil
+    }
+    
+    //MARK: Banner
+    func showCustomizedBanner(with message: CyMessageModel?){
+        guard Customerly.sharedInstance.customerlyIsOpen != true else {
+            return
+        }
+        
+        guard message != nil else {
+            return
+        }
+        
+        let banner = CyBanner(name: message?.account?.name, attributedSubtitle: message?.content?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
+        banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        banner.show(didTapBlock: {
+            self.openSupportConversationOnMessage(message: message)
+        })
     }
     
     
