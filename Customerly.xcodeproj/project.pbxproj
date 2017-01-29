@@ -16,6 +16,7 @@
 		45282DAA1E0035AD0021E7F9 /* CyWebSocketParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */; };
 		453CC13D1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */; };
 		454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */; };
+		454BC2571E3E2D3900611B58 /* Banner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454BC2561E3E2D3900611B58 /* Banner.xib */; };
 		455A0F881DEE248E003EEA43 /* CySendMessageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F871DEE248E003EEA43 /* CySendMessageRequestModel.swift */; };
 		455A0F8A1DEE2951003EEA43 /* CyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F891DEE2951003EEA43 /* CyColor.swift */; };
 		455A0F8D1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */; };
@@ -72,6 +73,7 @@
 		458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C41DFC673E00851DD9 /* CyTextView.swift */; };
 		458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */; };
 		458781C91DFC789400851DD9 /* CyConversationMessagesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */; };
+		45CDE1FB1E394A80009C0112 /* CyBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDE1FA1E394A80009C0112 /* CyBanner.swift */; };
 		45E61EF51E16ACBC0088D6C5 /* CustomerlySurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E61EF41E16ACBC0088D6C5 /* CustomerlySurveyViewController.swift */; };
 		45E61EF71E16AD340088D6C5 /* CustomerlySurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */; };
 		45E61EFF1E1983FA0088D6C5 /* CySurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E61EFE1E1983FA0088D6C5 /* CySurveyListViewController.swift */; };
@@ -148,6 +150,7 @@
 		45282DA91E0035AD0021E7F9 /* CyWebSocketParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyWebSocketParamsModel.swift; sourceTree = "<group>"; };
 		453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyActiveAdminsTableViewCell.swift; sourceTree = "<group>"; };
 		454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyAdminModel.swift; sourceTree = "<group>"; };
+		454BC2561E3E2D3900611B58 /* Banner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Banner.xib; sourceTree = "<group>"; };
 		455A0F871DEE248E003EEA43 /* CySendMessageRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageRequestModel.swift; sourceTree = "<group>"; };
 		455A0F891DEE2951003EEA43 /* CyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyColor.swift; sourceTree = "<group>"; };
 		455A0F8C1DEE2D92003EEA43 /* CySendMessageRequestParamsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySendMessageRequestParamsModel.swift; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
 		458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationMessagesResponseModel.swift; sourceTree = "<group>"; };
+		45CDE1FA1E394A80009C0112 /* CyBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyBanner.swift; sourceTree = "<group>"; };
 		45DC04B81E243565004DB406 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E61EF41E16ACBC0088D6C5 /* CustomerlySurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlySurveyViewController.swift; sourceTree = "<group>"; };
 		45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlySurvey.storyboard; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 				455CE1701DE0AB4500FF65DC /* CyLogging.swift */,
 				455CE1711DE0AB4500FF65DC /* CyMapping.swift */,
 				455CE1731DE0AB4500FF65DC /* CyStorage.swift */,
+				45CDE1FA1E394A80009C0112 /* CyBanner.swift */,
 				45FA19C01DEB4E0200D26059 /* Assets.xcassets */,
 				45E924FD1E22DEA300514EA3 /* Localizable.strings */,
 				455CE1741DE0AB4500FF65DC /* Models */,
@@ -438,6 +443,7 @@
 				45FF409D1E114EFE002707C3 /* ImageMessageCell.xib */,
 				45FF40A11E12E486002707C3 /* CustomerlyImageGallery.storyboard */,
 				45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */,
+				454BC2561E3E2D3900611B58 /* Banner.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				45E924FB1E22DEA300514EA3 /* Localizable.strings in Resources */,
 				458781C31DFC658700851DD9 /* MessageCell.xib in Resources */,
 				45FF40A21E12E486002707C3 /* CustomerlyImageGallery.storyboard in Resources */,
+				454BC2571E3E2D3900611B58 /* Banner.xib in Resources */,
 				45E61EF71E16AD340088D6C5 /* CustomerlySurvey.storyboard in Resources */,
 				45FF409C1E114ECD002707C3 /* MessageWithImageCell.xib in Resources */,
 				45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */,
@@ -802,6 +809,7 @@
 				455A0F971DF0BD20003EEA43 /* CyConversationModel.swift in Sources */,
 				455CE1971DE0AB4500FF65DC /* CyUserModel.swift in Sources */,
 				455CE1981DE0AB4500FF65DC /* CyWebsocketModel.swift in Sources */,
+				45CDE1FB1E394A80009C0112 /* CyBanner.swift in Sources */,
 				455CE18A1DE0AB4500FF65DC /* CyMapping.swift in Sources */,
 				45E61EFF1E1983FA0088D6C5 /* CySurveyListViewController.swift in Sources */,
 				455A0FA11DF47A90003EEA43 /* CyImageView.swift in Sources */,

@@ -38,6 +38,11 @@ open class Customerly: NSObject {
             CySocket.sharedInstance.configure()
             CySocket.sharedInstance.openConnection()
             cyPrint("Success Configure")
+            
+            let banner = CyBanner(name: "Hello", subtitle: "Whei, how are you?")
+            banner.show(didTapBlock: { 
+                print("Banner tap")
+            })
         })
     }
     

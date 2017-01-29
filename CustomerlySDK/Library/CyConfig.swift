@@ -28,7 +28,7 @@ let cy_socket_version = "1"
 let cy_preferred_language = NSLocale.preferredLanguages.count > 0 ? NSLocale.preferredLanguages[0] : nil
 
 //Default parameters
-let base_color_template = UIColor(hexString: "#1fb1fc")
+let base_color_template = UIColor(hexString: "#65A9E7")
 var user_color_template: UIColor?
 
 //Images

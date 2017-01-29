@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="a5c-vn-ry1" customClass="CyBanner" customModule="CustomerlySDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0F-KO-D7c" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                    <rect key="frame" x="15" y="7" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Be0-G6-AS3"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-XW-OpB" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                    <rect key="frame" x="80" y="11" width="280" height="21"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.41176470590000003" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="B0a-oB-Mlc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-Vk-0vO" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
+                    <rect key="frame" x="80" y="32" width="280" height="21"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.41176470590000003" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="PDk-OM-UkT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.99215686270000003" green="0.86666666670000003" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LGw-Vk-0vO" secondAttribute="trailing" constant="15" id="2DN-ST-5xg"/>
+                <constraint firstAttribute="bottom" secondItem="Y0F-KO-D7c" secondAttribute="bottom" constant="8" id="FGK-EU-DUo"/>
+                <constraint firstItem="Y0F-KO-D7c" firstAttribute="leading" secondItem="a5c-vn-ry1" secondAttribute="leading" constant="15" id="MH4-bN-FqG"/>
+                <constraint firstItem="LGw-Vk-0vO" firstAttribute="leading" secondItem="Y0F-KO-D7c" secondAttribute="trailing" constant="15" id="OuY-8G-CjH"/>
+                <constraint firstItem="LGw-Vk-0vO" firstAttribute="top" secondItem="jyv-XW-OpB" secondAttribute="bottom" id="PAQ-RJ-g2D"/>
+                <constraint firstItem="Y0F-KO-D7c" firstAttribute="top" secondItem="a5c-vn-ry1" secondAttribute="top" constant="7" id="Rvl-Mm-4Xs"/>
+                <constraint firstItem="jyv-XW-OpB" firstAttribute="top" secondItem="a5c-vn-ry1" secondAttribute="top" constant="11" id="VhR-Ax-Itg"/>
+                <constraint firstItem="jyv-XW-OpB" firstAttribute="leading" secondItem="Y0F-KO-D7c" secondAttribute="trailing" constant="15" id="b6I-Sq-CbZ"/>
+                <constraint firstAttribute="trailing" secondItem="jyv-XW-OpB" secondAttribute="trailing" constant="15" id="fVU-Ym-Pd1"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="avatarImageView" destination="Y0F-KO-D7c" id="6wE-sA-ZXq"/>
+                <outlet property="nameLabel" destination="jyv-XW-OpB" id="ZVK-uf-eYG"/>
+                <outlet property="subtitleLabel" destination="LGw-Vk-0vO" id="dA6-uE-Xlb"/>
+            </connections>
+            <point key="canvasLocation" x="48.5" y="-13.5"/>
+        </view>
+    </objects>
+</document>
