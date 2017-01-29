@@ -23,6 +23,16 @@ class CyViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Customerly.sharedInstance.customerlyIsOpen = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        Customerly.sharedInstance.customerlyIsOpen = false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -31,7 +41,7 @@ class CyViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // MARK: - Load VC From Storyboard or Xib
+    // MARK: - Load VC From Storyboard, Xib
     static func cyViewControllerFromStoryboard(storyboardName: String, vcIdentifier: String) -> UIViewController{
         let podBundle = Bundle(for: Customerly.classForCoder())
         
@@ -221,7 +231,6 @@ class CyViewController: UIViewController {
 }
 
 //MARK: Image Picker Delegates
-
 @objc protocol CyImagePickerDelegate {
     @objc optional func imageFromPicker(image:UIImage?)
 }
@@ -236,5 +245,23 @@ extension CyViewController : UIImagePickerControllerDelegate, UINavigationContro
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: Browsing recursively the tree to get the top view controller
+extension UIViewController{
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
     }
 }

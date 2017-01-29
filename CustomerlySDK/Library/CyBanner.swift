@@ -10,33 +10,37 @@ import UIKit
 
 class CyBanner: CyView {
     
-    @IBOutlet weak var avatarImageView: CyImageView!
-    @IBOutlet weak var nameLabel: CyLabel!
-    @IBOutlet weak var subtitleLabel: CyLabel!
+    @IBOutlet weak var avatarImageView: CyImageView?
+    @IBOutlet weak var nameLabel: CyLabel?
+    @IBOutlet weak var subtitleLabel: CyLabel?
     
     /// A block to call when the uer taps on the banner.
     open var didTapBlock: (() -> ())?
     
     var viewBanner : CyBanner?
-    var initialRect = CGRect(x: 10, y: -65, width: 360, height: 65)
-    var finalRect = CGRect(x: 10, y: 30, width: 360, height: 65)
+    var initialRect = CGRect(x: 15, y: -65, width: UIScreen.main.bounds.width-30, height: 65)
+    var finalRect = CGRect(x: 15, y: 30, width: UIScreen.main.bounds.width-30, height: 65)
     
     
-    init(name: String?, subtitle: String?, image: UIImage? = nil){
+    init(name: String?, subtitle: String? = nil, attributedSubtitle: NSAttributedString? = nil, image: UIImage? = nil){
         super.init(frame: initialRect)
-        self.backgroundColor = UIColor.red
         if let banner = CyViewController.cyLoadNib(nibName: "Banner")?[0] as! CyBanner?{
             viewBanner = banner
             viewBanner?.frame = CGRect(x: 0, y: 0, width: initialRect.width, height: initialRect.height)
-            viewBanner?.nameLabel.text = name
-            viewBanner?.nameLabel.textColor = base_color_template
-            viewBanner?.subtitleLabel.text = subtitle
-            viewBanner?.subtitleLabel.textColor = UIColor(hexString: "#666666")
+            viewBanner?.nameLabel?.text = name
+            viewBanner?.nameLabel?.textColor = base_color_template
+            
+            if subtitle != nil{
+                viewBanner?.subtitleLabel?.text = subtitle
+            }else{
+                viewBanner?.subtitleLabel?.attributedText = attributedSubtitle
+            }
+            viewBanner?.subtitleLabel?.textColor = UIColor(hexString: "#666666")
             viewBanner?.isUserInteractionEnabled = false
             
-            if viewBanner != nil{
-                viewBanner?.avatarImageView.layer.cornerRadius = viewBanner!.avatarImageView.frame.size.width/2
-                viewBanner?.avatarImageView.image = image
+            if viewBanner != nil && viewBanner?.avatarImageView != nil{
+                viewBanner?.avatarImageView?.layer.cornerRadius = viewBanner!.avatarImageView!.frame.size.width/2
+                viewBanner?.avatarImageView?.image = image
             }
             
             self.addSubview(viewBanner!)
@@ -78,11 +82,9 @@ class CyBanner: CyView {
             return
         }
         self.didTapBlock = didTapBlock
-        self.backgroundColor = UIColor.red
         view.addSubview(self)
         
-        self.frame = self.finalRect
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.5, options: .allowUserInteraction, animations: {
             self.frame = self.finalRect
         }) { (finished) in
             let dismissDelay = 4.0
@@ -93,7 +95,7 @@ class CyBanner: CyView {
     }
     
     func dismiss(){
-                UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowUserInteraction, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowUserInteraction, animations: {
                     self.alpha = 0.0
                     self.frame = self.initialRect
                 }) { (finished) in

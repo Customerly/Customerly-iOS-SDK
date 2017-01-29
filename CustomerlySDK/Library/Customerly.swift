@@ -14,6 +14,7 @@ open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
     var customerlySecretKey : String = ""
+    var customerlyIsOpen = false
     
     /**
      Enable verbose logging, that is useful for debugging. By default is disabled.
@@ -38,12 +39,18 @@ open class Customerly: NSObject {
             CySocket.sharedInstance.configure()
             CySocket.sharedInstance.openConnection()
             cyPrint("Success Configure")
-            
-            let banner = CyBanner(name: "Hello", subtitle: "Whei, how are you?")
-            banner.show(didTapBlock: { 
-                print("Banner tap")
-            })
         })
+        
+        realTimeMessages { (message) in
+            guard Customerly.sharedInstance.customerlyIsOpen != true else {
+                return
+            }
+            let banner = CyBanner(name: message?.account?.name, attributedSubtitle: message?.content?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
+            banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+            banner.show(didTapBlock: {
+               self.openSupportConversationOnChat(message: message)
+            })
+        }
     }
     
     //MARK: - Register user, get updates and add new attributes
@@ -149,30 +156,6 @@ open class Customerly: NSObject {
     }
     
     /**
-     If available, opens the chat on the last unread message
-     */
-    @objc open func openLastSupportConversation(from viewController: UIViewController){
-        if let data = CyStorage.getCyDataModel(){
-            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{ //then, user is lead or register user and there is at least a message
-                let chatStartVC = CustomerlyChatStartVC.instantiate()
-                chatStartVC.conversationId = data.last_messages?.first?.conversation_id
-                chatStartVC.addLeftCloseButton()
-                viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
-                
-                //remove all the stored messages that contain the same conversation_id of the opened conversation
-                let tempData = data
-                tempData.last_messages = []
-                for i in (0..<data.last_messages!.count){
-                    if data.last_messages?[i].conversation_id != data.last_messages?.first?.conversation_id{
-                        tempData.last_messages?.append(data.last_messages![i])
-                    }
-                }
-                CyStorage.storeCyDataModel(cyData: tempData)
-            }
-        }
-    }
-    
-    /**
      Check if there is an unread message
      */
     @objc open func isLastSupportConversationAvailable() -> Bool{
@@ -182,19 +165,6 @@ open class Customerly: NSObject {
             }
         }
         return false
-    }
-    
-    /**
-     Closure that notify every time a new message from the support is coming.
-     To render the html message you can use an attributed string.
-     */
-    @objc open func realTimeMessages(htmlMessage:((String?) -> Void)?){
-        realTimeMessageFromSocket { (socketMessage) in
-            self.requestConversationMessagesNews(timestamp: socketMessage?.timestamp, message: { (message) in
-                htmlMessage?(message?.content)
-                cyPrint("New realTime message", message?.content ?? "")
-            })
-        }
     }
     
     
@@ -300,6 +270,60 @@ open class Customerly: NSObject {
             }
         }, failure: { (error) in
         })
+    }
+    
+    /**
+     Closure that notify every time a new message from the support is coming.
+     For render the html message you can use an attributed string.
+     */
+    func realTimeMessages(messageResponse:((CyMessageModel?) -> Void)?){
+        realTimeMessageFromSocket { (socketMessage) in
+            self.requestConversationMessagesNews(timestamp: socketMessage?.timestamp, message: { (message) in
+                messageResponse?(message)
+                cyPrint("New realTime message")
+            })
+        }
+    }
+    
+    //MARK: Messages
+    func openSupportConversationOnChat(message: CyMessageModel?){
+        
+        guard message != nil else {
+            return
+        }
+        
+        if let data = CyStorage.getCyDataModel(){
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user){
+                let chatStartVC = CustomerlyChatStartVC.instantiate()
+                chatStartVC.conversationId = message?.conversation_id
+                chatStartVC.addLeftCloseButton()
+                UIViewController.topViewController()?.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+            }
+        }
+    }
+    
+    /**
+     If available, opens the chat on the last unread message
+     */
+    func openLastSupportConversation(from viewController: UIViewController){
+        if let data = CyStorage.getCyDataModel(){
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{ //then, user is lead or register user and there is at least a message
+                let chatStartVC = CustomerlyChatStartVC.instantiate()
+                chatStartVC.conversationId = data.last_messages?.first?.conversation_id
+                chatStartVC.addLeftCloseButton()
+                viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+                
+                //remove all the stored messages that contain the same conversation_id of the opened conversation
+                let tempData = data
+                tempData.last_messages = []
+                for i in (0..<data.last_messages!.count){
+                    if data.last_messages?[i].conversation_id != data.last_messages?.first?.conversation_id{
+                        tempData.last_messages?.append(data.last_messages![i])
+                    }
+                }
+                CyStorage.storeCyDataModel(cyData: tempData)
+            }
+        }
     }
     
     
