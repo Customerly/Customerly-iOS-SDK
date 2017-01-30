@@ -33,7 +33,7 @@
 "timeAgoSinceDate_justNow" = "Ora";
 
 /* Conversation List */
-"conversationListTitleView" = "Supporto";
+"supportTitle" = "Supporto";
 "youUser" = "Tu";
 "conversationListPoweredBy" = "Offerto da Customerly";
 "newConversationButton" = "Nuova conversazione";

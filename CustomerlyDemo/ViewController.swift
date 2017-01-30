@@ -53,10 +53,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func getUpdates(_ sender: Any) {
-        Customerly.sharedInstance.update(success: { (newSurvey, newMessage) in
+        Customerly.sharedInstance.update(success: { 
             print("Update success")
-            print("New survey?", "\(newSurvey)", " - New message?", "\(newMessage)")
-        }) {
+        }) { 
             print("Update failure")
         }
     }

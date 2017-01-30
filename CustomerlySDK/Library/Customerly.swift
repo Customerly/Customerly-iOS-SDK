@@ -8,8 +8,6 @@
 
 import Kingfisher
 
-public typealias SuccessResponse = ((_ newSurvey: Bool, _ newMessage: Bool) -> Void)
-
 open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
@@ -70,13 +68,12 @@ open class Customerly: NSObject {
     /**
      If you want to register a user_id, you have to insert also an email.
      */
-    @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         
         ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
             CySocket.sharedInstance.reconfigure()
-            let news = self.checkNews()
             cyPrint("Success Register User")
-            success?(news.survey, news.message)
+            success?()
         }, failure: {
             cyPrint("Failure Register User")
             failure?()
@@ -96,14 +93,10 @@ open class Customerly: NSObject {
     /**
      Get ad update from Customerly about surveys and unread messages
      */
-    @objc open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func update(success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         ping(success: {
-            
             self.openSurveyIfAvailable()
-            
-            let news = self.checkNews()
             cyPrint("Success Update")
-            success?(news.survey, news.message)
         }) {
             cyPrint("Failure Update")
             failure?()
@@ -115,12 +108,11 @@ open class Customerly: NSObject {
      Attributes need to be only on first level.
      Ex: ["Params1": 3, "Params2: "Hello"].
      */
-    @objc open func setAttributes(attributes:Dictionary<String, Any>? = nil, success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
+    @objc open func setAttributes(attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
             ping(attributes: attributes, success: {
-                let news = self.checkNews()
                 cyPrint("Success Set Attributes")
-                success?(news.survey, news.message)
+                success?()
             }, failure: {
                 cyPrint("Failure Set Attributes")
                 failure?()
@@ -139,7 +131,6 @@ open class Customerly: NSObject {
      Not valid string: "tap subscription page"
      */
     @objc open func trackEvent(event: String){
-        
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
         trackingModel?.token = CyStorage.getCyDataModel()?.token //if some data are stored, CyTrackingRequestModel contain the token
@@ -332,10 +323,20 @@ open class Customerly: NSObject {
             return
         }
         
-        let banner = CyBanner(name: message?.account?.name, attributedSubtitle: message?.content?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
+        var messageContent = message?.content
+        if message?.rich_mail == true{
+            messageContent = "chatViewRichMessageText".localized(comment: "Chat View")
+        }
+        
+        let banner = CyBanner(name: message?.account?.name ?? "supportTitle".localized(comment: "Banner Title"), attributedSubtitle: messageContent?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
         banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         banner.show(didTapBlock: {
             self.openSupportConversationOnMessage(message: message)
+            if message?.rich_mail == true{
+                if message?.rich_mail_url != nil && URL(string: message!.rich_mail_url!) != nil{
+                    UIApplication.shared.openURL(URL(string: message!.rich_mail_url!)!)
+                }
+            }
         })
     }
     

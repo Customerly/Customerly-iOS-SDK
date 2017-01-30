@@ -35,7 +35,7 @@ class CustomerlyConversationListVC: CyViewController {
         poweredByButton.setTitle("conversationListPoweredBy".localized(comment: "Conversation List"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         
-        title = "conversationListTitleView".localized(comment: "Conversation List")
+        title = "supportTitle".localized(comment: "Conversation List")
         addLeftCloseButton()
         
         tableView.addPullToRefresh {
