@@ -48,9 +48,9 @@ open class Customerly: NSObject {
     
     /**
      Update Customerly SDK data every time app is opened by adding the following code to your AppDelegate:
-     ```    
+     ```
      func applicationDidBecomeActive(_ application: UIApplication) {
-        Customerly.sharedInstance.activateApp()
+     Customerly.sharedInstance.activateApp()
      }
      ```
      */
@@ -59,7 +59,7 @@ open class Customerly: NSObject {
             //Success
             let message = self.getLastUnreadMessage()
             self.showCustomizedBanner(with: message)
-            
+            self.openSurveyIfAvailable()
         }) {
             //Failure
         }
@@ -98,6 +98,9 @@ open class Customerly: NSObject {
      */
     @objc open func update(success: SuccessResponse? = nil, failure: (() -> Void)? = nil){
         ping(success: {
+            
+            self.openSurveyIfAvailable()
+            
             let news = self.checkNews()
             cyPrint("Success Update")
             success?(news.survey, news.message)
@@ -167,48 +170,6 @@ open class Customerly: NSObject {
         }
     }
     
-    /**
-     Check if there is an unread message
-     */
-    @objc open func isLastSupportConversationAvailable() -> Bool{
-        if let data = CyStorage.getCyDataModel(){
-            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    //MARK: - Survey
-    /**
-     Open a Survey View Controller if a survey is available
-     */
-    @discardableResult
-    @objc open func openSurvey(from viewController: UIViewController, onShow: (() -> Void)? = nil, onDismiss: ((CySurveyDismiss) -> Void)? = nil){
-        if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
-            let surveyVC = CustomerlySurveyViewController.instantiate()
-            surveyVC.survey = survey
-            viewController.present(surveyVC, animated: true, completion: nil)
-            surveyVC.onShow(on: {
-                onShow!()
-            })
-            surveyVC.onDismiss(onDis: { (cySurveyDismiss) in
-                onDismiss!(cySurveyDismiss)
-            })
-        }
-    }
-    
-    /**
-     Check if there is a new survey to show
-     */
-    @objc open func isSurveyAvailable() -> Bool{
-        if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
-            return true
-        }
-        
-        return false
-    }
     
     //MARK: - PRIVATE METHODS
     
@@ -284,7 +245,7 @@ open class Customerly: NSObject {
         })
     }
     
-    /**
+    /*
      Closure that notify every time a new message from the support is coming.
      For render the html message you can use an attributed string.
      */
@@ -297,7 +258,7 @@ open class Customerly: NSObject {
         }
     }
     
-    //MARK: Messages
+    //MARK: Chat
     func openSupportConversationOnMessage(message: CyMessageModel?){
         
         guard message != nil else {
@@ -314,9 +275,7 @@ open class Customerly: NSObject {
         }
     }
     
-    /**
-     If available, opens the chat on the last unread message
-     */
+    // If available, opens the chat on the last unread message
     func openLastSupportConversation(from viewController: UIViewController){
         
         if let lastMessage = getLastUnreadMessage(){
@@ -326,7 +285,7 @@ open class Customerly: NSObject {
             viewController.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
         }
     }
-
+    
     //Get the last unread message, and remove all the stored messages that contain the same conversation_id
     func getLastUnreadMessage() -> CyMessageModel?{
         if let data = CyStorage.getCyDataModel(){
@@ -353,6 +312,16 @@ open class Customerly: NSObject {
         return nil
     }
     
+    //Check if there is an unread message
+    func isLastSupportConversationAvailable() -> Bool{
+        if let data = CyStorage.getCyDataModel(){
+            if (data.token?.userTypeFromToken() == CyUserType.lead || data.token?.userTypeFromToken() == CyUserType.user) && data.last_messages?.first != nil{
+                return true
+            }
+        }
+        return false
+    }
+    
     //MARK: Banner
     func showCustomizedBanner(with message: CyMessageModel?){
         guard Customerly.sharedInstance.customerlyIsOpen != true else {
@@ -370,5 +339,45 @@ open class Customerly: NSObject {
         })
     }
     
+    //MARK: Surveys
     
+    // Open a Survey View Controller if a survey is available
+    func openSurveyIfAvailable(){
+        guard Customerly.sharedInstance.customerlyIsOpen != true else {
+            return
+        }
+        
+        guard UIViewController.topViewController() != nil else {
+            return
+        }
+        
+        openSurvey(from: UIViewController.topViewController()!, onShow: {
+            Customerly.sharedInstance.customerlyIsOpen = true
+        }) { (surveyDismiss) in
+            Customerly.sharedInstance.customerlyIsOpen = false
+        }
+    }
+    
+    func openSurvey(from viewController: UIViewController, onShow: (() -> Void)? = nil, onDismiss: ((CySurveyDismiss) -> Void)? = nil){
+        if let survey = CyStorage.getCyDataModel()?.last_surveys?.first{
+            let surveyVC = CustomerlySurveyViewController.instantiate()
+            surveyVC.survey = survey
+            viewController.present(surveyVC, animated: true, completion: nil)
+            surveyVC.onShow(on: {
+                onShow!()
+            })
+            surveyVC.onDismiss(onDis: { (cySurveyDismiss) in
+                onDismiss!(cySurveyDismiss)
+            })
+        }
+    }
+    
+    // Check if there is a new survey to show
+    func isSurveyAvailable() -> Bool{
+        if let _ = CyStorage.getCyDataModel()?.last_surveys?.first{
+            return true
+        }
+        
+        return false
+    }
 }

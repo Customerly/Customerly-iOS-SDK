@@ -52,26 +52,6 @@ class ViewController: UIViewController {
         Customerly.sharedInstance.logoutUser()
     }
     
-    @IBAction func openSurveyIfAvailable(_ sender: Any) {
-        
-        Customerly.sharedInstance.openSurvey(from: self, onShow: {
-            print("Survey showed")
-        }) { (surveyDismiss) in
-            if surveyDismiss == .postponed{
-                print("Survey postponed")
-            }
-            else if surveyDismiss == .completed{
-                print("Survey completed")
-            }
-            else if surveyDismiss == .rejected{
-                print("Survey rejected")
-            }
-        }
-        
-        //Or simply
-        //Customerly.sharedInstance.openSurvey(from: self)
-    }
-    
     @IBAction func getUpdates(_ sender: Any) {
         Customerly.sharedInstance.update(success: { (newSurvey, newMessage) in
             print("Update success")
