@@ -73,6 +73,8 @@ open class Customerly: NSObject {
         ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
             CySocket.sharedInstance.reconfigure()
             cyPrint("Success Register User")
+            let message = self.getLastUnreadMessage()
+            self.showCustomizedBanner(with: message)
             success?()
         }, failure: {
             cyPrint("Failure Register User")
