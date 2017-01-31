@@ -18,8 +18,8 @@ class CyBanner: CyView {
     open var didTapBlock: (() -> ())?
     
     var viewBanner : CyBanner?
-    var initialRect = CGRect(x: 15, y: -65, width: UIScreen.main.bounds.width-30, height: 65)
-    var finalRect = CGRect(x: 15, y: 30, width: UIScreen.main.bounds.width-30, height: 65)
+    var initialRect = CGRect(x: 15, y: -75, width: UIScreen.main.bounds.width-30, height: 75)
+    var finalRect = CGRect(x: 15, y: 25, width: UIScreen.main.bounds.width-30, height: 75)
     
     
     init(name: String?, subtitle: String? = nil, attributedSubtitle: NSAttributedString? = nil, image: UIImage? = nil){
