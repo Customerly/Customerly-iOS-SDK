@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/customerly/Customerly-iOS-SDK.git", :tag => s.version }
   s.source_files  = "CustomerlySDK/Library/**/*.swift"
   s.resource_bundles = {
-    'CustomerlySDK' => ['CustomerlySDK/Library/**/*.xcassets', 'CustomerlySDK/Library/**/*.lproj', 'CustomerlySDK/Library/UI/**/*.storyboard', 'CustomerlySDK/Library/UI/**/*.xib']
+    'CustomerlySDK' => ['CustomerlySDK/Library/**/*.xcassets', 'CustomerlySDK/Library/**/*.lproj', 'CustomerlySDK/Library/UI/**/*.storyboard', 'CustomerlySDK/Library/UI/**/*.xib', 'CustomerlySDK/Library/UI/**/*.m4r']
   }
   s.frameworks  = "UIKit", "Foundation"
   s.requires_arc = true

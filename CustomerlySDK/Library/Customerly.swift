@@ -340,6 +340,8 @@ open class Customerly: NSObject {
                 }
             }
         })
+        
+        CySound.playNotification()
     }
     
     //MARK: Surveys
