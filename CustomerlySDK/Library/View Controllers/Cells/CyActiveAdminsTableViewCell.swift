@@ -41,7 +41,7 @@ extension CyActiveAdminsTableViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "singleAdminCell", for: indexPath) as! CySingleActiveAdminCollectionViewCell
         
-        cell.adminAvatarImageView.kf.setImage(with: adminImageURL(id: active_admins![indexPath.row].account_id!, pxSize: 250), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        cell.adminAvatarImageView.kf.setImage(with: adminImageURL(id: active_admins![indexPath.row].account_id!, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         cell.adminNameLabel.text = active_admins?[indexPath.row].name
         
         return cell

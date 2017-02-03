@@ -442,7 +442,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             return 0
         }
         
-        tableView.backgroundColor = UIColor(hexString: "#EDEEEB")
         return 2
     }
     

@@ -94,7 +94,6 @@ extension String {
             let matches = (regex?.matches(in: inString, options: [], range: range))!
             
             let attrString = NSMutableAttributedString(string: inString, attributes:nil)
-            print(matches.count)
             //Iterate over regex matches
             for match in matches.reversed() {
                 if let int32 = UInt32(hexString: attrString.attributedSubstring(from: match.rangeAt(1)).string){

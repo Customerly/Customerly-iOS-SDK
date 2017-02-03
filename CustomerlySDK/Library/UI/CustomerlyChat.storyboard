@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="124" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Rv7-vA-A4w">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
@@ -32,7 +32,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerDateCell" rowHeight="35" id="BOg-Ff-pyj" customClass="CyHeaderDateTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="61.5" width="375" height="35"/>
+                                        <rect key="frame" x="0.0" y="62" width="375" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOg-Ff-pyj" id="7ym-TA-yZ4">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -57,7 +57,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="activeAdminsCell" rowHeight="169" id="P7h-7b-6Ic" customClass="CyActiveAdminsTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="96.5" width="375" height="169"/>
+                                        <rect key="frame" x="0.0" y="97" width="375" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P7h-7b-6Ic" id="9Rc-4d-7bR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
@@ -85,7 +85,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-8m-bHx" customClass="CyCollectionView" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="22" width="335" height="68"/>
+                                                    <rect key="frame" x="42" y="22" width="291" height="68"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="68" id="frO-og-P4z"/>
@@ -98,7 +98,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="singleAdminCell" id="leC-Z6-hiF" customClass="CySingleActiveAdminCollectionViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1.5" width="111" height="65"/>
+                                                            <rect key="frame" x="0.0" y="2" width="111" height="65"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="65"/>
@@ -163,17 +163,17 @@
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="14" id="HHO-2c-N8l"/>
                                                 <constraint firstAttribute="bottom" secondItem="rqb-Sa-c4c" secondAttribute="bottom" constant="20" id="Iaz-dX-VQe"/>
                                                 <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="fXJ-8m-bHx" secondAttribute="bottom" constant="4" id="O5P-mx-3U4"/>
-                                                <constraint firstItem="fXJ-8m-bHx" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="20" id="RcK-Hq-Ltr"/>
+                                                <constraint firstItem="fXJ-8m-bHx" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="42" id="RcK-Hq-Ltr"/>
                                                 <constraint firstItem="fXJ-8m-bHx" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="22" id="SdL-Ki-xQf"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="U59-Gb-lcZ"/>
                                                 <constraint firstItem="rqb-Sa-c4c" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="29" id="Yjv-TR-kBw"/>
-                                                <constraint firstAttribute="trailing" secondItem="fXJ-8m-bHx" secondAttribute="trailing" constant="20" id="e0h-QC-xTj"/>
+                                                <constraint firstAttribute="trailing" secondItem="fXJ-8m-bHx" secondAttribute="trailing" constant="42" id="e0h-QC-xTj"/>
                                                 <constraint firstAttribute="trailing" secondItem="rqb-Sa-c4c" secondAttribute="trailing" constant="29" id="gpH-JY-HNe"/>
                                                 <constraint firstItem="pSJ-sj-bQv" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="22" id="iwJ-1s-CKp"/>
                                                 <constraint firstAttribute="trailing" secondItem="zDS-9x-dWe" secondAttribute="trailing" constant="14" id="zjh-YC-TKJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="adminsCollectionView" destination="fXJ-8m-bHx" id="pUw-jy-c9I"/>
                                             <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
@@ -181,7 +181,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoCustomerlyCell" rowHeight="70" id="Mtg-LX-7gi" customClass="CyInfoTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="265.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="266" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mtg-LX-7gi" id="CCI-pl-1Ll">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -234,7 +234,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="IJ2-CY-Qpe" secondAttribute="bottom" constant="14" id="vfx-dH-R6P"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="contactSupportLabel" destination="hmG-by-9mF" id="o5G-CX-lM3"/>
                                         </connections>
