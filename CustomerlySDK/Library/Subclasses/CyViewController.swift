@@ -60,7 +60,7 @@ class CyViewController: UIViewController {
     }
     
     static func cyLoadNib(nibName: String) -> [AnyObject]?{
-        let podBundle = Bundle(for: self.classForCoder())
+        let podBundle = Bundle(for: Customerly.classForCoder())
         
         if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
             

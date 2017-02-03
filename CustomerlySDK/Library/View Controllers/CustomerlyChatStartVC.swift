@@ -38,8 +38,8 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.delegate = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
-        chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageCell")
-        chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: self.classForCoder)), forCellReuseIdentifier: "messageWithImagesCell")
+        chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "messageCell")
+        chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "messageWithImagesCell")
         data = CyStorage.getCyDataModel()
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
