@@ -35,7 +35,7 @@ class CySocket: NSObject {
                 if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
                     let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)
                     
-                    let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlySecretKey, "id":data.user!.crmhero_user_id!, "nsp":"user", "socket_version":cy_socket_version])
+                    let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlyAppId, "id":data.user!.crmhero_user_id!, "nsp":"user", "socket_version":cy_socket_version])
                     
                     socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
                     

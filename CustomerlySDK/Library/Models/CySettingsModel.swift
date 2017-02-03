@@ -10,7 +10,7 @@ import ObjectMapper
 
 class CySettingsModel: Mappable {
 
-    var app_id: String = Customerly.sharedInstance.customerlySecretKey
+    var app_id: String = Customerly.sharedInstance.customerlyAppId
     var user_id: String?
     var email: String?
     var lead_email: String?

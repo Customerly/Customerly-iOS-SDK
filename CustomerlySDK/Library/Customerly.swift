@@ -11,7 +11,7 @@ import Kingfisher
 open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
-    var customerlySecretKey : String = ""
+    var customerlyAppId : String = ""
     var customerlyIsOpen = false
     
     /**
@@ -25,8 +25,8 @@ open class Customerly: NSObject {
     }
     
     //MARK: - Configuration
-    @objc open func configure(secretKey: String, widgetColor: UIColor? = nil){
-        customerlySecretKey = secretKey
+    @objc open func configure(appId: String, widgetColor: UIColor? = nil){
+        customerlyAppId = appId
         user_color_template = widgetColor
         
         //Image cache expiration after one day
