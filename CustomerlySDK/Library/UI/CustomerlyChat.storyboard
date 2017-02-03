@@ -244,17 +244,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-JC-JNo" userLabel="Compose Message View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="521" width="375" height="82"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-sf-Dsu" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="ZwH-Ac-OqW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Powered by Customerly"/>
-                                        <connections>
-                                            <action selector="openPoweredBy:" destination="jqW-k1-gD2" eventType="touchUpInside" id="cCK-hm-KRe"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask your question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-XW-OCi" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="266" height="35"/>
                                         <constraints>
@@ -286,13 +275,33 @@
                                             <action selector="sendMessage:" destination="jqW-k1-gD2" eventType="touchUpInside" id="Tdk-GB-rFZ"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVK-SJ-QlM" userLabel="Separator" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="52" width="359" height="1"/>
+                                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Fo7-hX-UAz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-sf-Dsu" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55" width="375" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="ZwH-Ac-OqW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Powered by Customerly"/>
+                                        <connections>
+                                            <action selector="openPoweredBy:" destination="jqW-k1-gD2" eventType="touchUpInside" id="cCK-hm-KRe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="tPU-2h-EKe" firstAttribute="leading" secondItem="0Q3-W3-qOj" secondAttribute="trailing" constant="20" id="3pM-21-EXt"/>
                                     <constraint firstItem="U6Y-sf-Dsu" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" id="IBJ-oB-x26"/>
                                     <constraint firstAttribute="trailing" secondItem="tPU-2h-EKe" secondAttribute="trailing" constant="13" id="ROQ-CC-rot"/>
-                                    <constraint firstAttribute="bottom" secondItem="U6Y-sf-Dsu" secondAttribute="bottom" id="bex-2w-gcQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lVK-SJ-QlM" secondAttribute="trailing" constant="8" id="XLk-jJ-LJ7"/>
+                                    <constraint firstAttribute="bottom" secondItem="U6Y-sf-Dsu" secondAttribute="bottom" constant="3" id="bex-2w-gcQ"/>
+                                    <constraint firstItem="lVK-SJ-QlM" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" constant="8" id="cY3-cf-ZZv"/>
                                     <constraint firstItem="tPU-2h-EKe" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="10" id="dsE-UT-Rk0"/>
                                     <constraint firstAttribute="trailing" secondItem="U6Y-sf-Dsu" secondAttribute="trailing" id="fJv-Nr-MiR"/>
                                     <constraint firstItem="0Q3-W3-qOj" firstAttribute="leading" secondItem="HBx-XW-OCi" secondAttribute="trailing" constant="8" id="lCf-VX-YFi"/>
@@ -300,6 +309,7 @@
                                     <constraint firstItem="HBx-XW-OCi" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="8" id="rp5-tY-e34"/>
                                     <constraint firstItem="HBx-XW-OCi" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" constant="8" id="s3E-tU-EVU"/>
                                     <constraint firstItem="0Q3-W3-qOj" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="10" id="sGF-Dg-rAN"/>
+                                    <constraint firstItem="U6Y-sf-Dsu" firstAttribute="top" secondItem="lVK-SJ-QlM" secondAttribute="bottom" constant="2" id="sUX-BC-lqg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -472,7 +482,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-fF-Bmk" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="375" height="24"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Evw-fB-6sl"/>
                                         </constraints>
@@ -489,7 +499,7 @@
                                     <constraint firstItem="LsI-j5-jXa" firstAttribute="leading" secondItem="tQR-W0-wAW" secondAttribute="leading" constant="15" id="IiZ-ol-y87"/>
                                     <constraint firstAttribute="trailing" secondItem="zcN-fF-Bmk" secondAttribute="trailing" id="JK0-h6-Olm"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="82" id="Xa4-d6-dGA"/>
-                                    <constraint firstAttribute="bottom" secondItem="zcN-fF-Bmk" secondAttribute="bottom" id="ZbB-P5-KQu"/>
+                                    <constraint firstAttribute="bottom" secondItem="zcN-fF-Bmk" secondAttribute="bottom" constant="3" id="ZbB-P5-KQu"/>
                                     <constraint firstItem="LsI-j5-jXa" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="top" constant="15" id="bRQ-SD-b0g"/>
                                     <constraint firstAttribute="height" constant="82" id="xzk-LF-B3h"/>
                                     <constraint firstItem="zcN-fF-Bmk" firstAttribute="leading" secondItem="tQR-W0-wAW" secondAttribute="leading" id="ys6-Pb-xj6"/>
