@@ -251,7 +251,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="value" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                         <size key="value" width="0.0" height="-3"/>
@@ -260,7 +260,7 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -357,9 +357,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Je-8k-ub2" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="300" y="29" width="42" height="19"/>
+                                                    <rect key="frame" x="300" y="29" width="44" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="BmS-os-W6w"/>
+                                                        <constraint firstAttribute="width" constant="44" id="BmS-os-W6w"/>
                                                         <constraint firstAttribute="height" constant="19" id="nrO-V5-xsL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
@@ -389,7 +389,7 @@
                                                 <constraint firstItem="nfs-Yv-Phu" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" id="aGw-CX-Hjd"/>
                                                 <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="dOe-Cm-s08"/>
                                                 <constraint firstItem="O5x-HB-87T" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="fbY-AW-iw0"/>
-                                                <constraint firstItem="iSZ-MS-lXx" firstAttribute="leading" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="7" id="i7g-Fl-0sy"/>
+                                                <constraint firstItem="iSZ-MS-lXx" firstAttribute="leading" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="5" id="i7g-Fl-0sy"/>
                                                 <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="j2k-67-bOH"/>
                                                 <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="qDG-DK-VCI"/>
                                                 <constraint firstItem="TzG-jz-GkS" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="uqh-7t-fvP"/>
@@ -460,10 +460,10 @@
                                         <size key="value" width="0.0" height="-3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
