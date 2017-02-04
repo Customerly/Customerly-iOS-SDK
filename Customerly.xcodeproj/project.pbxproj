@@ -87,7 +87,6 @@
 		45F9E0B31E1C532B00C7241F /* CySurveyStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */; };
 		45F9E0B51E1C5A1E00C7241F /* CySurveyTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9E0B41E1C5A1E00C7241F /* CySurveyTextFieldViewController.swift */; };
 		45FA19B91DEB423600D26059 /* CyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19B81DEB423600D26059 /* CyView.swift */; };
-		45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */; };
 		45FA19BD1DEB4C2000D26059 /* CyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BC1DEB4C2000D26059 /* CyButton.swift */; };
 		45FA19BF1DEB4C4D00D26059 /* CyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */; };
 		45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FA19C01DEB4E0200D26059 /* Assets.xcassets */; };
@@ -230,7 +229,6 @@
 		45F9E0B21E1C532B00C7241F /* CySurveyStarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyStarsViewController.swift; sourceTree = "<group>"; };
 		45F9E0B41E1C5A1E00C7241F /* CySurveyTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySurveyTextFieldViewController.swift; sourceTree = "<group>"; };
 		45FA19B81DEB423600D26059 /* CyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyView.swift; sourceTree = "<group>"; };
-		45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		45FA19BC1DEB4C2000D26059 /* CyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyButton.swift; sourceTree = "<group>"; };
 		45FA19BE1DEB4C4D00D26059 /* CyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextField.swift; sourceTree = "<group>"; };
 		45FA19C01DEB4E0200D26059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 			children = (
 				453CC13C1DEA2C0F00D85957 /* CyActiveAdminsTableViewCell.swift */,
 				456DE3EC1E351ECE008B115D /* CySingleActiveAdminCollectionViewCell.swift */,
-				45FA19BA1DEB478900D26059 /* CyInfoTableViewCell.swift */,
 				455A0FA41DF47C3D003EEA43 /* CyConversationTableViewCell.swift */,
 				456DE3E81E34F0A9008B115D /* CyHeaderDateTableViewCell.swift */,
 				458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */,
@@ -836,7 +833,6 @@
 				45F9E0AF1E1C46D300C7241F /* CySurveyPickerViewController.swift in Sources */,
 				455CE1A11DE0C85500FF65DC /* CustomerlyNavigationController.swift in Sources */,
 				455CE1891DE0AB4500FF65DC /* CyLogging.swift in Sources */,
-				45FA19BB1DEB478900D26059 /* CyInfoTableViewCell.swift in Sources */,
 				45282DAA1E0035AD0021E7F9 /* CyWebSocketParamsModel.swift in Sources */,
 				455CE1881DE0AB4500FF65DC /* CyHTTPValidation.swift in Sources */,
 				455CE18E1DE0AB4500FF65DC /* CyAppModel.swift in Sources */,

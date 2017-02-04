@@ -52,7 +52,7 @@ extension CyActiveAdminsTableViewCell: UICollectionViewDataSource{
 extension CyActiveAdminsTableViewCell: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        //40 is the lateral margin of the collectionview from bounds
-        return CGSize(width: (UIScreen.main.bounds.width-40)/CGFloat(active_admins?.count ?? 1), height: collectionView.frame.size.height)
+        //220 is the width of the collectionview
+        return CGSize(width: 220/CGFloat(active_admins?.count ?? 1), height: collectionView.frame.size.height)
     }
 }

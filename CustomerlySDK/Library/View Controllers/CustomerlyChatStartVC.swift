@@ -433,7 +433,6 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if conversationExist(){
-            tableView.backgroundColor = UIColor.white
             return getMessagesInSection(messagesArray: messages, sectionDate:dateSections[section]).count
         }
         
@@ -442,7 +441,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             return 0
         }
         
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -495,27 +494,17 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             return cell!
         }
         
-        if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
-            
-            cell.active_admins = data?.active_admins
-            cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + " " + lastAdminActivity()
-            cell.welcomeMessageLabel.text = data?.token?.userTypeFromToken() == CyUserType.user ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
-            cell.setNeedsUpdateConstraints()
-            cell.updateConstraintsIfNeeded()
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            return cell
-        }
-        else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCustomerlyCell", for: indexPath) as! CyInfoTableViewCell
-            cell.contactSupportLabel.text = "chatViewContactSupportLabel".localized(comment: "Chat View")
-            cell.setNeedsUpdateConstraints()
-            cell.updateConstraintsIfNeeded()
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activeAdminsCell", for: indexPath) as! CyActiveAdminsTableViewCell
+        
+        cell.active_admins = data?.active_admins
+        cell.lastActivityLabel.text = "chatAdminLastActivity".localized(comment: "Chat View") + " " + lastAdminActivity()
+        cell.welcomeMessageLabel.text = data?.token?.userTypeFromToken() == CyUserType.user ? data?.app_config?.welcome_message_users : data?.app_config?.welcome_message_visitors
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        return cell
+        
     }
 }
 

@@ -52,7 +52,7 @@ class CyMessageTableViewCell: UITableViewCell {
         adminAvatar.isHidden = false
         messageViewRightConstraint.isActive = false
         messageViewLeftConstraint.isActive = true
-        messageView.backgroundColor = UIColor(hexString: "#eceff1")
+        messageView.backgroundColor = UIColor(hexString: "#ECEFF1")
     }
     
     func setUserVisual(){
@@ -61,7 +61,7 @@ class CyMessageTableViewCell: UITableViewCell {
         messageTextView.textAlignment = .right
         messageViewRightConstraint.isActive = true
         messageViewLeftConstraint.isActive = false
-        messageView.backgroundColor = base_color_template
+        messageView.backgroundColor = UIColor(hexString: "#01B0FF")
     }
     
     func cellContainsImages(configForImages: Bool){

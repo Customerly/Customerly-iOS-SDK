@@ -67,9 +67,6 @@
                                                     <rect key="frame" x="14" y="14" width="347" height="141"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
@@ -85,9 +82,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-8m-bHx" customClass="CyCollectionView" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="42" y="22" width="291" height="68"/>
+                                                    <rect key="frame" x="78" y="22" width="220" height="68"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="220" id="Tz8-rH-7Pa"/>
                                                         <constraint firstAttribute="height" constant="68" id="frO-og-P4z"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="LSZ-sg-l16">
@@ -162,12 +160,11 @@
                                                 <constraint firstItem="rqb-Sa-c4c" firstAttribute="top" secondItem="pSJ-sj-bQv" secondAttribute="bottom" constant="6" id="HFY-E8-zdB"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="14" id="HHO-2c-N8l"/>
                                                 <constraint firstAttribute="bottom" secondItem="rqb-Sa-c4c" secondAttribute="bottom" constant="20" id="Iaz-dX-VQe"/>
+                                                <constraint firstItem="fXJ-8m-bHx" firstAttribute="centerX" secondItem="9Rc-4d-7bR" secondAttribute="centerX" id="MWR-Il-tDb"/>
                                                 <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="fXJ-8m-bHx" secondAttribute="bottom" constant="4" id="O5P-mx-3U4"/>
-                                                <constraint firstItem="fXJ-8m-bHx" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="42" id="RcK-Hq-Ltr"/>
                                                 <constraint firstItem="fXJ-8m-bHx" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="22" id="SdL-Ki-xQf"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="U59-Gb-lcZ"/>
                                                 <constraint firstItem="rqb-Sa-c4c" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="29" id="Yjv-TR-kBw"/>
-                                                <constraint firstAttribute="trailing" secondItem="fXJ-8m-bHx" secondAttribute="trailing" constant="42" id="e0h-QC-xTj"/>
                                                 <constraint firstAttribute="trailing" secondItem="rqb-Sa-c4c" secondAttribute="trailing" constant="29" id="gpH-JY-HNe"/>
                                                 <constraint firstItem="pSJ-sj-bQv" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="22" id="iwJ-1s-CKp"/>
                                                 <constraint firstAttribute="trailing" secondItem="zDS-9x-dWe" secondAttribute="trailing" constant="14" id="zjh-YC-TKJ"/>
@@ -178,65 +175,6 @@
                                             <outlet property="adminsCollectionView" destination="fXJ-8m-bHx" id="pUw-jy-c9I"/>
                                             <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
                                             <outlet property="welcomeMessageLabel" destination="rqb-Sa-c4c" id="xE9-Yu-W2z"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoCustomerlyCell" rowHeight="70" id="Mtg-LX-7gi" customClass="CyInfoTableViewCell" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="266" width="375" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mtg-LX-7gi" id="CCI-pl-1Ll">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-CY-Qpe" userLabel="Background View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="8" width="347" height="48"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact support writing your question below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-by-9mF" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="8" width="331" height="32"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="gt4-Lo-44k"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="hmG-by-9mF" secondAttribute="trailing" constant="8" id="Knv-gl-XEs"/>
-                                                        <constraint firstAttribute="bottom" secondItem="hmG-by-9mF" secondAttribute="bottom" constant="8" id="emm-s0-ZDo"/>
-                                                        <constraint firstItem="hmG-by-9mF" firstAttribute="top" secondItem="IJ2-CY-Qpe" secondAttribute="top" constant="8" id="nyd-oL-J4h"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="uBM-mp-C61"/>
-                                                        <constraint firstItem="hmG-by-9mF" firstAttribute="leading" secondItem="IJ2-CY-Qpe" secondAttribute="leading" constant="8" id="zNS-6x-fgh"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="6"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="1" height="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="IJ2-CY-Qpe" firstAttribute="leading" secondItem="CCI-pl-1Ll" secondAttribute="leading" constant="14" id="EqO-cS-Zad"/>
-                                                <constraint firstItem="IJ2-CY-Qpe" firstAttribute="top" secondItem="CCI-pl-1Ll" secondAttribute="top" constant="8" id="KnF-Ct-4x0"/>
-                                                <constraint firstAttribute="trailing" secondItem="IJ2-CY-Qpe" secondAttribute="trailing" constant="14" id="mDK-R1-ef2"/>
-                                                <constraint firstAttribute="bottom" secondItem="IJ2-CY-Qpe" secondAttribute="bottom" constant="14" id="vfx-dH-R6P"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="contactSupportLabel" destination="hmG-by-9mF" id="o5G-CX-lM3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
