@@ -306,6 +306,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="ams-jp-kjV">
                                     <rect key="frame" x="0.0" y="106" width="375" height="1"/>
@@ -317,7 +318,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWg-gC-Ghz" id="iHa-1g-R49">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nfs-Yv-Phu" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
@@ -338,53 +339,62 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-jz-GkS" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="18" width="139" height="21"/>
+                                                    <rect key="frame" x="80" y="18" width="212" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="yVF-Fd-ihR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-HB-87T" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="39" width="287" height="21"/>
+                                                    <rect key="frame" x="80" y="39" width="212" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="QPC-YJ-k9w"/>
+                                                        <constraint firstAttribute="height" constant="21" id="bPR-c3-NoM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Je-8k-ub2" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="227" y="18" width="140" height="21"/>
+                                                    <rect key="frame" x="300" y="29" width="42" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="2gG-kt-Ddk"/>
-                                                        <constraint firstAttribute="width" constant="140" id="lfh-j7-xPV"/>
+                                                        <constraint firstAttribute="width" constant="42" id="BmS-os-W6w"/>
+                                                        <constraint firstAttribute="height" constant="19" id="nrO-V5-xsL"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="iSZ-MS-lXx" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
+                                                    <rect key="frame" x="349" y="29" width="19" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19" id="F74-Ki-fAA"/>
+                                                        <constraint firstAttribute="width" constant="19" id="cbN-sd-Dnz"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="gHU-KU-mmm" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" id="1Ex-EI-Hhl"/>
                                                 <constraint firstAttribute="bottom" secondItem="gHU-KU-mmm" secondAttribute="bottom" constant="-0.5" id="1LM-BY-LZI"/>
-                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="4Ua-3K-8Rf"/>
-                                                <constraint firstAttribute="trailing" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="B8f-fF-6d7"/>
                                                 <constraint firstAttribute="bottom" secondItem="hee-cs-b98" secondAttribute="bottom" constant="13" id="F93-yr-Sh2"/>
+                                                <constraint firstAttribute="trailing" secondItem="iSZ-MS-lXx" secondAttribute="trailing" constant="7" id="HQk-Au-M2C"/>
                                                 <constraint firstAttribute="trailing" secondItem="nfs-Yv-Phu" secondAttribute="trailing" id="IrG-kU-08Y"/>
+                                                <constraint firstItem="iSZ-MS-lXx" firstAttribute="centerY" secondItem="iHa-1g-R49" secondAttribute="centerY" id="JVw-Dw-qqf"/>
                                                 <constraint firstItem="TzG-jz-GkS" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="OJc-p9-PuH"/>
                                                 <constraint firstAttribute="bottom" secondItem="nfs-Yv-Phu" secondAttribute="bottom" constant="-0.5" id="R7F-ZN-ZO3"/>
-                                                <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="8Je-8k-ub2" secondAttribute="bottom" id="S8n-MB-ZuX"/>
+                                                <constraint firstItem="O5x-HB-87T" firstAttribute="top" secondItem="TzG-jz-GkS" secondAttribute="bottom" id="TL5-0M-Noj"/>
                                                 <constraint firstItem="nfs-Yv-Phu" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" id="VYF-tb-fXq"/>
                                                 <constraint firstItem="gHU-KU-mmm" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" id="ZJA-3m-78y"/>
                                                 <constraint firstItem="nfs-Yv-Phu" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" id="aGw-CX-Hjd"/>
-                                                <constraint firstAttribute="trailing" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="8" id="bhX-dh-GR4"/>
                                                 <constraint firstItem="hee-cs-b98" firstAttribute="leading" secondItem="iHa-1g-R49" secondAttribute="leading" constant="15" id="dOe-Cm-s08"/>
                                                 <constraint firstItem="O5x-HB-87T" firstAttribute="leading" secondItem="hee-cs-b98" secondAttribute="trailing" constant="15" id="fbY-AW-iw0"/>
+                                                <constraint firstItem="iSZ-MS-lXx" firstAttribute="leading" secondItem="8Je-8k-ub2" secondAttribute="trailing" constant="7" id="i7g-Fl-0sy"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="TzG-jz-GkS" secondAttribute="trailing" constant="8" id="j2k-67-bOH"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="leading" secondItem="O5x-HB-87T" secondAttribute="trailing" constant="8" id="qDG-DK-VCI"/>
                                                 <constraint firstItem="TzG-jz-GkS" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="uqh-7t-fvP"/>
+                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="centerY" secondItem="iHa-1g-R49" secondAttribute="centerY" id="vVT-Dc-T8I"/>
                                                 <constraint firstItem="hee-cs-b98" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="14" id="vbr-2y-tH4"/>
-                                                <constraint firstItem="8Je-8k-ub2" firstAttribute="top" secondItem="iHa-1g-R49" secondAttribute="top" constant="18" id="xZ6-Z9-EH0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -403,7 +413,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsI-j5-jXa" customClass="CyButton" customModule="CustomerlySDK" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="345" height="35"/>
-                                        <color key="backgroundColor" red="0.18823529411764706" green="0.49019607843137253" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.396078431372549" green="0.66274509803921566" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Mlu-yj-dA6"/>
                                         </constraints>
@@ -503,6 +513,7 @@
     </scenes>
     <resources>
         <image name="attachments_button" width="42" height="42"/>
+        <image name="disclosure_indicator" width="42" height="42"/>
         <image name="send_message_button" width="42" height="42"/>
     </resources>
 </document>

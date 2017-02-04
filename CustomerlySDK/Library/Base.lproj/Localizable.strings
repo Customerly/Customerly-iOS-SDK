@@ -17,20 +17,20 @@
 "actionSheetImagePicker_error_galleryNotAvailable" = "Ops, the photo gallery is not available";
 
 /* Time Ago Since Date */
-"timeAgoSinceDate_yearsAgo %d" = "%d years ago";
-"timeAgoSinceDate_yearAgo %d" = "%d year ago";
-"timeAgoSinceDate_monthsAgo %d" = "%d months ago";
-"timeAgoSinceDate_monthAgo %d" = "%d month ago";
-"timeAgoSinceDate_weeksAgo %d" = "%d weeks ago";
-"timeAgoSinceDate_weekAgo %d" = "%d week ago";
-"timeAgoSinceDate_daysAgo %d" = "%d days ago";
-"timeAgoSinceDate_dayAgo %d" = "%d day ago";
-"timeAgoSinceDate_hoursAgo %d" = "%d hours ago";
-"timeAgoSinceDate_hourAgo %d" = "%d hour ago";
-"timeAgoSinceDate_minutesAgo %d" = "%d minutes ago";
-"timeAgoSinceDate_minuteAgo %d" = "%d minute ago";
-"timeAgoSinceDate_secondsAgo %d" = "%d seconds ago";
-"timeAgoSinceDate_justNow" = "Just now";
+"timeAgoSinceDate_yearsAgo %d" = "%dy ago";
+"timeAgoSinceDate_yearAgo %d" = "%dy ago";
+"timeAgoSinceDate_monthsAgo %d" = "%dm ago";
+"timeAgoSinceDate_monthAgo %d" = "%dm ago";
+"timeAgoSinceDate_weeksAgo %d" = "%dw ago";
+"timeAgoSinceDate_weekAgo %d" = "%dw ago";
+"timeAgoSinceDate_daysAgo %d" = "%dd ago";
+"timeAgoSinceDate_dayAgo %d" = "%dd ago";
+"timeAgoSinceDate_hoursAgo %d" = "%dh ago";
+"timeAgoSinceDate_hourAgo %d" = "%dh ago";
+"timeAgoSinceDate_minutesAgo %d" = "%dm ago";
+"timeAgoSinceDate_minuteAgo %d" = "%dm ago";
+"timeAgoSinceDate_secondsAgo %d" = "%ds ago";
+"timeAgoSinceDate_justNow" = "Now";
 
 /* Conversation List */
 "supportTitle" = "Support";

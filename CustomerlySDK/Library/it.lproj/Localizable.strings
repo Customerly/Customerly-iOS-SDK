@@ -17,19 +17,19 @@
 "actionSheetImagePicker_error_galleryNotAvailable" = "Ops, la galleria fotografica non è disponibile";
 
 /* Time Ago Since Date */
-"timeAgoSinceDate_yearsAgo %d" = "%d anni fa";
-"timeAgoSinceDate_yearAgo %d" = "%d anno fa";
-"timeAgoSinceDate_monthsAgo %d" = "%d mesi fa";
-"timeAgoSinceDate_monthAgo %d" = "%d mese fa";
-"timeAgoSinceDate_weeksAgo %d" = "%d settimane fa";
-"timeAgoSinceDate_weekAgo %d" = "%d settimana fa";
-"timeAgoSinceDate_daysAgo %d" = "%d giorni fa";
-"timeAgoSinceDate_dayAgo %d" = "%d giorno fa";
-"timeAgoSinceDate_hoursAgo %d" = "%d ore fa";
-"timeAgoSinceDate_hourAgo %d" = "%d ora fa";
-"timeAgoSinceDate_minutesAgo %d" = "%d minuti fa";
-"timeAgoSinceDate_minuteAgo %d" = "%d minuto fa";
-"timeAgoSinceDate_secondsAgo %d" = "%d secondi fa";
+"timeAgoSinceDate_yearsAgo %d" = "%da fa";
+"timeAgoSinceDate_yearAgo %d" = "%da fa";
+"timeAgoSinceDate_monthsAgo %d" = "%dm fa";
+"timeAgoSinceDate_monthAgo %d" = "%dm fa";
+"timeAgoSinceDate_weeksAgo %d" = "%ds fa";
+"timeAgoSinceDate_weekAgo %d" = "%ds fa";
+"timeAgoSinceDate_daysAgo %d" = "%dg fa";
+"timeAgoSinceDate_dayAgo %d" = "%dg fa";
+"timeAgoSinceDate_hoursAgo %d" = "%dh fa";
+"timeAgoSinceDate_hourAgo %d" = "%dh fa";
+"timeAgoSinceDate_minutesAgo %d" = "%dm fa";
+"timeAgoSinceDate_minuteAgo %d" = "%dm fa";
+"timeAgoSinceDate_secondsAgo %d" = "%ds fa";
 "timeAgoSinceDate_justNow" = "Ora";
 
 /* Conversation List */
