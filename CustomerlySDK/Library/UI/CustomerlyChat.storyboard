@@ -136,7 +136,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSJ-sj-bQv" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="22" y="94" width="331" height="21"/>
+                                                    <rect key="frame" x="22" y="99" width="331" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="1F0-EQ-nwL"/>
                                                     </constraints>
@@ -145,7 +145,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqb-Sa-c4c" customClass="CyLabel" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="29" y="121" width="317" height="28"/>
+                                                    <rect key="frame" x="29" y="126" width="317" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="cDb-Av-XIc"/>
                                                     </constraints>
@@ -159,9 +159,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="zDS-9x-dWe" secondAttribute="bottom" constant="14" id="GE4-h4-hX2"/>
                                                 <constraint firstItem="rqb-Sa-c4c" firstAttribute="top" secondItem="pSJ-sj-bQv" secondAttribute="bottom" constant="6" id="HFY-E8-zdB"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="14" id="HHO-2c-N8l"/>
-                                                <constraint firstAttribute="bottom" secondItem="rqb-Sa-c4c" secondAttribute="bottom" constant="20" id="Iaz-dX-VQe"/>
+                                                <constraint firstAttribute="bottom" secondItem="rqb-Sa-c4c" secondAttribute="bottom" constant="15" id="Iaz-dX-VQe"/>
                                                 <constraint firstItem="fXJ-8m-bHx" firstAttribute="centerX" secondItem="9Rc-4d-7bR" secondAttribute="centerX" id="MWR-Il-tDb"/>
-                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="fXJ-8m-bHx" secondAttribute="bottom" constant="4" id="O5P-mx-3U4"/>
+                                                <constraint firstItem="pSJ-sj-bQv" firstAttribute="top" secondItem="fXJ-8m-bHx" secondAttribute="bottom" constant="9" id="O5P-mx-3U4"/>
                                                 <constraint firstItem="fXJ-8m-bHx" firstAttribute="top" secondItem="9Rc-4d-7bR" secondAttribute="top" constant="22" id="SdL-Ki-xQf"/>
                                                 <constraint firstItem="zDS-9x-dWe" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="14" id="U59-Gb-lcZ"/>
                                                 <constraint firstItem="rqb-Sa-c4c" firstAttribute="leading" secondItem="9Rc-4d-7bR" secondAttribute="leading" constant="29" id="Yjv-TR-kBw"/>
