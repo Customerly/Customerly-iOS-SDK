@@ -266,7 +266,7 @@ class CustomerlyChatStartVC: CyViewController{
         attachment.bounds.size = CGSize(width: 50, height: 39)
         
         let attributedAttachment = NSAttributedString(attachment: attachment)
-        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#999999")])
+        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#1A1A1A")])
         
         
         let attributedString = NSMutableAttributedString()
