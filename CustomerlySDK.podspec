@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     'CustomerlySDK' => ['CustomerlySDK/Library/**/*.xcassets', 'CustomerlySDK/Library/**/*.lproj', 'CustomerlySDK/Library/UI/**/*.storyboard', 'CustomerlySDK/Library/UI/**/*.xib', 'CustomerlySDK/Library/**/*.m4r']
   }
   s.module_name  = 'CustomerlySDK'
-  s.frameworks  = "UIKit", "Foundation"
+  s.frameworks  = "UIKit", "Foundation", "AudioToolbox"
   s.requires_arc = true
   s.dependency 'ObjectMapper', '2.2.2'
   s.dependency 'Kingfisher', '3.2.4'
