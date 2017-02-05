@@ -481,7 +481,8 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.messageTextView.isUserInteractionEnabled = true
             }
             
-            cell?.dateLabel.textColor = message.account_id != nil ? UIColor(hexString:"#1A1A1A") : UIColor.white
+            cell?.dateLabel.textColor = message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white
+            cell?.dateLabel.alpha = 0.6
             if let sent_date = message.sent_date {
                 cell?.dateLabel.text = Date(timeIntervalSince1970:TimeInterval(sent_date)).hoursAndMinutes()
             }

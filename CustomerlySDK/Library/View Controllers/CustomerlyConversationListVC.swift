@@ -15,7 +15,7 @@ class CustomerlyConversationListVC: CyViewController {
     @IBOutlet weak var poweredByButton: CyButton!
     var conversations : [CyConversationModel]?
     var data: CyDataModel?
-    
+    var onMessageSocketUUID: UUID? //useful to remove handler "on message" when view controller is dismissed
     
     
     //MARK: - Initialiser
@@ -43,21 +43,31 @@ class CustomerlyConversationListVC: CyViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onMessageArrived()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.requestConversations()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //On vc dismiss remove (off) "on message" socket handler
+        CySocket.sharedInstance.removeHandlerWithUUID(uuid: onMessageSocketUUID)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    //MARK: APIs
-    func requestConversations(){
+    //MARK: APIs & Socket
+    func requestConversations(loader: Bool = true){
         let conversationRequest = CyConversationRequestModel(JSON: [:])
         conversationRequest?.token = CyStorage.getCyDataModel()?.token
         
         var hud : CyView?
-        if tableView.pullToRefreshIsRefreshing() == false{
+        if tableView.pullToRefreshIsRefreshing() == false && loader == true {
             hud = showLoader(view: self.view)
         }
         
@@ -71,6 +81,15 @@ class CustomerlyConversationListVC: CyViewController {
             self.tableView.endPulltoRefresh()
         })
         
+    }
+    
+    func onMessageArrived(){
+        if CySocket.sharedInstance.isConnected(){
+            //New message is arrived
+            onMessageSocketUUID = CySocket.sharedInstance.onMessage { (message) in
+                self.requestConversations(loader: false)
+            }
+        }
     }
     
     //MARK: Actions
