@@ -71,10 +71,15 @@ First of all, if you don't have an Xcode project yet, create one, then install t
 ```
 import CustomerlySDK
 ```
-**2)** Configure a Customerly iOS SDK shared instance, typically in your application's *application:didFinishLaunchingWithOptions:* method:
+**2)** Configure a Customerly iOS SDK shared instance, in your App Delegate, inside **application:didFinishLaunchingWithOptions:** method:
 
 ```
 Customerly.sharedInstance.configure(appId: "YOUR_CUSTOMERLY_APP_ID")
+```
+also add inside **applicationDidBecomeActive:**
+
+```
+Customerly.sharedInstance.activateApp()
 ```
 
 If you want to enable the logging in console, you can set verboseLogging variable to true. By default verbose logging is disabled.
@@ -100,7 +105,7 @@ Customerly.sharedInstance.registerUser(email: "axlrose@example.com", user_id: "1
 or using a closure
 
 ```
-Customerly.sharedInstance.registerUser(email: "axlrose@example.com", user_id: "123ABC", name: "Axl Rose", success: { (newSurvey, newMessage) in
+Customerly.sharedInstance.registerUser(email: emailTextField.text!, user_id: userIdTextField.text, name: nameTextField.text, success: { 
                 //Success
             }, failure: { 
                 //Failure
@@ -123,60 +128,14 @@ You can open the support view controller calling the method `openSupport:`
 ```
 Customerly.sharedInstance.openSupport(from: self)
 ```
-where *self* is your current view controller.
+where **self** is your current view controller.
 
-If you need to know in your app when a new message is coming, you can register the *realTimeMessages:* handler
+###Surveys (nothing to do)
 
-```
-Customerly.sharedInstance.realTimeMessages { (htmlMessage) in
-            print("OH OH OH, A NEW MESSAGE!!", htmlMessage)
-        }
-```
-If you want to get a generic update and open the last unread message (if available), call `update:`
+With the Customerly SDK you can deliver surveys directly into your app app without any lines of code.
 
-```
-Customerly.sharedInstance.update(success: { (newSurvey, newMessage) in
-            print("Update success")
-            print("New survey?", "\(newSurvey)", " - New message?", "\(newMessage)")
-            
-            if newMessage == true{
-                Customerly.sharedInstance.openLastSupportConversation(from: self)
-            }
-        }) {
-            print("Update failure")
-        }
+They will be automatically displayed to your user as soon as possible.
 
-```
-
-###Surveys
-
-With the Customerly SDK you can deliver surveys directly into your app.
-
-You can present a survey from your actual view controller in this way:
-
-```
-if Customerly.sharedInstance.isSurveyAvailable(){
-            Customerly.sharedInstance.openSurvey(from: self, onShow: {
-                print("Survey showed")
-            }) { (surveyDismiss) in
-                if surveyDismiss == .postponed{
-                    print("Survey postponed")
-                }
-                else if surveyDismiss == .completed{
-                    print("Survey completed")
-                }
-                else if surveyDismiss == .rejected{
-                    print("Survey rejected")
-                }
-            }
-        }
-```
-
-or if you need something simpler
-
-```
-Customerly.sharedInstance.openSurvey(from: self)
-```
 Remember that you can get updates about new surveys available using the `update:` method.
 
 ###Attributes
@@ -195,6 +154,18 @@ Send to Customerly every event you want to segment users better
 Customerly.sharedInstance.trackEvent(event: "added_to_cart")
 ```
 
+###Extra
+
+If you want to get a generic update, call `update:`
+
+```
+Customerly.sharedInstance.update(success: { 
+            //Update success
+        }) { 
+            //Update failure
+        }
+
+```
 
 ## Contributing
 
