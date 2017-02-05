@@ -5,6 +5,7 @@
 //  Created by Paolo Musolino on 14/10/16.
 //
 //
+import Foundation
 
 extension URLResponse{
     

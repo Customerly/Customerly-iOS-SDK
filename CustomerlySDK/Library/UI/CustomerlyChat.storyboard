@@ -82,7 +82,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-8m-bHx" customClass="CyCollectionView" customModule="CustomerlySDK" customModuleProvider="target">
-                                                    <rect key="frame" x="78" y="22" width="220" height="68"/>
+                                                    <rect key="frame" x="77.5" y="22" width="220" height="68"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="220" id="Tz8-rH-7Pa"/>
@@ -197,6 +197,7 @@
                                             <constraint firstAttribute="height" constant="30" id="GvM-8a-c3o"/>
                                             <constraint firstAttribute="width" constant="30" id="xgp-aF-ktn"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="attachments_button"/>
                                         <connections>
                                             <action selector="newAttachments:" destination="jqW-k1-gD2" eventType="touchUpInside" id="MzM-b3-8wc"/>
@@ -208,6 +209,7 @@
                                             <constraint firstAttribute="width" constant="30" id="5oS-Nx-v4j"/>
                                             <constraint firstAttribute="height" constant="30" id="mYW-ls-nBa"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button" image="send_message_button"/>
                                         <connections>
                                             <action selector="sendMessage:" destination="jqW-k1-gD2" eventType="touchUpInside" id="Tdk-GB-rFZ"/>

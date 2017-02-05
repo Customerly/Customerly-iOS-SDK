@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'CustomerlySDK' => ['CustomerlySDK/Library/**/*.xcassets', 'CustomerlySDK/Library/**/*.lproj', 'CustomerlySDK/Library/UI/**/*.storyboard', 'CustomerlySDK/Library/UI/**/*.xib', 'CustomerlySDK/Library/UI/**/*.m4r']
   }
+  s.module_name  = 'CustomerlySDK'
   s.frameworks  = "UIKit", "Foundation"
   s.requires_arc = true
   s.dependency 'ObjectMapper', '2.2.2'
