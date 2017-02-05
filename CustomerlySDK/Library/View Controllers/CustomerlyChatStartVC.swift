@@ -477,11 +477,11 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.messageTextView.isUserInteractionEnabled = false
             }
             else{
-                cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
+                cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#1A1A1A") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
                 cell?.messageTextView.isUserInteractionEnabled = true
             }
             
-            cell?.dateLabel.textColor = message.account_id != nil ? UIColor(hexString:"#999999") : UIColor.white
+            cell?.dateLabel.textColor = message.account_id != nil ? UIColor(hexString:"#1A1A1A") : UIColor.white
             if let sent_date = message.sent_date {
                 cell?.dateLabel.text = Date(timeIntervalSince1970:TimeInterval(sent_date)).hoursAndMinutes()
             }

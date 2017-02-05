@@ -64,7 +64,7 @@ $ pod install
 ## Usage
 If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.0.0 or later to install the SDK.
 
-First of all, if you don't have an Xcode project yet, create one now, then install the SDK following the paragraph `Cocoapods`.
+First of all, if you don't have an Xcode project yet, create one, then install the SDK following the paragraph `Cocoapods`.
 
 **1)** Import the Customerly iOS SDK module in your UIApplicationDelegate subclass:
 
@@ -74,7 +74,7 @@ import CustomerlySDK
 **2)** Configure a Customerly iOS SDK shared instance, typically in your application's *application:didFinishLaunchingWithOptions:* method:
 
 ```
-Customerly.sharedInstance.configure(secretKey: "YOUR_CUSTOMERLY_SECRET_KEY")
+Customerly.sharedInstance.configure(appId: "YOUR_CUSTOMERLY_APP_ID")
 ```
 
 If you want to enable the logging in console, you can set verboseLogging variable to true. By default verbose logging is disabled.
