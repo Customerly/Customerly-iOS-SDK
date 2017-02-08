@@ -38,7 +38,20 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.delegate = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
-        chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "messageCell")
+        
+        let podBundle = Bundle(for: Customerly.classForCoder())
+        
+        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
+            if let bundle = Bundle(url: bundleURL) {
+                    chatTableView.register(UINib(nibName: "MessageCell", bundle:bundle), forCellReuseIdentifier: "messageCell")
+                }
+        }
+        else{
+            chatTableView.register(UINib(nibName: "MessageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "messageCell")
+        }
+        
+        //UINib(nibName: "MessageCell", bundle:Bundle(for: Customerly.classForCoder()))
+        
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "messageWithImagesCell")
         data = CyStorage.getCyDataModel()
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
