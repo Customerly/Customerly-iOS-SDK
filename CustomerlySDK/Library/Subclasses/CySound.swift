@@ -12,28 +12,10 @@ import AudioToolbox
 class CySound: NSObject {
     
     static func playNotification(){
-        
-        let podBundle = Bundle(for: Customerly.classForCoder())
-        
-        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
-            
-            if let bundle = Bundle(url: bundleURL) {
-                if let url = bundle.url(forResource: "notification", withExtension: "m4r"){
-                    CySound.playSoundFromFile(url: url)
-                    return
-                }
-            }
-            else {
-                assertionFailure("Could not load the bundle")
-            }
-            
+        if let url = CyBundle.getBundle().url(forResource: "notification", withExtension: "m4r"){
+            CySound.playSoundFromFile(url: url)
+            return
         }
-        
-        if let bundleURL = podBundle.url(forResource: "notification", withExtension: "m4r"){
-            CySound.playSoundFromFile(url: bundleURL)
-        }
-        
-        return
     }
     
     static func playSoundFromFile(url: URL){

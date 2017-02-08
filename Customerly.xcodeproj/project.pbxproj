@@ -74,6 +74,7 @@
 		458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C41DFC673E00851DD9 /* CyTextView.swift */; };
 		458781C71DFC6A3A00851DD9 /* CyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */; };
 		458781C91DFC789400851DD9 /* CyConversationMessagesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */; };
+		459B2D6B1E4BDC50005B5CAD /* CyBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B2D6A1E4BDC50005B5CAD /* CyBundle.swift */; };
 		45C240291E42496600FC046A /* CyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C240281E42496600FC046A /* CyInt.swift */; };
 		45CDE1FB1E394A80009C0112 /* CyBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDE1FA1E394A80009C0112 /* CyBanner.swift */; };
 		45D16F151E412C500092E554 /* CySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D16F141E412C500092E554 /* CySound.swift */; };
@@ -214,6 +215,7 @@
 		458781C41DFC673E00851DD9 /* CyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTextView.swift; sourceTree = "<group>"; };
 		458781C61DFC6A3A00851DD9 /* CyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		458781C81DFC789400851DD9 /* CyConversationMessagesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyConversationMessagesResponseModel.swift; sourceTree = "<group>"; };
+		459B2D6A1E4BDC50005B5CAD /* CyBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyBundle.swift; sourceTree = "<group>"; };
 		45C240281E42496600FC046A /* CyInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyInt.swift; sourceTree = "<group>"; };
 		45CDE1FA1E394A80009C0112 /* CyBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyBanner.swift; sourceTree = "<group>"; };
 		45D16F121E412C030092E554 /* notification.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.m4r; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				45FF40971E102FED002707C3 /* CyString.swift */,
 				45C240281E42496600FC046A /* CyInt.swift */,
 				45D16F141E412C500092E554 /* CySound.swift */,
+				459B2D6A1E4BDC50005B5CAD /* CyBundle.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				455CE1851DE0AB4500FF65DC /* Customerly.swift in Sources */,
 				455A0F951DF0AA41003EEA43 /* CySendMessageResponseModel.swift in Sources */,
 				455A0F9B1DF0C272003EEA43 /* CyAttachmentModel.swift in Sources */,
+				459B2D6B1E4BDC50005B5CAD /* CyBundle.swift in Sources */,
 				451FCB9B1E2A8094006E315D /* CyTokenModel.swift in Sources */,
 				455CE1911DE0AB4500FF65DC /* CyDataModel.swift in Sources */,
 				458781C51DFC673E00851DD9 /* CyTextView.swift in Sources */,

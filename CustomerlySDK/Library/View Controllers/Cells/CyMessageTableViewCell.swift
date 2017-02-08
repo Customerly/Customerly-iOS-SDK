@@ -66,7 +66,7 @@ class CyMessageTableViewCell: UITableViewCell {
     
     func cellContainsImages(configForImages: Bool){
         if configForImages == true{
-            imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:Bundle(for: Customerly.classForCoder())), forCellReuseIdentifier: "imageMessageCell")
+            imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "imageMessageCell")
             imagesTableView?.delegate = self
             imagesTableView?.dataSource = self
             imagesTableView?.reloadData()

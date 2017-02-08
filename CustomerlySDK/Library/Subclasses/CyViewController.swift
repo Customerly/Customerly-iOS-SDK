@@ -43,42 +43,13 @@ class CyViewController: UIViewController {
     
     // MARK: - Load VC From Storyboard, Xib
     static func cyViewControllerFromStoryboard(storyboardName: String, vcIdentifier: String) -> UIViewController{
-        let podBundle = Bundle(for: Customerly.classForCoder())
-        
-        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
-            
-            if let bundle = Bundle(url: bundleURL) {
-                return UIStoryboard(name: storyboardName, bundle: bundle).instantiateViewController(withIdentifier: vcIdentifier)
-            }
-            else {
-                assertionFailure("Could not load the bundle")
-            }
-            
-        }
-        
-        return UIStoryboard(name: storyboardName, bundle: podBundle).instantiateViewController(withIdentifier: vcIdentifier)
+       
+        return UIStoryboard(name: storyboardName, bundle: CyBundle.getBundle()).instantiateViewController(withIdentifier: vcIdentifier)
     }
     
     static func cyLoadNib(nibName: String) -> [AnyObject]?{
-        let podBundle = Bundle(for: Customerly.classForCoder())
         
-        if let bundleURL = podBundle.url(forResource: "CustomerlySDK", withExtension: "bundle"){
-            
-            if let bundle = Bundle(url: bundleURL) {
-                return bundle.loadNibNamed(nibName, owner: self, options: nil) as [AnyObject]?
-            }
-            else {
-                assertionFailure("Could not load the bundle")
-            }
-            
-        }
-        else if let nib = podBundle.loadNibNamed(nibName, owner: self, options: nil) as [AnyObject]?{
-            return nib
-        }
-        else{
-            assertionFailure("Could not create a path to the bundle")
-        }
-        return nil
+        return CyBundle.getBundle().loadNibNamed(nibName, owner: self, options: nil) as [AnyObject]?
     }
     
     
@@ -168,7 +139,7 @@ class CyViewController: UIViewController {
         let closeButton = UIButton(type: .system)
         closeButton.frame = CGRect(x:0, y:0, width:15, height:15)
         closeButton.tintColor = UIColor.white
-        closeButton.setImage(UIImage(named: "close_button", in: Bundle(for: Customerly.classForCoder()), compatibleWith: nil), for: .normal)
+        closeButton.setImage(UIImage(named: "close_button", in: CyBundle.getBundle(), compatibleWith: nil), for: .normal)
         closeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         let buttonItem = UIBarButtonItem(customView: closeButton)
         self.navigationItem.leftBarButtonItem = buttonItem
