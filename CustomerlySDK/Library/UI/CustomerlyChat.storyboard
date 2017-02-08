@@ -183,7 +183,7 @@
                                 <rect key="frame" x="0.0" y="521" width="375" height="82"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask your question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-XW-OCi" customClass="CyTextField" customModule="CustomerlySDK" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="266" height="35"/>
+                                        <rect key="frame" x="16" y="8" width="258" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="01u-RY-g6M"/>
                                         </constraints>
@@ -247,7 +247,7 @@
                                     <constraint firstItem="0Q3-W3-qOj" firstAttribute="leading" secondItem="HBx-XW-OCi" secondAttribute="trailing" constant="8" id="lCf-VX-YFi"/>
                                     <constraint firstAttribute="height" constant="82" id="lse-8X-r0j"/>
                                     <constraint firstItem="HBx-XW-OCi" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="8" id="rp5-tY-e34"/>
-                                    <constraint firstItem="HBx-XW-OCi" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" constant="8" id="s3E-tU-EVU"/>
+                                    <constraint firstItem="HBx-XW-OCi" firstAttribute="leading" secondItem="9FX-JC-JNo" secondAttribute="leading" constant="16" id="s3E-tU-EVU"/>
                                     <constraint firstItem="0Q3-W3-qOj" firstAttribute="top" secondItem="9FX-JC-JNo" secondAttribute="top" constant="10" id="sGF-Dg-rAN"/>
                                     <constraint firstItem="U6Y-sf-Dsu" firstAttribute="top" secondItem="lVK-SJ-QlM" secondAttribute="bottom" constant="2" id="sUX-BC-lqg"/>
                                 </constraints>
