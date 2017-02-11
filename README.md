@@ -146,6 +146,15 @@ Inside attributes you can add every custom data you prefer to track.
 Customerly.sharedInstance.setAttributes(attributes: ["pricing_plan_type" : "basic"])
 ```
 
+###Company
+You can also set company data by submitting an attribute map, like:
+
+```
+Customerly.sharedInstance.setCompany(company: ["company_id": "123", "name": "My Company", "plan": 3])
+```
+
+When you set a company, "company_id" and "name" are required fields for adding or modifying a company.
+
 ###Events
 Send to Customerly every event you want to segment users better
 
