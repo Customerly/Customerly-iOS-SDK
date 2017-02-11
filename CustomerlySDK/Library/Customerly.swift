@@ -63,14 +63,14 @@ open class Customerly: NSObject {
         }
     }
     
-    //MARK: - Register user, get updates and add new attributes
+    //MARK: - Register user, get updates and add new attributes or company
     
     /**
-     If you want to register a user_id, you have to insert also an email.
+     If you want to register a user_id, you have to insert at least an email.
      */
-    @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+    @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         
-        ping(email: email, user_id: user_id, name: name, attributes:attributes, success:{ () in
+        ping(email: email, user_id: user_id, name: name, attributes: attributes, company: company, success:{ () in
             CySocket.sharedInstance.reconfigure()
             cyPrint("Success Register User")
             let message = self.getLastUnreadMessage()
@@ -117,6 +117,28 @@ open class Customerly: NSObject {
                 success?()
             }, failure: {
                 cyPrint("Failure Set Attributes")
+                failure?()
+            })
+        }
+        else{
+            cyPrint("Only registered users may have attributes.")
+            failure?()
+        }
+    }
+    
+    /**
+     Send an update company to Customerly.
+     Attributes need to be only on first level.
+     When you set a company, "company_id" and "name" are required fields for adding or modifying a company.
+     Ex: ["company_id": "123", "name: "My Company", "plan": 3].
+     */
+    @objc open func setCompany(company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
+            ping(company: company, success: {
+                cyPrint("Success Set Company")
+                success?()
+            }, failure: {
+                cyPrint("Failure Set Company")
                 failure?()
             })
         }
@@ -173,7 +195,7 @@ open class Customerly: NSObject {
     }
     
     //MARK: Ping
-    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+    func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])
         
         //if some cookies are stored, CyRequestPingModel containes these cookies and user informations
@@ -183,6 +205,7 @@ open class Customerly: NSObject {
             pingRequestModel?.params?.email = dataStored.user?.email
             pingRequestModel?.params?.name = dataStored.user?.name
             pingRequestModel?.params?.attributes = attributes
+            pingRequestModel?.params?.company = company
         }
         
         //if user_id != nil, email != nil, name != nil, the api call send this data, otherwise the data stored

@@ -17,6 +17,7 @@ class CySettingsModel: Mappable {
     var name: String?
     var device: CyDeviceModel? = CyDeviceModel(JSON: [:])
     var attributes : Dictionary<String, Any>?
+    var company : Dictionary<String, Any>?
     
     required init?(map: Map) {
     }
@@ -30,6 +31,7 @@ class CySettingsModel: Mappable {
         name <- map["name"]
         device <- map["device"]
         attributes <- map["attributes"]
+        company <- map["company"]
     }
     
 }
