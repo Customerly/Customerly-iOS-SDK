@@ -21,6 +21,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 
 - [x] Register your users
 - [x] Set attributes
+- [x] Set company attributes
 - [x] Track events
 - [x] Support via chat in real time
 - [x] Surveys
@@ -118,7 +119,7 @@ You can also logout users:
 Customerly.sharedInstance.logoutUser()
 ```
 
-In this method, *user_id*, *name*, *attributes*, *success* and *failure* are optionals.
+In this method, *user_id*, *name*, *attributes*, *company*, *success* and *failure* are optionals.
 
 If you don't have a login method inside your apps don't worry, users can use the chat using their emails.
 
