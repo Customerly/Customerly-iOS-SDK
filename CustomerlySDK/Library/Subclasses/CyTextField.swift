@@ -27,11 +27,9 @@ class CyTextField: UITextField {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.cyDelegate?.keyboardShowed!(height: keyboardSize.height)
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
