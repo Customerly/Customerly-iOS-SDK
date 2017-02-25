@@ -533,7 +533,7 @@ extension CustomerlyChatStartVC: CyTextFieldDelegate{
     }
     
     func isTyping(typing: Bool) {
-        CySocket.sharedInstance.emitTyping(typing: typing, conversationId: conversationId)
+        CySocket.sharedInstance.emitTyping(typing: typing, text_preview: chatTextField.text, conversationId: conversationId)
     }
 }
 

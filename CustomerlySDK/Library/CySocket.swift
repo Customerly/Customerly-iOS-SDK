@@ -92,7 +92,7 @@ class CySocket: NSObject {
     }
     
     //MARK: Emit
-    func emitTyping(typing : Bool, conversationId: Int?){
+    func emitTyping(typing : Bool, text_preview: String?, conversationId: Int?){
         
         guard conversationId != nil else {
             return
@@ -104,6 +104,7 @@ class CySocket: NSObject {
         typingSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         typingSocketModel?.is_typing = typing == true ? "y" : "n"
+        typingSocketModel?.typing_preview = text_preview
         
         if let json = typingSocketModel?.toJSON(){
             socket?.emit(CySocketEvent.typing.rawValue, with: [json])
