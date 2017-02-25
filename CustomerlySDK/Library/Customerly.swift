@@ -11,15 +11,25 @@ import Kingfisher
 open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
-    var customerlyAppId : String = ""
+    var customerlyAppId: String = ""
     var customerlyIsOpen = false
     
     /**
      Enable verbose logging, that is useful for debugging. By default is disabled.
      */
-    open var verboseLogging : Bool = false
+    open var verboseLogging: Bool = false
     
-    //MARK: Init
+    /**
+     Enable or disable the message receiving. It is ENABLED by default.
+     */
+    open var supportEnabled: Bool = true
+    
+    /**
+     Enable or disable the survey receiving. It is ENABLED by default.
+     */
+    open var surveyEnabled: Bool = true
+    
+    //MARK: - Init
     override init() {
         super.init()
     }
@@ -340,7 +350,7 @@ open class Customerly: NSObject {
     
     //MARK: Banner
     func showCustomizedBanner(with message: CyMessageModel?){
-        guard Customerly.sharedInstance.customerlyIsOpen != true else {
+        guard Customerly.sharedInstance.customerlyIsOpen != true && Customerly.sharedInstance.supportEnabled == true else {
             return
         }
         
@@ -371,7 +381,7 @@ open class Customerly: NSObject {
     
     // Open a Survey View Controller if a survey is available
     func openSurveyIfAvailable(){
-        guard Customerly.sharedInstance.customerlyIsOpen != true else {
+        guard Customerly.sharedInstance.customerlyIsOpen != true && Customerly.sharedInstance.surveyEnabled == true else {
             return
         }
         
