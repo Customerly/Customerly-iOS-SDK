@@ -19,7 +19,7 @@ class CySurveySliderViewController: CyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        confirmButton.setTitle("confirmButton".localized(comment: "Survey View"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +32,6 @@ class CySurveySliderViewController: CyViewController {
 
     //MARK: Actions
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        
         confirmButton.setTitle(String.localizedStringWithFormat("confirmSliderButton %d".localized(comment: "Survey View"),  Int(sender.value)), for: .normal)
     }
     

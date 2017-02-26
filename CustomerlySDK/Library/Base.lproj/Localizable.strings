@@ -53,6 +53,7 @@
 /* Survey View */
 "surveyTitleView" = "Survey";
 "confirmSliderButton %d" = "Confirm %d";
+"confirmButton" = "Confirm";
 
 /* Extra */
 "pullToRefresh" = "Pull to refresh";

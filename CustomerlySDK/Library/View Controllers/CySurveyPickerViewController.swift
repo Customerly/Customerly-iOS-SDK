@@ -20,6 +20,7 @@ class CySurveyPickerViewController: CyViewController {
         super.viewDidLoad()
         picker.delegate = self
         picker.dataSource = self
+        confirmButton.setTitle("confirmButton".localized(comment: "Survey View"), for: .normal)
     }
     
     override func didReceiveMemoryWarning() {

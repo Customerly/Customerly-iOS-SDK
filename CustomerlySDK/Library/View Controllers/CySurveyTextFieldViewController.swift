@@ -23,6 +23,7 @@ class CySurveyTextFieldViewController: CyViewController {
         textField.layer.borderWidth = 1.0
         
         textField.cyDelegate = self
+        confirmButton.setTitle("confirmButton".localized(comment: "Survey View"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

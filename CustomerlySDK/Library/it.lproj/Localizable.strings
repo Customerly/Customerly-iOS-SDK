@@ -53,6 +53,7 @@
 /* Survey View */
 "surveyTitleView" = "Sondaggio";
 "confirmSliderButton %d" = "Conferma %d";
+"confirmButton" = "Conferma";
 
 /* Extra */
 "pullToRefresh" = "Trascina per aggiornare";
