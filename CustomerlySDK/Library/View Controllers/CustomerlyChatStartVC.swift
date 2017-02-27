@@ -373,7 +373,7 @@ class CustomerlyChatStartVC: CyViewController{
     
     //MARK: Actions
     @IBAction func newAttachments(_ sender: Any) {
-        self.openImagePickerActionSheet()
+        self.openImagePickerActionSheet(from: attachmentsButton)
     }
     
     @IBAction func sendMessage(_ sender: Any) {

@@ -153,7 +153,8 @@ class CyViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var imagePickerDelegate : CyImagePickerDelegate?
     
-    func openImagePickerActionSheet(){
+    //the element is useful on iPad to take the correct sourceView
+    func openImagePickerActionSheet(from element: UIView){
         
         let actionSheet = UIAlertController(title: "actionSheetImagePicker_title".localized(comment:"ImagePickerActionSheet"), message: "", preferredStyle: .actionSheet)
         
@@ -170,6 +171,9 @@ class CyViewController: UIViewController {
             self.photoFromLibrary()
             actionSheet.dismiss(animated: true, completion: nil)
         }))
+        
+        actionSheet.popoverPresentationController?.sourceView = element
+        actionSheet.popoverPresentationController?.sourceRect = element.bounds
         
         self.present(actionSheet, animated: true, completion: nil)
     }
@@ -190,6 +194,7 @@ class CyViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePickerController.allowsEditing = false
             imagePickerController.sourceType = .photoLibrary
+            
             //with this line commented, we can take from photoLibrary only photo
             //imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
             imagePickerController.modalPresentationStyle = .popover
