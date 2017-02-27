@@ -168,7 +168,7 @@ class CyViewController: UIViewController {
         }))
         
         actionSheet.addAction(UIAlertAction(title: "actionSheetImagePicker_imageGallery".localized(comment:"ImagePickerActionSheet"), style: .default, handler: { (action) in
-            self.photoFromLibrary()
+            self.photoFromLibrary(from: element)
             actionSheet.dismiss(animated: true, completion: nil)
         }))
         
@@ -190,7 +190,7 @@ class CyViewController: UIViewController {
         }
     }
     
-    func photoFromLibrary(){
+    func photoFromLibrary(from element: UIView){
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePickerController.allowsEditing = false
             imagePickerController.sourceType = .photoLibrary
@@ -198,6 +198,8 @@ class CyViewController: UIViewController {
             //with this line commented, we can take from photoLibrary only photo
             //imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
             imagePickerController.modalPresentationStyle = .popover
+            imagePickerController.popoverPresentationController?.sourceView = element
+            imagePickerController.popoverPresentationController?.sourceRect = element.bounds
             present(imagePickerController, animated: true, completion: nil)
         }
         else{
