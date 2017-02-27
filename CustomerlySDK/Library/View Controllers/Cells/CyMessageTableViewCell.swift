@@ -87,7 +87,7 @@ extension CyMessageTableViewCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageMessageCell", for: indexPath) as! CyImageMassageTableViewCell
-        
+        cell.backgroundColor = UIColor.clear
         cell.messageImageView.kf.indicatorType = .activity
         cell.messageImageView.kf.setImage(with: URL(string:imagesAttachments[indexPath.row]), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
     
