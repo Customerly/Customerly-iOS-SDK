@@ -13,6 +13,7 @@ open class Customerly: NSObject {
     open static let sharedInstance = Customerly()
     var customerlyAppId: String = ""
     var customerlyIsOpen = false
+    var bannerMessages: [CyMessageModel] = []
     
     /**
      Enable verbose logging, that is useful for debugging. By default is disabled.
@@ -358,6 +359,13 @@ open class Customerly: NSObject {
             return
         }
         
+        //if a message is a clone of a message actually showed in a banner, not show
+        for aMessage in bannerMessages{
+            if aMessage.conversation_message_id == message?.conversation_message_id{
+                return
+            }
+        }
+        
         var messageContent = message?.content
         if message?.rich_mail == true{
             messageContent = "chatViewRichMessageText".localized(comment: "Chat View")
@@ -365,6 +373,7 @@ open class Customerly: NSObject {
         
         let banner = CyBanner(name: message?.account?.name ?? "supportTitle".localized(comment: "Banner Title"), attributedSubtitle: messageContent?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
         banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        self.bannerMessages.append(message!)
         banner.show(didTapBlock: {
             self.openSupportConversationOnMessage(message: message)
             if message?.rich_mail == true{
@@ -373,6 +382,15 @@ open class Customerly: NSObject {
                 }
             }
         })
+        
+        banner.dismissed {
+            for i in 0..<self.bannerMessages.count{
+                if self.bannerMessages[i].conversation_message_id == message?.conversation_message_id{
+                    self.bannerMessages.remove(at: i)
+                    break
+                }
+            }
+        }
         
         CySound.playNotification()
     }

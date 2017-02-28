@@ -14,8 +14,11 @@ class CyBanner: CyView {
     @IBOutlet weak var nameLabel: CyLabel?
     @IBOutlet weak var subtitleLabel: CyLabel?
     
-    /// A block to call when the uer taps on the banner.
-    open var didTapBlock: (() -> ())?
+    // A block to call when the user taps on the banner.
+    var didTapBlock: (() -> ())?
+    
+    // A block to call when the banner is dismissed
+    var didTapDismissed: (() -> ())?
     
     var viewBanner : CyBanner?
     var initialRect = CGRect(x: 15, y: -75, width: UIScreen.main.bounds.width-30, height: 75)
@@ -99,8 +102,13 @@ class CyBanner: CyView {
                     self.alpha = 0.0
                     self.frame = self.initialRect
                 }) { (finished) in
+                    self.didTapDismissed?()
                     self.removeFromSuperview()
                 }
+    }
+    
+    func dismissed(didTapDismissed: (() -> ())?){
+        self.didTapDismissed = didTapDismissed
     }
     
 }
