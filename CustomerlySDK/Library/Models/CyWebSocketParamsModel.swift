@@ -13,6 +13,7 @@ class CyWebSocketParamsModel: Mappable {
     var app : String?
     var crmhero_user_id : Int?
     var nsp: String = "user"
+    var is_mobile: Bool = true
     
     required init?(map: Map) {
     }
@@ -22,5 +23,6 @@ class CyWebSocketParamsModel: Mappable {
         app <- map["app"]
         crmhero_user_id <- map["id"]
         nsp <- map["nsp"]
+        is_mobile <- map["is_mobile"]
     }
 }
