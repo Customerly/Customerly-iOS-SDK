@@ -10,20 +10,20 @@ import ObjectMapper
 
 class CyAppConfigModel: Mappable {
 
-    var app_id : String?
-    var widget_color : String?
-    var widget_icon : Bool?
-    var widget_position : Bool?
-    var powered_by : Bool?
-    var default_screenshot : Bool?
-    var user_audio_notification : Bool?
-    var welcome_message_users : String?
-    var welcome_message_visitors : String?
-    var automatic_response : Bool?
-    var automatic_response_users : String?
-    var automatic_response_visitors : String?
-    var trigger_email_after_inapp_notseen : Int?
-    
+    var app_id: String?
+    var widget_color: String?
+    var widget_icon: Bool?
+    var widget_position: Bool?
+    var powered_by: Bool?
+    var default_screenshot: Bool?
+    var user_audio_notification: Bool?
+    var welcome_message_users: String?
+    var welcome_message_visitors: String?
+    var automatic_response: Bool?
+    var automatic_response_users: String?
+    var automatic_response_visitors: String?
+    var trigger_email_after_inapp_notseen: Int?
+    var widget_background_url: String?
     
     required init?(map: Map) {
     }
@@ -43,6 +43,6 @@ class CyAppConfigModel: Mappable {
         automatic_response_users <- map["automatic_response_users"]
         automatic_response_visitors <- map["automatic_response_visitors"]
         trigger_email_after_inapp_notseen <- map["trigger_email_after_inapp_notseen"]
-        
+        widget_background_url <- map["widget_background_url"]
     }
 }

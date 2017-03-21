@@ -10,6 +10,7 @@ import UIKit
 
 class CustomerlyConversationListVC: CyViewController {
     
+    @IBOutlet weak var backgroundImageView: CyImageView!
     @IBOutlet weak var tableView: CyTableView!
     @IBOutlet weak var newConversationButton: CyButton!
     @IBOutlet weak var poweredByButton: CyButton!
@@ -34,6 +35,7 @@ class CustomerlyConversationListVC: CyViewController {
         newConversationButton.setTitle("newConversationButton".localized(comment: "Conversation List"), for: .normal)
         poweredByButton.setTitle("conversationListPoweredBy".localized(comment: "Conversation List"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
+        backgroundImageView.kf.setImage(with: URL(string: data?.app_config?.widget_background_url ?? ""))
         
         title = "supportTitle".localized(comment: "Conversation List")
         addLeftCloseButton()

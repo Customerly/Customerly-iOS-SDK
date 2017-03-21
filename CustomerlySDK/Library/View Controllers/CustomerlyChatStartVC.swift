@@ -10,6 +10,7 @@ import UIKit
 
 class CustomerlyChatStartVC: CyViewController{
     
+    @IBOutlet weak var backgroundImageView: CyImageView!
     @IBOutlet weak var chatTableView: CyTableView!
     @IBOutlet weak var chatTextField: CyTextField!
     @IBOutlet weak var attachmentsButton: CyButton!
@@ -44,6 +45,7 @@ class CustomerlyChatStartVC: CyViewController{
         data = CyStorage.getCyDataModel()
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
+        backgroundImageView.kf.setImage(with: URL(string: data?.app_config?.widget_background_url ?? ""))
         
         chatTextField.placeholder = "chatViewTextFieldPlaceholder".localized(comment: "Chat View")
         chatTextField.cyDelegate = self

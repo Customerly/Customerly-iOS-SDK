@@ -21,9 +21,13 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="124" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gAp-Mc-wqA" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="124" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NhT-tc-8ei" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Rv7-vA-A4w">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
@@ -65,7 +69,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-9x-dWe" userLabel="Background View" customClass="CyView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="14" y="14" width="347" height="141"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
@@ -83,7 +87,7 @@
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-8m-bHx" customClass="CyCollectionView" customModule="CustomerlySDK" customModuleProvider="target">
                                                     <rect key="frame" x="77.5" y="22" width="220" height="68"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="220" id="Tz8-rH-7Pa"/>
                                                         <constraint firstAttribute="height" constant="68" id="frO-og-P4z"/>
@@ -154,6 +158,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="pSJ-sj-bQv" secondAttribute="trailing" constant="22" id="2UG-Jn-W0h"/>
                                                 <constraint firstAttribute="bottom" secondItem="zDS-9x-dWe" secondAttribute="bottom" constant="14" id="GE4-h4-hX2"/>
@@ -170,7 +175,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="zDS-9x-dWe" secondAttribute="trailing" constant="14" id="zjh-YC-TKJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="adminsCollectionView" destination="fXJ-8m-bHx" id="pUw-jy-c9I"/>
                                             <outlet property="lastActivityLabel" destination="pSJ-sj-bQv" id="LDZ-QY-3ZL"/>
@@ -269,19 +274,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gAp-Mc-wqA" firstAttribute="top" secondItem="62Q-Qo-qS2" secondAttribute="bottom" id="9Jw-VJ-nSh"/>
                             <constraint firstItem="9FX-JC-JNo" firstAttribute="top" secondItem="NhT-tc-8ei" secondAttribute="bottom" id="B1a-SX-tcH"/>
                             <constraint firstItem="9FX-JC-JNo" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="MY0-wz-wJp"/>
+                            <constraint firstAttribute="trailing" secondItem="gAp-Mc-wqA" secondAttribute="trailing" id="TuF-Pw-h44"/>
                             <constraint firstItem="NhT-tc-8ei" firstAttribute="top" secondItem="62Q-Qo-qS2" secondAttribute="bottom" id="UK9-Sr-u1x"/>
                             <constraint firstItem="NhT-tc-8ei" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="bY1-uW-ODM"/>
+                            <constraint firstItem="gAp-Mc-wqA" firstAttribute="leading" secondItem="MFV-lS-zwT" secondAttribute="leading" id="f25-ea-WA2"/>
                             <constraint firstAttribute="trailing" secondItem="9FX-JC-JNo" secondAttribute="trailing" id="hUj-QN-Ye3"/>
                             <constraint firstAttribute="trailing" secondItem="NhT-tc-8ei" secondAttribute="trailing" id="lQk-x3-hG1"/>
                             <constraint firstAttribute="bottom" secondItem="9FX-JC-JNo" secondAttribute="bottom" id="nEg-E8-rI7"/>
+                            <constraint firstItem="9FX-JC-JNo" firstAttribute="top" secondItem="gAp-Mc-wqA" secondAttribute="bottom" id="nYd-6V-W02"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Tws-eH-0IB"/>
                     <connections>
                         <outlet property="attachmentsButton" destination="0Q3-W3-qOj" id="3Aj-In-pfu"/>
+                        <outlet property="backgroundImageView" destination="gAp-Mc-wqA" id="mOr-d8-uxm"/>
                         <outlet property="chatTableView" destination="NhT-tc-8ei" id="ib8-hw-WbU"/>
                         <outlet property="chatTextField" destination="HBx-XW-OCi" id="ngF-Iq-dpN"/>
                         <outlet property="composeMessageViewBottomConstraint" destination="nEg-E8-rI7" id="gRg-sf-2Ju"/>
@@ -305,9 +315,13 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-tj-QN7" customClass="CyImageView" customModule="CustomerlySDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3N-vw-yFj" customClass="CyTableView" customModule="CustomerlySDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="ams-jp-kjV">
@@ -472,11 +486,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7EM-tj-QN7" secondAttribute="trailing" id="0vW-nH-h60"/>
                             <constraint firstAttribute="trailing" secondItem="tQR-W0-wAW" secondAttribute="trailing" id="1hC-CK-0gN"/>
                             <constraint firstItem="tQR-W0-wAW" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="D7O-U3-xXv"/>
+                            <constraint firstItem="7EM-tj-QN7" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="DxJ-ag-fie"/>
                             <constraint firstItem="tQR-W0-wAW" firstAttribute="top" secondItem="x3N-vw-yFj" secondAttribute="bottom" id="HPo-g5-7A1"/>
+                            <constraint firstItem="tQR-W0-wAW" firstAttribute="top" secondItem="7EM-tj-QN7" secondAttribute="bottom" id="IBL-pW-mtc"/>
                             <constraint firstItem="x3N-vw-yFj" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="agg-oJ-3E2"/>
                             <constraint firstItem="x3N-vw-yFj" firstAttribute="leading" secondItem="MCp-BZ-C95" secondAttribute="leading" id="pb7-J4-t97"/>
+                            <constraint firstItem="7EM-tj-QN7" firstAttribute="top" secondItem="wss-ir-clu" secondAttribute="bottom" id="qmi-ft-hpm"/>
                             <constraint firstItem="kJb-XL-gje" firstAttribute="top" secondItem="tQR-W0-wAW" secondAttribute="bottom" id="sGZ-f9-wTm"/>
                             <constraint firstAttribute="trailing" secondItem="x3N-vw-yFj" secondAttribute="trailing" id="zvM-Ac-Ocb"/>
                         </constraints>
@@ -486,6 +504,7 @@
                     <navigationItem key="navigationItem" id="2RQ-vQ-5Do"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="7EM-tj-QN7" id="Fgw-1c-teW"/>
                         <outlet property="newConversationButton" destination="LsI-j5-jXa" id="kdJ-Hm-q5n"/>
                         <outlet property="poweredByButton" destination="zcN-fF-Bmk" id="Lnv-Ud-wqO"/>
                         <outlet property="tableView" destination="x3N-vw-yFj" id="Oy6-jX-kEP"/>
