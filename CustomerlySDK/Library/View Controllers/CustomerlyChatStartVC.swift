@@ -221,22 +221,6 @@ class CustomerlyChatStartVC: CyViewController{
         return ""
     }
     
-    func getAttachmentsImages(message: CyMessageModel) -> [String]?{
-        var images : [String] = []
-        if message.attachments != nil{
-            for attachment in message.attachments!{
-                if attachment.path?.containOneSuffix(suffixes: [".jpg", ".JPEG", ".jpeg", ".png", ".PNG", ".tif", ".TIFF"]) == true{
-                    images.append(attachment.path!)
-                }
-            }
-        }
-        if let imagesFromHTML = message.content?.arrayOfImagesFromHTML(){
-            images = images + imagesFromHTML
-        }
-        
-        return images.count > 0 ? images : nil
-    }
-    
     func getOnlyMessagesForThisConversation(messagesArray : [CyMessageModel]?, conversation_id: Int?) -> [CyMessageModel]{
         guard messagesArray != nil && conversation_id != nil else {
             return []
@@ -261,30 +245,6 @@ class CustomerlyChatStartVC: CyViewController{
         }
         
         return nil
-    }
-    
-    func getRichEmailMessage() -> NSMutableAttributedString{
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(named: "mail_icon", in: CyBundle.getBundle(), compatibleWith: nil)
-        attachment.bounds.size = CGSize(width: 50, height: 39)
-        
-        let attributedAttachment = NSAttributedString(attachment: attachment)
-        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#1A1A1A")])
-        
-        
-        let attributedString = NSMutableAttributedString()
-        attributedString.append(attributedAttachment)
-        attributedString.append(attributedText)
-        
-        attributedString.enumerateAttribute(NSAttachmentAttributeName, in: NSRange(location: 0, length: attributedString.length)) { (attribute, range, stop) -> Void in
-            if (attribute as? NSTextAttachment) != nil {
-                //center all attachments in attributed string
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = .center
-                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
-            }
-        }
-        return attributedString
     }
     
     func scrollToLastMessage(){
@@ -454,7 +414,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             
             let message = getMessagesInSection(messagesArray: messages, sectionDate: dateSections[indexPath.section])[indexPath.row]
             
-            if let images = getAttachmentsImages(message: message){
+            if let images = message.attachmentsImages{
                 cell = tableView.dequeueReusableCell(withIdentifier: "messageWithImagesCell", for: indexPath) as? CyMessageTableViewCell
                 cell?.imagesAttachments = images
                 cell?.cellContainsImages(configForImages: true)
@@ -475,12 +435,13 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.userAvatar.isHidden = !message.showAvatar
             }
             
+            cell?.messageTextView.attributedText = message.attributedMessage
+            
             if message.rich_mail == true{
-                cell?.messageTextView.attributedText = getRichEmailMessage()
                 cell?.messageTextView.isUserInteractionEnabled = false
             }
             else{
-                cell?.messageTextView.attributedText = message.content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: message.account_id != nil ? UIColor(hexString:"#1A1A1A") : UIColor.white, imageMaxWidth: abs(self.view.bounds.size.width/2))
+                cell?.messageTextView.attributedText = message.attributedMessage
                 cell?.messageTextView.isUserInteractionEnabled = true
             }
             

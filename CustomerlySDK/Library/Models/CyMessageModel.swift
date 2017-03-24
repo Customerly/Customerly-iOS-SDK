@@ -23,7 +23,11 @@ class CyMessageModel: Mappable {
     var rich_mail_url: String?
     var attachments: [CyAttachmentModel]?
     var account: CyAccountModel?
+    
+    //Extra
     var showAvatar: Bool = true //indicate if the avatar need to be showed or not
+    var attributedMessage: NSMutableAttributedString?
+    var attachmentsImages: [String]?
     
     required init?(map: Map) {
     }
@@ -43,6 +47,57 @@ class CyMessageModel: Mappable {
         rich_mail_url <- map["rich_mail_link"]
         attachments <- map["attachments"]
         account <- map["account"]
+        
+        populateExtraFields()
     }
     
+    func populateExtraFields(){
+        attachmentsImages = getAttachmentsImages(message: self)
+        if rich_mail == true{
+            attributedMessage = getRichEmailMessage()
+        }else{
+            attributedMessage = content!.removeImageTagsFromHTML().attributedStringFromHTMLWithImages(font: UIFont(name: "Helvetica", size: 14.0)!, color: account_id != nil ? UIColor(hexString:"#1A1A1A") : UIColor.white, imageMaxWidth: abs(UIScreen.main.bounds.width/2))
+        }
+        
+    }
+    
+    func getAttachmentsImages(message: CyMessageModel) -> [String]?{
+        var images : [String] = []
+        if message.attachments != nil{
+            for attachment in message.attachments!{
+                if attachment.path?.containOneSuffix(suffixes: [".jpg", ".JPEG", ".jpeg", ".png", ".PNG", ".tif", ".TIFF"]) == true{
+                    images.append(attachment.path!)
+                }
+            }
+        }
+        if let imagesFromHTML = message.content?.arrayOfImagesFromHTML(){
+            images = images + imagesFromHTML
+        }
+        
+        return images.count > 0 ? images : nil
+    }
+    
+    func getRichEmailMessage() -> NSMutableAttributedString{
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: "mail_icon", in: CyBundle.getBundle(), compatibleWith: nil)
+        attachment.bounds.size = CGSize(width: 50, height: 39)
+        
+        let attributedAttachment = NSAttributedString(attachment: attachment)
+        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#1A1A1A")])
+        
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(attributedAttachment)
+        attributedString.append(attributedText)
+        
+        attributedString.enumerateAttribute(NSAttachmentAttributeName, in: NSRange(location: 0, length: attributedString.length)) { (attribute, range, stop) -> Void in
+            if (attribute as? NSTextAttachment) != nil {
+                //center all attachments in attributed string
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.alignment = .center
+                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+            }
+        }
+        return attributedString
+    }
 }

@@ -217,3 +217,11 @@ extension String{
         return String(data: data, encoding: .utf8)
     }
 }
+
+//MARK: - AttributedString
+extension NSMutableAttributedString{
+    func addAttributes(font: UIFont, color: UIColor){
+        self.addAttributes([NSFontAttributeName: font, NSForegroundColorAttributeName: color], range: NSRange(location:0, length:self.length))
+    }
+    
+}
