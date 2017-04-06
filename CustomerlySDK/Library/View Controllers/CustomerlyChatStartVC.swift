@@ -18,7 +18,7 @@ class CustomerlyChatStartVC: CyViewController{
     @IBOutlet weak var poweredByButton: CyButton!
     @IBOutlet weak var composeMessageViewBottomConstraint: NSLayoutConstraint!
     
-    var data: CyDataModel?
+    var data: CyDataModel? = CyStorage.getCyDataModel()
     
     var conversationId: Int?
     var messages: [CyMessageModel] = []
@@ -39,10 +39,8 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.delegate = self
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 124
-        
         chatTableView.register(UINib(nibName: "MessageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageCell")
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageWithImagesCell")
-        data = CyStorage.getCyDataModel()
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
         poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
         backgroundImageView.kf.setImage(with: URL(string: data?.app_config?.widget_background_url ?? ""))
@@ -431,7 +429,7 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
                 cell?.adminAvatar.isHidden = !message.showAvatar
             }else{
                 cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-                cell?.setUserVisual()
+                cell?.setUserVisual(bubbleColor: self.navigationController?.navigationBar.barTintColor)
                 cell?.userAvatar.isHidden = !message.showAvatar
             }
             
@@ -504,7 +502,7 @@ extension CustomerlyChatStartVC: CyImagePickerDelegate{
     func imageFromPicker(image: UIImage?) {
         if image != nil && CyStorage.getCyDataModel()?.user != nil{
             let messageAttachment = CyMessageAttachmentRequestModel(JSON: [:])
-            messageAttachment?.filename = "image.jpg"
+            messageAttachment?.filename = "cyimage.jpg"
             messageAttachment?.base64 = UIImageJPEGRepresentation(image!, 0.7)?.base64EncodedString()
             sendMessage(message: "", conversation_id: self.conversationId, attachment: messageAttachment)
         }

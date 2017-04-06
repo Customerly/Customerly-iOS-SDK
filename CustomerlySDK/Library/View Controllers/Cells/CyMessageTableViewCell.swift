@@ -46,22 +46,22 @@ class CyMessageTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setAdminVisual(){
+    func setAdminVisual(bubbleColor: UIColor? = UIColor(hexString: "#ECEFF1")){
         messageTextView.textAlignment = .left
         userAvatar.isHidden = true
         adminAvatar.isHidden = false
         messageViewRightConstraint.isActive = false
         messageViewLeftConstraint.isActive = true
-        messageView.backgroundColor = UIColor(hexString: "#ECEFF1")
+        messageView.backgroundColor = bubbleColor
     }
     
-    func setUserVisual(){
+    func setUserVisual(bubbleColor: UIColor? = UIColor(hexString: "#01B0FF")){
         userAvatar.isHidden = false
         adminAvatar.isHidden = true
         messageTextView.textAlignment = .right
         messageViewRightConstraint.isActive = true
         messageViewLeftConstraint.isActive = false
-        messageView.backgroundColor = UIColor(hexString: "#01B0FF")
+        messageView.backgroundColor = bubbleColor
     }
     
     func cellContainsImages(configForImages: Bool){
