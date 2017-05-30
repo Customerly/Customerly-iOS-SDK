@@ -1,18 +1,18 @@
 PODS:
-  - Kingfisher (3.6.1)
-  - ObjectMapper (2.2.5)
-  - Socket.IO-Client-Swift (8.3.3)
+  - Kingfisher (3.9.1)
+  - ObjectMapper (2.2.7)
+  - Socket.IO-Client-Swift (10.0.0)
 
 DEPENDENCIES:
-  - Kingfisher (= 3.6.1)
-  - ObjectMapper (= 2.2.5)
-  - Socket.IO-Client-Swift (= 8.3.3)
+  - Kingfisher (= 3.9.1)
+  - ObjectMapper (= 2.2.7)
+  - Socket.IO-Client-Swift (= 10.0.0)
 
 SPEC CHECKSUMS:
-  Kingfisher: 2f31cb75f3e98d3d4c406cbdcd9b263e956cfa67
-  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
-  Socket.IO-Client-Swift: a2faffdbde89c63aebc5d631041530c1068b02b8
+  Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
+  ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  Socket.IO-Client-Swift: 9c5b4e5e76e30e1b9a1804c40e11dad0a002b1a4
 
-PODFILE CHECKSUM: d50f75627447afe3bce33f4e26f3448d62f6ca74
+PODFILE CHECKSUM: f48495fda7216b344856eed166c60298cfcdad83
 
 COCOAPODS: 1.2.0
