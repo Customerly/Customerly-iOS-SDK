@@ -10,8 +10,9 @@ import ObjectMapper
 
 class CyWebsocketModel: Mappable {
 
-    var endpoint : String?
-    var port : String?
+    var endpoint: String?
+    var port: String?
+    var token: String?
     
     required init?(map: Map) {
     }
@@ -20,5 +21,6 @@ class CyWebsocketModel: Mappable {
     {
         endpoint <- map["endpoint"]
         port <- map["port"]
+        token <- map["token"]
     }
 }

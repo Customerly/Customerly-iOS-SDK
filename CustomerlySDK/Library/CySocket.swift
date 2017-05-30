@@ -34,11 +34,18 @@ class CySocket: NSObject {
             if data.user?.crmhero_user_id != nil{
                 if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
                     let websocketUrl = URL(string:websocketEndpoint + ":" + websocketPort)
-                    
+            
+                    //Websocket token manipulation
+                    let tokenData = data.websocket?.token?.base64Decoded()?.data(using: .utf8)
+                    var tokenDictionary = JSONParseDictionary(data: tokenData)
+                    tokenDictionary["socket_version"] = cy_socket_version
+                    tokenDictionary["is_mobile"] = true
+                    let tokenBase64 = DictionaryToJSONString(dictionary: tokenDictionary)?.base64Encoded()
+                
+                    //Extra params for back compatibility
                     let params = CyWebSocketParamsModel(JSON: ["app":Customerly.sharedInstance.customerlyAppId, "id":data.user!.crmhero_user_id!, "nsp":"user", "socket_version":cy_socket_version, "is_mobile":true])
                     
-                    socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["json":params!.toJSONString()!])])
-                    
+                    socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? "", "json": params!.toJSONString()!])]) //json parameter is for back compatibility
                 }
             }
         }

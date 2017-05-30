@@ -216,6 +216,10 @@ extension String{
         
         return String(data: data, encoding: .utf8)
     }
+    
+    func base64Encoded() -> String? {
+        return Data(self.utf8).base64EncodedString()
+    }
 }
 
 //MARK: - AttributedString
