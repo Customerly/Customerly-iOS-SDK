@@ -14,8 +14,7 @@ extension String {
     
     func attributedStringFromHTML(font: UIFont, color: UIColor) -> NSMutableAttributedString?{
         do{
-            let clearString =  self.replaceEmojiInHTML()
-            let bodyHtml: String = "<style>p{margin:0;padding:0}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(clearString)</div>"
+            let bodyHtml: String = "<style>p{margin:0;padding:0}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
             let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
             return attributedMessage
         }
@@ -27,8 +26,7 @@ extension String {
     
     func attributedStringFromHTMLWithImages(font: UIFont, color: UIColor, imageMaxWidth: CGFloat) -> NSMutableAttributedString?{
         do{
-            let clearString = self.replaceEmojiInHTML()
-            let bodyHtml: String = "<style>p{margin:0;padding:0} img{width:\(imageMaxWidth))px;display:block;}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(clearString)</div>"
+            let bodyHtml: String = "<style>p{margin:0;padding:0} img{width:\(imageMaxWidth))px;display:block;}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
             let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
             return attributedMessage
         }
@@ -84,26 +82,6 @@ extension String {
         }
         
         return self
-    }
-    
-    func replaceEmojiInHTML() -> String{
-            let pattern = "<emoji>(.*?)</emoji>"
-            let inString = self
-            let regex = try? NSRegularExpression(pattern: pattern, options: [])
-            let range = NSMakeRange(0, inString.characters.count)
-            let matches = (regex?.matches(in: inString, options: [], range: range))!
-            
-            let attrString = NSMutableAttributedString(string: inString, attributes:nil)
-            //Iterate over regex matches
-            for match in matches.reversed() {
-                if let int32 = UInt32(hexString: attrString.attributedSubstring(from: match.rangeAt(1)).string){
-                    if let scalar = UnicodeScalar(int32){
-                        let text = Character(scalar)
-                        attrString.replaceCharacters(in: match.rangeAt(1), with: "\(text)")
-                    }
-                }
-            }
-            return attrString.string
     }
     
     //Check if a string contains almost one suffix from suffixes array
