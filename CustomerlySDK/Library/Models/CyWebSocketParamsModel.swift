@@ -10,8 +10,8 @@ import ObjectMapper
 
 class CyWebSocketParamsModel: Mappable {
 
-    var app : String?
-    var crmhero_user_id : Int?
+    var app: String?
+    var crmhero_user_id: Int?
     var nsp: String = "user"
     var is_mobile: Bool = true
     

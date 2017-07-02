@@ -8,6 +8,7 @@
 //
 
 import Foundation
+
 //MARK: - CyMapping Utils
 
 //Parse Dictionary from JSON Data

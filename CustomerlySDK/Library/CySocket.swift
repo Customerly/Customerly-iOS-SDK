@@ -29,7 +29,6 @@ class CySocket: NSObject {
     }
     
     func configure(){
-        
         if let data = CyStorage.getCyDataModel(){
             if data.user?.crmhero_user_id != nil{
                 if let websocketEndpoint = data.websocket?.endpoint, let websocketPort = data.websocket?.port{
