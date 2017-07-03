@@ -199,12 +199,6 @@ open class Customerly: NSObject {
     
     //MARK: - PRIVATE METHODS
     
-    //MARK: Socket
-    func emitPingActive(){
-        //emit ping when user is focused on a view of customerly
-        CySocket.sharedInstance.emitPingActive()
-    }
-    
     //MARK: Ping
     func ping(email: String? = nil, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         let pingRequestModel = CyRequestPingModel(JSON: [:])

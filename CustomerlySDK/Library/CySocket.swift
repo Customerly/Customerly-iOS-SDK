@@ -12,7 +12,6 @@ enum CySocketEvent: String {
     case typing = "typing"
     case message_seen = "seen"
     case message = "message"
-    case ping_active = "a"
 }
 
 class CySocket: NSObject {
@@ -25,7 +24,6 @@ class CySocket: NSObject {
     
     override init() {
         super.init()
-        _ = Timer.scheduledTimer(timeInterval: 55, target: self, selector: #selector(self.emitPingActive), userInfo: nil, repeats: true)
     }
     
     func configure(){
@@ -138,12 +136,6 @@ class CySocket: NSObject {
         if let json = seenSocketModel?.toJSON(){
             socket?.emit(CySocketEvent.message_seen.rawValue, with: [json])
         }
-    }
-    
-    //MARK: Emit Ping
-    func emitPingActive(){
-        //emit ping when user is focused on a view of customerly
-        socket?.emit(CySocketEvent.ping_active.rawValue, [])
     }
     
     //MARK: On
