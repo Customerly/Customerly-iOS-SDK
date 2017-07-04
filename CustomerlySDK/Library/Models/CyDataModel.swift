@@ -11,6 +11,7 @@ import ObjectMapper
 class CyDataModel: Mappable {
 
     var token: String?
+    var min_version_ios: String?
     var websocket: CyWebsocketModel?
     var app: CyAppModel?
     var app_config: CyAppConfigModel?
@@ -25,6 +26,7 @@ class CyDataModel: Mappable {
     func mapping(map: Map)
     {
         token <- map["token"]
+        min_version_ios <- map["min-version-ios"]
         websocket <- map["websocket"]
         app <- map["app"]
         app_config <- map["app_config"]

@@ -154,7 +154,7 @@ open class Customerly: NSObject {
             })
         }
         else{
-            cyPrint("Only registered users may have attributes.")
+            cyPrint("Only registered users may have companies attributes.")
             failure?()
         }
     }
@@ -166,9 +166,16 @@ open class Customerly: NSObject {
      Not valid string: "tap subscription page"
      */
     @objc open func trackEvent(event: String){
+        
+        let data = CyStorage.getCyDataModel()
+        
+        if sdkNeedUpdate(min_version_required: data?.min_version_ios){
+            return
+        }
+        
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
-        trackingModel?.token = CyStorage.getCyDataModel()?.token //if some data are stored, CyTrackingRequestModel contain the token
+        trackingModel?.token = data?.token //if some data are stored, CyTrackingRequestModel contain the token
         
         CyDataFetcher.sharedInstance.trackEventAPIRequest(trackingRequest: trackingModel, completion: {
             cyPrint("Success trackEvent", event)
@@ -184,6 +191,9 @@ open class Customerly: NSObject {
     @objc open func openSupport(from viewController: UIViewController){
         
         let data = CyStorage.getCyDataModel()
+        if sdkNeedUpdate(min_version_required: data?.min_version_ios){
+            return
+        }
         
         //If user exist, go to conversion list, else open a new conversation
         if data?.token?.userTypeFromToken() == CyUserType.lead || data?.token?.userTypeFromToken() == CyUserType.user{ //then, the user is lead or registered
@@ -222,8 +232,16 @@ open class Customerly: NSObject {
             pingRequestModel?.params?.name = name
         }
         
+        
         CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
+            
             CyStorage.storeCyDataModel(cyData: responseData)
+            
+            if sdkNeedUpdate(min_version_required: responseData?.min_version_ios){
+                failure?()
+                return
+            }
+            
             cyPrint("Success Ping")
             success?()
         }) { (error) in
@@ -393,6 +411,7 @@ open class Customerly: NSObject {
     
     // Open a Survey View Controller if a survey is available
     func openSurveyIfAvailable(){
+        
         guard Customerly.sharedInstance.customerlyIsOpen != true && Customerly.sharedInstance.surveyEnabled == true else {
             return
         }
