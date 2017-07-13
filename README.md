@@ -123,7 +123,7 @@ In this method, *user_id*, *name*, *attributes*, *company*, *success* and *failu
 
 If you don't have a login method inside your apps don't worry, users can use the chat using their emails.
 
-###Chat
+### Chat
 You can open the support view controller calling the method `openSupport:`
 
 ```
@@ -131,7 +131,7 @@ Customerly.sharedInstance.openSupport(from: self)
 ```
 where **self** is your current view controller.
 
-###Surveys (nothing to do)
+### Surveys (nothing to do)
 
 With the Customerly SDK you can deliver surveys directly into your app app without any lines of code.
 
@@ -139,7 +139,7 @@ They will be automatically displayed to your user as soon as possible.
 
 Remember that you can get updates about new surveys available using the `update:` method.
 
-###Attributes
+### Attributes
 Inside attributes you can add every custom data you prefer to track.
 
 ```swift
@@ -147,7 +147,7 @@ Inside attributes you can add every custom data you prefer to track.
 Customerly.sharedInstance.setAttributes(attributes: ["pricing_plan_type" : "basic"])
 ```
 
-###Company
+### Company
 You can also set company data by submitting an attribute map, like:
 
 ```
@@ -156,7 +156,7 @@ Customerly.sharedInstance.setCompany(company: ["company_id": "123", "name": "My 
 
 When you set a company, "company_id" and "name" are required fields for adding or modifying a company.
 
-###Events
+### Events
 Send to Customerly every event you want to segment users better
 
 ```
@@ -164,7 +164,7 @@ Send to Customerly every event you want to segment users better
 Customerly.sharedInstance.trackEvent(event: "added_to_cart")
 ```
 
-###Extra
+### Extra
 
 If you want to get a generic update, call `update:`
 
