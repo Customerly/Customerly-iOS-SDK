@@ -94,6 +94,7 @@
 		45FA19C11DEB4E0200D26059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FA19C01DEB4E0200D26059 /* Assets.xcassets */; };
 		45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19C21DEC283A00D26059 /* CyViewController.swift */; };
 		45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA19C61DECC5FD00D26059 /* CyDate.swift */; };
+		45FB162A1F269ABD00F515DF /* CyErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB16291F269ABD00F515DF /* CyErrorModel.swift */; };
 		45FF40981E102FED002707C3 /* CyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF40971E102FED002707C3 /* CyString.swift */; };
 		45FF409A1E114C94002707C3 /* CyImageMassageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF40991E114C94002707C3 /* CyImageMassageTableViewCell.swift */; };
 		45FF409C1E114ECD002707C3 /* MessageWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FF409B1E114ECD002707C3 /* MessageWithImageCell.xib */; };
@@ -238,6 +239,7 @@
 		45FA19C01DEB4E0200D26059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45FA19C21DEC283A00D26059 /* CyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyViewController.swift; sourceTree = "<group>"; };
 		45FA19C61DECC5FD00D26059 /* CyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyDate.swift; sourceTree = "<group>"; };
+		45FB16291F269ABD00F515DF /* CyErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyErrorModel.swift; sourceTree = "<group>"; };
 		45FF40971E102FED002707C3 /* CyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyString.swift; sourceTree = "<group>"; };
 		45FF40991E114C94002707C3 /* CyImageMassageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyImageMassageTableViewCell.swift; sourceTree = "<group>"; };
 		45FF409B1E114ECD002707C3 /* MessageWithImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageWithImageCell.xib; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				455CE17F1DE0AB4500FF65DC /* CyUserModel.swift */,
 				454A9D3F1DEAFE060078F6D3 /* CyAdminModel.swift */,
 				455CE1801DE0AB4500FF65DC /* CyWebsocketModel.swift */,
+				45FB16291F269ABD00F515DF /* CyErrorModel.swift */,
 				455A0F8B1DEE2D7B003EEA43 /* Message Send */,
 				45282DA21DFF0FCA0021E7F9 /* Socket */,
 				4579C0431E1D98040035DAC4 /* Survey */,
@@ -831,6 +834,7 @@
 				4579C0451E1D988A0035DAC4 /* CySurveyResponseModel.swift in Sources */,
 				455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */,
 				45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */,
+				45FB162A1F269ABD00F515DF /* CyErrorModel.swift in Sources */,
 				455CE1961DE0AB4500FF65DC /* CyTrackingRequestModel.swift in Sources */,
 				455CE1941DE0AB4500FF65DC /* CySettingsModel.swift in Sources */,
 				45FA19C31DEC283A00D26059 /* CyViewController.swift in Sources */,

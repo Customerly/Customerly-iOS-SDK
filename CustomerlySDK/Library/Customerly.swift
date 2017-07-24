@@ -74,12 +74,39 @@ open class Customerly: NSObject {
         }
     }
     
+    /**
+     Return if the SDK is ready to work
+     */
+    @objc open func isSDKAvailable() -> Bool{
+        let data = CyStorage.getCyDataModel()
+        
+        guard data != nil else {
+            cyPrint("Data not already available")
+            return false
+        }
+        guard sdkNeedUpdate(min_version_required: data?.min_version_ios) == false else {
+            cyPrint("Update Customerly SDK, you are using an old version no more supported")
+            return false
+        }
+        guard data?.insolvent != true else{
+            cyPrint("It looks like your app subscription on Customerly is expired! Check your payments details.")
+            return false
+        }
+        
+        return true
+    }
+    
     //MARK: - Register user, get updates and add new attributes or company
     
     /**
      If you want to register a user_id, you have to insert at least an email.
      */
     @objc open func registerUser(email: String, user_id: String? = nil, name: String? = nil, attributes:Dictionary<String, Any>? = nil, company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        
+        guard isSDKAvailable() else {
+            failure?()
+            return
+        }
         
         ping(email: email, user_id: user_id, name: name, attributes: attributes, company: company, success:{ () in
             CySocket.sharedInstance.reconfigure()
@@ -107,9 +134,14 @@ open class Customerly: NSObject {
      Get ad update from Customerly about surveys and unread messages
      */
     @objc open func update(success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        guard isSDKAvailable() else {
+            failure?()
+            return
+        }
         ping(success: {
             self.openSurveyIfAvailable()
             cyPrint("Success Update")
+            success?()
         }) {
             cyPrint("Failure Update")
             failure?()
@@ -122,6 +154,10 @@ open class Customerly: NSObject {
      Ex: ["Params1": 3, "Params2: "Hello"].
      */
     @objc open func setAttributes(attributes:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        guard isSDKAvailable() else {
+            failure?()
+            return
+        }
         if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
             ping(attributes: attributes, success: {
                 cyPrint("Success Set Attributes")
@@ -144,6 +180,12 @@ open class Customerly: NSObject {
      Ex: ["company_id": "123", "name: "My Company", "plan": 3].
      */
     @objc open func setCompany(company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
+        
+        guard !isSDKAvailable() else {
+            failure?()
+            return
+        }
+        
         if CyStorage.getCyDataModel()?.token?.userTypeFromToken() == CyUserType.user{
             ping(company: company, success: {
                 cyPrint("Success Set Company")
@@ -167,11 +209,11 @@ open class Customerly: NSObject {
      */
     @objc open func trackEvent(event: String){
         
-        let data = CyStorage.getCyDataModel()
-        
-        if sdkNeedUpdate(min_version_required: data?.min_version_ios){
+        guard isSDKAvailable() else{
             return
         }
+        
+        let data = CyStorage.getCyDataModel()
         
         let trackingModel = CyTrackingRequestModel(JSON: [:])
         trackingModel?.nameTracking = event
@@ -190,10 +232,11 @@ open class Customerly: NSObject {
      */
     @objc open func openSupport(from viewController: UIViewController){
         
-        let data = CyStorage.getCyDataModel()
-        if sdkNeedUpdate(min_version_required: data?.min_version_ios){
+        guard isSDKAvailable() else{
             return
         }
+        
+        let data = CyStorage.getCyDataModel()
         
         //If user exist, go to conversion list, else open a new conversation
         if data?.token?.userTypeFromToken() == CyUserType.lead || data?.token?.userTypeFromToken() == CyUserType.user{ //then, the user is lead or registered
@@ -234,10 +277,10 @@ open class Customerly: NSObject {
         
         
         CyDataFetcher.sharedInstance.pingAPIRequest(pingModel: pingRequestModel, completion: { (responseData) in
-            
+        
             CyStorage.storeCyDataModel(cyData: responseData)
             
-            if sdkNeedUpdate(min_version_required: responseData?.min_version_ios){
+            guard self.isSDKAvailable() else{
                 failure?()
                 return
             }

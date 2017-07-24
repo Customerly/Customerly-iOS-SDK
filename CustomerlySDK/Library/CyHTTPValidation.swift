@@ -14,7 +14,7 @@ extension URLResponse{
         let acceptableStatusCodes: Range<Int> = 200..<300
         
         let response = self as! HTTPURLResponse
-        
+    
         if !acceptableStatusCodes.contains(response.statusCode){
             
             let failureReason = "Response status code was unacceptable: \(response.statusCode)"
@@ -30,6 +30,20 @@ extension URLResponse{
             return error
         }
         
+        return nil
+    }
+}
+
+extension Data{
+    
+    func validate() -> CyErrorModel?{
+        let acceptableStatusCodes: Range<Int> = 200..<300
+        let jsonData = JSONParseDictionary(data: self)
+        let errorModel = CyErrorModel(JSON: jsonData)
+        if errorModel?.status_code != nil && !acceptableStatusCodes.contains(errorModel!.status_code!){
+            return errorModel
+        }
+    
         return nil
     }
 }

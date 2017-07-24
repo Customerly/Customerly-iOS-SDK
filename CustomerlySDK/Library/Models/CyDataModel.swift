@@ -19,6 +19,7 @@ class CyDataModel: Mappable {
     var user: CyUserModel?
     var last_messages: [CyMessageModel]?
     var last_surveys : [CySurveyResponseModel]?
+    var insolvent: Bool = false
     
     required init?(map: Map) {
     }
@@ -34,6 +35,7 @@ class CyDataModel: Mappable {
         user <- map["user.data"]
         last_messages <- map["last_messages"]
         last_surveys <- map["last_surveys"]
+        insolvent <- map["insolvent"]
     }
     
 }

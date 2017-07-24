@@ -45,7 +45,6 @@ extension String {
 func sdkNeedUpdate(min_version_required: String?) -> Bool{
     if min_version_required != nil{
         if min_version_required!.isVersion(greaterThan: cy_sdk_version){
-            cyPrint("Update Customerly SDK, you are using an old version no more supported")
             return true
         }
     }

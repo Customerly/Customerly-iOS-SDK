@@ -65,6 +65,14 @@ class CyDataFetcher: NSObject {
             (
             data, response, error) in
             
+            if let dataError = data?.validate(){
+                if dataError.status_code == 403 && dataError.error_code == 17{ //app insolvent
+                    let ping = Mapper<CyDataModel>().map(JSON: JSONParseDictionary(data: data))
+                    ping?.insolvent = true
+                    completion(ping)
+                    return
+                }
+            }
             guard response?.validate() == nil else{
                 failure(response!.validate()!)
                 return
