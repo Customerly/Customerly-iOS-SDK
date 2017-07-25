@@ -33,17 +33,3 @@ extension URLResponse{
         return nil
     }
 }
-
-extension Data{
-    
-    func validate() -> CyErrorModel?{
-        let acceptableStatusCodes: Range<Int> = 200..<300
-        let jsonData = JSONParseDictionary(data: self)
-        let errorModel = CyErrorModel(JSON: jsonData)
-        if errorModel?.status_code != nil && !acceptableStatusCodes.contains(errorModel!.status_code!){
-            return errorModel
-        }
-    
-        return nil
-    }
-}
