@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency 'ObjectMapper', '2.2.8'
   s.dependency 'Kingfisher', '3.10.4'
-  s.dependency 'Socket.IO-Client-Swift', '11.0.0'
+  s.dependency 'Socket.IO-Client-Swift', '10.2.0'
 end

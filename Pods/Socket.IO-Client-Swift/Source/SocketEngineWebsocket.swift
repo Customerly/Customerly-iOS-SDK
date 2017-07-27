@@ -24,7 +24,6 @@
 //
 
 import Foundation
-import StarscreamSocketIO
 
 /// Protocol that is used to implement socket.io WebSocket support
 public protocol SocketEngineWebsocket : SocketEngineSpec, WebSocketDelegate {

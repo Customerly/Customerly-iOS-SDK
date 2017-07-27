@@ -18,16 +18,14 @@
 //  limitations under the License.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //  Compression implementation is implemented in conformance with RFC 7692 Compression Extensions
 //  for WebSocket: https://tools.ietf.org/html/rfc7692
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
 import Foundation
-import CZLib
+import zlib
 
 class Decompressor {
     private var strm = z_stream()
@@ -150,14 +148,14 @@ class Compressor {
                 let byteCount = buffer.count - Int(strm.avail_out)
                 compressed.append(buffer, count: byteCount)
             }
-            while res == Z_OK && strm.avail_out == 0
-                
+                while res == Z_OK && strm.avail_out == 0
+            
         }
         
         guard res == Z_OK && strm.avail_out > 0
             || (res == Z_BUF_ERROR && Int(strm.avail_out) == buffer.count)
-        else {
-            throw NSError(domain: WebSocket.ErrorDomain, code: Int(WebSocket.InternalErrorCode.compressionError.rawValue), userInfo: nil)
+            else {
+                throw NSError(domain: WebSocket.ErrorDomain, code: Int(WebSocket.InternalErrorCode.compressionError.rawValue), userInfo: nil)
         }
         
         compressed.removeLast(4)
@@ -174,4 +172,3 @@ class Compressor {
         teardownDeflate()
     }
 }
-
