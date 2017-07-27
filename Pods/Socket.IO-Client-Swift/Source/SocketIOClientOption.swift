@@ -30,9 +30,6 @@ protocol ClientOption : CustomStringConvertible, Equatable {
 
 /// The options for a client.
 public enum SocketIOClientOption : ClientOption {
-    /// If given, the WebSocket transport will attempt to use compression.
-    case compress
-
     /// A dictionary of GET parameters that will be included in the connect url.
     case connectParams([String: Any])
 
@@ -97,7 +94,6 @@ public enum SocketIOClientOption : ClientOption {
 
     /// If passed `true`, the WebSocket transport will try and use voip logic to keep network connections open in
     /// the background. **This option is experimental as socket.io shouldn't be used for background communication.**
-    @available(*, deprecated, message: "No longer has any effect, and will be removed in v11.0")
     case voipEnabled(Bool)
 
     // MARK: Properties
@@ -107,8 +103,6 @@ public enum SocketIOClientOption : ClientOption {
         let description: String
 
         switch self {
-        case .compress:
-            description = "compress"
         case .connectParams:
             description = "connectParams"
         case .cookies:
@@ -158,8 +152,6 @@ public enum SocketIOClientOption : ClientOption {
         let value: Any
 
         switch self {
-        case .compress:
-            value = true
         case let .connectParams(params):
             value = params
         case let .cookies(cookies):
