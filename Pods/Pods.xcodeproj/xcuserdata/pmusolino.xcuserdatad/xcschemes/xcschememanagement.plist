@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>StarscreamSocketIO.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -37,12 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DA4D8F2537EF6F31E69EB9C2A6371A0</key>
+		<key>9DE002F4782FF6FD1F2E700AD14B59CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF3C622427E565ABB94C08429FFDF32D</key>
+		<key>9FB46855AB64BBAC33375F7F36FAC70B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF7DE2A13FD391224B91ACB08C66E626</key>
+		<key>CEE34B42111AADE01358491FD3D96382</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E61B923594128A71CF77C87C931A9FEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
