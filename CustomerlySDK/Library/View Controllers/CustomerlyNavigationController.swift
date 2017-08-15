@@ -20,12 +20,6 @@ class CustomerlyNavigationController: UINavigationController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    //The chat flow support only portrait orientation
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
-        
-        return UIInterfaceOrientationMask.portrait
-    }
 
     //MARK: Customizations
     func applyNavBarCustomization(){
