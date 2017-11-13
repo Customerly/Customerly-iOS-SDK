@@ -1,6 +1,6 @@
 <p align="center">
 <a href="http://www.customerly.io">
-<img src="https://www.cdn.customerly.io/assets/img/Logo_Customerly_Name_Colored.svg">
+<img src="https://customerly.github.io/logo.svg">
 </p>
 
   [![Language](https://img.shields.io/badge/Swift-3-orange.svg)]()
@@ -53,7 +53,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'CustomerlySDK', :git => 'https://github.com/customerly/Customerly-iOS-SDK'
+pod 'CustomerlySDK'
 ```
 
 Then, run the following command:
