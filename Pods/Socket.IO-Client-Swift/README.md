@@ -7,7 +7,7 @@ Socket.IO-client for iOS/OS X.
 ```swift
 import SocketIO
 
-let socket = SocketIOClient(socketURL: URL(string: "http://localhost:8080")!, config: [.log(true), .forcePolling(true)])
+let socket = SocketIOClient(socketURL: URL(string: "http://localhost:8080")!, config: [.log(true), .compress])
 
 socket.on(clientEvent: .connect) {data, ack in
     print("socket connected")
@@ -30,7 +30,7 @@ socket.connect()
 ```objective-c
 @import SocketIO;
 NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
-SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
+SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
 
 [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
     NSLog(@"socket connected");
@@ -40,7 +40,7 @@ SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:url config:@{
     double cur = [[data objectAtIndex:0] floatValue];
 
     [[socket emitWithAck:@"canUpdate" with:@[@(cur)]] timingOutAfter:0 callback:^(NSArray* data) {
-        [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
+        [socket emit:@"update" with:@[@{@"amount": @(cur + 2.50)}]];
     }];
 
     [ack with:@[@"Got your currentAmount, ", @"dude"]];
@@ -57,22 +57,21 @@ SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:url config:@{
 - Supports TLS/SSL
 - Can be used from Objective-C
 
+## FAQS
+Checkout the [FAQs](https://nuclearace.github.io/Socket.IO-Client-Swift/faq.html) for commonly asked questions.
+
 ## Installation
 Requires Swift 3/Xcode 8.x
 
 If you need swift 2.3 use the swift2.3 tag (Pre-Swift 3 support is no longer maintained)
 
-If you need swift 2.2 use 7.x (Pre-Swift 3 support is no longer maintained)
+If you need swift 2.2 use 7.x.
 
-If you need Swift 2.1 use v5.5.0 (Pre-Swift 2.2 support is no longer maintained)
+If you need Swift 2.1 use v5.5.0.
 
-If you need Swift 1.2 use v2.4.5 (Pre-Swift 2 support is no longer maintained)
+If you need Swift 1.2 use v2.4.5.
 
-If you need Swift 1.1 use v1.5.2. (Pre-Swift 1.2 support is no longer maintained)
-
-### Manually (iOS 7+)
-1. Copy the Source folder into your Xcode project. (Make sure you add the files to your target(s))
-2. If you plan on using this from Objective-C, read [this](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html) on exposing Swift code to Objective-C.
+If you need Swift 1.1 use v1.5.2.
 
 ### Swift Package Manager
 Add the project as a dependency to your Package.swift:
@@ -82,7 +81,7 @@ import PackageDescription
 let package = Package(
     name: "YourSocketIOProject",
     dependencies: [
-        .Package(url: "https://github.com/socketio/socket.io-client-swift", majorVersion: 10)
+        .Package(url: "https://github.com/socketio/socket.io-client-swift", majorVersion: 11)
     ]
 )
 ```
@@ -90,9 +89,10 @@ let package = Package(
 Then import `import SocketIO`.
 
 ### Carthage
-Add this line to your `Cartfile`:
+Add these line to your `Cartfile`:
 ```
-github "socketio/socket.io-client-swift" ~> 10.0.1 # Or latest version
+github "nuclearace/Starscream" ~> 8.0.5
+github "socketio/socket.io-client-swift" ~> 11.1.3 # Or latest version
 ```
 
 Run `carthage update --platform ios,macosx`.
@@ -104,7 +104,7 @@ Create `Podfile` and add `pod 'Socket.IO-Client-Swift'`:
 use_frameworks!
 
 target 'YourApp' do
-    pod 'Socket.IO-Client-Swift', '~> 10.0.1' # Or latest version
+    pod 'Socket.IO-Client-Swift', '~> 11.1.3' # Or latest version
 end
 ```
 
@@ -126,16 +126,6 @@ Objective-C:
 ```Objective-C
 @import SocketIO;
 ```
-
-### CocoaSeeds
-
-Add this line to your `Seedfile`:
-
-```
-github "socketio/socket.io-client-swift", "v10.0.1", :files => "Source/*.swift" # Or latest version
-```
-
-Run `seed install`.
 
 
 # [Docs](https://nuclearace.github.io/Socket.IO-Client-Swift/index.html)
