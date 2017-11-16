@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hn3-Gq-xCx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hn3-Gq-xCx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="ecB-xr-12E">
             <objects>
                 <viewController storyboardIdentifier="CustomerlySurveyViewController" id="hn3-Gq-xCx" customClass="CustomerlySurveyViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jGR-ZC-mWu"/>
-                        <viewControllerLayoutGuide type="bottom" id="iAo-ju-tDW"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GEy-tU-Td6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,16 +106,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fy4-Dy-kPY" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" constant="30" id="5o6-T5-Sc3"/>
+                            <constraint firstItem="fy4-Dy-kPY" firstAttribute="leading" secondItem="a8i-qc-j8r" secondAttribute="leading" constant="30" id="5o6-T5-Sc3"/>
                             <constraint firstAttribute="bottom" secondItem="w2Z-Nr-ZZh" secondAttribute="bottom" id="8zd-wd-db1"/>
-                            <constraint firstAttribute="trailing" secondItem="w2Z-Nr-ZZh" secondAttribute="trailing" id="Apy-L6-s75"/>
+                            <constraint firstItem="a8i-qc-j8r" firstAttribute="trailing" secondItem="w2Z-Nr-ZZh" secondAttribute="trailing" id="Apy-L6-s75"/>
                             <constraint firstItem="fy4-Dy-kPY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GEy-tU-Td6" secondAttribute="top" constant="20" id="G8c-0G-4c7"/>
-                            <constraint firstAttribute="trailing" secondItem="fy4-Dy-kPY" secondAttribute="trailing" constant="30" id="JAc-Ql-CbA"/>
+                            <constraint firstItem="a8i-qc-j8r" firstAttribute="trailing" secondItem="fy4-Dy-kPY" secondAttribute="trailing" constant="30" id="JAc-Ql-CbA"/>
                             <constraint firstItem="fy4-Dy-kPY" firstAttribute="centerY" secondItem="GEy-tU-Td6" secondAttribute="centerY" id="MPa-gC-ZIT"/>
-                            <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="leading" secondItem="GEy-tU-Td6" secondAttribute="leading" id="ZEJ-z5-qU5"/>
+                            <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="leading" secondItem="a8i-qc-j8r" secondAttribute="leading" id="ZEJ-z5-qU5"/>
                             <constraint firstItem="w2Z-Nr-ZZh" firstAttribute="top" secondItem="GEy-tU-Td6" secondAttribute="top" id="aIF-9v-U0X"/>
-                            <constraint firstItem="iAo-ju-tDW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fy4-Dy-kPY" secondAttribute="bottom" constant="20" id="mBq-mB-YUU"/>
+                            <constraint firstItem="a8i-qc-j8r" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fy4-Dy-kPY" secondAttribute="bottom" constant="20" id="mBq-mB-YUU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="a8i-qc-j8r"/>
                     </view>
                     <connections>
                         <outlet property="alertView" destination="fy4-Dy-kPY" id="iTz-st-xO3"/>
@@ -138,10 +136,6 @@
         <scene sceneID="kKr-AQ-hw4">
             <objects>
                 <viewController storyboardIdentifier="CySurveyListViewController" id="bog-Df-YxJ" customClass="CySurveyListViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uX1-Wv-DLv"/>
-                        <viewControllerLayoutGuide type="bottom" id="vsk-Jv-Q1e"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DIE-fU-eMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,11 +217,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ckx-b9-Dzy" firstAttribute="leading" secondItem="DIE-fU-eMF" secondAttribute="leading" id="MMf-ZK-Rkh"/>
-                            <constraint firstAttribute="trailing" secondItem="ckx-b9-Dzy" secondAttribute="trailing" id="Mgv-2B-EQr"/>
+                            <constraint firstItem="ckx-b9-Dzy" firstAttribute="leading" secondItem="Hwf-RN-QEE" secondAttribute="leading" id="MMf-ZK-Rkh"/>
+                            <constraint firstItem="Hwf-RN-QEE" firstAttribute="trailing" secondItem="ckx-b9-Dzy" secondAttribute="trailing" id="Mgv-2B-EQr"/>
                             <constraint firstItem="ckx-b9-Dzy" firstAttribute="top" secondItem="DIE-fU-eMF" secondAttribute="top" id="SMk-tO-kmf"/>
-                            <constraint firstItem="vsk-Jv-Q1e" firstAttribute="top" secondItem="ckx-b9-Dzy" secondAttribute="bottom" id="ulv-Jt-2GJ"/>
+                            <constraint firstItem="Hwf-RN-QEE" firstAttribute="bottom" secondItem="ckx-b9-Dzy" secondAttribute="bottom" id="ulv-Jt-2GJ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hwf-RN-QEE"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="300"/>
@@ -244,10 +239,6 @@
         <scene sceneID="b34-6X-jna">
             <objects>
                 <viewController storyboardIdentifier="CySurveyPickerViewController" id="Sc7-2K-iTm" customClass="CySurveyPickerViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nwn-SM-TJE"/>
-                        <viewControllerLayoutGuide type="bottom" id="O6a-qQ-sOF"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="19O-uW-rYU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,13 +268,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="za2-xs-UAK" firstAttribute="leading" secondItem="19O-uW-rYU" secondAttribute="leading" id="Blf-Hq-tQL"/>
-                            <constraint firstItem="bbe-gf-LCk" firstAttribute="centerX" secondItem="19O-uW-rYU" secondAttribute="centerX" id="SVM-QO-l7O"/>
-                            <constraint firstAttribute="trailing" secondItem="za2-xs-UAK" secondAttribute="trailing" id="TnD-I5-TxC"/>
-                            <constraint firstItem="O6a-qQ-sOF" firstAttribute="top" secondItem="bbe-gf-LCk" secondAttribute="bottom" constant="10" id="bcm-VY-cuq"/>
+                            <constraint firstItem="za2-xs-UAK" firstAttribute="leading" secondItem="EMh-Ji-lWm" secondAttribute="leading" id="Blf-Hq-tQL"/>
+                            <constraint firstItem="bbe-gf-LCk" firstAttribute="centerX" secondItem="EMh-Ji-lWm" secondAttribute="centerX" id="SVM-QO-l7O"/>
+                            <constraint firstItem="EMh-Ji-lWm" firstAttribute="trailing" secondItem="za2-xs-UAK" secondAttribute="trailing" id="TnD-I5-TxC"/>
+                            <constraint firstItem="EMh-Ji-lWm" firstAttribute="bottom" secondItem="bbe-gf-LCk" secondAttribute="bottom" constant="10" id="bcm-VY-cuq"/>
                             <constraint firstItem="bbe-gf-LCk" firstAttribute="top" secondItem="za2-xs-UAK" secondAttribute="bottom" constant="10" id="ofV-X0-nT1"/>
                             <constraint firstItem="za2-xs-UAK" firstAttribute="top" secondItem="19O-uW-rYU" secondAttribute="top" id="vaH-gH-WNb"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="EMh-Ji-lWm"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="160"/>
@@ -300,10 +292,6 @@
         <scene sceneID="bRM-uA-zFO">
             <objects>
                 <viewController storyboardIdentifier="CySurveySliderViewController" id="6KM-YN-gjd" customClass="CySurveySliderViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sFT-w3-tZl"/>
-                        <viewControllerLayoutGuide type="bottom" id="3JX-H5-RcU"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ipM-5t-jdw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,17 +347,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3JX-H5-RcU" firstAttribute="top" secondItem="1Zc-ms-ItP" secondAttribute="bottom" constant="10" id="0We-h2-U4K"/>
+                            <constraint firstItem="02l-FC-AFE" firstAttribute="bottom" secondItem="1Zc-ms-ItP" secondAttribute="bottom" constant="10" id="0We-h2-U4K"/>
                             <constraint firstItem="0rI-RG-Hoh" firstAttribute="top" secondItem="ipM-5t-jdw" secondAttribute="top" constant="5" id="2Is-Jd-JNb"/>
-                            <constraint firstItem="lpL-j9-nXi" firstAttribute="leading" secondItem="ipM-5t-jdw" secondAttribute="leading" constant="8" id="8dF-la-gCH"/>
+                            <constraint firstItem="lpL-j9-nXi" firstAttribute="leading" secondItem="02l-FC-AFE" secondAttribute="leading" constant="8" id="8dF-la-gCH"/>
                             <constraint firstItem="0rI-RG-Hoh" firstAttribute="leading" secondItem="1Oo-dX-0hJ" secondAttribute="trailing" constant="8" id="HF8-ro-j0o"/>
                             <constraint firstItem="1Oo-dX-0hJ" firstAttribute="top" secondItem="ipM-5t-jdw" secondAttribute="top" id="K47-ya-8yJ"/>
                             <constraint firstItem="lpL-j9-nXi" firstAttribute="top" secondItem="ipM-5t-jdw" secondAttribute="top" constant="5" id="TZt-pa-wT5"/>
-                            <constraint firstItem="1Zc-ms-ItP" firstAttribute="centerX" secondItem="ipM-5t-jdw" secondAttribute="centerX" id="UcY-3k-aJz"/>
+                            <constraint firstItem="1Zc-ms-ItP" firstAttribute="centerX" secondItem="02l-FC-AFE" secondAttribute="centerX" id="UcY-3k-aJz"/>
                             <constraint firstItem="1Oo-dX-0hJ" firstAttribute="leading" secondItem="lpL-j9-nXi" secondAttribute="trailing" constant="8" id="UsC-gt-TAA"/>
-                            <constraint firstAttribute="trailing" secondItem="0rI-RG-Hoh" secondAttribute="trailing" constant="8" id="hAg-4W-R0k"/>
+                            <constraint firstItem="02l-FC-AFE" firstAttribute="trailing" secondItem="0rI-RG-Hoh" secondAttribute="trailing" constant="8" id="hAg-4W-R0k"/>
                             <constraint firstItem="1Zc-ms-ItP" firstAttribute="top" secondItem="1Oo-dX-0hJ" secondAttribute="bottom" constant="20" id="kqH-Ra-gAA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="02l-FC-AFE"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="100"/>
@@ -388,10 +377,6 @@
         <scene sceneID="mBl-fg-hys">
             <objects>
                 <viewController storyboardIdentifier="CySurveyStarsViewController" id="8ar-mD-Dz9" customClass="CySurveyStarsViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yjG-88-cW6"/>
-                        <viewControllerLayoutGuide type="bottom" id="DLX-Ii-NTZ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ewf-ac-VYb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,7 +440,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OI3-LB-EE6" firstAttribute="leading" secondItem="zmn-16-vLr" secondAttribute="trailing" constant="12" id="0Vq-7l-8A1"/>
-                            <constraint firstItem="zmn-16-vLr" firstAttribute="centerX" secondItem="ewf-ac-VYb" secondAttribute="centerX" id="80J-h1-Cow"/>
+                            <constraint firstItem="zmn-16-vLr" firstAttribute="centerX" secondItem="s2V-5w-h1c" secondAttribute="centerX" id="80J-h1-Cow"/>
                             <constraint firstItem="nX8-fl-HBi" firstAttribute="leading" secondItem="OI3-LB-EE6" secondAttribute="trailing" constant="12" id="BIN-lR-kYz"/>
                             <constraint firstItem="t1a-pN-f91" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="J2i-J2-qeF"/>
                             <constraint firstItem="zmn-16-vLr" firstAttribute="centerY" secondItem="ewf-ac-VYb" secondAttribute="centerY" id="MQT-xl-7bK"/>
@@ -467,6 +452,7 @@
                             <constraint firstItem="t1a-pN-f91" firstAttribute="leading" secondItem="UGe-sp-zyh" secondAttribute="trailing" constant="12" id="npV-as-CZg"/>
                             <constraint firstAttribute="bottom" secondItem="zmn-16-vLr" secondAttribute="bottom" constant="15" id="yup-SS-Hgi"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="s2V-5w-h1c"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="70"/>
@@ -486,10 +472,6 @@
         <scene sceneID="AGN-Wj-Ilm">
             <objects>
                 <viewController storyboardIdentifier="CySurveyTextFieldViewController" id="Cq1-X5-xf8" customClass="CySurveyTextFieldViewController" customModule="CustomerlySDK" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dSo-tf-ub0"/>
-                        <viewControllerLayoutGuide type="bottom" id="lle-E1-KPe"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="agK-2e-0C6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -526,12 +508,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oEf-A9-hkd" firstAttribute="top" secondItem="agK-2e-0C6" secondAttribute="top" id="VYt-HX-b9r"/>
-                            <constraint firstItem="aF3-cu-Cno" firstAttribute="centerX" secondItem="agK-2e-0C6" secondAttribute="centerX" id="dXM-Gj-qUe"/>
-                            <constraint firstItem="lle-E1-KPe" firstAttribute="top" secondItem="aF3-cu-Cno" secondAttribute="bottom" constant="10" id="hn0-oy-LnY"/>
+                            <constraint firstItem="aF3-cu-Cno" firstAttribute="centerX" secondItem="kQu-gk-Rs2" secondAttribute="centerX" id="dXM-Gj-qUe"/>
+                            <constraint firstItem="kQu-gk-Rs2" firstAttribute="bottom" secondItem="aF3-cu-Cno" secondAttribute="bottom" constant="10" id="hn0-oy-LnY"/>
                             <constraint firstItem="aF3-cu-Cno" firstAttribute="top" secondItem="oEf-A9-hkd" secondAttribute="bottom" constant="10" id="iqR-A9-NU7"/>
-                            <constraint firstAttribute="trailing" secondItem="oEf-A9-hkd" secondAttribute="trailing" id="qOh-UG-QZs"/>
-                            <constraint firstItem="oEf-A9-hkd" firstAttribute="leading" secondItem="agK-2e-0C6" secondAttribute="leading" id="xXz-G6-60O"/>
+                            <constraint firstItem="kQu-gk-Rs2" firstAttribute="trailing" secondItem="oEf-A9-hkd" secondAttribute="trailing" id="qOh-UG-QZs"/>
+                            <constraint firstItem="oEf-A9-hkd" firstAttribute="leading" secondItem="kQu-gk-Rs2" secondAttribute="leading" id="xXz-G6-60O"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="kQu-gk-Rs2"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="102"/>
