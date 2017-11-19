@@ -31,9 +31,9 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 
 ## Requirements
 
-- iOS 8.0+
+- iOS 9.0+
 - Xcode 8+
-- Swift 3 or Objective-C
+- Swift 3.2, Swift 4 or Objective-C
 
 ## CocoaPods
 
@@ -63,7 +63,7 @@ $ pod install
 ```
 
 ## Usage
-If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.2.0 or later to install the SDK.
+If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.3.1 or later to install the SDK.
 
 First of all, if you don't have an Xcode project yet, create one, then install the SDK following the paragraph `Cocoapods`.
 
