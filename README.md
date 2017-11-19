@@ -32,7 +32,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 ## Requirements
 
 - iOS 9.0+
-- Xcode 8+
+- Xcode 9+
 - Swift 3.2, Swift 4 or Objective-C
 
 ## CocoaPods
