@@ -1,0 +1,61 @@
+/*
+ Localizable.strings
+ Customerly
+ 
+ Created by Paolo Musolino on 08/01/17.
+ Copyright © 2017 Customerly. All rights reserved.
+ */
+
+/* Image Picker Action Sheet */
+"actionSheetImagePicker_title" = "Selecciona un archivo para enviar";
+"actionSheetImagePicker_cancel" = "Cancelar";
+"actionSheetImagePicker_takePhoto" = "Hacer una foto";
+"actionSheetImagePicker_imageGallery" = "Galería de imágenes";
+"actionSheetImagePicker_error" = "Error";
+"actionSheetImagePicker_confirm" = "Vale";
+"actionSheetImagePicker_error_cameraNotAvailable" = "Ops, la cámara no está disponible";
+"actionSheetImagePicker_error_galleryNotAvailable" = "Ops, la galería de fotos no está disponible";
+
+/* Time Ago Since Date */
+"timeAgoSinceDate_yearsAgo %d" = "hace %dy";
+"timeAgoSinceDate_yearAgo %d" = "hace %dy";
+"timeAgoSinceDate_monthsAgo %d" = "hace %dm";
+"timeAgoSinceDate_monthAgo %d" = "hace %dm";
+"timeAgoSinceDate_weeksAgo %d" = "hace %dw";
+"timeAgoSinceDate_weekAgo %d" = "hace %dw";
+"timeAgoSinceDate_daysAgo %d" = "hace %dd";
+"timeAgoSinceDate_dayAgo %d" = "hace %dd";
+"timeAgoSinceDate_hoursAgo %d" = "hace %dh";
+"timeAgoSinceDate_hourAgo %d" = "hace %dh";
+"timeAgoSinceDate_minutesAgo %d" = "hace %dm";
+"timeAgoSinceDate_minuteAgo %d" = "hace %dm";
+"timeAgoSinceDate_secondsAgo %d" = "hace %ds";
+"timeAgoSinceDate_justNow" = "Ahora";
+
+/* Conversation List */
+"supportTitle" = "Asistencia";
+"youUser" = "Tú";
+"conversationListPoweredBy" = "Desarrollado por Customerly";
+"newConversationButton" = "Iniciar una nueva conversación";
+
+/* Chat View */
+"chatTitleView" = "Chat";
+"chatInsertEmail" = "Pon tu correo electrónico";
+"chatOK" = "Vale";
+"chatCancel" = "Cancelar";
+"chatEmail" = "Correo electrónico";
+"chatAdminLastActivity" = "Última actividad";
+"chatViewPoweredBy" = "Desarrollado por Customerly";
+"chatViewContactSupportLabel" = "Ponte en contacto con el servicio de asistencia escribiendo tu pregunta a continuación.";
+"chatViewTextFieldPlaceholder" = "Haz tu pregunta";
+"chatViewRichMessageText" = "Este mensaje ha sido enviado por correo electrónico. Toca para leerlo.";
+
+/* Survey View */
+"surveyTitleView" = "Encuesta";
+"confirmSliderButton %d" = "Confirmar %d";
+"confirmButton" = "Confirmar";
+
+/* Extra */
+"pullToRefresh" = "Tira para actualizar";
+
+

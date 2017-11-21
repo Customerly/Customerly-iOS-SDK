@@ -223,6 +223,7 @@
 		45D16F121E412C030092E554 /* notification.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.m4r; sourceTree = "<group>"; };
 		45D16F141E412C500092E554 /* CySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySound.swift; sourceTree = "<group>"; };
 		45DC04B81E243565004DB406 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		45DE41471FC4C644005C5108 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45DE7D741F0C0F320069786D /* CyVersioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyVersioning.swift; sourceTree = "<group>"; };
 		45E61EF41E16ACBC0088D6C5 /* CustomerlySurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerlySurveyViewController.swift; sourceTree = "<group>"; };
 		45E61EF61E16AD340088D6C5 /* CustomerlySurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerlySurvey.storyboard; sourceTree = "<group>"; };
@@ -677,6 +678,7 @@
 				en,
 				Base,
 				it,
+				es,
 			);
 			mainGroup = 455CE1231DE0AA9F00FF65DC;
 			productRefGroup = 455CE1301DE0AABD00FF65DC /* Products */;
@@ -977,6 +979,7 @@
 			children = (
 				45E924FC1E22DEA300514EA3 /* Base */,
 				45DC04B81E243565004DB406 /* it */,
+				45DE41471FC4C644005C5108 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
