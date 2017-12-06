@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func hideKeyboardOnTap(){
+    @objc func hideKeyboardOnTap(){
         self.view.endEditing(true)
     }
 }

@@ -83,19 +83,19 @@ class CyMessageModel: Mappable {
         attachment.bounds.size = CGSize(width: 50, height: 39)
         
         let attributedAttachment = NSAttributedString(attachment: attachment)
-        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSForegroundColorAttributeName:UIColor(hexString:"#1A1A1A")])
+        let attributedText = NSAttributedString(string: "\n\n\("chatViewRichMessageText".localized(comment: "Chat View"))\n", attributes: [NSAttributedStringKey.foregroundColor:UIColor(hexString:"#1A1A1A")])
         
         
         let attributedString = NSMutableAttributedString()
         attributedString.append(attributedAttachment)
         attributedString.append(attributedText)
         
-        attributedString.enumerateAttribute(NSAttachmentAttributeName, in: NSRange(location: 0, length: attributedString.length)) { (attribute, range, stop) -> Void in
+        attributedString.enumerateAttribute(NSAttributedStringKey.attachment, in: NSRange(location: 0, length: attributedString.length)) { (attribute, range, stop) -> Void in
             if (attribute as? NSTextAttachment) != nil {
                 //center all attachments in attributed string
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.alignment = .center
-                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+                attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: range)
             }
         }
         return attributedString

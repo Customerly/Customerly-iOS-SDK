@@ -37,7 +37,7 @@ class CustomerlySurveyViewController: CyViewController {
     @IBOutlet weak var surveyTitleLabel: CyLabel!
     @IBOutlet weak var surveyDescriptionLabel: CyLabel!
     var survey: CySurveyResponseModel?
-    var surveyOnClosure: ((Void) -> Void)?
+    var surveyOnClosure: (() -> Void)?
     var surveyOnDismiss: ((CySurveyDismiss) -> Void)?
     var firstSurveyVC: CustomerlySurveyViewController?
     
@@ -303,7 +303,7 @@ class CustomerlySurveyViewController: CyViewController {
     }
     
     //Survey dismiss
-    func dismissVCWithoutInvalidation(){
+    @objc func dismissVCWithoutInvalidation(){
         firstSurveyVC?.surveyOnDismiss?(CySurveyDismiss.postponed)
         dismissVC()
     }

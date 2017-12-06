@@ -347,13 +347,11 @@ class CustomerlyChatStartVC: CyViewController{
         }
         else{
             self.chatTextField.resignFirstResponder()
-            
-            showAlertWithTextField(title: data?.app?.name ?? "", message: "chatInsertEmail".localized(comment: "Chat View"), buttonTitle: "chatOK".localized(comment: "Chat View"), buttonCancel: "chatCancel".localized(comment: "Chat View"), textFieldPlaceholder: "chatEmail".localized(comment: "Chat View"), completion: { (email) in
+            showAlertWithTextField(title: data?.app?.name ?? "", message: "chatInsertEmail".localized(comment: "Chat View"), buttonTitle: "chatOK".localized(comment: "Chat View"), buttonCancel: "chatCancel".localized(comment: "Chat View"), textFieldPlaceholder: "chatEmail".localized(comment: "Chat View"), completion: { [weak self] (email) in
+                self?.sendMessage(message: self?.chatTextField.text, email: email)
+            }, cancel: {
                 
-                self.sendMessage(message: self.chatTextField.text, email: email)
-            }) { (cancel) in
-                
-            }
+            })
         }
     }
     
@@ -486,7 +484,7 @@ extension CustomerlyChatStartVC: UITableViewDelegate{
 
 extension CustomerlyChatStartVC: CyTextFieldDelegate{
     func keyboardShowed(height: CGFloat) {
-        composeMessageViewBottomConstraint.constant = height
+        composeMessageViewBottomConstraint.constant = -height
     }
     
     func keyboardHided(height: CGFloat) {

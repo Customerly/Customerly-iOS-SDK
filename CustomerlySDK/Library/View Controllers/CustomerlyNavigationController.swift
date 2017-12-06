@@ -28,7 +28,7 @@ class CustomerlyNavigationController: UINavigationController {
         self.navigationBar.tintColor = UIColor.white //tint color elements on navbar
         self.navigationBar.isTranslucent = false //navbar is not translucent
         
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white] //font title navbar
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white] //font title navbar
         
         //Delete 1px line under navigation bar
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)

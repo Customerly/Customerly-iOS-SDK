@@ -39,7 +39,13 @@ public final class SocketAckEmitter : NSObject {
         return ackNum != -1
     }
 
-    init(socket: SocketIOClient, ackNum: Int) {
+    // MARK: Initializers
+
+    /// Creates a new `SocketAckEmitter`.
+    ///
+    /// - parameter socket: The socket for this emitter.
+    /// - parameter ackNum: The ack number for this emitter.
+    public init(socket: SocketIOClient, ackNum: Int) {
         self.socket = socket
         self.ackNum = ackNum
     }
@@ -65,6 +71,7 @@ public final class SocketAckEmitter : NSObject {
     /// Call to ack receiving this event.
     ///
     /// - parameter items: An array of items to send when acking. Use `[]` to send nothing.
+    @objc
     public func with(_ items: [Any]) {
         guard ackNum != -1 else { return }
 
@@ -104,16 +111,19 @@ public final class OnAckCallback : NSObject {
     /// - parameter after: The number of seconds before this emit times out if an ack hasn't been received.
     /// - parameter callback: The callback called when an ack is received, or when a timeout happens.
     ///                       To check for timeout, use `SocketAckStatus`'s `noAck` case.
+    @objc
     public func timingOut(after seconds: Double, callback: @escaping AckCallback) {
         guard let socket = self.socket, ackNumber != -1 else { return }
 
         socket.ackHandlers.addAck(ackNumber, callback: callback)
-        socket._emit(items, ack: ackNumber)
+        socket.emit(items, ack: ackNumber)
 
         guard seconds != 0 else { return }
 
-        socket.handleQueue.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            socket.ackHandlers.timeoutAck(self.ackNumber, onQueue: socket.handleQueue)
+        socket.manager?.handleQueue.asyncAfter(deadline: DispatchTime.now() + seconds) {[weak socket] in
+            guard let socket = socket, let manager = socket.manager else { return }
+
+            socket.ackHandlers.timeoutAck(self.ackNumber, onQueue: manager.handleQueue)
         }
     }
 

@@ -16,6 +16,7 @@ enum CySocketEvent: String {
 
 class CySocket: NSObject {
     
+    var socketManager: SocketManager?
     var socket: SocketIOClient?
     var actualOnMessage: UUID?
     
@@ -39,7 +40,8 @@ class CySocket: NSObject {
                     tokenDictionary["is_mobile"] = true
                     let tokenBase64 = DictionaryToJSONString(dictionary: tokenDictionary)?.base64Encoded()
                     
-                    socket = SocketIOClient(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? ""])])
+                    socketManager = SocketManager(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? ""])])
+                    socket = socketManager?.defaultSocket
                 }
             }
         }
@@ -76,7 +78,7 @@ class CySocket: NSObject {
         })
         
         socket?.on("error", callback: { (data, ack) in
-            cyPrint("Socket error")
+            cyPrint("Socket error", data)
         })
         
         removeHandlerWithUUID(uuid: actualOnMessage)

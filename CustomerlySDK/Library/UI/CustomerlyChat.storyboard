@@ -312,6 +312,7 @@
                         <outlet property="backgroundImageView" destination="gAp-Mc-wqA" id="mOr-d8-uxm"/>
                         <outlet property="chatTableView" destination="NhT-tc-8ei" id="ib8-hw-WbU"/>
                         <outlet property="chatTextField" destination="HBx-XW-OCi" id="ngF-Iq-dpN"/>
+                        <outlet property="composeMessageViewBottomConstraint" destination="mBc-Nc-rG2" id="BRK-nu-4r8"/>
                         <outlet property="poweredByButton" destination="U6Y-sf-Dsu" id="7cp-VO-5XJ"/>
                         <outlet property="sendMessageButton" destination="tPU-2h-EKe" id="JBB-wf-raQ"/>
                     </connections>

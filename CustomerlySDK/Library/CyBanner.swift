@@ -74,7 +74,7 @@ class CyBanner: CyView {
         addGestureRecognizer(swipe)
     }
     
-    func didTap(_ recognizer: UITapGestureRecognizer) {
+    @objc func didTap(_ recognizer: UITapGestureRecognizer) {
         didTapBlock?()
         dismiss()
     }
@@ -97,7 +97,7 @@ class CyBanner: CyView {
         }
     }
     
-    func dismiss(){
+    @objc func dismiss(){
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowUserInteraction, animations: {
                     self.alpha = 0.0
                     self.frame = self.initialRect

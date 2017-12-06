@@ -24,10 +24,12 @@
 //
 
 import Foundation
-import StarscreamSocketIO
+import Starscream
 
 /// Protocol that is used to implement socket.io WebSocket support
 public protocol SocketEngineWebsocket : SocketEngineSpec, WebSocketDelegate {
+    // MARK: Methods
+
     /// Sends an engine.io message through the WebSocket transport.
     ///
     /// You shouldn't call this directly, instead call the `write` method on `SocketEngine`.
@@ -54,7 +56,7 @@ extension SocketEngineWebsocket {
     /// - parameter withType: The type of message to send.
     /// - parameter withData: The data associated with this message.
     public func sendWebSocketMessage(_ str: String, withType type: SocketEnginePacketType, withData datas: [Data]) {
-        DefaultSocketLogger.Logger.log("Sending ws: %@ as type: %@", type: "SocketEngine", args: str, type.rawValue)
+        DefaultSocketLogger.Logger.log("Sending ws: \(str) as type: \(type.rawValue)", type: "SocketEngineWebSocket")
 
         ws?.write(string: "\(type.rawValue)\(str)")
 
@@ -68,12 +70,12 @@ extension SocketEngineWebsocket {
     // MARK: Starscream delegate methods
 
     /// Delegate method for when a message is received.
-    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         parseEngineMessage(text)
     }
 
     /// Delegate method for when binary is received.
-    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
+    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         parseEngineData(data)
     }
 }

@@ -15,7 +15,7 @@ extension String {
     func attributedStringFromHTML(font: UIFont, color: UIColor) -> NSMutableAttributedString?{
         do{
             let bodyHtml: String = "<style>p{margin:0;padding:0}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
-            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [.documentType:NSAttributedString.DocumentType.html], documentAttributes: nil)
             return attributedMessage
         }
         catch{
@@ -27,7 +27,7 @@ extension String {
     func attributedStringFromHTMLWithImages(font: UIFont, color: UIColor, imageMaxWidth: CGFloat) -> NSMutableAttributedString?{
         do{
             let bodyHtml: String = "<style>p{margin:0;padding:0} img{width:\(imageMaxWidth))px;display:block;}</style><div style=\"font-family: \(font.fontDescriptor.postscriptName); font-size: \(Int(font.pointSize)); color:\(color.toHexString())\">\(self)</div>"
-            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            let attributedMessage = try NSMutableAttributedString(data: ((bodyHtml).data(using: String.Encoding.unicode, allowLossyConversion: false)!), options: [.documentType:NSAttributedString.DocumentType.html], documentAttributes: nil)
             return attributedMessage
         }
         catch{
@@ -163,7 +163,7 @@ extension String{
         guard lastRangeIndex >= 1 else { return results }
         
         for i in 1...lastRangeIndex {
-            let capturedGroupIndex = match.rangeAt(i)
+            let capturedGroupIndex = match.range(at: i)
             let matchedString = (self as NSString).substring(with: capturedGroupIndex)
             results.append(matchedString)
         }
@@ -203,7 +203,7 @@ extension String{
 //MARK: - AttributedString
 extension NSMutableAttributedString{
     func addAttributes(font: UIFont, color: UIColor){
-        self.addAttributes([NSFontAttributeName: font, NSForegroundColorAttributeName: color], range: NSRange(location:0, length:self.length))
+        self.addAttributes([NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: color], range: NSRange(location:0, length:self.length))
     }
     
 }

@@ -37,7 +37,7 @@ class CyTableView: UITableView {
         return pullToRefresh?.isRefreshing ?? false
     }
     
-    func refreshStart(){
+    @objc func refreshStart(){
         self.refresh?()
     }
     

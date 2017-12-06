@@ -62,7 +62,7 @@ class CyButton: UIButton {
         
     }
     
-    func buttonChecked(sender:AnyObject){
+    @objc func buttonChecked(sender:AnyObject){
         self.isSelected = !self.isSelected
     }
     
@@ -71,7 +71,7 @@ class CyButton: UIButton {
         self.action = action
     }
     
-    func tapped(sender: CyButton) {
+    @objc func tapped(sender: CyButton) {
         self.action?()
     }
 }

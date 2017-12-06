@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double StarscreamSocketIOVersionNumber;
-FOUNDATION_EXPORT const unsigned char StarscreamSocketIOVersionString[];
+FOUNDATION_EXPORT double StarscreamVersionNumber;
+FOUNDATION_EXPORT const unsigned char StarscreamVersionString[];
 

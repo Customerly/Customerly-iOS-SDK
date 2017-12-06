@@ -26,7 +26,7 @@ class CyTextField: UITextField {
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             DispatchQueue.main.async(){
                 self.cyDelegate?.keyboardShowed!(height: keyboardSize.height)
@@ -34,7 +34,7 @@ class CyTextField: UITextField {
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             DispatchQueue.main.async(){
                 self.cyDelegate?.keyboardHided!(height: keyboardSize.height)
@@ -42,14 +42,14 @@ class CyTextField: UITextField {
         }
     }
     
-    func textFieldDidChange(){
+    @objc func textFieldDidChange(){
         self.cyDelegate?.isTyping!(typing: true)
         textTimer?.invalidate()
         textTimer = nil
         textTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(stopTextDidChange), userInfo: nil, repeats: false)
     }
     
-    func stopTextDidChange(){
+    @objc func stopTextDidChange(){
         self.cyDelegate?.isTyping!(typing: false)
     }
     

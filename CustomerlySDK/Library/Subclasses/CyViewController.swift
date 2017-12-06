@@ -37,7 +37,7 @@ public class CyViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func hideKeyboardOnTap(){
+    @objc func hideKeyboardOnTap(){
         self.view.endEditing(true)
     }
     
@@ -145,7 +145,7 @@ public class CyViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = buttonItem
     }
     
-    func dismissVC(){
+    @objc func dismissVC(){
         self.dismiss(animated: true, completion: nil)
     }
     

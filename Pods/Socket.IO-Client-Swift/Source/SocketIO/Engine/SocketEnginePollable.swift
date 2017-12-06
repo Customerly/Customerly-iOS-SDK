@@ -26,7 +26,7 @@ import Foundation
 
 /// Protocol that is used to implement socket.io polling support
 public protocol SocketEnginePollable : SocketEngineSpec {
-    /// MARK: Properties
+    // MARK: Properties
 
     /// `true` If engine's session has been invalidated.
     var invalidated: Bool { get }
@@ -50,6 +50,8 @@ public protocol SocketEnginePollable : SocketEngineSpec {
     ///
     /// **Do not touch this directly**
     var waitingForPost: Bool { get set }
+
+    // MARK: Methods
 
     /// Call to send a long-polling request.
     ///
@@ -80,7 +82,7 @@ extension SocketEnginePollable {
             postStr += "\(packet.utf16.count):\(packet)"
         }
 
-        DefaultSocketLogger.Logger.log("Created POST string: %@", type: "SocketEnginePolling", args: postStr)
+        DefaultSocketLogger.Logger.log("Created POST string: \(postStr)", type: "SocketEnginePolling")
 
         var req = URLRequest(url: urlPollingWithSid)
         let postData = postStr.data(using: .utf8, allowLossyConversion: false)!
@@ -99,7 +101,7 @@ extension SocketEnginePollable {
     ///
     /// You shouldn't need to call this directly, the engine should automatically maintain a long-poll request.
     public func doPoll() {
-        guard !websocket && !waitingForPoll && connected && !closed else { return }
+        guard polling && !waitingForPoll && connected && !closed else { return }
 
         var req = URLRequest(url: urlPollingWithSid)
         addHeaders(to: &req)
@@ -110,8 +112,7 @@ extension SocketEnginePollable {
     func doRequest(for req: URLRequest, callbackWith callback: @escaping (Data?, URLResponse?, Error?) -> ()) {
         guard polling && !closed && !invalidated && !fastUpgrade else { return }
 
-        DefaultSocketLogger.Logger.log("Doing polling %@ %@", type: "SocketEnginePolling",
-                                       args: req.httpMethod ?? "", req)
+        DefaultSocketLogger.Logger.log("Doing polling \(req.httpMethod ?? "") \(req)", type: "SocketEnginePolling")
 
         session?.dataTask(with: req, completionHandler: callback).resume()
     }
@@ -150,7 +151,7 @@ extension SocketEnginePollable {
 
     private func flushWaitingForPost() {
         guard postWait.count != 0 && connected else { return }
-        guard !websocket else {
+        guard polling else {
             flushWaitingForPostToWebSocket()
 
             return
@@ -185,9 +186,9 @@ extension SocketEnginePollable {
     }
 
     func parsePollingMessage(_ str: String) {
-        guard str.characters.count != 1 else { return }
+        guard str.count != 1 else { return }
 
-        DefaultSocketLogger.Logger.log("Got poll message: %@", type: "SocketEnginePolling", args: str)
+        DefaultSocketLogger.Logger.log("Got poll message: \(str)", type: "SocketEnginePolling")
 
         var reader = SocketStringReader(message: str)
 
@@ -209,7 +210,7 @@ extension SocketEnginePollable {
     /// - parameter withType: The type of message to send.
     /// - parameter withData: The data associated with this message.
     public func sendPollMessage(_ message: String, withType type: SocketEnginePacketType, withData datas: [Data]) {
-        DefaultSocketLogger.Logger.log("Sending poll: %@ as type: %@", type: "SocketEnginePolling", args: message, type.rawValue)
+        DefaultSocketLogger.Logger.log("Sending poll: \(message) as type: \(type.rawValue)", type: "SocketEnginePolling")
 
         postWait.append(String(type.rawValue) + message)
 

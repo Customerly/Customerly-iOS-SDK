@@ -24,15 +24,20 @@
 //
 
 import Foundation
-import StarscreamSocketIO
+import Starscream
 
 /// Specifies a SocketEngine.
 @objc public protocol SocketEngineSpec {
+    // MARK: Properties
+
     /// The client for this engine.
     var client: SocketEngineClient? { get set }
 
     /// `true` if this engine is closed.
     var closed: Bool { get }
+
+    /// If `true` the engine will attempt to use WebSocket compression.
+    var compress: Bool { get }
 
     /// `true` if this engine is connected. Connected means that the initial poll connect has succeeded.
     var connected: Bool { get }
@@ -47,7 +52,7 @@ import StarscreamSocketIO
     var engineQueue: DispatchQueue { get }
 
     /// A dictionary of extra http headers that will be set during connection.
-    var extraHeaders: [String: String]? { get }
+    var extraHeaders: [String: String]? { get set }
 
     /// When `true`, the engine is in the process of switching to WebSockets.
     var fastUpgrade: Bool { get }
@@ -77,17 +82,22 @@ import StarscreamSocketIO
     var urlWebSocket: URL { get }
 
     /// If `true`, then the engine is currently in WebSockets mode.
+    @available(*, deprecated, message: "No longer needed, if we're not polling, then we must be doing websockets")
     var websocket: Bool { get }
 
     /// The WebSocket for this engine.
     var ws: WebSocket? { get }
+
+    // MARK: Initializers
 
     /// Creates a new engine.
     ///
     /// - parameter client: The client for this engine.
     /// - parameter url: The url for this engine.
     /// - parameter options: The options for this engine.
-    init(client: SocketEngineClient, url: URL, options: NSDictionary?)
+    init(client: SocketEngineClient, url: URL, options: [String: Any]?)
+
+    // MARK: Methods
 
     /// Starts the connection to the server.
     func connect()
@@ -160,15 +170,10 @@ extension SocketEngineSpec {
     }
 
     func createBinaryDataForSend(using data: Data) -> Either<Data, String> {
-        if websocket {
-            var byteArray = [UInt8](repeating: 0x4, count: 1)
-            let mutData = NSMutableData(bytes: &byteArray, length: 1)
-
-            mutData.append(data)
-
-            return .left(mutData as Data)
-        } else {
+        if polling {
             return .right("b4" + data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)))
+        } else {
+            return .left(Data(bytes: [0x4]) + data)
         }
     }
 
