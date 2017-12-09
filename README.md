@@ -3,7 +3,7 @@
 <img src="https://customerly.github.io/logo.svg">
 </p>
 
-  [![Language](https://img.shields.io/badge/Swift-3-orange.svg)]()
+  [![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
   [![Language](https://img.shields.io/badge/Objective--C-compatible-blue.svg)]()
   [![License](https://img.shields.io/badge/license-Apache%20License%202.0-red.svg)]()
   
@@ -33,11 +33,11 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 
 - iOS 9.0+
 - Xcode 9+
-- Swift 3.2, Swift 4 or Objective-C
+- Swift 4 or Objective-C
 
 ## CocoaPods
 
-To use the Customerly SDK we recommend to use Cocoapods 1.2.0 or later
+To use the Customerly SDK we recommend to use Cocoapods 1.3.1 or later
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
