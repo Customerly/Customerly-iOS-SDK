@@ -17,7 +17,7 @@ enum CySocketEvent: String {
 class CySocket: NSObject {
     
     var socketManager: SocketManager?
-    var socket: SocketIOClient?
+    //var socket: SocketIOClient?
     var actualOnMessage: UUID?
     
     //MARK: Init
@@ -41,7 +41,6 @@ class CySocket: NSObject {
                     let tokenBase64 = DictionaryToJSONString(dictionary: tokenDictionary)?.base64Encoded()
                     
                     socketManager = SocketManager(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? ""])])
-                    socket = socketManager?.defaultSocket
                 }
             }
         }
@@ -49,6 +48,7 @@ class CySocket: NSObject {
     
     //Reconfigure socket with new user
     func reconfigure(connected: ((Bool?) -> Void)? = nil){
+        let socket = socketManager?.defaultSocket
         socket?.disconnect()
         configure()
         openConnection()
@@ -68,7 +68,7 @@ class CySocket: NSObject {
     
     //MARK: Open - Close Socket Connection
     func openConnection(){
-        
+        let socket = socketManager?.defaultSocket
         socket?.on("connect") {data, ack in
             cyPrint("Socket connected")
         }
@@ -90,6 +90,7 @@ class CySocket: NSObject {
     }
     
     func closeConnection(){
+        let socket = socketManager?.defaultSocket
         socket?.disconnect()
         socket?.removeAllHandlers()
     }
@@ -110,6 +111,7 @@ class CySocket: NSObject {
         typingSocketModel?.typing_preview = text_preview
         
         if let json = typingSocketModel?.toJSON(){
+            let socket = socketManager?.defaultSocket
             socket?.emit(CySocketEvent.typing.rawValue, with: [json])
         }
     }
@@ -121,6 +123,7 @@ class CySocket: NSObject {
         messageSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         if let json = messageSocketModel?.toJSON(){
+            let socket = socketManager?.defaultSocket
             socket?.emit(CySocketEvent.message.rawValue, with: [json])
         }
     }
@@ -133,13 +136,14 @@ class CySocket: NSObject {
         seenSocketModel?.user_id = CyStorage.getCyDataModel()?.user?.crmhero_user_id
         
         if let json = seenSocketModel?.toJSON(){
+            let socket = socketManager?.defaultSocket
             socket?.emit(CySocketEvent.message_seen.rawValue, with: [json])
         }
     }
     
     //MARK: On
     func onTyping(typing: @escaping ((CyTypingSocketModel?) -> Void)) -> UUID?{
-        //socket?.off(CySocketEvent.typing.rawValue) off all handlers under "typing"
+        let socket = socketManager?.defaultSocket
         let uuid = socket?.on(CySocketEvent.typing.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let typingModel = CyTypingSocketModel(JSON: data.first as! Dictionary)
@@ -151,8 +155,8 @@ class CySocket: NSObject {
     }
     
     func onMessage(message: @escaping ((CyMessageSocketModel?) -> Void)) -> UUID?{
-        //socket?.off(CySocketEvent.message.rawValue) off all handlers under "message"
-        let uuid = self.socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
+        let socket = socketManager?.defaultSocket
+        let uuid = socket?.on(CySocketEvent.message.rawValue, callback: { (data, ack) in
             if !data.isEmpty{
                 let messageModel = CyMessageSocketModel(JSON: data.first as! Dictionary)
                 message(messageModel)
@@ -164,6 +168,7 @@ class CySocket: NSObject {
     
     //MARK: - Utils
     func isConnected() -> Bool{
+        let socket = socketManager?.defaultSocket
         if socket?.status == .connected{
             return true
         }
@@ -173,6 +178,7 @@ class CySocket: NSObject {
     
     func removeHandlerWithUUID(uuid: UUID?){
         if uuid != nil{
+            let socket = socketManager?.defaultSocket
             socket?.off(id: uuid!)
         }
     }
