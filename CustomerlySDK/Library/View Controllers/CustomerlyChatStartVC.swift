@@ -486,7 +486,7 @@ extension CustomerlyChatStartVC: UITableViewDelegate{
 
 extension CustomerlyChatStartVC: CyTextFieldDelegate{
     func keyboardShowed(height: CGFloat) {
-        composeMessageViewBottomConstraint.constant = height
+        composeMessageViewBottomConstraint.constant = -height
     }
     
     func keyboardHided(height: CGFloat) {
