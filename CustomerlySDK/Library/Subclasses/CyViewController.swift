@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 public class CyViewController: UIViewController {
     
@@ -226,8 +227,9 @@ extension CyViewController : UIImagePickerControllerDelegate, UINavigationContro
     }
 }
 
-//MARK: Browsing recursively the tree to get the top view controller
+
 extension UIViewController{
+    //MARK: Browsing recursively the tree to get the top view controller
     class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
@@ -241,5 +243,25 @@ extension UIViewController{
             return topViewController(controller: presented)
         }
         return controller
+    }
+    
+    //MARK: - Safari VC
+    func openSafariVC(url: URL){
+        let safariVC = SFSafariViewController(url: url)
+        if #available(iOS 10.0, *) {
+            if let app_config = CyStorage.getCyDataModel()?.app_config{
+                safariVC.preferredBarTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
+                safariVC.preferredControlTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
+            }
+            
+            if user_color_template != nil{
+                safariVC.preferredBarTintColor = user_color_template
+                safariVC.preferredControlTintColor = user_color_template
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        self.present(safariVC, animated: true, completion: nil)
     }
 }

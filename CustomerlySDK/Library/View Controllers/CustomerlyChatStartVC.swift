@@ -474,8 +474,8 @@ extension CustomerlyChatStartVC: UITableViewDelegate{
         if conversationExist(){
             let message = getMessagesInSection(messagesArray: messages, sectionDate: dateSections[indexPath.section])[indexPath.row]
             if message.rich_mail == true{
-                if message.rich_mail_url != nil && URL(string: message.rich_mail_url!) != nil{
-                    UIApplication.shared.openURL(URL(string: message.rich_mail_url!)!)
+                if message.rich_mail_url != nil, let url = URL(string: message.rich_mail_url!){
+                    openSafariVC(url: url)
                 }
             }
         }

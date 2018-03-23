@@ -432,8 +432,8 @@ open class Customerly: NSObject {
         banner.show(didTapBlock: {
             self.openSupportConversationOnMessage(message: message)
             if message?.rich_mail == true{
-                if message?.rich_mail_url != nil && URL(string: message!.rich_mail_url!) != nil{
-                    UIApplication.shared.openURL(URL(string: message!.rich_mail_url!)!)
+                if message?.rich_mail_url != nil, let url = URL(string: message!.rich_mail_url!){
+                    UIViewController.topViewController()?.openSafariVC(url: url)
                 }
             }
         })
