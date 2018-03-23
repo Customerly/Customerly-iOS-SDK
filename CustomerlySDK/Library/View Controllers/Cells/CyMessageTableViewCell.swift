@@ -16,8 +16,8 @@ class CyMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageTextView: CyTextView!
     @IBOutlet weak var dateLabel: CyLabel!
     @IBOutlet weak var imagesTableView: CyTableView?
-    @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint!
-    @IBOutlet var messageViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint?
+    @IBOutlet var messageViewRightConstraint: NSLayoutConstraint?
     @IBOutlet weak var imagesTableViewHeightConstraint: NSLayoutConstraint?
     var vcThatShowThisCell : CyViewController?
     
@@ -50,17 +50,17 @@ class CyMessageTableViewCell: UITableViewCell {
         messageTextView.textAlignment = .left
         userAvatar.isHidden = true
         adminAvatar.isHidden = false
-        messageViewRightConstraint.isActive = false
-        messageViewLeftConstraint.isActive = true
+        messageViewRightConstraint?.isActive = false
+        messageViewLeftConstraint?.isActive = true
         messageView.backgroundColor = bubbleColor
     }
     
     func setUserVisual(bubbleColor: UIColor? = UIColor(hexString: "#01B0FF")){
         userAvatar.isHidden = false
         adminAvatar.isHidden = true
-        messageTextView.textAlignment = .right
-        messageViewRightConstraint.isActive = true
-        messageViewLeftConstraint.isActive = false
+        messageTextView.textAlignment = .left
+        messageViewRightConstraint?.isActive = true
+        messageViewLeftConstraint?.isActive = false
         messageView.backgroundColor = bubbleColor
     }
     
