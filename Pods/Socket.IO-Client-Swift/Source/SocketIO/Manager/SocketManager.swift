@@ -139,8 +139,6 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
             self._config.insert(.secure(true))
         }
 
-        self._config.insert(.path("/socket.io/"), replacing: false)
-
         super.init()
 
         setConfigs(_config)
@@ -205,7 +203,7 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
             return
         }
 
-        engine?.send("0\(socket.nsp)", withData: [])
+        engine?.send("0\(socket.nsp),", withData: [])
     }
 
     /// Called when the manager has disconnected from socket.io.
@@ -233,7 +231,8 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
     ///
     /// - parameter socket: The socket to disconnect.
     open func disconnectSocket(_ socket: SocketIOClient) {
-        engine?.send("1\(socket.nsp)", withData: [])
+        engine?.send("1\(socket.nsp),", withData: [])
+
         socket.didDisconnect(reason: "Namespace leave")
     }
 
@@ -242,7 +241,7 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
     /// This will remove the socket for the manager's control, and make the socket instance useless and ready for
     /// releasing.
     ///
-    /// - parameter forNamespace: The namespace to disconnect from.
+    /// - parameter nsp: The namespace to disconnect from.
     open func disconnectSocket(forNamespace nsp: String) {
         guard let socket = nsps.removeValue(forKey: nsp) else {
             DefaultSocketLogger.Logger.log("Could not find socket for \(nsp) to disconnect",
@@ -283,7 +282,7 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
     /// Same as `emitAll(_:_:)`, but meant for Objective-C.
     ///
     /// - parameter event: The event to send.
-    /// - parameter withItems: The data to send with this event.
+    /// - parameter items: The data to send with this event.
     open func emitAll(_ event: String, withItems items: [Any]) {
         forAll {socket in
             socket.emit(event, with: items)
@@ -414,7 +413,8 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
 
     /// Tries to reconnect to the server.
     ///
-    /// This will cause a `disconnect` event to be emitted, as well as an `reconnectAttempt` event.
+    /// This will cause a `SocketClientEvent.reconnect` event to be emitted, as well as
+    /// `SocketClientEvent.reconnectAttempt` events.
     open func reconnect() {
         guard !reconnecting else { return }
 
@@ -508,7 +508,7 @@ open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDa
     /// Call one of the `disconnectSocket` methods on this class to remove the socket from manager control.
     /// Or call `SocketIOClient.disconnect()` on the client.
     ///
-    /// - parameter forNamespace: The namespace for the socket.
+    /// - parameter nsp: The namespace for the socket.
     /// - returns: A `SocketIOClient` for the given namespace.
     open func socket(forNamespace nsp: String) -> SocketIOClient {
         assert(nsp.hasPrefix("/"), "forNamespace must have a leading /")

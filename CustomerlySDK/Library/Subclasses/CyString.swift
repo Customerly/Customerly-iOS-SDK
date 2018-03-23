@@ -41,7 +41,7 @@ extension String {
         
         do{
             let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-            let matches = regex.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, self.characters.count))
+            let matches = regex.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, self.count))
             let nsHtmlContent = (self as NSString)
             let matchesArray = matches.map { nsHtmlContent.substring(with: $0.range)}
             
@@ -49,7 +49,7 @@ extension String {
             var resultArray : [String] = []
             for matchedString in matchesArray{
                 let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-                let match = detector.firstMatch(in: matchedString, options: [], range: NSMakeRange(0, matchedString.characters.count))
+                let match = detector.firstMatch(in: matchedString, options: [], range: NSMakeRange(0, matchedString.count))
                 let nsMatchedString = (matchedString as NSString)
                 resultArray.append(nsMatchedString.substring(with: match!.range))
             }
@@ -67,7 +67,7 @@ extension String {
         do{
             let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
             
-            let matches = regex.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, self.characters.count))
+            let matches = regex.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, self.count))
             let nsHtmlContent = (self as NSString)
             
             let matchesArray = matches.map { nsHtmlContent.substring(with: $0.range)}
@@ -155,7 +155,7 @@ extension String{
             return results
         }
         
-        let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.characters.count))
+        let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.count))
         
         guard let match = matches.first else { return results }
         
@@ -176,7 +176,7 @@ extension String{
 extension String{
     
     func base64Decoded() -> String? {
-        let rem = self.characters.count % 4
+        let rem = self.count % 4
         
         var ending = ""
         if rem > 0 {
