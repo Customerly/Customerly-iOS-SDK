@@ -48,20 +48,19 @@ class CySocket: NSObject {
     
     //Reconfigure socket with new user
     func reconfigure(connected: ((Bool?) -> Void)? = nil){
-        let socket = socketManager?.defaultSocket
-        socket?.disconnect()
+        socketManager?.defaultSocket.disconnect()
         configure()
         openConnection()
         
-        socket?.on("connect") {data, ack in
+        socketManager?.defaultSocket.on("connect") {data, ack in
             connected?(true)
         }
         
-        socket?.on("error", callback: { (data, ack) in
+        socketManager?.defaultSocket.on("error", callback: { (data, ack) in
             connected?(false)
         })
         
-        socket?.on("disconnect", callback: { (data, ack) in
+        socketManager?.defaultSocket.on("disconnect", callback: { (data, ack) in
             connected?(false)
         })
     }
