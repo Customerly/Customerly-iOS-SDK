@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CyMessageTableViewCell: UITableViewCell {
     
@@ -15,10 +16,11 @@ class CyMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageTextView: CyTextView!
     @IBOutlet weak var dateLabel: CyLabel!
-    @IBOutlet weak var imagesTableView: CyTableView?
+    
     @IBOutlet var messageViewLeftConstraint: NSLayoutConstraint?
     @IBOutlet var messageViewRightConstraint: NSLayoutConstraint?
-    @IBOutlet weak var imagesTableViewHeightConstraint: NSLayoutConstraint?
+    @IBOutlet weak var attachmentsStackView: CyStackView?
+    @IBOutlet weak var attachmentsStackViewHeightConstraint: NSLayoutConstraint?
     var vcThatShowThisCell : CyViewController?
     
     var imagesAttachments : [String] = []
@@ -65,47 +67,32 @@ class CyMessageTableViewCell: UITableViewCell {
     }
     
     func cellContainsImages(configForImages: Bool){
-        if configForImages == true{
-            imagesTableView?.register(UINib(nibName: "ImageMessageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "imageMessageCell")
-            imagesTableView?.delegate = self
-            imagesTableView?.dataSource = self
-            imagesTableView?.reloadData()
+        guard attachmentsStackView != nil else {
+            return
         }
-        else{
-            imagesTableView = nil
-            imagesTableView?.delegate = nil
-            imagesTableView?.dataSource = nil
-            imagesAttachments = []
+        for view in attachmentsStackView!.arrangedSubviews{
+            attachmentsStackView?.removeArrangedSubview(view)
+            view.removeFromSuperview()
         }
-    }
-}
-
-extension CyMessageTableViewCell: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imagesAttachments.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "imageMessageCell", for: indexPath) as! CyImageMassageTableViewCell
-        cell.backgroundColor = UIColor.clear
-        cell.messageImageView.kf.indicatorType = .activity
-        cell.messageImageView.kf.setImage(with: URL(string:imagesAttachments[indexPath.row]), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-    
-        imagesTableViewHeightConstraint?.constant = imagesTableView!.contentSize.height
-        return cell
-    }
-
-}
-
-
-extension CyMessageTableViewCell: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! CyImageMassageTableViewCell
-        if cell.messageImageView.image != nil{
-            let galleryVC = CustomerlyGalleryViewController.instantiate()
-            galleryVC.image = cell.messageImageView.image
-            vcThatShowThisCell?.present(galleryVC, animated: true, completion: nil)
+        
+        for url in imagesAttachments{
+            let imageViewAttachment = CyImageView()
+            imageViewAttachment.kf.indicatorType = .activity
+            imageViewAttachment.kf.setImage(with: URL(string: url))
+            imageViewAttachment.contentMode = .scaleAspectFill
+            imageViewAttachment.clipsToBounds = true
+            imageViewAttachment.isUserInteractionEnabled = true
+            let imageViewHeightConstraint = NSLayoutConstraint(item: imageViewAttachment, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 150)
+            imageViewHeightConstraint.priority = UILayoutPriority(rawValue: 999)
+            imageViewAttachment.addConstraint(imageViewHeightConstraint)
+            imageViewAttachment.touchUpInside(action: { [weak self] in
+                if imageViewAttachment.image != nil{
+                    let galleryVC = CustomerlyGalleryViewController.instantiate()
+                    galleryVC.image = imageViewAttachment.image
+                    self?.vcThatShowThisCell?.present(galleryVC, animated: true, completion: nil)
+                }
+            })
+            attachmentsStackView?.addArrangedSubview(imageViewAttachment)
         }
     }
 }
-

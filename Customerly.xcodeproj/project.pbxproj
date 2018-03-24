@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451753A62066C8E800E3D1BF /* CyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451753A52066C8E800E3D1BF /* CyStackView.swift */; };
 		451FCB9B1E2A8094006E315D /* CyTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FCB9A1E2A8094006E315D /* CyTokenModel.swift */; };
 		452745DC1DF9C027006215B1 /* CyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452745DB1DF9C027006215B1 /* CyTableView.swift */; };
 		45282DA11DFEF4160021E7F9 /* CySocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45282DA01DFEF4160021E7F9 /* CySocket.swift */; };
@@ -146,6 +147,7 @@
 
 /* Begin PBXFileReference section */
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
+		451753A52066C8E800E3D1BF /* CyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyStackView.swift; sourceTree = "<group>"; };
 		451FCB9A1E2A8094006E315D /* CyTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTokenModel.swift; sourceTree = "<group>"; };
 		452745DB1DF9C027006215B1 /* CyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTableView.swift; sourceTree = "<group>"; };
 		45282DA01DFEF4160021E7F9 /* CySocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CySocket.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				455A0FA21DF47ACB003EEA43 /* CyLabel.swift */,
 				452745DB1DF9C027006215B1 /* CyTableView.swift */,
 				456DE3EA1E351E6D008B115D /* CyCollectionView.swift */,
+				451753A52066C8E800E3D1BF /* CyStackView.swift */,
 				45FF40971E102FED002707C3 /* CyString.swift */,
 				45C240281E42496600FC046A /* CyInt.swift */,
 				45D16F141E412C500092E554 /* CySound.swift */,
@@ -850,6 +853,7 @@
 				454A9D401DEAFE060078F6D3 /* CyAdminModel.swift in Sources */,
 				4579C0451E1D988A0035DAC4 /* CySurveyResponseModel.swift in Sources */,
 				455A0F8F1DEE33EA003EEA43 /* CyMessageAttachmentRequestModel.swift in Sources */,
+				451753A62066C8E800E3D1BF /* CyStackView.swift in Sources */,
 				45FA19C71DECC5FD00D26059 /* CyDate.swift in Sources */,
 				45FB162A1F269ABD00F515DF /* CyErrorModel.swift in Sources */,
 				455CE1961DE0AB4500FF65DC /* CyTrackingRequestModel.swift in Sources */,
