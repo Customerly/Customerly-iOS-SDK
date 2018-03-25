@@ -22,7 +22,7 @@ class CyBanner: CyView {
     
     var viewBanner : CyBanner?
     var initialRect = CGRect(x: 15, y: -75, width: UIScreen.main.bounds.width-30, height: 75)
-    var finalRect = CGRect(x: 15, y: 25, width: UIScreen.main.bounds.width-30, height: 75)
+    var finalRect = CGRect(x: 15, y: 40 , width: UIScreen.main.bounds.width-30, height: 75)
     
     
     init(name: String?, subtitle: String? = nil, attributedSubtitle: NSAttributedString? = nil, image: UIImage? = nil){
