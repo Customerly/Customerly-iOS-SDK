@@ -8,7 +8,7 @@
 
 import Kingfisher
 
-open class Customerly: NSObject {
+@objc @objcMembers open class Customerly: NSObject {
     
     open static let sharedInstance = Customerly()
     var customerlyAppId: String = ""
