@@ -35,7 +35,7 @@
 /* Conversation List */
 "supportTitle" = "Asistencia";
 "youUser" = "Tú";
-"conversationListPoweredBy" = "Desarrollado por Customerly";
+"conversationListPoweredBy" = "Live Chat ⚡️ Customerly";
 "newConversationButton" = "Iniciar una nueva conversación";
 
 /* Chat View */
@@ -45,7 +45,7 @@
 "chatCancel" = "Cancelar";
 "chatEmail" = "Correo electrónico";
 "chatAdminLastActivity" = "Última actividad";
-"chatViewPoweredBy" = "Desarrollado por Customerly";
+"chatViewPoweredBy" = "Live Chat ⚡️ Customerly";
 "chatViewContactSupportLabel" = "Ponte en contacto con el servicio de asistencia escribiendo tu pregunta a continuación.";
 "chatViewTextFieldPlaceholder" = "Haz tu pregunta";
 "chatViewRichMessageText" = "Este mensaje ha sido enviado por correo electrónico. Toca para leerlo.";

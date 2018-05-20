@@ -35,7 +35,7 @@
 /* Conversation List */
 "supportTitle" = "Support";
 "youUser" = "You";
-"conversationListPoweredBy" = "Powered by Customerly";
+"conversationListPoweredBy" = "Live Chat ⚡️ Customerly";
 "newConversationButton" = "Start a new conversation";
 
 /* Chat View */
@@ -45,7 +45,7 @@
 "chatCancel" = "Cancel";
 "chatEmail" = "Email";
 "chatAdminLastActivity" = "Last activity";
-"chatViewPoweredBy" = "Powered by Customerly";
+"chatViewPoweredBy" = "Live Chat ⚡️ Customerly";
 "chatViewContactSupportLabel" = "Contact support writing your question below.";
 "chatViewTextFieldPlaceholder" = "Ask your question";
 "chatViewRichMessageText" = "This message was sent by email. Tap to read.";
