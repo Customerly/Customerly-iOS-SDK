@@ -1,21 +1,28 @@
 PODS:
-  - Kingfisher (4.6.4)
-  - ObjectMapper (3.1.0)
-  - Socket.IO-Client-Swift (13.1.2):
+  - Kingfisher (4.8.0)
+  - ObjectMapper (3.2.0)
+  - Socket.IO-Client-Swift (13.2.1):
     - Starscream (~> 3.0.2)
-  - Starscream (3.0.4)
+  - Starscream (3.0.5)
 
 DEPENDENCIES:
-  - Kingfisher (= 4.6.4)
-  - ObjectMapper (= 3.1.0)
-  - Socket.IO-Client-Swift (= 13.1.2)
+  - Kingfisher (= 4.8.0)
+  - ObjectMapper (= 3.2.0)
+  - Socket.IO-Client-Swift (= 13.2.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Kingfisher
+    - ObjectMapper
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
-  Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
-  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  Socket.IO-Client-Swift: 010d2f464bdd1849b859c0cd0500d68194401ac8
-  Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
+  Socket.IO-Client-Swift: b94943e2fb916fe2f95244b9ed21828634002280
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
 
-PODFILE CHECKSUM: cfeb69465428a84e42b340d646dddc352aaac20e
+PODFILE CHECKSUM: 005e672c1bc33ec74dd8a0181c1d9960608e0103
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
