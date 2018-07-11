@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CustomerlySDK"
-  s.version      = "2.0.2"
+  s.version      = "2.1.0"
   s.summary      = "customerly.io is the perfect tool to getting closer to your customers"
   s.description  = <<-DESC
   					customerly.io is the perfect tool to getting closer to your customers. Help them where they are with the customer support widget. Manage your audience based on their behaviours, build campaigns and automations.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.module_name  = 'CustomerlySDK'
   s.frameworks  = "UIKit", "Foundation", "AudioToolbox"
   s.requires_arc = true
-  s.dependency 'ObjectMapper', '3.1.0'
-  s.dependency 'Kingfisher', '4.6.4'
-  s.dependency 'Socket.IO-Client-Swift', '13.1.2'
+  s.dependency 'ObjectMapper', '3.2.0'
+  s.dependency 'Kingfisher', '4.8.0'
+  s.dependency 'Socket.IO-Client-Swift', '13.2.1'
 end
