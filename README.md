@@ -37,7 +37,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 
 ## CocoaPods
 
-To use the Customerly SDK we recommend to use Cocoapods 1.3.1 or later
+To use the Customerly SDK we recommend to use Cocoapods 1.5.0 or later
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
