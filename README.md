@@ -25,7 +25,7 @@ The Customerly iOS SDK is really simple to integrate in your apps, and allow you
 - [x] Track events
 - [x] Support via chat in real time
 - [x] Surveys
-- [x] English & Italian localizations
+- [x] English, Spanish & Italian localizations
 - [x] Objective-C compatibility
 - [x] Many more is coming....
 
