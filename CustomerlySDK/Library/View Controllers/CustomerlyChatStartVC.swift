@@ -37,7 +37,7 @@ class CustomerlyChatStartVC: CyViewController{
         //TableView configuration
         chatTableView.dataSource = self
         chatTableView.delegate = self
-        chatTableView.rowHeight = UITableViewAutomaticDimension
+        chatTableView.rowHeight = UITableView.automaticDimension
         chatTableView.estimatedRowHeight = 124
         chatTableView.register(UINib(nibName: "MessageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageCell")
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageWithImagesCell")
@@ -501,7 +501,7 @@ extension CustomerlyChatStartVC: CyImagePickerDelegate{
         if image != nil && CyStorage.getCyDataModel()?.user != nil{
             let messageAttachment = CyMessageAttachmentRequestModel(JSON: [:])
             messageAttachment?.filename = "cyimage.jpg"
-            messageAttachment?.base64 = UIImageJPEGRepresentation(image!, 0.7)?.base64EncodedString()
+            messageAttachment?.base64 = image!.jpegData(compressionQuality: 0.7)?.base64EncodedString()
             sendMessage(message: "", conversation_id: self.conversationId, attachment: messageAttachment)
         }
     }

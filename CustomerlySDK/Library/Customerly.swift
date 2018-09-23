@@ -10,7 +10,7 @@ import Kingfisher
 
 @objc @objcMembers open class Customerly: NSObject {
     
-    open static let sharedInstance = Customerly()
+    public static let sharedInstance = Customerly()
     var customerlyAppId: String = ""
     var customerlyIsOpen = false
     var bannerMessages: [CyMessageModel] = []

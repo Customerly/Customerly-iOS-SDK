@@ -196,7 +196,7 @@ class CustomerlySurveyViewController: CyViewController {
     func loadSurveyViewControllerComponent(viewControllerIdentifier: String) -> (UIViewController?){
         
         let controller = CyViewController.cyViewControllerFromStoryboard(storyboardName: "CustomerlySurvey", vcIdentifier: viewControllerIdentifier)
-        addChildViewController(controller)
+        addChild(controller)
         
         if let aView = controller.view{
             alertView.addSubview(aView)

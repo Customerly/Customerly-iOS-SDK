@@ -55,9 +55,9 @@ class CyButton: UIButton {
         self.layer.shadowRadius = self.shadowRadius
         
         if checkboxButton == true{
-            self.setImage(self.uncheckedImage, for: UIControlState.normal)
-            self.setImage(self.checkedImage, for: UIControlState.selected)
-            self.addTarget(self, action: #selector(buttonChecked), for: UIControlEvents.touchUpInside)
+            self.setImage(self.uncheckedImage, for: UIControl.State.normal)
+            self.setImage(self.checkedImage, for: UIControl.State.selected)
+            self.addTarget(self, action: #selector(buttonChecked), for: UIControl.Event.touchUpInside)
         }
         
     }

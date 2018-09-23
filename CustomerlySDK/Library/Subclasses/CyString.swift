@@ -203,7 +203,7 @@ extension String{
 //MARK: - AttributedString
 extension NSMutableAttributedString{
     func addAttributes(font: UIFont, color: UIColor){
-        self.addAttributes([NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: color], range: NSRange(location:0, length:self.length))
+        self.addAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color], range: NSRange(location:0, length:self.length))
     }
     
 }

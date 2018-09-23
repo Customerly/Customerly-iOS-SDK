@@ -25,7 +25,7 @@ class CyMessageTableViewCell: UITableViewCell {
     
     var imagesAttachments : [String] = []
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     }
@@ -38,7 +38,7 @@ class CyMessageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         messageView.layer.cornerRadius = 8.0
-        messageTextView.textContainerInset = UIEdgeInsetsMake(2, 0, -12, 0) //remove padding
+        messageTextView.textContainerInset = UIEdgeInsets.init(top: 2, left: 0, bottom: -12, right: 0) //remove padding
         adminAvatar.layer.cornerRadius = adminAvatar.frame.size.width/2 //Circular avatar for admin
         userAvatar.layer.cornerRadius = userAvatar.frame.size.width/2 //Circular avatar for user
         self.backgroundColor = UIColor.clear

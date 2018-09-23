@@ -11,14 +11,14 @@ import AudioToolbox
 
 open class CySound: NSObject {
     
-    open static func playNotification(){
+    public static func playNotification(){
         if let url = CyBundle.getBundle().url(forResource: "notification", withExtension: "m4r"){
             CySound.playSoundFromFile(url: url)
             return
         }
     }
     
-    open static func playSoundFromFile(url: URL){
+    public static func playSoundFromFile(url: URL){
         var soundId: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(url as CFURL, &soundId)
         

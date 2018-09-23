@@ -24,7 +24,7 @@ class CyTableView: UITableView {
         pullToRefresh?.backgroundColor = UIColor.clear
         pullToRefresh?.tintColor = UIColor.gray
         pullToRefresh?.attributedTitle = NSAttributedString(string: "pullToRefresh".localized(comment: "Extra"))
-        pullToRefresh?.addTarget(self, action: #selector(refreshStart), for: UIControlEvents.valueChanged)
+        pullToRefresh?.addTarget(self, action: #selector(refreshStart), for: UIControl.Event.valueChanged)
         self.addSubview(pullToRefresh!)
         self.refresh = action
     }

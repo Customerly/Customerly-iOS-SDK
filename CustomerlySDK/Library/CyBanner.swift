@@ -62,7 +62,7 @@ class CyBanner: CyView {
     
     class func topWindow() -> UIWindow? {
         for window in UIApplication.shared.windows.reversed() {
-            if window.windowLevel == UIWindowLevelNormal && !window.isHidden && window.frame != CGRect.zero { return window }
+            if window.windowLevel == UIWindow.Level.normal && !window.isHidden && window.frame != CGRect.zero { return window }
         }
         return nil
     }

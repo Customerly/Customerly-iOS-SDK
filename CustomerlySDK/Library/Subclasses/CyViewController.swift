@@ -58,18 +58,18 @@ public class CyViewController: UIViewController {
     func showAlert(title: String, message: String, buttonTitle: String) {
         
         self.view.endEditing(true)
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
     
     func showAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> ()){
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default) { (action) -> Void in
+        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default) { (action) -> Void in
             completion()
         }
         
@@ -80,12 +80,12 @@ public class CyViewController: UIViewController {
     
     
     func showAlert(title: String, message: String, buttonTitle: String, buttonCancel:String, completion: @escaping () -> (), cancel: @escaping () -> ()){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default) { (action) -> Void in
+        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default) { (action) -> Void in
             completion()
         }
-        let cancelAction = UIAlertAction(title: buttonCancel, style: UIAlertActionStyle.cancel) { (action) -> Void in
+        let cancelAction = UIAlertAction(title: buttonCancel, style: UIAlertAction.Style.cancel) { (action) -> Void in
             cancel()
         }
         
@@ -95,19 +95,19 @@ public class CyViewController: UIViewController {
     }
     
     func showAlertWithTextField(title: String, message: String, buttonTitle: String, buttonCancel:String, textFieldPlaceholder: String, completion: @escaping (String?) -> (), cancel: @escaping () -> ()){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         alertController.addTextField { (textField) in
             textField.placeholder = textFieldPlaceholder
         }
         
-        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default) { (action) -> Void in
+        let okAction = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default) { (action) -> Void in
             if let textField = alertController.textFields?.last{
                 completion(textField.text)
             }
             cancel()
         }
-        let cancelAction = UIAlertAction(title: buttonCancel, style: UIAlertActionStyle.cancel) { (action) -> Void in
+        let cancelAction = UIAlertAction(title: buttonCancel, style: UIAlertAction.Style.cancel) { (action) -> Void in
             cancel()
         }
         
@@ -122,12 +122,12 @@ public class CyViewController: UIViewController {
     func showLoader(view: UIView) -> CyView{
         //LoaderView with view size, with indicator placed on center of loaderView
         let loaderView = CyView(frame: view.bounds)
-        let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         indicator.center = loaderView.center
         loaderView.addSubview(indicator)
         view.addSubview(loaderView)
         indicator.startAnimating()
-        loaderView.bringSubview(toFront: view)
+        loaderView.bringSubviewToFront(view)
         return loaderView
     }
     
@@ -215,9 +215,12 @@ public class CyViewController: UIViewController {
 }
 
 extension CyViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         var  chosenImage = UIImage()
-        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         imagePickerDelegate?.imageFromPicker!(image: chosenImage)
         picker.dismiss(animated: true, completion: nil)
     }
@@ -264,4 +267,14 @@ extension UIViewController{
         }
         self.present(safariVC, animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

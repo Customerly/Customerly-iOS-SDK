@@ -93,7 +93,7 @@ open class ImageCache {
     fileprivate var fileManager: FileManager!
     
     ///The disk cache location.
-    open let diskCachePath: String
+    public let diskCachePath: String
   
     /// The default file extension appended to cached files.
     open var pathExtension: String?
@@ -131,8 +131,6 @@ open class ImageCache {
                       the `.cachesDirectory` in of your app will be used.
     - parameter diskCachePathClosure: Closure that takes in an optional initial path string and generates
                       the final disk cache path. You could use it to fully customize your cache path.
-    
-    - returns: The cache object.
     */
     public init(name: String,
                 path: String? = nil,
@@ -158,11 +156,11 @@ open class ImageCache {
         
 #if !os(macOS) && !os(watchOS)
         NotificationCenter.default.addObserver(
-            self, selector: #selector(clearMemoryCache), name: .UIApplicationDidReceiveMemoryWarning, object: nil)
+            self, selector: #selector(clearMemoryCache), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
         NotificationCenter.default.addObserver(
-            self, selector: #selector(cleanExpiredDiskCache), name: .UIApplicationWillTerminate, object: nil)
+            self, selector: #selector(cleanExpiredDiskCache), name: UIApplication.willTerminateNotification, object: nil)
         NotificationCenter.default.addObserver(
-            self, selector: #selector(backgroundCleanExpiredDiskCache), name: .UIApplicationDidEnterBackground, object: nil)
+            self, selector: #selector(backgroundCleanExpiredDiskCache), name: UIApplication.didEnterBackgroundNotification, object: nil)
 #endif
     }
     
@@ -322,7 +320,7 @@ open class ImageCache {
                                         toDisk: false,
                                         completionHandler: nil)
                             options.callbackDispatchQueue.safeAsync {
-                                completionHandler(imageModifier.modify(result), .memory)
+                                completionHandler(imageModifier.modify(result), .disk)
                                 sSelf = nil
                             }
                         }
@@ -542,7 +540,7 @@ open class ImageCache {
 
         func endBackgroundTask(_ task: inout UIBackgroundTaskIdentifier) {
             sharedApplication.endBackgroundTask(task)
-            task = UIBackgroundTaskInvalid
+            task = UIBackgroundTaskIdentifier.invalid
         }
         
         var backgroundTask: UIBackgroundTaskIdentifier!
