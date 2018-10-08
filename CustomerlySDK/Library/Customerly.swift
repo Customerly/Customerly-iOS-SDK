@@ -341,7 +341,7 @@ import Kingfisher
     }
     
     //MARK: Chat
-    func openSupportConversationOnMessage(message: CyMessageModel?){
+    func openSupportConversationOnMessage(message: CyMessageModel?, completion: @escaping () -> Void){
         
         guard message != nil else {
             return
@@ -352,7 +352,9 @@ import Kingfisher
                 let chatStartVC = CustomerlyChatStartVC.instantiate()
                 chatStartVC.conversationId = message?.conversation_id
                 chatStartVC.addLeftCloseButton()
-                UIViewController.topViewController()?.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: nil)
+                UIViewController.topViewController()?.present(CustomerlyNavigationController(rootViewController: chatStartVC), animated: true, completion: {
+                    completion()
+                })
             }
         }
     }
@@ -430,12 +432,13 @@ import Kingfisher
         banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         self.bannerMessages.append(message!)
         banner.show(didTapBlock: {
-            self.openSupportConversationOnMessage(message: message)
-            if message?.rich_mail == true{
-                if message?.rich_mail_url != nil, let url = URL(string: message!.rich_mail_url!){
-                    UIViewController.topViewController()?.openSafariVC(url: url)
+            self.openSupportConversationOnMessage(message: message, completion: {
+                if message?.rich_mail == true{
+                    if message?.rich_mail_url != nil, let url = URL(string: message!.rich_mail_url!){
+                        UIViewController.topViewController()?.openSafariVC(url: url)
+                    }
                 }
-            }
+            })
         })
         
         banner.dismissed {
