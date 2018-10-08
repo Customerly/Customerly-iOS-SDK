@@ -254,12 +254,12 @@ extension UIViewController{
         if #available(iOS 10.0, *) {
             if let app_config = CyStorage.getCyDataModel()?.app_config{
                 safariVC.preferredBarTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
-                safariVC.preferredControlTintColor = app_config.widget_color != nil ? UIColor(hexString: app_config.widget_color!) : base_color_template
+                safariVC.preferredControlTintColor = safariVC.preferredBarTintColor?.contrastColor()
             }
             
             if user_color_template != nil{
                 safariVC.preferredBarTintColor = user_color_template
-                safariVC.preferredControlTintColor = user_color_template
+                safariVC.preferredControlTintColor = user_color_template?.contrastColor()
             }
             
         } else {
