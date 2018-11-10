@@ -1,10 +1,9 @@
-<h1>Live Chat SDK for iOS Customerly</h1>
-<h2> The Best-in-Class Live Chat for your mobile apps. Integrate painlessly the Live Chat for your customer support inside any iOS App with our Customerly Live Chat SDK </h2>
-
 <p align="left">
 <a href="http://www.customerly.io">
-<img src="https://customerly.github.io/logo.svg" height="50">
+  <img src="https://customerly.github.io/logo.svg" height="50" alt="Live Chat ios SDK Help Desk"></a>
 </p>
+<h1>Live Chat SDK for iOS Customerly</h1>
+<h2> The Best-in-Class Live Chat for your mobile apps. Integrate painlessly the Live Chat for your customer support inside any iOS App with <a href="http://www.customerly.io/go/live-chat?utm_source=github&utm_medium=readme&utm_campaign=iossdk">Customerly Live Chat </a> SDK </h2>
 
   [![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
   [![Language](https://img.shields.io/badge/Objective--C-compatible-blue.svg)]()
@@ -21,13 +20,12 @@ The Customerly Live Chat iOS SDK is really simple to integrate in your apps, and
 </p>
 
 ## Features
-
-- [x] Register your users
+- [x] Support via live chat in real time
+- [x] Track your users
 - [x] Set attributes
 - [x] Set company attributes
 - [x] Track events
-- [x] Support via chat in real time
-- [x] Surveys
+- [x] Run Surveys
 - [x] English, Spanish & Italian localizations
 - [x] Objective-C compatibility
 - [x] Many more is coming....
