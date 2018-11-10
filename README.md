@@ -16,7 +16,7 @@ Run Surveys directly into your mobile apps and get the responses in one place.
 The Customerly Live Chat iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
 
 <p align="center">
-  <img src="https://github.com/customerly/customerly.github.io/blob/master/ios/resources/chat-preview.png?raw=true" width=500 alt="Icon"/>
+  <img src="https://github.com/customerly/customerly.github.io/blob/master/ios/resources/chat-preview.png?raw=true" width=500 alt="Live Chat Help Desk ios SDK "/>
 </p>
 
 ## Features
