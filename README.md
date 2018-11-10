@@ -1,20 +1,20 @@
 <h1>Live Chat SDK for iOS Customerly</h1>
-<h2> The most advanced and perfectly integrated Live Chat for your mobile apps. Integrate a Live Chat for your customer support inside any iOS App with our Customerly SDK </h2>
+<h2> The Best-in-Class Live Chat for your mobile apps. Integrate painlessly the Live Chat for your customer support inside any iOS App with our Customerly Live Chat SDK </h2>
 
-<p align="center">
+<p align="left">
 <a href="http://www.customerly.io">
-<img src="https://customerly.github.io/logo.svg">
+<img src="https://customerly.github.io/logo.svg" height="50">
 </p>
 
   [![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
   [![Language](https://img.shields.io/badge/Objective--C-compatible-blue.svg)]()
   [![License](https://img.shields.io/badge/license-Apache%20License%202.0-red.svg)]()
   
-**customerly.io** is the perfect tool to getting closer to your customers. Help them where they are with the customer support widget. Manage your audience based on their behaviours, build campaigns and automations.
+**Customerly** is the most complete <strong>Live Chat</strong> solution with Help Desk for your mobile apps. Help them where they are with the customer support widget. Easy to integrate Live Chat, once integrated you can track user data and gather user feedback. 
 
-Deliver Surveys directly into your app and get the responses in one place. Study your Net Promote Score and Skyrocket your Online Business right now.
+Run Surveys directly into your mobile apps and get the responses in one place. 
 
-The Customerly iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
+The Customerly Live Chat iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
 
 <p align="center">
   <img src="https://github.com/customerly/customerly.github.io/blob/master/ios/resources/chat-preview.png?raw=true" width=500 alt="Icon"/>
