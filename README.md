@@ -1,3 +1,6 @@
+<h1>Live Chat SDK for iOS Customerly</h1>
+<h2> The most advanced and perfectly integrated Live Chat for your mobile apps. Integrate a Live Chat for your customer support inside any iOS App with our Customerly SDK </h2>
+
 <p align="center">
 <a href="http://www.customerly.io">
 <img src="https://customerly.github.io/logo.svg">
