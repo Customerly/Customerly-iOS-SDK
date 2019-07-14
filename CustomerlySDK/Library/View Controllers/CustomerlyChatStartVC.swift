@@ -356,7 +356,7 @@ class CustomerlyChatStartVC: CyViewController{
     }
     
     @IBAction func openPoweredBy(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: CUSTOMERLY_URL)!)
+        UIApplication.shared.open(URL(string: CUSTOMERLY_URL)!, options: [:], completionHandler: nil)
     }
 }
 
@@ -422,11 +422,11 @@ extension CustomerlyChatStartVC: UITableViewDataSource{
             cell?.vcThatShowThisCell = self
             
             if message.account_id != nil{
-                cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell?.adminAvatar.kf.setImage(with: adminImageURL(id: message.account_id, pxSize: 100), placeholder: nil)
                 cell?.setAdminVisual()
                 cell?.adminAvatar.isHidden = !message.showAvatar
             }else{
-                cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                cell?.userAvatar.kf.setImage(with: userImageURL(id: message.user_id, pxSize: 100), placeholder: nil)
                 cell?.setUserVisual(bubbleColor: self.navigationController?.navigationBar.barTintColor)
                 cell?.userAvatar.isHidden = !message.showAvatar
             }

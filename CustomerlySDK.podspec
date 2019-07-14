@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CustomerlySDK"
-  s.version      = "2.2.1"
+  s.version      = "3.0.0"
   s.summary      = "customerly.io is the perfect tool to getting closer to your customers"
   s.description  = <<-DESC
   					customerly.io is the perfect tool to getting closer to your customers. Help them where they are with the customer support widget. Manage your audience based on their behaviours, build campaigns and automations.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "Apache License 2.0", :file => "LICENSE" }
   s.author             = { "Paolo Musolino" => "info@codeido.com" }
   s.social_media_url   = "https://www.facebook.com/customerly/"
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/customerly/Customerly-iOS-SDK.git", :tag => s.version }
   s.source_files  = "CustomerlySDK/Library/**/*.swift"
   s.resource_bundles = {
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.module_name  = 'CustomerlySDK'
   s.frameworks  = "UIKit", "Foundation", "AudioToolbox"
   s.requires_arc = true
-  s.dependency 'ObjectMapper', '3.3.0'
-  s.dependency 'Kingfisher', '4.10.0'
-  s.dependency 'Socket.IO-Client-Swift', '13.3.0'
+  s.dependency 'ObjectMapper', '3.5.1'
+  s.dependency 'Kingfisher', '5.7.0'
+  s.dependency 'Socket.IO-Client-Swift', '15.1.0'
 end

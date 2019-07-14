@@ -32,13 +32,13 @@ The Customerly Live Chat iOS SDK is really simple to integrate in your apps, and
 
 ## Requirements
 
-- iOS 9.0+
-- Xcode 9+
-- Swift 4 or Objective-C
+- iOS 10.0+
+- Xcode 10.2.1+
+- Swift 5 or Objective-C
 
 ## CocoaPods
 
-To use the Customerly SDK we recommend to use Cocoapods 1.5.0 or later
+To use the Customerly SDK we recommend to use Cocoapods 1.7.0 or later
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
@@ -51,7 +51,7 @@ To integrate the Customerly SDK into your Xcode project using CocoaPods, specify
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 pod 'CustomerlySDK'
@@ -64,7 +64,7 @@ $ pod install
 ```
 
 ## Usage
-If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.3.1 or later to install the SDK.
+If you are setting up a new project, you need to install the SDK. You may have already completed this as part of creating a Customerly account. We recommend using CocoaPods 1.7.0 or later to install the SDK.
 
 First of all, if you don't have an Xcode project yet, create one, then install the SDK following the paragraph `Cocoapods`.
 

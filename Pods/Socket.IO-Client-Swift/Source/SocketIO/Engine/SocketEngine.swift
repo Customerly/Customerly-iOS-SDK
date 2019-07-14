@@ -49,7 +49,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
     /// A queue of engine.io messages waiting for POSTing
     ///
     /// **You should not touch this directly**
-    public var postWait = [String]()
+    public var postWait = [Post]()
 
     /// `true` if there is an outstanding poll. Trying to poll before the first is done will cause socket.io to
     /// disconnect us.
@@ -114,6 +114,9 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
     @available(*, deprecated, message: "No longer needed, if we're not polling, then we must be doing websockets")
     public private(set) var websocket = false
 
+    /// When `true`, the WebSocket `stream` will be configured with the enableSOCKSProxy `true`.
+    public private(set) var enableSOCKSProxy = false
+
     /// The WebSocket for this engine.
     public private(set) var ws: WebSocket?
 
@@ -167,6 +170,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         self.init(client: client, url: url, config: options?.toSocketConfiguration() ?? [])
     }
 
+    /// :nodoc:
     deinit {
         DefaultSocketLogger.Logger.log("Engine is being released", type: SocketEngine.logType)
         closed = true
@@ -281,9 +285,11 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
     private func createWebSocketAndConnect() {
         var req = URLRequest(url: urlWebSocketWithSid)
 
-        addHeaders(to: &req, includingCookies: session?.configuration.httpCookieStorage?.cookies)
+        addHeaders(to: &req, includingCookies: session?.configuration.httpCookieStorage?.cookies(for: urlPollingWithSid))
 
-        ws = WebSocket(request: req)
+        let stream = FoundationStream()
+        stream.enableSOCKSProxy = enableSOCKSProxy
+        ws = WebSocket(request: req, stream: stream)
         ws?.callbackQueue = engineQueue
         ws?.enableCompression = compress
         ws?.disableSSLCertValidation = selfSigned
@@ -313,6 +319,12 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
             this.parseEngineMessage(message)
         }
 
+        ws?.onHttpResponseHeaders = {[weak self] headers in
+            guard let this = self else { return }
+
+            this.client?.engineDidWebsocketUpgrade(headers: headers)
+        }
+
         ws?.connect()
     }
 
@@ -340,7 +352,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         if polling {
             disconnectPolling(reason: reason)
         } else {
-            sendWebSocketMessage("", withType: .close, withData: [])
+            sendWebSocketMessage("", withType: .close, withData: [], completion: nil)
             closeOutEngine(reason: reason)
         }
     }
@@ -348,7 +360,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
     // We need to take special care when we're polling that we send it ASAP
     // Also make sure we're on the emitQueue since we're touching postWait
     private func disconnectPolling(reason: String) {
-        postWait.append(String(SocketEnginePacketType.close.rawValue))
+        postWait.append((String(SocketEnginePacketType.close.rawValue), {}))
 
         doRequest(for: createRequestForPostWithPostWait()) {_, _, _ in }
         closeOutEngine(reason: reason)
@@ -366,7 +378,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
 
         DefaultSocketLogger.Logger.log("Switching to WebSockets", type: SocketEngine.logType)
 
-        sendWebSocketMessage("", withType: .upgrade, withData: [])
+        sendWebSocketMessage("", withType: .upgrade, withData: [], completion: nil)
         polling = false
         fastUpgrade = false
         probing = false
@@ -384,7 +396,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         DefaultSocketLogger.Logger.log("Flushing probe wait", type: SocketEngine.logType)
 
         for waiter in probeWait {
-            write(waiter.msg, withType: waiter.type, withData: waiter.data)
+            write(waiter.msg, withType: waiter.type, withData: waiter.data, completion: waiter.completion)
         }
 
         probeWait.removeAll(keepingCapacity: false)
@@ -398,7 +410,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         guard let ws = self.ws else { return }
 
         for msg in postWait {
-            ws.write(string: msg)
+            ws.write(string: msg.msg, completion: msg.completion)
         }
 
         postWait.removeAll(keepingCapacity: false)
@@ -538,15 +550,14 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
 
         // Server is not responding
         if pongsMissed > pongsMissedMax {
-            client?.engineDidClose(reason: "Ping timeout")
-
+            closeOutEngine(reason: "Ping timeout")
             return
         }
 
         pongsMissed += 1
-        write("", withType: .ping, withData: [])
+        write("", withType: .ping, withData: [], completion: nil)
 
-        engineQueue.asyncAfter(deadline: DispatchTime.now() + .milliseconds(pingInterval)) {[weak self, id = self.sid] in
+        engineQueue.asyncAfter(deadline: .now() + .milliseconds(pingInterval)) {[weak self, id = self.sid] in
             // Make sure not to ping old connections
             guard let this = self, this.sid == id else { return }
 
@@ -588,6 +599,8 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
                 self.security = security
             case .compress:
                 self.compress = true
+            case .enableSOCKSProxy:
+                self.enableSOCKSProxy = true
             default:
                 continue
             }
@@ -600,7 +613,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
             DefaultSocketLogger.Logger.log("Upgrading transport to WebSockets", type: SocketEngine.logType)
 
             fastUpgrade = true
-            sendPollMessage("", withType: .noop, withData: [])
+            sendPollMessage("", withType: .noop, withData: [], completion: nil)
             // After this point, we should not send anymore polling messages
         }
     }
@@ -610,11 +623,15 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
     /// - parameter msg: The message to send.
     /// - parameter type: The type of this message.
     /// - parameter data: Any data that this message has.
-    open func write(_ msg: String, withType type: SocketEnginePacketType, withData data: [Data]) {
+    /// - parameter completion: Callback called on transport write completion.
+    open func write(_ msg: String, withType type: SocketEnginePacketType, withData data: [Data], completion: (() -> ())? = nil) {
         engineQueue.async {
-            guard self.connected else { return }
+            guard self.connected else {
+                completion?()
+                return
+            }
             guard !self.probing else {
-                self.probeWait.append((msg, type, data))
+                self.probeWait.append((msg, type, data, completion))
 
                 return
             }
@@ -622,11 +639,11 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
             if self.polling {
                 DefaultSocketLogger.Logger.log("Writing poll: \(msg) has data: \(data.count != 0)",
                                                type: SocketEngine.logType)
-                self.sendPollMessage(msg, withType: type, withData: data)
+                self.sendPollMessage(msg, withType: type, withData: data, completion: completion)
             } else {
                 DefaultSocketLogger.Logger.log("Writing ws: \(msg) has data: \(data.count != 0)",
                                                type: SocketEngine.logType)
-                self.sendWebSocketMessage(msg, withType: type, withData: data)
+                self.sendWebSocketMessage(msg, withType: type, withData: data, completion: completion)
             }
         }
     }
@@ -662,7 +679,9 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
         connected = false
         polling = true
 
-        if let reason = error?.localizedDescription {
+        if let error = error as? WSError {
+            didError(reason: "\(error.message). code=\(error.code), type=\(error.type)")
+        } else if let reason = error?.localizedDescription {
             didError(reason: reason)
         } else {
             client?.engineDidClose(reason: "Socket Disconnected")

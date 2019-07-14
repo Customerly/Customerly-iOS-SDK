@@ -41,7 +41,7 @@ import Kingfisher
         user_color_template = widgetColor
         
         //Image cache expiration after one day
-        ImageCache.default.maxCachePeriodInSecond = 86400
+        ImageCache.default.diskStorage.config.expiration = StorageExpiration.days(86400)
         
         //If user is not stored, ping ghost, else ping registered. Connect to socket
         ping(success: { () in
@@ -429,7 +429,7 @@ import Kingfisher
         }
         
         let banner = CyBanner(name: message?.account?.name ?? "supportTitle".localized(comment: "Banner Title"), attributedSubtitle: messageContent?.attributedStringFromHTML(font: UIFont(name: "Helvetica", size: 14.0)!, color:  UIColor(hexString: "#666666")), image: nil)
-        banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        banner.viewBanner?.avatarImageView?.kf.setImage(with: adminImageURL(id: message?.account_id, pxSize: 100), placeholder: nil)
         self.bannerMessages.append(message!)
         banner.show(didTapBlock: {
             self.openSupportConversationOnMessage(message: message, completion: {

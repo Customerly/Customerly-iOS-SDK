@@ -110,7 +110,7 @@ class CustomerlySurveyViewController: CyViewController {
                 backButton.isHidden = true
                 surveyTitleLabel.attributedText = surveyModel.thankyou_text?.attributedStringFromHTML(font:UIFont(name: "Helvetica", size: 14.0)!, color: UIColor.black)
                 alertView.addConstraints([
-                    NSLayoutConstraint(item: surveyTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
+                    NSLayoutConstraint(item: surveyTitleLabel!, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1, constant: -8)
                     ])
                 return
             }
