@@ -24,4 +24,5 @@ Pod::Spec.new do |s|
   s.dependency 'ObjectMapper', '3.5.1'
   s.dependency 'Kingfisher', '5.7.0'
   s.dependency 'Socket.IO-Client-Swift', '15.1.0'
+  s.swift_versions = ['4.2', '5.0']
 end
