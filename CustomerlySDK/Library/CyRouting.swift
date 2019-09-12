@@ -67,7 +67,8 @@ enum CyRouting{
         urlRequest.httpBody = CyRouting.createDataFromJSONDictionary(dataToSend: touple.parameters)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        
+        urlRequest.addValue("ios", forHTTPHeaderField: "X-Customerly-sdk")
+
         return urlRequest
     }
     
