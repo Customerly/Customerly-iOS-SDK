@@ -40,7 +40,7 @@ class CySocket: NSObject {
                     tokenDictionary["is_mobile"] = true
                     let tokenBase64 = DictionaryToJSONString(dictionary: tokenDictionary)?.base64Encoded()
                     
-                    socketManager = SocketManager(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? ""])])
+                    socketManager = SocketManager(socketURL: websocketUrl!, config: [.log(false), .secure(true), .forceNew(true), .connectParams(["token":tokenBase64 ?? ""]), .reconnectAttempts(-1), .reconnectWait(1), .forceWebsockets(true)])
                 }
             }
         }
