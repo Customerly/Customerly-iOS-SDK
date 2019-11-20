@@ -22,6 +22,11 @@ public class CyViewController: UIViewController {
         //Photo delegate
         imagePickerController.delegate = self
         
+        // Always adopt a light interface style.
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
     }
     
     override public func viewDidAppear(_ animated: Bool) {
