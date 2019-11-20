@@ -5,7 +5,7 @@
 <h1>Live Chat iOS SDK from Customerly</h1>
 <h2> The Best-in-Class Live Chat for your mobile apps. Integrate painlessly the Live Chat for your customer support inside any iOS App with <a href="http://www.customerly.io/go/live-chat?utm_source=github&utm_medium=readme&utm_campaign=iossdk">Customerly Live Chat </a> SDK </h2>
 
-  [![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
+  [![Language](https://img.shields.io/badge/Swift-5-orange.svg)]()
   [![Language](https://img.shields.io/badge/Objective--C-compatible-blue.svg)]()
   [![License](https://img.shields.io/badge/license-Apache%20License%202.0-red.svg)]()
   
