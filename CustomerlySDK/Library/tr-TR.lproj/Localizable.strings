@@ -1,0 +1,61 @@
+/*
+ Localizable.strings
+ Customerly
+ 
+ Created by Soner Güler on 24/02/20.
+ Copyright © 2020 Customerly. All rights reserved.
+ */
+
+/* Image Picker Action Sheet */
+"actionSheetImagePicker_title" = "Dosya Seç";
+"actionSheetImagePicker_cancel" = "Vazgeç";
+"actionSheetImagePicker_takePhoto" = "Fotoğraf Çek";
+"actionSheetImagePicker_imageGallery" = "Galeri";
+"actionSheetImagePicker_error" = "Hata";
+"actionSheetImagePicker_confirm" = "Tamam";
+"actionSheetImagePicker_error_cameraNotAvailable" = "Hay Aksi! Kamera kullanılabilir değil";
+"actionSheetImagePicker_error_galleryNotAvailable" = "Hay Aksi! Galeri kullanılabilir değil";
+
+/* Time Ago Since Date */
+"timeAgoSinceDate_yearsAgo %d" = "%dy önce";
+"timeAgoSinceDate_yearAgo %d" = "%dy önce";
+"timeAgoSinceDate_monthsAgo %d" = "%dm önce";
+"timeAgoSinceDate_monthAgo %d" = "%dm önce";
+"timeAgoSinceDate_weeksAgo %d" = "%dw önce";
+"timeAgoSinceDate_weekAgo %d" = "%dw önce";
+"timeAgoSinceDate_daysAgo %d" = "%dd önce";
+"timeAgoSinceDate_dayAgo %d" = "%dd önce";
+"timeAgoSinceDate_hoursAgo %d" = "%dh önce";
+"timeAgoSinceDate_hourAgo %d" = "%dh önce";
+"timeAgoSinceDate_minutesAgo %d" = "%dm önce";
+"timeAgoSinceDate_minuteAgo %d" = "%dm önce";
+"timeAgoSinceDate_secondsAgo %d" = "%ds önce";
+"timeAgoSinceDate_justNow" = "Şimdi";
+
+/* Conversation List */
+"supportTitle" = "Destek";
+"youUser" = "Sen";
+"conversationListPoweredBy" = "Canlı Destek ⚡️ Customerly";
+"newConversationButton" = "Yeni bir konuşma başlat";
+
+/* Chat View */
+"chatTitleView" = "Sohbet";
+"chatInsertEmail" = "Eposta adresini gir";
+"chatOK" = "Tamam";
+"chatCancel" = "Vazgeç";
+"chatEmail" = "Eposta";
+"chatAdminLastActivity" = "Son hareketler";
+"chatViewPoweredBy" = "Canlı Destek ⚡️ Customerly";
+"chatViewContactSupportLabel" = "Sorunu aşağı yazarak konuşmaya başla.";
+"chatViewTextFieldPlaceholder" = "Soru sor";
+"chatViewRichMessageText" = "Bu mesaj eposta ile gönderildi. Okumak için dokununuz.";
+
+/* Survey View */
+"surveyTitleView" = "Anket";
+"confirmSliderButton %d" = "Doğrula %d";
+"confirmButton" = "Doğrula";
+
+/* Extra */
+"pullToRefresh" = "Çek ve Yenile";
+
+
