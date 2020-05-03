@@ -202,7 +202,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
