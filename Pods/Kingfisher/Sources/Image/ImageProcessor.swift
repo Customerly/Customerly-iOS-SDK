@@ -27,7 +27,7 @@
 import Foundation
 import CoreGraphics
 
-#if canImport(AppKit)
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 #endif
 
@@ -41,7 +41,7 @@ public enum ImageProcessItem {
     
     /// Input image. The processor should provide a way to apply
     /// processing on this `image` and return the result image.
-    case image(Image)
+    case image(KFCrossPlatformImage)
     
     /// Input data. The processor should provide a way to apply
     /// processing on this `image` and return the result image.
@@ -79,7 +79,7 @@ public protocol ImageProcessor {
     /// `KingfisherParsedOptionsInfo` as parameter instead.
     @available(*, deprecated,
     message: "Deprecated. Implement the method with same name but with `KingfisherParsedOptionsInfo` instead.")
-    func process(item: ImageProcessItem, options: KingfisherOptionsInfo) -> Image?
+    func process(item: ImageProcessItem, options: KingfisherOptionsInfo) -> KFCrossPlatformImage?
 
     /// Processes the input `ImageProcessItem` with this processor.
     ///
@@ -95,11 +95,11 @@ public protocol ImageProcessor {
     ///         to keep the processing pipeline continuing.
     /// - Note: Most processor only supports CG-based images. watchOS is not supported for processors containing
     ///         a filter, the input image will be returned directly on watchOS.
-    func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image?
+    func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage?
 }
 
 extension ImageProcessor {
-    public func process(item: ImageProcessItem, options: KingfisherOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherOptionsInfo) -> KFCrossPlatformImage? {
         return process(item: item, options: KingfisherParsedOptionsInfo(options))
     }
 }
@@ -133,11 +133,11 @@ func !=(left: ImageProcessor, right: ImageProcessor) -> Bool {
     return !(left == right)
 }
 
-typealias ProcessorImp = ((ImageProcessItem, KingfisherParsedOptionsInfo) -> Image?)
+typealias ProcessorImp = ((ImageProcessItem, KingfisherParsedOptionsInfo) -> KFCrossPlatformImage?)
 struct GeneralProcessor: ImageProcessor {
     let identifier: String
     let p: ProcessorImp
-    func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         return p(item, options)
     }
 }
@@ -167,7 +167,7 @@ public struct DefaultImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
@@ -228,7 +228,7 @@ public struct BlendImageProcessor: ImageProcessor {
     public let alpha: CGFloat
 
     /// Background color of the output image. If `nil`, it will stay transparent.
-    public let backgroundColor: Color?
+    public let backgroundColor: KFCrossPlatformColor?
 
     /// Creates a `BlendImageProcessor`.
     ///
@@ -237,7 +237,7 @@ public struct BlendImageProcessor: ImageProcessor {
     ///   - alpha: Alpha will be used when blend image. From 0.0 to 1.0. 1.0 means solid image,
     ///            0.0 means transparent image (not visible at all). Default is 1.0.
     ///   - backgroundColor: Background color to apply for the output image. Default is `nil`.
-    public init(blendMode: CGBlendMode, alpha: CGFloat = 1.0, backgroundColor: Color? = nil) {
+    public init(blendMode: CGBlendMode, alpha: CGFloat = 1.0, backgroundColor: KFCrossPlatformColor? = nil) {
         self.blendMode = blendMode
         self.alpha = alpha
         self.backgroundColor = backgroundColor
@@ -256,13 +256,13 @@ public struct BlendImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.image(withBlendMode: blendMode, alpha: alpha, backgroundColor: backgroundColor)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -283,7 +283,7 @@ public struct CompositingImageProcessor: ImageProcessor {
     public let alpha: CGFloat
 
     /// Background color of the output image. If `nil`, it will stay transparent.
-    public let backgroundColor: Color?
+    public let backgroundColor: KFCrossPlatformColor?
 
     /// Creates a `CompositingImageProcessor`
     ///
@@ -295,7 +295,7 @@ public struct CompositingImageProcessor: ImageProcessor {
     ///   - backgroundColor: Background color to apply for the output image. Default is `nil`.
     public init(compositingOperation: NSCompositingOperation,
                 alpha: CGFloat = 1.0,
-                backgroundColor: Color? = nil)
+                backgroundColor: KFCrossPlatformColor? = nil)
     {
         self.compositingOperation = compositingOperation
         self.alpha = alpha
@@ -315,7 +315,7 @@ public struct CompositingImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
@@ -324,7 +324,7 @@ public struct CompositingImageProcessor: ImageProcessor {
                             alpha: alpha,
                             backgroundColor: backgroundColor)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -333,12 +333,15 @@ public struct CompositingImageProcessor: ImageProcessor {
 /// Processor for making round corner images. Only CG-based images are supported in macOS, 
 /// if a non-CG image passed in, the processor will do nothing.
 ///
-/// Note: The input image will be rendered with round corner pixels removed. If the image itself does not contain
+/// - Note: The input image will be rendered with round corner pixels removed. If the image itself does not contain
 /// alpha channel (for example, a JPEG image), the processed image will contain an alpha channel in memory in order
-/// to show correctly. However, when cached into disk, the image format will be respected and the alpha channel will
-/// be removed. That means when you load the processed image from cache again, you will lose transparent corner.
+/// to show correctly. However, when cached to disk, Kingfisher respects the original image format by default. That
+/// means the alpha channel will be removed for these images. When you load the processed image from cache again, you
+/// will lose transparent corner.
+///
 /// You could use `FormatIndicatedCacheSerializer.png` to force Kingfisher to serialize the image to PNG format in this
 /// case.
+///
 public struct RoundCornerImageProcessor: ImageProcessor {
     
     /// Identifier of the processor.
@@ -355,7 +358,7 @@ public struct RoundCornerImageProcessor: ImageProcessor {
     public let targetSize: CGSize?
 
     /// Background color of the output image. If `nil`, it will use a transparent background.
-    public let backgroundColor: Color?
+    public let backgroundColor: KFCrossPlatformColor?
 
     /// Creates a `RoundCornerImageProcessor`.
     ///
@@ -370,7 +373,7 @@ public struct RoundCornerImageProcessor: ImageProcessor {
         cornerRadius: CGFloat,
         targetSize: CGSize? = nil,
         roundingCorners corners: RectCorner = .all,
-        backgroundColor: Color? = nil)
+        backgroundColor: KFCrossPlatformColor? = nil)
     {
         self.cornerRadius = cornerRadius
         self.targetSize = targetSize
@@ -403,7 +406,7 @@ public struct RoundCornerImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             let size = targetSize ?? image.kf.size
@@ -414,7 +417,7 @@ public struct RoundCornerImageProcessor: ImageProcessor {
                             roundingCorners: roundingCorners,
                             backgroundColor: backgroundColor)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -488,13 +491,13 @@ public struct ResizingImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.resize(to: referenceSize, for: targetContentMode)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -526,14 +529,14 @@ public struct BlurImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             let radius = blurRadius * options.scaleFactor
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.blurred(withRadius: radius)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -546,7 +549,7 @@ public struct OverlayImageProcessor: ImageProcessor {
     public let identifier: String
     
     /// Overlay color will be used to overlay the input image.
-    public let overlay: Color
+    public let overlay: KFCrossPlatformColor
     
     /// Fraction will be used when overlay the color to image.
     public let fraction: CGFloat
@@ -556,7 +559,7 @@ public struct OverlayImageProcessor: ImageProcessor {
     /// - parameter overlay:  Overlay color will be used to overlay the input image.
     /// - parameter fraction: Fraction will be used when overlay the color to image. 
     ///                       From 0.0 to 1.0. 0.0 means solid color, 1.0 means transparent overlay.
-    public init(overlay: Color, fraction: CGFloat = 0.5) {
+    public init(overlay: KFCrossPlatformColor, fraction: CGFloat = 0.5) {
         self.overlay = overlay
         self.fraction = fraction
         self.identifier = "com.onevcat.Kingfisher.OverlayImageProcessor(\(overlay.hex)_\(fraction))"
@@ -570,13 +573,13 @@ public struct OverlayImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.overlaying(with: overlay, fraction: fraction)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -589,12 +592,12 @@ public struct TintImageProcessor: ImageProcessor {
     public let identifier: String
     
     /// Tint color will be used to tint the input image.
-    public let tint: Color
+    public let tint: KFCrossPlatformColor
     
     /// Creates a `TintImageProcessor`
     ///
     /// - parameter tint: Tint color will be used to tint the input image.
-    public init(tint: Color) {
+    public init(tint: KFCrossPlatformColor) {
         self.tint = tint
         self.identifier = "com.onevcat.Kingfisher.TintImageProcessor(\(tint.hex))"
     }
@@ -607,13 +610,13 @@ public struct TintImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.tinted(with: tint)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -661,13 +664,13 @@ public struct ColorControlsProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.adjusted(brightness: brightness, contrast: contrast, saturation: saturation, inputEV: inputEV)
         case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+            return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -691,7 +694,7 @@ public struct BlackWhiteProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         return ColorControlsProcessor(brightness: 0.0, contrast: 1.0, saturation: 0.0, inputEV: 0.7)
             .process(item: item, options: options)
     }
@@ -747,12 +750,12 @@ public struct CroppingImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             return image.kf.scaled(to: options.scaleFactor)
                         .kf.crop(to: size, anchorOn: anchor)
-        case .data: return (DefaultImageProcessor.default >> self).process(item: item, options: options)
+        case .data: return (DefaultImageProcessor.default |> self).process(item: item, options: options)
         }
     }
 }
@@ -789,7 +792,7 @@ public struct DownsamplingImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         switch item {
         case .image(let image):
             guard let data = image.kf.data(format: .unknown) else {
@@ -808,11 +811,19 @@ public struct DownsamplingImageProcessor: ImageProcessor {
 ///   - left: The first processor.
 ///   - right: The second processor.
 /// - Returns: The concatenated processor.
+@available(*, deprecated,
+message: "Will be removed soon. Use `|>` instead.",
+renamed: "|>")
 public func >>(left: ImageProcessor, right: ImageProcessor) -> ImageProcessor {
     return left.append(another: right)
 }
 
-extension Color {
+infix operator |>: AdditionPrecedence
+public func |>(left: ImageProcessor, right: ImageProcessor) -> ImageProcessor {
+    return left.append(another: right)
+}
+
+extension KFCrossPlatformColor {
     var hex: String {
         var r: CGFloat = 0
         var g: CGFloat = 0
