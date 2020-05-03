@@ -318,6 +318,7 @@ import Kingfisher
         let conversationRequest = CyConversationRequestModel(JSON: [:])
         conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.timestamp = timestamp
+        conversationRequest?.params?.lead_hash = CyStorage.getCyDataModel()?.lead_hash
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             if conversationMessages?.messages != nil && conversationMessages?.messages?.last?.account_id != nil{

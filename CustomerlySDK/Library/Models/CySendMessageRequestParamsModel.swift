@@ -13,6 +13,7 @@ class CySendMessageRequestParamsModel: Mappable {
     var conversation_id: Int?
     var message: String?
     var attachments: [CyMessageAttachmentRequestModel]? = []
+    var lead_hash: String?
     
     required init?(map: Map) {
     }
@@ -22,6 +23,7 @@ class CySendMessageRequestParamsModel: Mappable {
         conversation_id <- map["conversation_id"]
         message <- map["message"]
         attachments <- map["attachments"]
+        lead_hash <- map["lead_hash"]
     }
     
 }

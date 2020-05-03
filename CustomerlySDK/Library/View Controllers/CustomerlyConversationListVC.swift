@@ -67,6 +67,7 @@ class CustomerlyConversationListVC: CyViewController {
     func requestConversations(loader: Bool = true){
         let conversationRequest = CyConversationRequestModel(JSON: [:])
         conversationRequest?.token = CyStorage.getCyDataModel()?.token
+        conversationRequest?.params?.lead_hash = CyStorage.getCyDataModel()?.lead_hash
         
         var hud : CyView?
         if tableView.pullToRefreshIsRefreshing() == false && loader == true {

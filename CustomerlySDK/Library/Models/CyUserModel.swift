@@ -10,11 +10,11 @@ import ObjectMapper
 
 class CyUserModel: Mappable {
     
-    var crmhero_user_id : Int?
-    var app_id : String?
-    var user_id : String?
-    var email : String?
-    var name : String?
+    var crmhero_user_id: Int?
+    var app_id: String?
+    var user_id: String?
+    var email: String?
+    var name: String?
     
     required init?(map: Map) {
     }
