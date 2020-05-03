@@ -187,10 +187,5 @@ Customerly.sharedInstance.update(success: {
 - If you **want to contribute**, submit a pull request.
 
 
-## Acknowledgements
-
-Made with ❤️ by [Paolo Musolino](https://github.com/Codeido) for Customerly.
-
-
 ## License
 Customerly iOS SDK is available under the Apache License 2.0. See the LICENSE file for more info.
