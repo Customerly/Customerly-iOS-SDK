@@ -40,13 +40,14 @@ class CyStorage: NSObject {
         return nil
     }
     
-    static func storeCySingleParameters(user: CyUserModel? = nil, token: String? = nil){
+    static func storeCySingleParameters(user: CyUserModel? = nil, token: String? = nil, lead_hash: String? = nil){
         
         if let data = getCyDataModel(){
             //if user is already logged (standard user, not lead, not anonymous), store user data, else user_id = nil and email = nil
             let alteredData = data
             alteredData.user = user ?? data.user
             alteredData.token = token ?? data.token
+            alteredData.lead_hash = lead_hash ?? data.lead_hash
             if alteredData.token?.userTypeFromToken() != CyUserType.user{
                 alteredData.user?.user_id = nil
                 alteredData.user?.email = nil

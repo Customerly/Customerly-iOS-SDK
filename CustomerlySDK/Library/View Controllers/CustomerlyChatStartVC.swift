@@ -79,6 +79,7 @@ class CustomerlyChatStartVC: CyViewController{
         let conversationRequest = CyConversationRequestModel(JSON: [:])
         conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.params?.conversation_id = conversation_id
+        conversationRequest?.params?.lead_hash = CyStorage.getCyDataModel()?.lead_hash
         
         var hud : CyView?
         hud = showLoader(view: self.view)
@@ -102,6 +103,7 @@ class CustomerlyChatStartVC: CyViewController{
         let conversationRequest = CyConversationRequestModel(JSON: [:])
         conversationRequest?.token = CyStorage.getCyDataModel()?.token
         conversationRequest?.timestamp = timestamp
+        conversationRequest?.params?.lead_hash = CyStorage.getCyDataModel()?.lead_hash
         
         CyDataFetcher.sharedInstance.retrieveConversationMessagesNews(conversationMessagesRequestModel: conversationRequest, completion: { (conversationMessages) in
             if conversationMessages?.messages != nil{
@@ -141,6 +143,7 @@ class CustomerlyChatStartVC: CyViewController{
         let messageRequest = CySendMessageRequestModel(JSON: [:])
         if let dataStored = CyStorage.getCyDataModel(){
             messageRequest?.token = dataStored.token
+            messageRequest?.params?.lead_hash = dataStored.lead_hash
             messageRequest?.params?.message = message
             messageRequest?.params?.conversation_id = conversation_id
             if attachment != nil{
@@ -165,6 +168,7 @@ class CustomerlyChatStartVC: CyViewController{
             }
             
             self.conversationId = responseSendMessage?.conversation?.conversation_id
+            CyStorage.storeCySingleParameters(lead_hash: responseSendMessage?.lead_hash)
             self.hideLoader(loaderView: hud)
         }, failure: { (error) in
             self.hideLoader(loaderView: hud)
