@@ -8,5 +8,5 @@ target 'CustomerlySDK' do
 end
 
 target "CustomerlyDemo" do
-	
+	pod 'Wormholy', '1.6.1', :configurations => ['Debug']
 end
