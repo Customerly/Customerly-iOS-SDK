@@ -52,7 +52,6 @@ class CyStorage: NSObject {
                 alteredData.user?.user_id = nil
                 alteredData.user?.email = nil
                 alteredData.user?.name = nil
-                alteredData.lead_hash = nil
             }
             storeCyDataModel(cyData: alteredData)
         }
