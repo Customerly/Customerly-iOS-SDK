@@ -1,0 +1,61 @@
+/*
+ Localizable.strings
+ Customerly
+ 
+ Created by Henning Hontheim on 05/16/2020.
+ Copyright © 2020 Henning Hontheim. All rights reserved.
+ */
+
+/* Image Picker Action Sheet */
+"actionSheetImagePicker_title" = "Wähle eine Datei zum Senden aus";
+"actionSheetImagePicker_cancel" = "Abbrechen";
+"actionSheetImagePicker_takePhoto" = "Nimm ein Foto auf";
+"actionSheetImagePicker_imageGallery" = "Wähle ein Foto aus der Mediathek";
+"actionSheetImagePicker_error" = "Fehler";
+"actionSheetImagePicker_confirm" = "OK";
+"actionSheetImagePicker_error_cameraNotAvailable" = "Huch, die Kamera ist nicht verfügbar";
+"actionSheetImagePicker_error_galleryNotAvailable" = "Huch, die Mediathek ist nicht verfügbar";
+
+/* Time Ago Since Date */
+"timeAgoSinceDate_yearsAgo %d" = "vor %d Jahren";
+"timeAgoSinceDate_yearAgo %d" = "vor %d Jahr";
+"timeAgoSinceDate_monthsAgo %d" = "vor %d Monaten";
+"timeAgoSinceDate_monthAgo %d" = "vor %d Monat";
+"timeAgoSinceDate_weeksAgo %d" = "vor %d Wochen";
+"timeAgoSinceDate_weekAgo %d" = "vor %d Woche";
+"timeAgoSinceDate_daysAgo %d" = "vor %d Tagen";
+"timeAgoSinceDate_dayAgo %d" = "vor %d Tag";
+"timeAgoSinceDate_hoursAgo %d" = "vor %d Stunden";
+"timeAgoSinceDate_hourAgo %d" = "vor %d Stunde";
+"timeAgoSinceDate_minutesAgo %d" = "vor %d Minuten";
+"timeAgoSinceDate_minuteAgo %d" = "vor %d Minute";
+"timeAgoSinceDate_secondsAgo %d" = "vor %d Sekunden";
+"timeAgoSinceDate_justNow" = "Jetzt";
+
+/* Conversation List */
+"supportTitle" = "Support";
+"youUser" = "Du";
+"conversationListPoweredBy" = "Live Chat ⚡️ Customerly";
+"newConversationButton" = "Beginne eine neue Konversation beginnen";
+
+/* Chat View */
+"chatTitleView" = "Chat";
+"chatInsertEmail" = "Gib Deine E-Mail-Adresse ein";
+"chatOK" = "OK";
+"chatCancel" = "Abbrechen";
+"chatEmail" = "E-Mail";
+"chatAdminLastActivity" = "Letzte Aktivität";
+"chatViewPoweredBy" = "Live Chat ⚡️ Customerly";
+"chatViewContactSupportLabel" = "Wende dich an den Support, indem du unten deine Frage stellst.";
+"chatViewTextFieldPlaceholder" = "Stelle Deine Frage";
+"chatViewRichMessageText" = "Diese Nachricht wurde per E-Mail gesendet. Zum Lesen tippen.";
+
+/* Survey View */
+"surveyTitleView" = "Umfrage";
+"confirmSliderButton %d" = "Bestätige %d";
+"confirmButton" = "Bestätigen";
+
+/* Extra */
+"pullToRefresh" = "Zum Aktualisieren ziehen";
+
+
