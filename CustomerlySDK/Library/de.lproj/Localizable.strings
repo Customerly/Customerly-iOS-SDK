@@ -17,19 +17,19 @@
 "actionSheetImagePicker_error_galleryNotAvailable" = "Huch, die Mediathek ist nicht verfügbar";
 
 /* Time Ago Since Date */
-"timeAgoSinceDate_yearsAgo %d" = "vor %d Jahren";
-"timeAgoSinceDate_yearAgo %d" = "vor %d Jahr";
-"timeAgoSinceDate_monthsAgo %d" = "vor %d Monaten";
-"timeAgoSinceDate_monthAgo %d" = "vor %d Monat";
-"timeAgoSinceDate_weeksAgo %d" = "vor %d Wochen";
-"timeAgoSinceDate_weekAgo %d" = "vor %d Woche";
-"timeAgoSinceDate_daysAgo %d" = "vor %d Tagen";
-"timeAgoSinceDate_dayAgo %d" = "vor %d Tag";
-"timeAgoSinceDate_hoursAgo %d" = "vor %d Stunden";
-"timeAgoSinceDate_hourAgo %d" = "vor %d Stunde";
-"timeAgoSinceDate_minutesAgo %d" = "vor %d Minuten";
-"timeAgoSinceDate_minuteAgo %d" = "vor %d Minute";
-"timeAgoSinceDate_secondsAgo %d" = "vor %d Sekunden";
+"timeAgoSinceDate_yearsAgo %d" = "vor %dJ";
+"timeAgoSinceDate_yearAgo %d" = "vor %dJ";
+"timeAgoSinceDate_monthsAgo %d" = "vor %dM";
+"timeAgoSinceDate_monthAgo %d" = "vor %dM";
+"timeAgoSinceDate_weeksAgo %d" = "vor %dW";
+"timeAgoSinceDate_weekAgo %d" = "vor %dW";
+"timeAgoSinceDate_daysAgo %d" = "vor %dT";
+"timeAgoSinceDate_dayAgo %d" = "vor %dT";
+"timeAgoSinceDate_hoursAgo %d" = "vor %dh";
+"timeAgoSinceDate_hourAgo %d" = "vor %dh";
+"timeAgoSinceDate_minutesAgo %d" = "vor %dm";
+"timeAgoSinceDate_minuteAgo %d" = "vor %dm";
+"timeAgoSinceDate_secondsAgo %d" = "vor %ds";
 "timeAgoSinceDate_justNow" = "Jetzt";
 
 /* Conversation List */
