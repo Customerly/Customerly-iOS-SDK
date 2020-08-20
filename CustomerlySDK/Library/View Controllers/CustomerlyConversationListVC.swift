@@ -34,7 +34,7 @@ class CustomerlyConversationListVC: CyViewController {
         data = CyStorage.getCyDataModel()
         newConversationButton.setTitle("newConversationButton".localized(comment: "Conversation List"), for: .normal)
         poweredByButton.setTitle("conversationListPoweredBy".localized(comment: "Conversation List"), for: .normal)
-        poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
+        poweredByButton.isHidden = !(data?.app_config?.branded_widget ?? true) //show or hide powered by button
         backgroundImageView.kf.setImage(with: URL(string: data?.app_config?.widget_background_url ?? ""))
         
         title = "supportTitle".localized(comment: "Conversation List")

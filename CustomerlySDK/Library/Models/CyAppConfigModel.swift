@@ -14,7 +14,7 @@ class CyAppConfigModel: Mappable {
     var widget_color: String?
     var widget_icon: Bool?
     var widget_position: Bool?
-    var powered_by: Bool?
+    var branded_widget: Bool?
     var default_screenshot: Bool?
     var user_audio_notification: Bool?
     var welcome_message_users: String?
@@ -34,7 +34,7 @@ class CyAppConfigModel: Mappable {
         widget_color <- map["widget_color"]
         widget_icon <- map["widget_icon"]
         widget_position <- map["widget_position"]
-        powered_by <- map["powered_by"]
+        branded_widget <- map["branded_widget"]
         default_screenshot <- map["default_screenshot"]
         user_audio_notification <- map["user_audio_notification"]
         welcome_message_users <- map["welcome_message_users"]

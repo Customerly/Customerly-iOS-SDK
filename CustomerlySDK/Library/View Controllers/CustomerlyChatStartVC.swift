@@ -42,7 +42,7 @@ class CustomerlyChatStartVC: CyViewController{
         chatTableView.register(UINib(nibName: "MessageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageCell")
         chatTableView.register(UINib(nibName: "MessageWithImageCell", bundle:CyBundle.getBundle()), forCellReuseIdentifier: "messageWithImagesCell")
         poweredByButton.setTitle("chatViewPoweredBy".localized(comment: "Chat View"), for: .normal)
-        poweredByButton.isHidden = !(data?.app_config?.powered_by ?? true) //show or hide powered by button
+        poweredByButton.isHidden = !(data?.app_config?.branded_widget ?? true) //show or hide powered by button
         backgroundImageView.kf.setImage(with: URL(string: data?.app_config?.widget_background_url ?? ""))
         
         chatTextField.placeholder = "chatViewTextFieldPlaceholder".localized(comment: "Chat View")
