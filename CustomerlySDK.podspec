@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CustomerlySDK"
-  s.version      = "3.1.2"
+  s.version      = "3.2.0"
   s.summary      = "customerly.io is the perfect tool to getting closer to your customers"
   s.description  = <<-DESC
   					customerly.io is the perfect tool to getting closer to your customers. Help them where they are with the customer support widget. Manage your audience based on their behaviours, build campaigns and automations.
