@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'CustomerlySDK' do
 	pod 'ObjectMapper', '4.2.0'
-	pod "Kingfisher", '5.13.4'
+	pod "Kingfisher", '5.15.8'
 	pod 'Socket.IO-Client-Swift', '15.2.0'
 end
 
