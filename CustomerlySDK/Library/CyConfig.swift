@@ -4,7 +4,7 @@
 
 import Foundation
 
-let API_BASE_URL = "https://tracking.customerly.io" + API_VERSION
+let API_BASE_URL = "https://chat.customerly.io" + API_VERSION
 let API_VERSION = "/v" + cy_api_version
 let CUSTOMERLY_URL = "https://www.customerly.io"
 
@@ -18,7 +18,7 @@ let cy_device = UIDevice.current.model
 let cy_os = UIDevice.current.systemName
 let cy_os_version = UIDevice.current.systemVersion
 let cy_app_name : String = Bundle.main.object(forInfoDictionaryKey:kCFBundleNameKey as String) as! String
-let cy_sdk_version = "3.1.1"
+let cy_sdk_version = "3.2.0"
 let cy_api_version = "1"
 let cy_socket_version = "0.0.1"
 let cy_preferred_language = NSLocale.preferredLanguages.count > 0 ? NSLocale.preferredLanguages[0] : nil
