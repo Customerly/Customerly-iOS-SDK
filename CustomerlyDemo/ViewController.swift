@@ -1,10 +1,6 @@
 //
 //  ViewController.swift
 //  CustomerlyDemo
-//
-//  Created by Paolo Musolino on 19/11/16.
-//
-//
 
 import UIKit
 import CustomerlySDK

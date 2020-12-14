@@ -1,10 +1,6 @@
 //
 //  CyChatStartVC.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 11/11/16.
-//
-//
 
 import UIKit
 

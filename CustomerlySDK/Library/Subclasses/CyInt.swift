@@ -1,10 +1,6 @@
 //
 //  CyInt.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 01/02/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import UIKit
 

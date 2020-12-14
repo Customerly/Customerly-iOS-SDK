@@ -1,10 +1,6 @@
 //
 //  Customerly.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 10/10/16.
-//
-//
 
 import Kingfisher
 

@@ -1,10 +1,6 @@
 //
 //  CyAdminModel.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 27/11/16.
-//
-//
 
 import ObjectMapper
 

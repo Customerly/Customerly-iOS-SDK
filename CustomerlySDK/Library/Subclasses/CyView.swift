@@ -1,10 +1,6 @@
 //
 //  CyView.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 27/11/16.
-//
-//
 
 import UIKit
 

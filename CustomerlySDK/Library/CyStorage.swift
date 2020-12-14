@@ -1,10 +1,6 @@
 //
 //  CyStorage.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 06/11/16.
-//
-//
 
 import ObjectMapper
 

@@ -1,10 +1,6 @@
 //
 //  CyErrorModel.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 24/07/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import ObjectMapper
 

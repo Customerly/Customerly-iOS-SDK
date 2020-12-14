@@ -1,11 +1,6 @@
 //
 //  CyActiveAdminsTableViewCell.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 26/11/16.
-//
-//
-
 import UIKit
 import Kingfisher
 

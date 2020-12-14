@@ -1,10 +1,7 @@
 //
 //  CyVersioning.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 04/07/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
+
 
 import Foundation
 

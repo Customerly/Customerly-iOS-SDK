@@ -1,10 +1,6 @@
 //
 //  CustomerlySDKTests.swift
 //  CustomerlySDKTests
-//
-//  Created by Paolo Musolino on 19/11/16.
-//
-//
 
 import XCTest
 @testable import CustomerlySDK

@@ -1,10 +1,6 @@
 //
 //  CySurveyResponseModel.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 04/01/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import ObjectMapper
 

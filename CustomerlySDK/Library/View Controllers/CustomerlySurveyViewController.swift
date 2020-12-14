@@ -1,10 +1,6 @@
 //
 //  CustomerlySurveyViewController.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 30/12/16.
-//  Copyright © 2016 Customerly. All rights reserved.
-//
 
 import UIKit
 

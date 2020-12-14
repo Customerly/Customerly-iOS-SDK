@@ -1,10 +1,6 @@
 //
 //  CyStackView.swift
 //  CustomerlySDK
-//
-//  Created by Paolo Musolino on 24/03/18.
-//  Copyright © 2018 Customerly. All rights reserved.
-//
 
 import UIKit
 

@@ -1,10 +1,6 @@
 //
 //  CustomerlySDK.h
 //  CustomerlySDK
-//
-//  Created by Paolo Musolino on 19/11/16.
-//
-//
 
 #import <UIKit/UIKit.h>
 

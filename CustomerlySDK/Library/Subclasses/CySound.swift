@@ -2,10 +2,6 @@
 //
 //  CySound.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 31/01/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import AudioToolbox
 

@@ -1,10 +1,6 @@
 //
 //  CyBundle.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 09/02/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import UIKit
 

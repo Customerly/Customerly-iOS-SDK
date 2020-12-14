@@ -1,10 +1,6 @@
 //
 //  ChatTests.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 18/02/17.
-//  Copyright © 2017 Customerly. All rights reserved.
-//
 
 import XCTest
 

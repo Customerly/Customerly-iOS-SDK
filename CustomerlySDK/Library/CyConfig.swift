@@ -1,10 +1,6 @@
 //
 //  CyConfig.swift
 //  Customerly
-//
-//  Created by Paolo Musolino on 09/10/16.
-//
-//
 
 import Foundation
 
