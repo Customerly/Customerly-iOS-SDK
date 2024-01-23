@@ -43,6 +43,7 @@ class CustomerlyNavigationController: UINavigationController {
             self.navigationBar.barTintColor = user_color_template
         }
         
+        self.navigationBar.backgroundColor = self.navigationBar.barTintColor
     }
     
     //enable "swipe left to right" gesture to navigate to the previous controller when the back button is custom
