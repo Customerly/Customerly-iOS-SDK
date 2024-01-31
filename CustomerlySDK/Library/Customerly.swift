@@ -177,7 +177,7 @@ import Kingfisher
      */
     @objc open func setCompany(company:Dictionary<String, Any>? = nil, success: (() -> Void)? = nil, failure: (() -> Void)? = nil){
         
-        guard !isSDKAvailable() else {
+        guard isSDKAvailable() else {
             failure?()
             return
         }

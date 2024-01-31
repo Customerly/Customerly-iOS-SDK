@@ -14,6 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     
+    @IBOutlet weak var companyIdTextField: UITextField!
+    @IBOutlet weak var companyNameTextField: UITextField!
+    @IBOutlet weak var companyAttributeValueTextField: UITextField!
+    @IBOutlet weak var companyAttributeNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +46,16 @@ class ViewController: UIViewController {
     @IBAction func registerUser(_ sender: Any) {
         if emailTextField.text != nil{
             Customerly.sharedInstance.registerUser(email: emailTextField.text!, user_id: userIdTextField.text, name: nameTextField.text)
+        }
+    }
+    
+    @IBAction func setCompany(_ sender: Any) {
+        if companyIdTextField.text != nil && companyNameTextField.text != nil {
+            Customerly.sharedInstance.setCompany(company: [
+                "company_id": companyIdTextField.text ?? "",
+                "name": companyNameTextField.text ?? "",
+                companyAttributeNameTextField.text ?? "": companyAttributeValueTextField.text ?? ""
+            ])
         }
     }
     
