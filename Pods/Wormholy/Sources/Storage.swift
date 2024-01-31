@@ -11,6 +11,10 @@ import Foundation
 open class Storage: NSObject {
 
     public static let shared: Storage = Storage()
+  
+    public static var limit: NSNumber? = nil
+
+    public static var defaultFilter: String? = nil
     
     open var requests: [RequestModel] = []
     
@@ -25,6 +29,10 @@ open class Storage: NSObject {
             requests[index] = request!
         }else{
             requests.insert(request!, at: 0)
+        }
+
+        if let limit = Self.limit?.intValue {
+            requests = Array(requests.prefix(limit))
         }
         NotificationCenter.default.post(name: newRequestNotification, object: nil)
     }
