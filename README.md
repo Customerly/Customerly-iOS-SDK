@@ -14,7 +14,7 @@
 
 Run Surveys directly into your mobile apps and get the responses in one place. 
 
-The Customerly Live Chat iOS SDK is really simple to integrate in your apps, and allow your users to contact you via chat.
+The Customerly Live Chat iOS SDK is really simple to integrate into your mobile apps, and allows your users to contact you via chat.
 
 <p align="center">
   <img src="https://github.com/customerly/customerly.github.io/blob/master/ios/resources/chat-preview.png?raw=true" width=500 alt="Live Chat Help Desk ios SDK "/>
@@ -74,7 +74,7 @@ First of all, if you don't have an Xcode project yet, create one, then install t
 ```
 import CustomerlySDK
 ```
-**2)** Configure a Customerly iOS SDK shared instance, in your App Delegate, inside **application:didFinishLaunchingWithOptions:** method:
+**2)** Configure a Customerly iOS SDK shared instance with your APP ID ([Find it here](https://docs.customerly.io/en/project-settings-set-up-the-important-assets-of-your-project/what-s-a-customerly-project-id-and-where-can-i-get-it)), in your App Delegate, inside **application:didFinishLaunchingWithOptions:** method:
 
 ```
 Customerly.sharedInstance.configure(appId: "YOUR_CUSTOMERLY_APP_ID")
@@ -91,7 +91,7 @@ If you want to enable the logging in console, you can set verboseLogging variabl
 Customerly.sharedInstance.verboseLogging = true
 ```
 
-**3)** From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users have the ability to upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
+**3)** From iOS 10, you'll need to make sure that you add `NSPhotoLibraryUsageDescription` & `NSCameraUsageDescription` to your Info.plist so that your users can upload photos in Customerly's chat. Furthermore remember to set the `NSAppTransportSecurity` to `NSAllowsArbitraryLoads`.
 
 **If in doubt, you can look at the examples in the demo application.**
 
