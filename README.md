@@ -1,7 +1,18 @@
-<p align="left">
-<a href="https://www.customerly.io">
-  <img src="https://avatars1.githubusercontent.com/u/23583405?s=200&v=4" height="100" alt="Live Chat ios SDK Help Desk"></a>
-</p>
+<div align="center">
+
+🚨🚨🚨
+
+<h1>DEPRECATION NOTICE</h1>
+<p><strong>This SDK is DEPRECATED and no longer maintained.</strong></p>
+<p>Please use the new and improved Customerly iOS SDK here:</p>
+<a href="https://github.com/Customerly/CustomerlyiOSSDK" style="font-size:1.5em; font-weight:bold; color:#007aff;">https://github.com/Customerly/CustomerlyiOSSDK</a>
+
+🚨🚨🚨
+
+</div>
+
+---
+
 
 <h1>Live Chat iOS SDK from Customerly</h1>
 <h2> The Best-in-Class Live Chat for your mobile apps. Integrate painlessly the Live Chat for your customer support inside any iOS App with <a href="https://www.customerly.io/features/live-chat/?utm_source=github&utm_medium=readme&utm_campaign=iossdk">Customerly Live Chat </a> SDK </h2>
@@ -97,7 +108,7 @@ Customerly.sharedInstance.verboseLogging = true
 
 
 ### User registration
-You can register logged in users of your app into Customerly calling the method `registerUser:`. You’ll also need to register your user anywhere they log in.
+You can register logged in users of your app into Customerly calling the method `registerUser:`. You'll also need to register your user anywhere they log in.
 
 Example:
 
