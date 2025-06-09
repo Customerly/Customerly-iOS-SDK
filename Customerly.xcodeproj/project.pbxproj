@@ -146,6 +146,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2BD282B4247033D900FC2050 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BD282B52470343900FC2050 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A31FA2E3BDF3C36343BDD29 /* Pods-CustomerlySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerlySDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerlySDK/Pods-CustomerlySDK.debug.xcconfig"; sourceTree = "<group>"; };
 		451753A52066C8E800E3D1BF /* CyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyStackView.swift; sourceTree = "<group>"; };
 		451FCB9A1E2A8094006E315D /* CyTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyTokenModel.swift; sourceTree = "<group>"; };
@@ -682,6 +684,8 @@
 				Base,
 				it,
 				es,
+				de,
+				tr,
 			);
 			mainGroup = 455CE1231DE0AA9F00FF65DC;
 			productRefGroup = 455CE1301DE0AABD00FF65DC /* Products */;
@@ -956,6 +960,8 @@
 				45E924FC1E22DEA300514EA3 /* Base */,
 				45DC04B81E243565004DB406 /* it */,
 				45DE41471FC4C644005C5108 /* es */,
+				2BD282B4247033D900FC2050 /* de */,
+				2BD282B52470343900FC2050 /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
